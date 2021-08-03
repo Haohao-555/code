@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求和</title>
+</head>
+
+<body>
+    <script>
+        var arr = [20, 10]
+
+        function sum(param) {
+            if (param.constructor != Array && param.length != 2) {
+                // 如果传递的形参不符合条件（不是数组或者数组长度不为2）
+                // 没有必要处理下面的逻辑
+                // return可以没有返回值，但依旧可以中断
+                return;
+            }
+            // console.log("条件满足才能执行")
+
+            // var max = 0;
+            // var min = 0;
+            // if (param[0] > param[1]) {
+            //     max = param[0];
+            //     min = param[1]
+            // } else {
+            //     max = param[1];
+            //     min = param[0]
+            // }
+
+            // 简写
+            var max = param[0] > param[1] ? param[0] : param[1]
+            var min = param[0] < param[1] ? param[0] : param[1]
+
+            // console.log("大的值：",max)
+            // console.log("小的值：",min)
+
+            // 计算两者区间的值之和
+            // 定义一个变量接收计算之和
+            var total = 0;
+            for (var i = min; i <= max; i++) {
+                total += i
+            }
+            return total
+
+        }
+        console.log(sum(arr))
+        console.log(sum([45, 12, 4])) // 无结果
+        console.log(sum([5, 4])) // 无结果
+        // sum("333")
+    </script>
+</body>
+
+</html>

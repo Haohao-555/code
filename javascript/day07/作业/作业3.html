@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  把10 - 15 转成  a - f
+        function hex(num) {
+            // 为了节省运行次数,进行判断处理
+            if (1 <= num && num < 10) {
+                return num;
+            }
+            switch (num) {
+                case 10:
+                    num = "a";
+                    break;
+                case 11:
+                    num = "b";
+                    break;
+                case 12:
+                    num = "c";
+                    break;
+                case 13:
+                    num = "d";
+                    break;
+                case 14:
+                    num = "e";
+                    break;
+                case 15:
+                    num = "f";
+                    break;
+            }
+
+            // 把处理好的结果返回出去
+            return num;
+        }
+
+        // 2/8/16进制转成10进制
+        function toDec(n, num) {
+            // 2进制转10进制
+            // if (n == 2) {
+            //     var str = "";
+            //     while (num != 0) {
+            //         str = num % 2 + str
+            //         num = parseInt(num / 2);
+            //     }
+            //     return str;
+            // } else if (n == 8) {
+            //     var str = "";
+            //     while (num != 0) {
+            //         str = num % 8 + str
+            //         num = parseInt(num / 8);
+            //     }
+            //     return str;
+            // } else if (n == 16) {
+            //     var str = "";
+            //     while (num != 0) {
+            //         var c = num % 16;
+            //         str = hex(c) + str;
+            //         num = parseInt(num / 16);
+            //     }
+            //     return str;
+            // } else {
+            //     console.log("输入的参数不符合内容")
+            // }
+
+            // 简写:
+            var str = "";
+            n = n == 2 ? 2 : n == 8 ? 8 : n == 16 ? 16 : 404
+            if (n == 404) {
+                console.log("输入的参数不符合规范")
+            } else {
+                while (num != 0) {
+                    var c = num % n;
+                    // 进行16进制的转化处理: 10 ==> a; 11==> b; 12 ==> c; 13 ==> d; 14==> e; 15 ==> f
+                    str = hex(c) + str;
+                    num = parseInt(num / n);
+                }
+                return str;
+            }
+        }
+
+        console.log("2进制转成10进制==>", toDec(2, 7))
+        console.log("8进制转成10进制==>", toDec(8, 8))
+        console.log("16进制转成10进制==>", toDec(16, 255))
+    </script>
+</body>
+
+</html>

@@ -1,29 +1,48 @@
-<!--
- * @Date: 2021-08-03 09:14:54
- * @Author: 浩
- * @LastEditors: 浩
- * @FilePath: \javascript\day07\作业\作业1.html
--->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>求质数之和</title>
 </head>
+
 <body>
     <script>
         // 求质数之和
+
+        // 判断一个数是否为质数
         function isPrime(n) {
-            // 从 2 开始进行判断
-            for (i = 2; i < n; i++) {
-               if (n % i == 0) {
-                   return false;
-               } 
+            // 根据质数的定义，从2开始进行判断，如果是质数，则返回true，代表其是质数，否则为false,不是质数
+            // for (i = 2; i < n; i++) {
+            for (i = 2; i <= Math.sqrt(n); i++) {
+                // 如果在2 到 n-1 之间，有任意一个数字能整除n,则为质数 
+                // ===> n 对 2 到 n - 1之间的任意一个数取余等于0，则是不是质数，否则是质数
+                if (n % i == 0) {
+                    return false;
+                }
             }
             return true;
         }
+
+        function sumPrime(num) {
+            var total = 0;
+            // 进行循环
+            for (var i = 2; i < num; i++) {
+                // 进行判断，为质数，加起来
+                if (isPrime(i) == true) {
+                    total += i
+                }
+            }
+            return total;
+        }
+        console.log("4之内的质数之和", sumPrime(4))    // 2 + 3 = 5
+        console.log("10之内的质数之和", sumPrime(10))  // 2 + 3 + 5 + 7 = 17
+        console.log("12之内的质数之和", sumPrime(12))  // 2 + 3 + 5 + 7 + 11 = 28
+        console.log("20之内的质数之和", sumPrime(20))
+
     </script>
 </body>
+
 </html>
