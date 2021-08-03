@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-Date对象的练习</title>
+</head>
+
+<body>
+    <script>
+        /*
+            创建一个函数返回当前事件的指定格式
+            要求：
+                1. 创建JSClock函数
+                2. 调用该函数返回指定格式当前事件例： "12:09:05 A.M."
+                3. 0点要显示为12点 AM
+                4. 14点要显示为 02 点 PM
+                5. 时分秒小于10的前面都要补零： 如 9 -> 09
+        */
+        function JSClock() {
+            // var date = new Date(2012, 12, 5, 5, 5, 5);    // 指定时间: 2012, 12, 5, 5, 5, 5
+            var date = new Date();                          // 现在时间
+            // 获得时\分\秒
+            var hours = date.getHours();
+            var mins = date.getMinutes();
+            var seconds = date.getSeconds();
+            // console.log("时-分-秒==>", hours, mins, seconds)
+
+            // 先判断是为AM还是PM(中午12点为AM)
+            var noon = hours > 12 ? "PM" : "AM";
+            // 假如是PM的时间(小时),则要换成12小时制(因为获得的时间为24小时制的)
+            hours = hours > 12 ? hours - 12 : hours;
+            // 凌晨0点,显示为12
+            hours = hours == 0 ? 12 : hours;
+
+            // 时分秒补零操作
+            hours = hours < 10 ? "0" + hours : hours;
+            mins = mins < 10 ? "0" + mins : mins;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            // 按要求拼接形式,然后返回出去
+            return hours + ":" + mins + ":" + seconds + noon
+        }
+
+        // 调用函数
+        console.log(JSClock())
+
+
+        // 作业:
+        /*
+            作业1: 封装一个函数,传递一个参数(num), 在返回现在的时间的基础上+num天,返回格式为2021年X月X日X时X分X秒(建议用时间戳)
+            作业2: 活动秒杀:2021-08-04 00:00:00开始,弄个倒计时,显示还剩多少秒,显示格式为x天x时x分x秒,封装成一个函数,参数为活动时长(时间戳)
+        */
+    </script>
+</body>
+
+</html>

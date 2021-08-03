@@ -1,0 +1,78 @@
+<!--
+ * @Date: 2021-08-03 16:53:35
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day07\04-Date日期对象.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-Date日期对象</title>
+</head>
+
+<body>
+    <script>
+        /*
+             Date对象和其方法来处理日期和时间(内置对象)
+                概念：JavaScript 处理日期数据是以1970年1月1日00:00:00以来的毫秒数来储存数据类型的
+                        1000毫秒 == 1秒
+                        1分  == 60秒 
+                        1h   == 60分
+        */
+
+        // (1) 创建日期对象
+        // new Date(年, 月, 日, 时, 分, 秒, 毫秒)
+        // var date = new Date(2012, 12, 21, 10, 10, 10)  // 如果没有指定时间,则默认获得本地当前时间
+        var date = new Date()
+        // 正常来说,应该输出一个对象,但是这里不会直接输出一个对象,因为输出的日期对象会转化为字符串的时间表示,相当于调用了 .toString()方法
+        console.log(typeof date)      // object
+        console.log(date.toString())
+        console.log(date)
+
+
+        // 通过时间戳:1627988692607指定时间
+        var date1 = new Date(1627988693602)
+        console.log("时间戳指定时间:", date1)
+
+
+
+        // (2) Date类型原型上的方法
+        // (2.1) .getDate()根据本地时间返回指定日期对象的月份中的第几天（1-31）
+        console.log("现在所处的月份的第几天==>", date.getDate())
+
+        // (2.2) getDay()根据本地时间返回指定日期对象的星期中的第几天（0-6）
+        console.log("星期==>", date.getDay())
+
+        // (2.3) getFullYear()根据本地时间返回指定日期对象的年份（四位数年份时返回四位数字）。 
+        console.log("年份==>", date.getFullYear())
+
+        // (2.4) getHours()根据本地时间返回指定日期对象的小时（0-23）
+        console.log("小时0-23==>", date.getHours())
+
+        // (2.5) getMinutes()根据本地时间返回指定日期对象的分钟（0-59）。
+        console.log("分钟0 - 59==>", date.getMinutes())
+
+        // (2.6) getSeconds()根据本地时间返回指定日期对象的秒数（0-59）。
+        console.log("秒数 0 - 59==>", date.getSeconds())
+
+        // (2.7) getMonth()根据本地时间返回指定日期对象的月份 (0-11)。
+        // 显示出来的月份比正常月份少1,所以在获得月份的时候,必须+1
+        console.log("月份0-11==>", date.getMonth())
+
+        // (2.8) getTime() 返回从1970-1-1 00:00:00 UTC（协调世界时）到该日期经过的毫秒数，对于1970-1-1 00:00:00 UTC之前的时间返回负值。
+        console.log("1970-1-1 0-0-0至今的毫秒数:", date.getTime())
+
+        // (2.9) getTimezoneOffset()返回当前时区的时区偏移单位分钟。
+        // 中国是东八区东（UTC/GMT+08:00）是比世界协调时间（UTC）快8小时的时区
+        console.log("返回当前时区的时区偏移单位分钟(东八区)==>", date.getTimezoneOffset())  // -480分钟 => 8小时
+
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!--
+ * @Date: 2021-08-03 18:32:59
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day07\8.3\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date = function(num) {
+            var date = new Date();
+            var currTime = date.getTime();
+            var time = new Date(currTime + num * 24 * 60 * 60 * 1000);
+            return time.getFullYear() + "年" + (time.getMonth()+ 1) + "月" + time.getDate() + "日" + time.getHours() + "分" + time.getSeconds() + "秒"
+        }
+        console.log(date(7));
+    </script>
+</body>
+</html>

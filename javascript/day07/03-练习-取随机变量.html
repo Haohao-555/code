@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-练习-取随机变量</title>
+</head>
+
+<body>
+    <script>
+        var nameArr = ["小明", "刘松", "张勇", "孙强", "贺北", "曹丕", "赵维富"]
+
+        // 数组的长度
+        var len = nameArr.length;
+        // 公式:Math.floor(Math.random() * (max + 1 - min)) + min
+        var random1 = Math.floor(Math.random() * len);
+        var random2 = Math.floor(Math.random() * len);
+
+        // 避免重复,如果重复了,则还是重新取值,循环下去
+        while (random1 == random2) {
+            // 不用重新取两个,只取一个
+            random2 = Math.floor(Math.random() * len)
+        }
+        // 通过下标取到对用的名字
+        console.log(nameArr[random1], nameArr[random2])
+
+    </script>
+</body>
+
+</html>

@@ -18,6 +18,86 @@
         console.log("null的绝对值:", Math.abs(null))    // 0
         console.log("undefined的绝对值:", Math.abs(undefined))    // NaN
         console.log("-infinity的绝对值:", Math.abs(-Infinity))    // Infinity
+
+        // (2) `Math.sqrt(x)` 返回一个数的平方根。
+        console.log("整数9开根号==>", Math.sqrt(9))     // 3
+        console.log("整数-9开根号==>", Math.sqrt(-9))   // NaN
+        console.log("null开根号==>", Math.sqrt(null))   // NaN
+
+
+        // (3) `Math.cbrt(x)` 返回一个数的立方根。
+        console.log("整数27立方根==>", Math.cbrt(27))     // 3
+        console.log("整数-27立方根==>", Math.cbrt(-27))     // 3
+        console.log("整数4立方根==>", Math.cbrt(4))     // 3
+
+        // (4) `Math.floor(x)` 返回小于一个数的最大整数，即一个数向下取整后的值。(争对的是有小数的数字,全部小数不要)
+        console.log("整数45向下取整==>", Math.floor(45))                 // 45
+        console.log("整数-45向下取整==>", Math.floor(-45))               // - 45
+        console.log("整数-45.66666向下取整==>", Math.floor(-45.666666))  // -46
+        console.log("整数45.66666向下取整==>", Math.floor(45.666666))    // 45
+        console.log("整数45.99999999向下取整==>", Math.floor(45.999999999)) // 45
+
+
+        // (5) `Math.max([x[, y[, …]]])` 返回零到多个数值中最大值。
+        // (6) `Math.min([x[, y[, …]]])` 返回零到多个数值中最小值。
+        // 因为常储存数字变量的数据为数组, [10, 20, 21, 1, 99, 101, 400, 2, 3], 但是直接把数组传递进行进行取最大值,它又识别不了
+        var arr = [10, 20, 21, 1, 99, 101, 400, 2, 520, 502, -55];
+        // 尝试用把数组转成字符串
+        // arr = String(arr)
+        // console.log(arr)                              // 10, 20, 21, 1, 99, 101, 400, 2, 520, 502, -55
+        // console.log("最大值:==>", Math.max(arr))      -- 虽然形式一样,但是毕竟是字符串,不行
+
+        // ES6解构
+        console.log(...arr)                               // 10 20 21 1 99 101 400 2 520 502
+        console.log("最大值:==>", Math.max(...arr))
+        console.log("最大值:==>", Math.max(10, 20, 21, 1, 99, 101, 400, 2, 3))
+        console.log("最小值:==>", Math.min(...arr))
+
+
+
+        // (7) `Math.random()` 函数返回一个浮点数,  伪随机数在范围从0到小于1, [0, 1) ==> 取到0,取不到1
+        console.log("随机数:", Math.random())  // 0 ~ 1
+
+        // 小练习,如何通过随机数Math.random()取到0 - 10, 0 -18; 拓展64 - 76的任意一个数字
+        console.log("随机数0-10:", Math.random() * 10)  // 0 ~ 10
+        console.log("随机数64- 76:", Math.random() * (76 - 64) + 64)  // 64 ~ 76
+
+        // 一定要取到区间内的最小值和最大值 :公式: Math.floor(Math.random(max + 1 - min)) + min
+        console.log("能取到随机数64- 76(包括64, 76):", Math.floor(Math.random() * (16 - 11)) + 11)  // 64 ~ 76
+
+
+
+        // (8) `Math.ceil(x)` 返回大于一个数的最小整数，即一个数向上取整后的值。
+        console.log("整数45向上取整==>", Math.ceil(45))                 // 45
+        console.log("整数-45向上取整==>", Math.ceil(-45))               // - 45
+        console.log("数字-45.0001向上取整==>", Math.ceil(-45.0001))               // - 45
+        console.log("数字45.0001向上取整==>", Math.ceil(45.0001))               //  46
+        console.log("数字45.9999向上取整==>", Math.ceil(45.9999))               //  46
+
+
+        // (9) `Math.round(x)` 返回四舍五入后的整数。
+        console.log("数字28.54==>", Math.round(28.54))          // 29
+        console.log("数字28.499999==>", Math.round(28.499999))   // 28
+
+
+        // (10) `Math.sign(x)` 返回一个数的符号，得知一个数是正数、负数还是 0。,返回值只有: -1(负数) 1(正数) NaN(非法) 0(0)
+        console.log("得知-2是正数还是负数", Math.sign(-2))   // -1 
+        console.log("得知2是正数还是负数", Math.sign(2))   // -1 
+        console.log("得知0是正数还是负数", Math.sign(0))   // 0 
+        console.log("得知'我帅吗'是正数还是负数", Math.sign("我帅吗"))   // NaN
+
+        // (11) Math.pow(x, n)  ===> 代表取的是x的n次幂  x^n
+        console.log("2的3次方==>", Math.pow(2, 3))
+        console.log("-2的3次方==>", Math.pow(-2, 3))
+        console.log("4的1/2次方==>", Math.pow(4, 1 / 2))
+        console.log("27的1/3次方==>", Math.pow(27, 1 / 3))
+
+
+        // (12) Math.PI 圆周率
+        console.log("圆周率", Math.PI)
+
+
+
     </script>
 </body>
 

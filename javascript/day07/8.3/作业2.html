@@ -1,0 +1,40 @@
+<!--
+ * @Date: 2021-08-03 18:36:23
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day07\8.3\作业2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var showtime = function () {
+        //获取当前时间
+        var nowtime = new Date();
+        //定义结束时间
+        var endtime = new Date("2021/8/8");
+        var lefttime = 0;
+        //距离结束时间的毫秒数
+        lefttime = endtime.getTime() - nowtime.getTime();
+        //计算天数
+        leftd = Math.floor(lefttime / (1000 * 60 * 60 * 24));
+        //计算小时数
+        lefth = Math.floor((lefttime / (1000 * 60 * 60)) % 24);
+        //计算分钟数
+        leftm = Math.floor((lefttime / (1000 * 60)) % 60);
+        //计算秒数
+        lefts = Math.floor((lefttime / 1000) % 60); 
+        return leftd + "天" + lefth + "时" + leftm + "分" + lefts + "秒"; 
+      };
+      setInterval(function () {
+        console.log(showtime());
+      }, 1000); //反复执行函数本身
+    </script>
+  </body>
+</html>
