@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-流程控制语句if-else</title>
+</head>
+
+<body>
+    <script>
+        // 一下代码是顺序执行
+        var a = 10 + 40 > 15;
+        console.log(a)
+        var b = 90 + 10;
+        console.log(b)
+        var c = 20 + 70;
+        console.log(c)
+
+        /*
+            流程控制语句分支控制：
+            单分支： 
+                if(条件){
+                    // 条件成立执行的代码
+                }
+
+            双分支： 
+                if(条件1){
+                    // 条件1成立执行的代码
+                }else if(条件2){
+                    // 条件2成立执行的代码
+                }
+            
+                
+            多分支： 
+                if(条件1){
+                    // 条件1成立执行的代码
+                }else if(条件2){
+                    // 条件2成立执行的代码
+                }else if(条件3){
+                    // 条件成立执行的代码
+                }
+                ... 
+                else {
+                    // 如果前面条件都不满足，则执行该条语句
+                }
+        */
+
+        // 单分支
+        var hello = "吃了没";
+        if (hello == "吃了没有") {
+            console.log("吃了");
+        }
+
+        // 双分支
+        // var sex = "女";
+        // if (sex == "男") {
+        //     console.log("是个爷们")
+        // } else if (sex == "女") {
+        //     console.log("是个好媳妇")
+        // }
+
+        // 另一种写法
+        if (sex == "男") {
+            console.log("是个爷们")
+        } else {
+            console.log("是个好媳妇")
+        }
+
+        // 练习： 平年和闰年的判断
+        // var year = prompt("请输入年份");
+        // if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        //     alert("是闰年")
+        // } else {
+        //     alert("是平年")
+        // }
+
+
+        var score = 98
+        if (score >= 90) {
+            alert('A');
+        } else if (score >= 80) {
+            alert('B');
+        } else if (score >= 70) {
+            alert('C');
+        } else if (score >= 60) {
+            alert('D');
+        } else if (score < 60) {
+            alert('E');
+        }
+
+        var sex = prompt("请输入性别：")
+        if (sex == "男") {
+            console.log("男")
+        } else if (sex == "女") {
+            console.log("人家那么可爱，当然是女孩子啦")
+        } else if (sex == "双性") {
+            console.log("双性人")
+        } else {
+            console.log("性别不明")
+        }
+    </script>
+</body>
+
+</html>

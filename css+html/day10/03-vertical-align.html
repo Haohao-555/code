@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-vertical-align</title>
+    <style>
+        .box {
+            background: skyblue;
+            line-height: 100px;
+            height: 100px;
+        }
+        img {
+            
+            /* display: inline-block; */
+            width: 80px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        .box1 {
+            background: #67ff00;
+        }
+        .box1 img {
+            border-radius: 1px;
+            /* display: block; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CSS 的属性 vertical-align 用来指定行内元素（inline）或表格单元格（table-cell）元素的垂直对齐方式。 -->
+    <div class="box">
+       
+        <img src="./images/1.jpeg" alt="">
+        <span>锤爆你的小胸口</span>
+    </div>
+
+    <div class="box1">
+        <img src="./images/1.jpeg" alt="">
+        <img src="./images/1.jpeg" alt="">
+        <img src="./images/1.jpeg" alt="">
+        <img src="./images/1.jpeg" alt="">
+        <img src="./images/1.jpeg" alt="">
+        <img src="./images/1.jpeg" alt="">
+    </div>
+</body>
+
+</html>

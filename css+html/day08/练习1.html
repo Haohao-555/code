@@ -1,0 +1,49 @@
+<!--
+ * @Date: 2021-07-15 10:09:11
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day08\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../reset.css">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1226px;
+            height: 600px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        ul li {
+            width: 240px;
+            height: 120px;
+            float: left;
+            line-height: 120px;
+            text-align: center;
+            background-color: #fff;
+            margin-left: 53.2px;
+            margin-top: 12px;
+        }
+        .clearfix::after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <ul class="clearfix">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+    </div>
+</body>
+</html>

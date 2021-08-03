@@ -1,0 +1,56 @@
+<!--
+ * @Date: 2021-07-19 17:46:18
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day10\09-元素居中-面试题\方法4.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法3</title>
+    <style>
+        img {
+            /* position: absolute; */
+         
+            height: 300px;
+            width: 300px;
+            /* right: 50%;
+            bottom: 50%; */
+            
+            /* 偏移量:css3的位移 */
+            transform: translate(50%, 50%);
+            
+        }
+
+        .box {
+            /* position: relative; */
+            width: 600px;
+            height: 600px;
+            background: skyblue;
+            margin: 20px auto;
+
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* position: absolute; */
+            transform: translate(100%, 100%);
+           
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <img src="../images/1.jpeg" alt=""> -->
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>

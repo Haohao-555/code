@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-引用数据类型和基本数据类型</title>
+</head>
+
+<body>
+    <script>
+        var a = 20;
+        // 基本数据类型赋值：基本数据类型是存储在内存栈中，复制一份数据给b,操作系统分配的
+        var b = a;
+        // 修改a的值，不会对b造成影响
+        a = 30;
+        console.log("a的值：", a)
+        console.log("b的值：", b)
+
+
+
+        // 引用数据类型:对象是存储在堆中，应用程序分配
+        var c = {
+            name: "word真大"
+        };
+
+        // 引入数据类型赋值，不是像基本数据类型那样复制，而是复制c对象的地址给d，
+        // 也是c和d的数据都是同用一个内存地址
+        var d = c;
+        // 修改c的值，看看会不会对d有影响
+        c.name = "吴氏无痛针灸";
+        console.log("c的值：", c)
+        console.log("d的值：", d)
+
+
+
+        // 我们希望的是c和d不公用一个内存，也就是修改c的值，不会影响d;
+        var dd = {
+            name: c['name']
+        }
+        c.name = "电音之王";
+        console.log("c的值：", c)
+        console.log("dd的值：", dd)
+
+
+
+        // 判断是否为深拷贝
+        var ddd = {
+            name: "小萨摩",
+            age: 10,
+            master: ["哈士奇", "阿拉斯加", "边牧"]
+        }
+
+        // 这里是浅拷贝的函数
+        function copy(obj) {
+            var newObj = {};
+            for (var key in obj) {
+                newObj[key] = obj[key];
+            }
+            return newObj
+        }
+
+        var dddd = copy(ddd);
+        // 修改里面的变量
+        ddd.name = "金毛";  // 这部分是深拷贝
+          // 在这个函数中，直接把数组赋值给newObj,但凡涉及到引用数据类型的直接赋值都是浅拷贝
+        ddd.master[0] = "二哈"; 
+
+        console.log("ddd的值：", ddd)
+        console.log("dddd的值：", dddd)
+
+
+        // 深拷贝函数见作业1
+
+    </script>
+</body>
+
+</html>

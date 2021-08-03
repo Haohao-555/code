@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-基本数据类型-string</title>
+</head>
+
+<body>
+    <script>
+        var str = "hello 中国";
+        var str1 = '300'
+        // var str = 300
+
+        // 果是使用的是双引号定义的变量 那么里面就会使用单引号 
+        var str2 = "曾经'爱'有多深";
+        var str3 = '现在"恨"有多强';
+
+        // \转义符号,把有意义的符号转成普通文本
+        var str4 = '此\'恨\'绵绵无绝期';   // 此'恨'绵绵无绝期
+        // 心还会痛吗？不会了，因为"心"已经不在了
+        var str5 = "心还会痛吗？不会了，因为\"心\"已经不在了\r";
+
+
+        // \n 换行  \r 回车
+        var str6 = "she is a beauty\n, but I don't like her";
+        // console.log(str5,str6)   
+        // document.write(str5)
+        // document.write(str6)
+        // console.log()
+        
+        // **length属性**
+        var str7 = " 我是个好人hero";
+        // console.log("变量str7的长度为：",str7.length)
+
+        // **字符串拼接**：字符串是不可变的，一旦被创建就无法改变他。
+        // 但你可以很容易的通过 `+` 运算符连接其他字符串来创建一个新的字符串
+        var str8 = "我很好,";
+        var str9 = "妈妈再也不用担心我的旺仔牛奶";
+        var str10 = str8 + str9;
+        // console.log(str10);
+
+        // 练习测试
+        // 在字符串跟数字进行 + 处理时，数字会隐式转换成字符串，然后进行拼接
+        console.log(11 + 11)
+        console.log('hello' + ' world')
+        console.log(100 + '100')
+        console.log('11' + 11)
+
+
+        // console.log('111' - '11')
+    </script>
+</body>
+</html>

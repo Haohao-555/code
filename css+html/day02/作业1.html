@@ -1,0 +1,249 @@
+<!--
+ * @Date: 2021-07-07 15:27:32
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day02\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业1</title>
+    <style>
+      aside {
+        padding: 12px;
+        border: 1px solid #ccc;
+        width: 216px;
+        overflow: hidden;
+      }
+      #singer {
+        width: 210px;
+      }
+      h3 {
+        margin: 0px;
+      }
+      h3 span {
+        font-size: 10px;
+      }
+      .more {
+        font-weight: 100;
+        margin-left: 93px;
+      }
+      .more:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .singer_item {
+        width: 210px;
+        background-color: #fafafa;
+        height: 62px;
+        margin-top: 12px;
+        overflow: hidden;
+      }
+      .anchor_item {
+        width: 188px;
+        height: 50px;
+        overflow: hidden;
+      }
+      article[id="first"] {
+        margin-top: 20px;
+      }
+
+      .anchor_item > img {
+        height: 40px;
+        width: 40px;
+        float: left;
+      }
+      .anchor_item > img:hover {
+        cursor: pointer;
+      }
+      .anchor_info {
+        width: 133px;
+        height: 62px;
+        float: right;
+        padding-right: 3px;
+      }
+      .anchor_info > span {
+        display: block;
+        margin-top: 1px;
+        margin-left: 3px;
+        margin-bottom: 6px;
+        font-size: 10px;
+      }
+      .anchor_info > span:first-child:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .anchor_info > span:last-child {
+        color: #666;
+        font-size: 6px;
+        white-space: nowrap; /*先强制一行内显示文本*/
+        overflow: hidden; /*超出部分隐藏*/
+        text-overflow: ellipsis; /*文字用省略号代替超出部分*/
+      }
+      .singer_info {
+        width: 133px;
+        height: 62px;
+        float: right;
+        padding-right: 3px;
+      }
+
+      .singer_info:hover {
+        cursor: pointer;
+      }
+      .singer_info > span {
+        display: block;
+        margin-top: 8px;
+        margin-left: 3px;
+        margin-bottom: 6px;
+      }
+      .singer_info > span:first-child {
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .singer_info > span:last-child {
+        color: #666;
+        font-size: 6px;
+        white-space: nowrap; /*先强制一行内显示文本*/
+        overflow: hidden; /*超出部分隐藏*/
+        text-overflow: ellipsis; /*文字用省略号代替超出部分*/
+      }
+      .singer_item > img {
+        height: 62px;
+        width: 62px;
+        float: left;
+      }
+      button {
+        width: 210px;
+        height: 30px;
+        margin: 12px auto;
+        font-weight: bold;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <aside>
+      <section id="singer">
+        <h3>
+          <span class="f-fl">入驻歌手</span>
+          <span class="more">查看全部 &gt;</span>
+        </h3>
+        <hr />
+        <article class="singer_item">
+          <img
+            src="http://p1.music.126.net/rCsLFXha6SLis0tV7yZ5fA==/109951165588539704.jpg?param=62y62"
+            alt=""
+          />
+          <div class="singer_info">
+            <span>张惠妹aMEI</span>
+            <span>台湾歌手张惠妹</span>
+          </div>
+        </article>
+        <article class="singer_item">
+          <img
+            src="http://p1.music.126.net/wDxCsT3YEYdNg-UZU_ZKeg==/109951166047225823.jpg?param=62y62"
+            alt=""
+          />
+          <div class="singer_info">
+            <span>Fine乐团</span>
+            <span>独立音乐人</span>
+          </div>
+        </article>
+        <article class="singer_item">
+          <img
+            src="http://p1.music.126.net/TiRAIiIihOgtBgYB6DZRXA==/109951162916034289.jpg?param=62y62"
+            alt=""
+          />
+          <div class="singer_info">
+            <span>萬曉利</span>
+            <span>民谣歌手、中国现代民谣的代表人物之一</span>
+          </div>
+        </article>
+        <article class="singer_item">
+          <img
+            src="http://p1.music.126.net/w_UWOls2uCkFN_U62788Xg==/18806046882229308.jpg?param=62y62"
+            alt=""
+          />
+          <div class="singer_info">
+            <span>音乐人赵雷</span>
+            <span>民谣歌手</span>
+          </div>
+        </article>
+        <article class="singer_item">
+          <img
+            src="http://p2.music.126.net/NDsX060FnCtiDMZN-c_9Gw==/3438172872737957.jpg?param=62y62"
+            alt=""
+          />
+          <div class="singer_info">
+            <span>王三溥</span>
+            <span>音乐人</span>
+          </div>
+        </article>
+
+        <button>申请成为网易音乐人</button>
+      </section>
+
+      <section id="anchor">
+        <h3>
+          <span class="f-fl">热门主播</span>
+        </h3>
+        <hr />
+        <article class="anchor_item" id="first">
+          <img
+            src="http://p2.music.126.net/H3QxWdf0eUiwmhJvA4vrMQ==/1407374893913311.jpg?param=40y40"
+            alt=""
+          />
+          <div class="anchor_info">
+            <span>陈立</span>
+            <span>心理学家、美食家陈立教授</span>
+          </div>
+        </article>
+        <article class="anchor_item">
+          <img
+            src="http://p2.music.126.net/GgXkjCzeH4rqPCsrkBV1kg==/109951164843970584.jpg?param=40y40"
+            alt=""
+          />
+          <div class="anchor_info">
+            <span>刘维-Julius</span>
+            <span>歌手、播客节目《维维道来》主理人</span>
+          </div>
+        </article>
+        <article class="anchor_item">
+          <img
+            src="http://p2.music.126.net/PZUQyEA8PL-5sJHZzN-WbA==/109951166147314841.jpg?param=40y40"
+            alt=""
+          />
+          <div class="anchor_info">
+            <span>莫非定律MoreFeel</span>
+            <span>男女双人全创作独立乐团</span>
+          </div>
+        </article>
+        <article class="anchor_item">
+          <img
+            src="http://p2.music.126.net/NHjNoFpLDEZ-3OR9h35z1w==/109951165825466770.jpg?param=40y40"
+            alt=""
+          />
+          <div class="anchor_info">
+            <span>碎嘴许美达</span>
+            <span>脱口秀网络红人</span>
+          </div>
+        </article>
+        <article class="anchor_item">
+          <img
+            src="http://p2.music.126.net/CpUdHPNvBvN7kebvL21TTA==/109951163676573083.jpg?param=40y40"
+            alt=""
+          />
+          <div class="anchor_info">
+            <span>银临Rachel</span>
+            <span>古风音乐人</span>
+          </div>
+        </article>
+      </section>
+    </aside>
+  </body>
+</html>

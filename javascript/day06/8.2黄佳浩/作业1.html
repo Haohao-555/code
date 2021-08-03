@@ -1,0 +1,56 @@
+<!--
+ * @Date: 2021-08-02 18:39:25
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \javascript\day06\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+     function isPrime(num){
+    // 不是数字或者数字小于2
+    if(typeof num !== "number" || !Number.isInteger(num)){　　　　　　
+        return false;
+    }
+
+    //2是质数
+    if(num == 2){
+        return true; 
+    }else if (num == 1) {
+        return false
+    }else if(num % 2 == 0){  //排除偶数
+        return false;
+    }
+    //依次判断是否能被奇数整除，最大循环为数值的开方
+    var squareRoot = Math.sqrt(num);
+    //因为2已经验证过，所以从3开始；且已经排除偶数，所以每次加2
+    for(var i = 3; i <= squareRoot; i += 2) {
+      if (num % i === 0) {
+         return false;
+      }
+    }
+    return true;
+}
+
+// 质数求和
+function count(range){
+    var counter = 0;
+    for(var i = 0; i < range; i++){
+        if(isPrime(i)){
+            counter += i;
+        }
+    }
+    return counter;
+}
+
+console.log("10以内的质数和",count(10));
+   </script> 
+</body>
+</html>

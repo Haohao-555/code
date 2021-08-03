@@ -1,0 +1,65 @@
+<!--
+ * @Date: 2021-07-14 18:25:46
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\作业2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+    <style>
+        .clearfix::after {
+            display: block;
+            content: " ";
+            clear: both;
+        }
+        header {
+           line-height: 20px;
+           height: 20px;
+        }
+        .aside_left {
+            background-color: #63b5ec;
+        }
+        .aside_left, .aside_right {
+            width: 20%;
+            float: left;
+            text-align: center;
+            height: 400px;
+            line-height: 400px;
+        }
+        .center {
+            width: 60%;
+            text-align: center;
+            line-height: 400px;
+            float: left;
+            background-color: #cec9c9;
+            height: 400px;
+        }
+        .aside_right {
+            background-color: #e76902;
+        }
+        footer {
+            height: 40px;
+            line-height: 40px;
+        }
+        header, footer, main {
+            text-align: center;
+            width: 100%;
+            background-color: #5b5a5a;
+        }
+    </style>
+</head>
+<body>
+    <header>#header</header>
+    <main class="clearfix">
+        <div class="aside_left">#left</div>
+        <div class="center">#center</div>
+        <div class="aside_right">#right</div>
+    </main>
+    <footer>#footer</footer>
+</body>
+</html>

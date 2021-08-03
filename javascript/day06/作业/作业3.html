@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业3</title>
+</head>
+
+<body>
+    <script>
+        // 1、.创建一个函数sumFibs，参数为一个正整数num。
+        // 它的作用是计算斐波那契数列中，小于或等于num位斐波那契数的奇数之和。
+
+        /*
+            项数： 0  1  2  3  4  5  6  7  8  9  10  11  12  13   ...   n 
+            值：   0  1  1  2  3  5  8 13 21 34  55  89 144  233       fn(n-1) + fn(n-2)
+        */
+
+        var sumFibs = function (num) {
+            // 先定义一个储存num(包括num)之前的所有斐波那契数值
+            var fibsArr = [];
+            // 定义一个储存奇数之和的变量
+            var total = 0;
+            // 通过循环才能取到所有的奇数
+            for (var i = 0; i < num; i++) {
+                // if (i == 0) {
+                //     fibsArr.push(0)
+                // } else if (i == 1) {
+                //     fibsArr.push(1)
+                // } else {
+                //     fibsArr.push(fibsArr[i - 1] + fibsArr[i - 2])
+                // }
+
+
+                // 简写（三元运算）
+                fibsArr[i] = i < 2 ? i : fibsArr[i - 1] + fibsArr[i - 2];
+
+                // 判断是否为奇数，要全部加起来
+                if (fibsArr[i] % 2 == 1) {
+                    total += fibsArr[i]
+                }
+
+            }
+            console.log("斐波那契数列数组：", fibsArr);
+
+            // 处理好逻辑，然后把计算好的结果返回出去
+            return total;
+        }
+
+        // 调用函数
+        console.log(sumFibs(0))
+        console.log(sumFibs(1))
+        console.log(sumFibs(2))
+        console.log(sumFibs(3))
+        console.log(sumFibs(5))
+        console.log(sumFibs(7))
+
+
+
+        // 2、十进制转成二进制
+        function toBins(n) {
+            // 一定一个储存余数的变量
+            var str = "";
+            while (n != 0) {
+                // 学生疑问：这个不是相加吗？ ===> 不是，str是字符串，数字跟字符串相加，+变成拼接的+
+                str = n % 2 + str
+
+                // 经过一次次取余的时候，n的值要变化(除完之后取整数)
+                n = parseInt(n / 2);
+            }
+            return str;
+        }
+
+        console.log("2的二进制==>", toBins(2))
+        console.log("3的二进制==>", toBins(3))
+        console.log("5的二进制==>", toBins(5))
+        console.log("7的二进制==>", toBins(7))
+
+
+
+        // 3、十进制转成16进制
+        /*
+            1 ==> 1
+            2 ==> 2
+            3 ==> 3
+            4 ==> 4
+            5 ==> 5
+            6 ==> 6
+            7 ==> 7
+            8 ==> 8
+            9 ==> 9
+            10 ==> a
+            11 ==> b
+            12 ==> c
+            13 ==> d
+            14 ==> e
+            15 ==> f
+        */
+
+        function toHex(n) {
+            // 一定一个储存余数的变量
+            var str = "";
+            while (n != 0) {
+                // 学生疑问：这个不是相加吗？ ===> 不是，str是字符串，数字跟字符串相加，+变成拼接的+
+                // str = n % 16 + str
+                var c = n % 16;
+                str = hex(c) + str;
+
+                // 经过一次次取余的时候，n的值要变化(除完之后取整数)
+                n = parseInt(n / 16);
+            }
+            return str;
+        }
+        // 十进制 ==> 十六进制
+        //  17    ==>  11    ==> 计算方式 1 * 16 ^1 + 1 * 16^0  = 17
+        console.log(toHex(17))
+
+        //  把10 - 15 转成  a - f
+        function hex(num) {
+            switch (num) {
+                case 10:
+                    num = "a";
+                    break;
+                case 11:
+                    num = "b";
+                    break;
+                case 12:
+                    num = "c";
+                    break;
+                case 13:
+                    num = "d";
+                    break;
+                case 14:
+                    num = "e";
+                    break;
+                case 15:
+                    num = "f";
+                    break;
+            }
+
+            // 把处理好的结果返回出去
+            return num;
+        }
+
+        console.log(toHex(18))
+        console.log(toHex(14))
+    </script>
+</body>
+
+</html>

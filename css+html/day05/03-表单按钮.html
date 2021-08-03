@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-表单按钮</title>
+</head>
+
+<body>
+    <form action="" method="GET">
+        <div>
+            介绍：<input type="text" name="intro" value="轻轻我来了">
+        </div>
+        <div>
+            内容：<input type="text" name="content" value="">
+        </div>
+        <!-- 按钮 -->
+        <div>
+            <h3>表单按钮</h3>
+            <!-- 这个类型为button的表单按钮无提交功能的 -->
+            <input type="button" value="表单按钮—— 不能提交表单内容">
+        </div>
+
+
+        <h3>提交form表单内的信息</h3>
+
+        <!-- 比较信息submit类型必须要在form表单内 -->
+        <div><input type="submit" value="提交信息"></div>
+        <div><button value="提交信息button">提交信息button</button></div>
+        <div><button type="submit">用button标签提交信息</button></div>
+
+        <!-- 可以提交表单内的数据，带图像的 submit 按钮。显示的图像由 src 属性规定。如果 src 缺失，alt 属性就会显示。 -->
+        <div><input type="image" src="./images/3.gif" alt="无法显示图片" style="width: 100px;"></div>
+
+        <!-- 此按钮将表单的所有内容重置为默认值。不推荐。 -->
+        <div><input type="reset" value="重置全部信息"></div>
+    </form>
+
+    <!-- 如果提交按钮不在form表单内，是不具备提交功能的 -->
+    <button type="submit">提交信息</button>
+
+
+
+
+
+
+</body>
+
+</html>

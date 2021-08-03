@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业4-99乘法表</title>
+</head>
+
+<body>
+    <script>
+        // 方法1
+
+        document.write("<h2>打印1</h2>");
+        // 外层循环控制行
+        document.write("<table border='1px'>")
+        for (var i = 1; i <= 9; i++) {
+            // 一个内循环结束代表一行
+
+            document.write("<tr>")
+            for (var j = 1; j <= 9; j++) {
+                document.write("<td>" + j + "&times" + i + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+
+
+
+        document.write("<h2>打印2</h2>");
+        // 外层循环控制行
+        document.write("<table border='1px'>")
+        for (var i = 1; i <= 9; i++) {
+            // 一个内循环结束代表一列
+
+            document.write("<tr>")
+            for (var j = 1; j <= i; j++) {
+                document.write("<td>" + i + "&times" + j + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+
+
+        document.write("<h2>打印3</h2>");
+        // 外层循环控制行
+        document.write("<table border='1px'>")
+        for (var i = 9; i >= 1; i--) {
+            // 一个内循环结束代表一列
+            document.write("<tr>")
+            for (var j = 1; j <= i; j++) {
+                document.write("<td>" + i + "&times" + j + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+
+
+        document.write("<h2>打印4</h2>");
+        // 外层循环控制行
+        document.write("<table border='1px'>")
+        for (var i = 9; i >= 1; i--) {
+            // 一个内循环结束代表一列
+            document.write("<tr>")
+
+            // 因为渲染的顺序从左到右，所以要到达图示的效果，必须右<td></td>撑开内容
+            for (var k = 9; k > 9 - i; k--) {
+                document.write("<td></td>")
+            }
+
+            for (var j = 9; j >= i; j--) {
+                document.write("<td>" + i + "&times" + j + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+
+
+
+        document.write("<h2>打印5</h2>");
+        // 外层循环控制行
+        document.write("<table border='1px'>")
+        for (var i = 1; i <= 9; i++) {
+            // 一个内循环结束代表一列
+            document.write("<tr>")
+
+            // 因为渲染的顺序从左到右，所以要到达图示的效果，必须右<td></td>撑开内容
+            for (var k = 9; k > 9 - i; k--) {
+                document.write("<td></td>")
+            }
+
+            for (var j = 9; j >= i; j--) {
+                document.write("<td>" + i + "&times" + j + "=" + i * j + "</td>")
+            }
+            document.write("</tr>")
+        }
+        document.write("</table>")
+    </script>
+</body>
+
+</html>

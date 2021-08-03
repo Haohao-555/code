@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-运算符-算术运算</title>
+</head>
+
+<body>
+    <script>
+        /*
+            算术运算
+             + - * /
+             ++ 自增
+             -- 自减
+        */
+        var num = 20;
+        console.log(num + 5) // 25;
+        console.log(num - 5) // 15;
+        console.log(num * 5) // 100;
+        console.log(num / 5) // 4;
+        console.log(num % 5) // 0;
+
+
+
+        /*
+            ++、--在变量前面和后面是有区别的：
+            （1）- `自增/自减运算符`在前面叫做`前自增/自减`（例如 ++a ）。
+            （2）前自增先进行自增运算，再进行其他操作。
+            `自增/自减运算符`在后面叫做`后自增/自减`（例如 a++ ）。后自增先进行其他操作，再进行自增运算。
+        */
+        // ++ 自增 
+        var num1 = 30;
+        num1++                  //相当于num1 = num1 + 1, 31
+        // console.log(num1++)   // 31,非32, num1 = num1 + 1,执行完console.log()后，num1自增1，变成32
+        // console.log(++num1)   // 33, 非32，前面一个console.log(num++)未注释
+
+        // -- 跟 ++ 同理
+
+        var num6 = 50;
+        var num7 = num6++ + ++num6 + ++num6   // 结果num6和num7是啥？  53， 155 ==> num7 = 50 + 52 + 53 = 155,
+        // var num7 = num6-- + ++num6- --num6   // 结果num6和num7是啥？  49 , 51 =>  num7 =   50 + 50 -49 = 51, 
+
+        var num7 = num6-- + ++num6 - num6--   // 结果num6和num7是啥？49, 50 ==> num7 = 50 +  50 - 50 = 50   
+        // var num7 = --num6 - --num6- --num6   // 结果num6和num7是啥？47 , -46   ==> num7 = 49 - 48 - 47 = -46  
+        // var num7 = num6-- - --num6 + ++num6   // 结果num6和num7是啥？ 49, 51 ==> 50 -48 + 49 = 51
+        // console.log('num6的值：', num6)
+        // console.log('num7的值：', num7)
+
+
+        // 基础不好的同学
+        var num2 = 10;
+        // var num3 = num2++ + num2++ + num2++ + num2;
+        //  num3 = 10 + (10+1) + (10 + 1 + 1) + (10+ 1+ 1+ 1) = 10 + 11 + 12 + 13 = 46
+
+        var num3 = num2++ + ++num2+ num2++;
+        // num3 = 10 + 12 + 12 = 34; num2= 13
+        console.log("num2的值：", num2)
+        console.log("num3的值：", num3)
+
+    </script>
+</body>
+
+</html>

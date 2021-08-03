@@ -1,0 +1,204 @@
+
+/*  body总体字体相关设置 */
+body {
+    font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    color: #333;
+    background-color: #fff;
+    min-width: 1226px;
+}
+
+/* 去除a标签下划线 */
+a {
+    text-decoration: none;
+}
+
+/* 清除浮动的公共伪元素类名 */
+.clearfix::after {
+    /* 内容 */
+    content: "";
+    /* 变成块级元素 */
+    display: block;
+    /* 清除浮动 */
+    clear: none;
+}
+
+/* 1、模块1：顶部 */
+.header{
+    background: #333;
+    color: white;
+    /* 让该盒子的宽度至少是最大内容宽度 */
+    min-width: max-content;
+
+    height: 40px;
+    font-size: 12px;
+    color: #b0b0b0;
+    background: #333;
+
+}
+.container {
+    width: 1226px;
+    margin: 0 auto;  
+}
+
+/* 
+    注意：在复制别人的样式过程，能直接影响页面布局的例如，定位和浮动，不能直接复制；
+          在复制过程中，为什么设置这个宽度，别的宽度行不行？为什么不行？
+    */
+.header .header-nav {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+.header a {
+    color: #b0b0b0;
+    line-height: 40px;
+    display: inline-block;
+}
+.header .sep {
+    margin: 0 .3em;
+    color: #424242;
+}
+
+/* 下拉二维码 */
+.header .header-nav .header-download {
+    position: relative;
+}
+.header .header-nav .header-download .appcode{
+    /* 最开始隐藏 */
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 124px;
+    margin-left: -55px;
+
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    line-height: 1;
+    overflow: hidden;
+    height: 148px;
+
+    box-shadow: 0 1px 5px #aaa;
+}
+.header .header-nav .header-download .appcode img{
+    display: block;
+    margin: 18px auto 12px;
+}
+
+/* 下拉小三角形 */
+.header .header-nav .header-download::before {
+    display: none;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -8px;
+    border-width: 0 8px 8px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0) rgba(0,0,0,0) #fff;
+}
+
+/* 悬停下拉二维码出现 */
+.header .header-nav .header-download:hover .appcode{
+    display: block;
+}
+
+.header .header-nav .header-download:hover::before {
+    display: block;
+}
+
+
+/* 登录注册 */
+.header .header-info{
+    float: right;
+    height: 40px;
+    line-height: 40px;
+}
+.header .header-info .link{
+    padding: 0 5px;
+}
+.header .header-info .sep{
+    margin: 0;
+}
+.header .header-info .message{
+    padding: 0 10px;
+}
+/* .header .header-info .message a{} */
+
+
+/* 购物车 */
+.header .header-cart{
+    position: relative;
+    float: right;
+    width: 120px;
+    height: 40px;
+    margin-left: 15px;
+    font-size: 12px;
+}
+
+.header .header-cart .cart-mini{
+    /* 因为要优先显示购物车，所以给个相对定位，然后才能设置层级 */
+    position: relative;
+    z-index: 32;
+
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #b0b0b0;
+    background: #424242;
+    /* border-bottom: 2px solid #fff; */
+}
+.header .header-cart .cart-mini .iconfont-cart{
+    margin-right: 4px;
+    font-size: 18px;
+    /* color: tomato; */
+    line-height: 20px;
+    vertical-align: -3px;
+}
+
+.header .header-cart .cart-menu {
+    display: none;
+    position: absolute;
+    z-index: 31;
+    top: 40px;
+    right: 0;
+    width: 316px;
+    height: 100px;
+    /* border: 2px solid #ddd; */
+    box-shadow: 0 2px 10px rgb(0 0 0 / 15%);
+    color: #424242;
+    background: #fff;
+}
+.header .header-cart .cart-menu .menu-content{
+    padding-top: 20px;
+}
+
+.header .header-cart .cart-menu .menu-content .msg-empty{
+    padding: 20px 0 20px;
+    text-align: center;
+}
+
+
+/* .header .header-cart .cart-mini .cart-mini-num{} */
+
+/* 购物车悬停效果 */
+.header .header-cart:hover .cart-mini {
+    background: #fff;
+    color: #ff6700;
+}
+
+.header .header-cart:hover .cart-menu {
+   display: block;
+}
+
+/* 给所有header的a标签子元素加上悬停效果 */
+.header a:hover {
+    color: #fff;
+}
+
+/* 1、模块1：顶部 END*/

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-比较运算符</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+            比较运算符
+            >     大于
+            <     小于                                
+            >=    大于等于                            
+            <=    小于等于 
+            
+            
+            ==    等于 只需要比较值是否相等           
+            !=    不等于                              
+            ===   全等于 (要比较数据类型相等和值相等) 
+            !==   不全等于      
+            
+            结果为布尔类型： true或者是false    
+        */
+
+        console.log(20 < 10)   // false
+        console.log(20 > 10)   // true
+        console.log(20 >= 10)   // true
+        console.log(19 <= 18)   // false
+
+        // 难点
+        console.log(1 == 1)   // true
+        console.log(1 === 1)  // true
+
+        var num1 = 666;
+        var str1 = "666"
+        console.log(num1 == str1)  // true
+        console.log(num1 === str1)  // false
+       
+        // ===   全等于 (要比较数据类型相等和值相等) 
+        console.log(false == 0) // true
+        console.log(false === 0)    // false
+
+        console.log(NaN == NaN)   // false
+        console.log(Infinity == Infinity)  //true
+        console.log(Infinity === Infinity)  //true
+        console.log(Infinity === Infinity + 5555)  //true
+
+        console.log(null == null)   // true
+        console.log(null === null)  // true
+
+        console.log(undefined == undefined)  // true
+        console.log(undefined === undefined)  // true
+
+
+        // 难点2
+        var str2 = "true"; // NaN
+        var bool = true;   // 布尔的值是1
+        console.log(str2 == bool)  // false  
+
+        // 难点3
+        var a = true;
+        var b = "true";
+        console.log("等于==", a == b) // false
+        console.log("等于==", a === b) // false
+        console.log("不等于！=", a != b) // true
+        console.log("恒不等!==", a !== b) // true
+    </script>
+</body>
+
+</html>

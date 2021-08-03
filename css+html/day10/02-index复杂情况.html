@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-index复杂情况</title>
+    <style>
+        .fa1,
+        .fa2 {
+            width: 400px;
+            height: 400px;
+            background: #ccc;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+        .fa1 {
+            z-index: 1;
+        }
+        .fa2 {
+            left: 0;
+        }
+
+        .son1,
+        .son2 {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            right: 0;
+        }
+
+        .son1 {
+            background: skyblue;
+            left: 0;
+            z-index: 99;
+        }
+
+        .son2 {
+            background: orange;
+        }
+        /* 原则：先"拼爹"，如果是兄弟元素，再拼自身 */
+    </style>
+</head>
+
+<body>
+    <div class="fa1">
+        <div class="son1">第一个</div>
+    </div>
+
+    <div class="fa2">
+        <div class="son2">第二个</div>
+    </div>
+</body>
+
+</html>

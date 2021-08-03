@@ -1,0 +1,336 @@
+.clearfix::before {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header {
+  width: 100%;
+  height: 80px;
+  width: 1531px;
+  background-color: #76c7c0;
+}
+.header .container {
+  width: 1170px;
+  height: 80px;
+  margin: 0 auto;
+}
+.header .container .modus {
+  float: left;
+  width: 113px;
+  height: 21px;
+  line-height: 21px;
+  font-family: OpenSans-Extrabold;
+  font-size: 30px;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 28px;
+}
+.header .container .versus {
+  float: left;
+  width: 75px;
+  height: 13px;
+  line-height: 21px;
+  font-family: OpenSans;
+  font-size: 25px;
+  font-weight: normal;
+  font-stretch: normal;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-left: 6px;
+}
+.header .container .menu {
+  width: 698px;
+  height: 80px;
+  float: left;
+  margin-left: 199px;
+}
+.header .container .menu ul {
+  width: 698px;
+  height: 80px;
+}
+.header .container .menu ul li {
+  margin-right: 12px;
+  float: left;
+  margin-top: 33px;
+}
+.banner {
+  border-top: 1px solid transparent;
+  width: 100%;
+  height: 504px;
+  background: url("../shucai/banner-1.jpg") no-repeat;
+  background-size: 100% 504px;
+}
+.banner h3 {
+  width: 322px;
+  margin: 170px auto 30px;
+  font-family: OpenSans-Extrabold;
+  font-size: 50px;
+  color: #ffffff;
+}
+.banner .maecenas {
+  width: 394px;
+  margin: 0px auto 0px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #fff;
+}
+.main {
+  border: 1px solid transparent;
+  width: 100%;
+  background-color: #f3f3f3;
+}
+.main .tangle_list {
+  width: 240px;
+  height: 6px;
+  background-color: yellow;
+  margin: 20px auto 0;
+}
+.main .rectangle {
+  width: 1170px;
+  height: 100px;
+  margin: 0 auto;
+  background-color: #ececec;
+  margin-top: 49px;
+  position: relative;
+}
+.main .rectangle .services {
+  width: 354px;
+  height: 30px;
+  font-size: 30px;
+  color: #7f8c8c;
+  line-height: 36px;
+  position: absolute;
+  top: 26px;
+  left: 28px;
+}
+.main .rectangle .info {
+  width: 829px;
+  height: 13px;
+  font-size: 13px;
+  line-height: 13px;
+  color: #777777;
+  position: absolute;
+  top: 63px;
+  left: 27px;
+}
+.main .rectangle .btn {
+  text-align: center;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  line-height: 50px;
+  color: #fff;
+  background-color: #e8645a;
+  border-radius: 6px;
+  position: absolute;
+  top: 24px;
+  right: 35px;
+}
+.main .path_list {
+  width: 1170px;
+  margin: 54px auto 0px;
+  height: 310px;
+  display: flex;
+}
+.main .path_list .path {
+  position: relative;
+  width: 270px;
+  height: 310px;
+  margin-right: 30px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+.main .path_list .path:last-child {
+  margin-right: 0px;
+}
+.main .path_list .path:first-child {
+  background-color: #fff;
+}
+.main .path_list .path:first-child .path_btn {
+  background-color: #e8645a;
+}
+.main .path_list .path .icon {
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin: 44px auto 0px;
+}
+.main .path_list .path .icon_1 {
+  background: url(../shucai/icon-1.png) no-repeat;
+  background-size: cover;
+}
+.main .path_list .path .icon_2 {
+  background: url(../shucai/icon-2.png) no-repeat;
+  background-size: cover;
+}
+.main .path_list .path .icon_3 {
+  background: url(../shucai/icon-3.png) no-repeat;
+  background-size: cover;
+}
+.main .path_list .path .icon_4 {
+  background: url(../shucai/icon-4.png) no-repeat;
+  background-size: cover;
+}
+.main .path_list .path p {
+  font-size: 16px;
+  line-height: 19px;
+  color: #7f8c8c;
+  margin-top: 17px;
+}
+.main .path_list .path .content {
+  width: 218px;
+  font-size: 13px;
+  line-height: 21px;
+  color: #777;
+  margin: 36px auto 0;
+}
+.main .path_list .path .path_btn {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 50px;
+  bottom: -23px;
+  left: 38px;
+  background-color: #76c7c0;
+  border-radius: 6px;
+}
+.main .why {
+  text-align: center;
+  margin-top: 128px;
+}
+.main .why h3 {
+  line-height: 48px;
+  margin: 0 auto;
+  color: #e1524b;
+  font-size: 40px;
+}
+.main .why .why_info {
+  font-size: 13px;
+  line-height: 21px;
+  color: #777;
+  margin-top: 14px;
+}
+.main .why .img-list {
+  position: relative;
+}
+.main .why .img-list .center-img {
+  width: 570px;
+  height: 360px;
+  margin: 67px auto 0;
+  background: url("../shucai/img.png") no-repeat;
+  background-size: cover;
+  z-index: 999;
+  line-height: 360px;
+  font-size: 40px;
+  color: #fff;
+}
+.main .why .img-list .left-img {
+  position: absolute;
+  width: 370px;
+  height: 259px;
+  background: url("../shucai/img-center.png") no-repeat;
+  background-size: cover;
+  left: 197px;
+  top: 64px;
+  z-index: 2;
+  color: #fff;
+  font-size: 30px;
+  line-height: 259px;
+}
+.main .why .img-list .right-img {
+  position: absolute;
+  width: 370px;
+  height: 259px;
+  background-size: cover;
+  background: url("../shucai/img-center.png") no-repeat;
+  right: 197px;
+  top: 64px;
+  color: #fff;
+  font-size: 30px;
+  line-height: 259px;
+}
+.main .us {
+  position: relative;
+  width: 1170px;
+  margin: 57px auto;
+}
+.main .us .left {
+  width: 219px;
+  height: 195px;
+  margin-top: 30px;
+  position: absolute;
+  top: -19px;
+}
+.main .us .left h3 {
+  font-size: 16px;
+  line-height: 19px;
+  color: #7f8c8c;
+}
+.main .us .left ul {
+  width: 100%;
+  height: 139px;
+  margin-top: 37px;
+}
+.main .us .center {
+  width: 563px;
+  margin: 0px auto 0px;
+}
+.main .us .center h3 {
+  font-size: 13px;
+  line-height: 25px;
+  color: #777;
+}
+.main .us .center ul {
+  width: 100%;
+  margin-top: 61px;
+}
+.main .us .center ul li {
+  position: relative;
+  width: 120px;
+  height: 97px;
+  display: inline-block;
+  margin-right: 23px;
+}
+.main .us .center ul li:last-child {
+  margin-right: 0px;
+}
+.main .us .center ul li .icon {
+  display: block;
+  width: 120px;
+  height: 58px;
+}
+.main .us .center ul li .icon span {
+  position: absolute;
+  font-size: 30px;
+  line-height: 36px;
+  color: #7f8c8c;
+  top: 30px;
+  left: 45px;
+}
+.main .us .center ul li .icon_4 {
+  background: url("../images/50circle.png") no-repeat;
+  background-size: cover;
+}
+.main .us .center ul li .icon_5 {
+  background: url("../images/70circle.png") no-repeat;
+  background-size: cover;
+}
+.main .us .center ul li .icon_6 {
+  background: url("../images/80circle.png") no-repeat;
+  background-size: cover;
+}
+.main .us .center ul li .icon_7 {
+  background: url("../images/100circle.png") no-repeat;
+  background-size: cover;
+}
+.main .us .center ul li p {
+  font-size: 16px;
+  line-height: 19px;
+  color: #7f8c8c;
+  margin-top: 24px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-数组</title>
+</head>
+
+<body>
+    <script>
+        /*
+           数组是一种可存储很多值的JavaScript数据类型 
+        */
+        var num = 88;
+        var str = "字符串";
+        var bol = true;
+
+
+
+        // 1.0 每一项可保存**任何类型的数据**
+        // var arr = [1, "str字符串", true, null, undefined]
+
+        // console.log(typeof arr)  // object
+        // console.log(arr)
+
+
+        // 2.0 数组声明
+        // 数组字面量（推荐）
+        var arr1 = [];
+        var nums = new Array(60, 50, 60, 58, 54, 54, 58, 50, 52, 54)
+        // var arr = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54];
+        // console.log(nums)
+
+
+        // 3.0 访问/修改数组元素
+        // 可以通过下标找到对应的数组数值（下标是从0开始）
+        var arr2 = [false, true, "小强强", 175, null, undefined]
+        // 取到“小强强”
+        console.log(arr2[3])
+
+        // 修改值：修改数组元素：同样使用数组索引来修改数组中的值。
+        arr2[2] = "小水水";
+        arr2[1] = false
+        console.log("修改后：", arr2);
+
+        // 4.0 长度
+        var arr3 = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54];
+        console.log("arr3的长度为：", arr3.length)
+        // 注意**：length属性的值实际上是这个数组的最大下标值索引元素下标值加上1，
+        // 他不一定等于数组列属性的个数。
+        /*
+        . 你可以直接设置length的值，设置更大的length不会给数组分配更多的空间。
+        吧length设小将导致所有下标大于等于新length的属性被删除
+        */
+        arr3[20] = "赋值新值";
+        console.log(arr3)
+        console.log(arr3.length)
+
+        //  5.0 删除值
+        // delete之后原来下标位置还继续存在，只不过为empty
+        var arr4 = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+        delete arr4[2];
+
+        // 彻底删除
+        arr4.splice(4, 1)  // 4是下标， 1是删除的数量
+        console.log(arr4)
+
+
+        // 6.0 二维数组
+        var arr5 = [10, true, "字符串", undefined, null, [10, 20, 30]]
+        // 二维数组的取值
+        console.log(arr5[5])
+        console.log("二维数组的取值：", arr5[5][2])
+
+        // 7.0 给数组添加一个新的数据(从数组最后面) 
+        // 想数组末尾的添加新数据（push）
+        var arr6 =[10, 20, 30, 40, 50]
+        arr6.push(77)
+        console.log("新的数组形式", arr6)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-练习-斐波那契</title>
+</head>
+
+<body>
+    <script>
+        // 斐波那契数列就是最前面两个数字分别是0，1 之后每一个斐波那契数字是之前两个数字的之和。
+        // 即 0,1,1,2,3,5,8,13,21,34,55,89...
+
+        /*
+            项数 1  2  3  4  5  6  7  8  9 ....
+            值   0  1  1  2  3  5  8  13 21....
+        */
+
+        var fibonacciArr = [0, 1];
+        var fibonacci = function (n) {
+            if (n == 0) {
+                return 0
+            }
+            if (n == 1) {
+                return 1
+            }
+            return fibonacci(n - 1) + fibonacci(n - 2)
+        }
+
+        // 调用斐波那契函数
+        console.log("项数为第6项，数组下标为5的值",fibonacci(5))
+        console.log("项数为第9项，数组下标为8的值",fibonacci(8))
+    </script>
+</body>
+
+</html>

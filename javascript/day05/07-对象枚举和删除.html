@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-对象枚举和删除</title>
+</head>
+
+<body>
+    <script>
+        /*
+            对象其实是键值对，键名 <==> 属性名
+                            值 <==> 属性值
+            
+            for in 循环也可以来遍历对象
+        */
+        var stooge = {
+            "first-name": 'Jackly',
+            "middle-name": 'Jafferson',
+            "last-name": 'Howard',
+            nickName: 'mike'
+        }
+
+        for (var key in stooge) {
+            // 被遍历出来的key就是键名（属性名）
+            console.log("key是：", key)
+            // 通过键名（属性名）取到对应的值（属性值）
+            console.log("对象的属性值", stooge[key])
+        }
+
+
+        // 删除 
+        // delete stooge['first-name']
+        delete stooge.nickName
+        console.log("查看对象的删除效果", stooge)
+        console.log("查看对象的属性名nickName:", stooge.nickName)
+
+
+
+    </script>
+</body>
+
+</html>

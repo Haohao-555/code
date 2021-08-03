@@ -1,0 +1,73 @@
+<!--
+ * @Date: 2021-07-14 17:49:48
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\02-外边距.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-外边距</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: orange;
+
+            /* 外边距设置:参数设置跟padding基本一致 */
+            /* margin-right: 100px; */
+
+            margin: 60px 80px 90px 100px;
+        }
+
+        .box1 {
+            /* 对该盒子进行水平居中 */
+            width: 200px;
+            height: 200px;
+            background: red;
+            
+            /* auto:自适应 */
+            /* margin: 0 auto; */
+        }
+        span {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            /* 行内元素不能设置margin-top和margin-bottom,但是能设置左右的margin */
+            margin-top: 20px;
+            margin-right: 20px;
+
+            /* 测试下能不能使用padding —— 能 */
+            padding: 40px;
+            /* display: inline-block; */
+        }
+
+
+        .scroll {
+            min-width: 1200px;
+            margin: 20px auto;
+            height: 40px;
+            background: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <div class="box1">box测试</div>
+
+    <span>span标签</span>
+    <span>span标签2</span>
+
+    <h2>常规页面横向滚动条</h2>
+    <div class="scroll">内容</div>
+
+</body>
+
+</html>

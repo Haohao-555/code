@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-运算符-赋值运算</title>
+</head>
+
+<body>
+    <script>
+        /*
+            运算符 + - * /（加减乘除）
+            一元运算： 操作数1： a++ , a--
+            二元运算： 操作数2： a + b
+            三元运算： 操作数3： a ? a: b
+            
+            赋值运算：
+                =  赋值运算符
+                += 加等于
+                -= 减等于
+                *= 乘等于
+                /= 除等于
+                %= 取余等于
+        */
+
+        var age = 90;
+        age = 50;   // 重新赋值
+        console.log(age)
+
+        age += 60   // 相当于 age = age + 60  = 110
+        console.log(age)
+
+        age -= 10   // 相当于 age = age - 10  = 100
+        console.log(age)
+
+        age *= 2    // 相当于 age = age * 2  = 200
+        console.log(age)
+
+        age /= 4    // 相当于 age = age / 4  = 50
+        console.log(age)
+        
+        age %= 4    // 相当于 age = age % 4  = 50 % 4 = 2
+        console.log(age)
+    </script>
+</body>
+
+</html>

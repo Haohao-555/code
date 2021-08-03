@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-背景样式属性</title>
+    <style>
+        .box1 {
+            height: 100px;
+            /* 给颜色，暂时有4种方式 */
+            background-color: greenyellow;
+        }
+
+        .box2 {
+            /*1- background-image 属性允许在元素的背景中显示图像。如果高度没有出来，则图片不显示 */
+            /* 正常情况下，图片缩放或者扩大来自动填充图片，另外，如果宽度或者高度有余，则自动填充（平铺） */
+            /* background: orange; */
+            background-image: url("./images/1.jpg");
+            width: 400px;
+            height: 200px;
+            border: 2px solid orange;
+
+            /* 
+                2-控制图片平铺 
+              background-repeat: no-repeat | repeat-x | repeat-y | repeat(默认);
+            */
+            background-repeat: no-repeat;
+
+
+            /*  3-background-size (控制背景图片大小) */
+            /* background-size: 100% 100% */
+
+            background-size: 100px; 
+                     
+
+            /* 4.0 通过 background-attachment 可以指定当容器内容需要滚动时，背景如何滚动【很少用】。 —— 了解 */
+            overflow: scroll;
+            background-attachment: local;  
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>1-背景颜色设置</h2>
+    <div class="box1"></div>
+
+    <h2>2-背景图片设置</h2>
+    <div class="box2">
+        jksdlfjlkas<br>
+        dljkfsajkldlfjkdskljfsdjklfsa jksdflk <br>
+        lkjsaf <br>
+        lkasjdfa ssad sadfl sdfal kfsad jklafd lk
+        jksdlfjlkas<br>
+        dljkfsajkldlfjkdskljfsdjklfsa jksdflk <br>
+        lkjsaf <br>
+        lkasjdfa ssad sadfl sdfal kfsad jklafd lk
+        jksdlfjlkas<br>
+        dljkfsajkldlfjkdskljfsdjklfsa jksdflk <br>
+        lkjsaf <br>
+        lkasjdfa ssad sadfl sdfal kfsad jklafd lk
+        jksdlfjlkas<br>
+        dljkfsajkldlfjkdskljfsdjklfsa jksdflk <br>
+        lkjsaf <br>
+        lkasjdfa ssad sadfl sdfal kfsad jklafd lk
+        jksdlfjlkas<br>
+        dljkfsajkldlfjkdskljfsdjklfsa jksdflk <br>
+        lkjsaf <br>
+        lkasjdfa ssad sadfl sdfal kfsad jklafd lk
+    </div>
+
+
+   
+</body>
+
+</html>

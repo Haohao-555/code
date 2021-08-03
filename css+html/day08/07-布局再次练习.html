@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-布局再次练习</title>
+    <style>
+        /* 去除默认样式 */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 用伪元素after清除浮动 */
+        .clearfix::after {
+            /* 必须要写 */
+            content: "";
+            /* 变成块级元素 */
+            display: block;
+            /* 清除浮动 */
+            clear: both;
+        }
+
+        /* 正常有内容的大盒子都是由子元素撑开高度 */
+        header {
+            /* height: 100px; */
+            min-width: max-content;
+            background: gray;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            /* background: gray; */
+        }
+
+        nav {
+            width: 1200px;
+            margin: 10px auto;
+            background: #ccc;
+        }
+
+        main {
+            width: 1200px;
+            margin: 0 auto;
+            background: rgb(237, 237, 237);
+        }
+
+        main section {}
+
+        main section article {}
+
+        main section article div {
+            padding: 10px;
+            box-sizing: border-box;
+            height: 100px;
+            float: left;
+            width: calc((1200px - 5px * 4 + 5px) / 4);
+            margin-right: 5px
+        }
+
+        main section article div:nth-child(4n) {
+            margin-right: 0px
+        }
+
+        main section article div:nth-child(2n+1) {
+            background: skyblue;
+        }
+
+        main section article div:nth-child(2n) {
+            background: greenyellow
+        }
+
+
+        /*  */
+        footer {
+            background: #ddd;
+            min-width: max-content
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        (1)div嵌套div
+        (2)语义化标签
+     -->
+    <header>
+        <div class="container">top</div>
+    </header>
+
+    <nav>banner</nav>
+
+    <main>
+        <section>
+            <article class="clearfix">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">footer</div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-js输出</title>
+</head>
+<body>
+    <div class="box">box盒子</div>
+    <script>
+        // 1. alert() 弹出一个警告框，alert会阻止代码往后执行
+        // alert('警告框弹出内容')
+
+        // 2、document.write()
+        // **介绍**：该方法主要是用来向body标签中输出write()小括号里面的内容 
+        // > document 表示当前的HTML文档对象 write在英文中是“写”的意思 
+        // > write它是一个输出的方法 如果输出的内容是HTML标签,浏览器会帮我们解析
+
+        document.write("<h2>我的爱，已不在；仔细想想，好像从来没有过！</h2></h2>")
+
+
+        // 3、console.log（） ：向浏览器开发人员专用的控制台调试工具中的“console” 选项卡中输出内容。
+        //                     console的英文意思是“控制台” log是“日志”的意思。
+
+        // 个人理解：以后，你在开发过程中，是要经常检查数据是否存在或者接收，常用console.log()来打印确认
+        // console.log('在控制台输出，我对你爱，因为我知道你不会打开隐藏的副本')
+
+
+        var people = "我还是个人吗？"
+        var animal = 'cat'
+        // 同时打印两个变量或者更多，用英文的逗号隔开
+        console.log(people, animal)
+
+
+        // console.error('错误信息')
+        // console.info('This is info')
+
+
+    </script>
+</body>
+</html>

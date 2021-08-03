@@ -1,0 +1,166 @@
+body {
+    background: #ddd;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 头部栏 */
+
+.edu-header {
+    background: #fff;
+    min-width: max-content
+}
+
+.edu-header .header-bar {
+    width: 1200px;
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    /* border: 2px solid black; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 媒体查询 */
+
+@media only screen and (max-width: 1200px) {
+    .edu-header .header-bar, .edu-header .header-nav {
+        width: 960px;
+    }
+}
+
+/* logo */
+
+.header-bar .logo {
+    width: 148px;
+    height: 50px;
+    /* border: 4px solid orange; */
+    /* 背景图片 */
+    background-image: url(../images/logo.jpg);
+    background-size: cover;
+    /* 稍微调整图片的位置 */
+    background-position: 0 -5px;
+}
+
+/* 搜索 */
+
+.header-bar .search {
+    /* 通过var(变量名)来使用主题的颜色 */
+    color: var(--theme-gray);
+    /* border: 2px solid purple; */
+    /* 去除不必要的回车空格造成的空隙 */
+    font-size: 0;
+}
+
+.header-bar .search .local-icon {
+    display: inline-block;
+    width: 18px;
+    height: 19px;
+    /* border: 1px solid orange; */
+    background-image: url(../images/local.jpg);
+    background-position: -4px 0;
+    /* 对其方式：针对inline-block */
+    vertical-align: middle;
+}
+
+.header-bar .search .city {
+    font-size: 15px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.header-bar .search>input {
+    height: 40px;
+    padding-left: 45px;
+    outline: none;
+    border: 1px solid var(--theme-blue);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    vertical-align: middle;
+}
+
+/* .header-bar .search .city #search{} */
+
+.header-bar .search label {
+    display: inline-block;
+    font-size: 18px;
+    /* 正常情况下，给盒子宽高，然后水平和垂直居中 */
+    /* width: 84px;
+    text-align: center;
+   */
+    height: 40px;
+    line-height: 40px;
+    padding: 0 25px;
+    background-color: var(--theme-blue);
+    color: #fff;
+    vertical-align: middle;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* 个人中心 */
+
+/* .header-bar .link {} */
+
+.header-bar .link a {
+    color: var(--theme-gray);
+    font-size: 17px;
+    margin-right: 23px;
+}
+
+.header-bar .link a img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* 导航栏 */
+
+.header-nav {
+    width: 1200px;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+    background: #fff;
+    /* border: 1px solid orange; */
+}
+
+.header-nav .nav-item {
+    float: left;
+    height: 50px;
+    /* box-sizing: border-box; */
+}
+
+.header-nav .nav-item a {
+    display: inline-block;
+    height: 50px;
+    /* line-height: 50px; */
+    color: #333;
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+/* 交集选择器 */
+
+.header-nav .nav-item.active a {
+    box-sizing: border-box;
+    color: var(--theme-blue);
+    font-weight: 700;
+    border-bottom: 3px solid var(--theme-blue);
+}
+
+/* .header-nav .nav-item.active {
+   
+} */
+
+/* 清除浮动 */
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* 头部栏 END */

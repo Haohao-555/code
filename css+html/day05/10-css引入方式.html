@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-css引入方式</title>
+    <!-- 通过link标签引入外部css样式 -->
+    <!-- 注意：W3C推荐 link 标签在引入 CSS文件时需要指定 rel="stylesheet"属性，
+        告诉浏览器引入的文件是层叠式样式表 -->
+    <link rel="stylesheet" href="./css/1-test.css">
+    <!-- <link rel="stylesheet" href="./css/2-test.css"> -->
+    <style>
+        /* @import url(./css/1-test.css); */
+
+        .one {
+            font-size: 25px;
+            color: yellowgreen;
+        }
+
+        /* h2 {
+            color: purple;
+        }
+
+        h2 {
+            color: salmon;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 
+        css引入方式有4种
+        （1）内联样式：就是在任意一个html标签中使用style属性使用样式的方法。
+        （2）内部样式：内部样式：使用<style></style>标记，将css嵌入html中。
+         (3)外部样式：你可以创建一个后缀名为`.css`文件，然后在文件中编写样式规则，
+        最后在文档中使用link引用该文件。
+        (4) 输入样式表（不常用）：将一个css文件，通过 `@import`关键字导入到另外一个css中
+
+        优先级比较高：
+            内联样式 > 内部样式 > 外部样式(如果优先级一样的情况下，遵从从上到下，后面设置的样式会覆盖前面的)
+     -->
+    <h2 style="color:red;">（1）内联样式：</h2>
+    <div style="color: tomato; font-size: 18px;">我的心随着她远去背影，一点一点地消失了</div>
+
+    <h2>（2）内部样式：</h2>
+    <div class="one">impossible = I am possible</div>
+
+    <h2>（3）外部样式：</h2>
+    <div class="h2">虽然我很丑，但是我有钱呀！！</div>
+
+    <h2>(4) 输入样式表（不常用）</h2>
+
+</body>
+
+</html>

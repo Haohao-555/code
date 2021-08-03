@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-数据类型转换</title>
+</head>
+
+<body>
+    <script>
+        // 1.0 隐式转换
+        var num1 = 111 + "111"
+        console.log(num1)
+
+        // 2.0 强制类型转换
+        // String和toString
+        var n1 = 666;
+        var str1 = String(n1)
+        console.log(typeof str1)
+
+        var n2 = 580;
+        var str2 = n2.toString()
+        console.log(typeof str2)
+
+        // 3.0 把字符串类型转换成数字 —— 有无条件?
+        // var str3 = "I adcore you";   —— 不能转
+        var numStr = "777.1234"
+        var numStr = "777"
+        // var numStr = "a777.934a2234fasdf"    —— 不能转
+        var numStr = "777.934a2234fasdf"
+        // console.log(Number(numStr))   —— 不能转变
+        console.log(parseInt(numStr))
+        console.log(parseFloat(numStr))
+
+        // 4.0 转成boolean类型
+        var b1 = 88    // true
+        var b1 = -88   // true
+        var b1 = 0      // false
+        var b1 = NaN     // false
+        var b1 = Infinity  // true
+        console.log(Boolean(b1))
+
+
+        // var b2 = '0'
+        // var b2 = undefined  // false
+        // var b2 = null         // false
+        // var b2 = []          // true
+        var b2 = {}             // true
+
+        // console.log(Boolean(b2))
+
+        // 结论：除了0（不包括字符串0）、undefined、NaN和null之外，都可以转成Boolean中的true 
+    </script>
+</body>
+
+</html>

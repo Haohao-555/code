@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-盒子模型细节补充</title>
+    <style>
+        /* 去除body默认样式 */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 200px;
+            /* 假如没有设置高度，那么元素内容也会撑开高度（内容越大，高度越大） */
+            height: 200px;
+            background: #ccc;
+            padding: 20px;
+            border: 5px solid orange;
+            /* 外边距margin能让盒子改变吗？ */
+            margin: 10px;
+
+            /* box-sizing: border-box; */
+
+            /* 盒子大小的宽度：width(content) + padding-left + padding-right + border-left-width + border-right-width; 高度同理可得 */
+        }
+
+        .box2 {
+            width: 100%;
+            height: 200px;
+            background: skyblue;
+            padding-left: 1px;
+            /* 让盒子变回回来的设置宽高大小 */
+            /* box-sizing: content-box;   默认的 */
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        /* 使用 */
+        ul,
+        ol,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            margin: 0 auto
+        }
+
+        ul li {
+            /* 每个li标签占据19% */
+            width: 16%;
+            padding: 0 4px;
+            /* 不让盒子撑大，用box-size:border-box */
+            box-sizing: border-box;
+            margin: 2% 2%;
+            /* margin-left: 4px; */
+            /* box-sizing: border-box; */
+            height: 300px;
+            float: left;
+            background: skyblue;
+        }
+
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+
+    <div class="box2"></div>
+
+    <!-- 使用 -->
+    <ul class="clearfix">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

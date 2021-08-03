@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-气泡作业</title>
+    <style>
+        .menu {
+            position: relative;
+            background: rgb(7, 193, 96);
+            display: inline-block;
+            color: white;
+            padding: 10px;
+
+            /* 测试下拉内容是否跟随按钮移动，以防定位失效 */
+            margin: 20px 0 0 40px;
+        }
+
+        .menu .bubble {
+            /* display: none; */
+            position: absolute;
+            top: 100%;
+            left: -19px;
+            text-align: center;
+            padding-top: 8px;
+
+            /* 最开始，透明度为0 */
+            opacity: 0;
+            /* 加上css3的过渡效果 */
+            transition: all 0.4s;
+        }
+
+        .menu .bubble .tail {
+            /* 处理三角形的位置 */
+            position: absolute;
+            display: inline-block;
+            top: 3px;
+            left: 54px;
+
+            width: 0;
+            height: 0;
+            border: 5px solid rgba(74, 74, 74);
+            border-top: 0;
+            border-left-color: transparent;
+            border-right-color: transparent;
+
+            /* border-width: 0 5px 5px 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(74, 74,74); */
+        }
+
+        .menu .bubble .list {
+            width: 120px;
+            background: rgb(74, 74, 74);
+            border-radius: 6px;
+
+        }
+
+        .menu .bubble .list div {
+            padding: 3px 15px;
+            line-height: 30px;
+            /* border-bottom: 1px solid #fff; */ 
+        }
+
+        /* 用伪元素after加下划线 */
+        .menu .bubble .list div::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: #fff;
+            opacity: 0.1;
+        }
+
+        .menu .bubble .list div:last-child:after {
+            display: none;
+          
+        }
+
+        /* 悬停下拉显示 */
+        .menu:hover .bubble {
+            /* display: block; */
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu">
+        深色风格
+        <div class="bubble">
+            <!-- 这个小尾巴用伪元素after或者字体图标如何处理 -->
+            <span class="tail"></span>
+            <div class="list">
+                <div>选项一</div>
+                <div>选项二</div>
+                <div>选项三</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

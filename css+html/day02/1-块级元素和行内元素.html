@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-块级元素和行内元素</title>
+</head>
+
+<body>
+    <!-- 假如遇到自己不会，先查看笔记，查看官方文档；查看百度 -->
+    <!-- 
+        1.块级元素：能设置宽高，独占一行, 例如：<h1>~<h6>,<p>,<div>,<ul>,<ol>,<li>等等
+        2.行内元素（内联元素）：不能设置宽高，不独占一行，例如：：<a>,<strong>,<b>,<em>,<del>,<span>等
+        3.行内块元素：能设置宽高，不独占一行： <img>
+        4.块级元素、行内元素和行内块元素如何进行转化？dispaly: inline(行内) inline-block（行内块） block（块级）
+
+        小细节：如果标签换行，或者有空格，则会出现小间隙
+     -->
+    <div style="width: 100px;height: 100px;background: orange;display: inline;">div—— 块级元素</div>
+    <span style="width: 100px;height: 100px;background: #ccc; display: block;">span标签 —— 行内元素</span>
+
+    
+    <img src="./images/1.jpg" alt=""
+        style="width: 200px;border: 1px solid orange;">
+    <img src="./images/2.jpg" alt=""
+        style="width: 200px;border: 1px solid orange;">
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-练习</title>
+</head>
+
+<body>
+    <script>
+        // **创建一个歌曲对象**
+        /*
+            要求：
+                1. 该对象拥有歌曲名、歌手、分钟、秒数、类型（多少年代）、播放状态属性
+                2. 要求对象包含两个方法播放、暂停。
+                3. 当调用播放方法时，若歌曲对象已经是播放状态则无任何反应。
+                   若歌曲是未播放状态则修改对象的播放状态属性为 true 并输出"正在播放xx歌手的xxx歌曲"
+                4. 当调用暂停方法时，若歌曲对象已经是暂停状态则无任何反应。
+                   若歌曲是播放状态则修改对象的播放状态属性为 false 并输出"歌曲已停止"
+        */
+        var song = {
+            name: "可惜不是你",
+            singer: "梁静茹",
+            minutes: 4,
+            seconds: 45,
+            type: "00年代伤感情歌",
+            status: false,
+            play: function () {
+                // 如果没有播放，则进行播放
+                if (this.status == false) {
+                    // 把播放属性变成true，然后进行输出
+                    this.status = true;
+                    console.log("正在播放" + this.singer + "歌手的" + this.name + "歌曲")
+                }
+            },
+            pause: function(){
+                // 如果进行播放了，则暂停
+                if(this.status == true){
+                    this.status = false;
+                    console.log("歌曲已经暂停！")
+                }
+            }
+        }
+        // console.log("对象打印", song.play())
+
+        song.play();
+        song.play();
+        song.pause();
+        song.play();
+
+    </script>
+</body>
+
+</html>

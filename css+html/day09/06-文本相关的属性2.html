@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-文本相关的属性2.html</title>
+    <style>
+        .box1 {
+            width: 200px;
+            border: 1px solid orange;
+            /*  nowrap:	文本不会换行，文本会在在同一行上继续，直到遇到 <br>*/
+            /* white-space: nowrap; */
+
+            /* pre-wrap:保留空白符序列，但是正常地进行换行。 */
+            /* white-space: pre-wrap; */
+
+            /* pre-line:合并空白符序列，但是保留换行符。 */
+            /* white-space: pre-line; */
+        }
+
+        .box2 {
+            width: 100px;
+            height: 20px;
+            border: 2px solid skyblue;
+
+            /* 处理文本溢出的“三剑客” */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .box3 {
+            width: 200px;
+            border: solid 1px black;
+            font-size: 30px;
+
+            overflow: hidden;
+            /* text-overflow: ellipsis; */
+            display: -webkit-box;
+            /* 显示多少行 */
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .box5 {
+
+            background: skyblue;
+            /* 水平居中 */
+            /* text-align: center; */
+            /* 行高常用来设置垂直方向的居中 */
+            /* height: 150px; */
+            /* line-height: 150px; */
+            /* line-height: 20px; */
+
+            /* line-height: calc(16px * 0.9 ); */
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>1-white-space ( 文本空白 )</h2>
+    <div class="box1">
+        white-space
+        属性
+        设置如何处 理元素内的空白。
+    </div>
+
+    <h2>2-text-overflow </h2>
+    <div class="box2">
+        CSS 属性确定如何向用户发出未显示的溢出内容。
+        它可以被剪切，显示一个省略号或显示一个自定义字符串。
+    </div>
+
+    <h2>3-显示特定多少行文字 </h2>
+    <div class="box3">
+        CSS 属性确定如何向用户发出未显示的溢出内容。
+        它可以被剪切，显示一个省略号或显示一个自定义字符串。
+    </div>
+
+    <h2>4-行高line-height</h2>
+    <div class="box5">
+        该属性设置行间的距离（行高）。<br>
+        该属性会影响行框的布局。<br>
+        在应用到一个块级元素时，它定义了该元素中基线之间的最小距离而不是最大距离。
+        不允许使用负值。
+    </div>
+
+
+
+</body>
+
+</html>

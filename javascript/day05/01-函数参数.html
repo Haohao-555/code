@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-函数参数</title>
+</head>
+
+<body>
+    <script>
+        /*
+            形式参数：在定义函数时，函数名后面括号中的变量名称叫做“形式参数”，或者称为“形参”
+            实际参数：在调用函数时，函数名后面括号中的变量名称叫做“实际参数”，或者称为“实参”
+
+
+            问题：实参和形参正常情况都是一一对应的，个数没有限制的，根据实际情况进行定义
+            （1）实参 < 形参， 后面没被赋值的形参== undefined
+             (2) 实参 > 形参， 多余的实参为被接收
+             (3) 传递参数过程， 默认形参的赋值从左到右，
+             (4) c= 50,在没有传递实参的过程中，c默认的值为50， 如果有传递实参，则把实参的值赋值给c
+        */
+
+        // 这里arg就是形式参数，参数命名没有什么限制，但不代表"为所欲为"，要符合规范
+        var fn = function (arg) {
+            var sum = 0;
+            for (var i = 1; i <= arg; i++) {
+                sum += i
+            }
+            return sum;
+        }
+        // 调用函数时候，100就是实际参数
+        var sum = fn(100)
+        console.log("累加到100的结果：", sum)
+
+
+        // 实参和形参对应
+        var fn1 = function (a = 40, b, c = 20) {
+            console.log("函数内a的值：", a)
+            console.log("函数内b的值：", b)
+            console.log("函数内c的值：", c)
+        }
+
+        // 调用函数
+        fn1(1, 2)
+        // fn1(1, 2, 3, 4)
+        fn1(3, 4, 50)
+
+
+        //////////////////////////////////////
+
+        // 在函数内有一个auguments的对象，这个对象中存储传递给函数所有的实际参数列表
+        var fn2 = function () {
+            console.log("arguments对象是：", arguments)
+            console.log("取下标为3的arguments里的值：", arguments[3])
+            // 累加所有的参数
+            var total = 0;
+
+            for (var i in arguments) {
+                total += arguments[i]
+            }
+            console.log("arguments的相加结果：", total)
+
+            // 给arguments添加一个数字（push）
+            // arguments.push(99);   // arguments是一个对象,它不是一个真实的数组，所以它不能调用数组的函数
+
+
+        }
+
+        // 调用fn2函数
+        fn2(1, 2, 3, 7, 9, 8, 7, 5, 4, 99)
+
+
+        // 求传递过来所有的实参的积
+        var plus = function () {
+            var result = 1;
+            for (var i in arguments) {
+                result *= arguments[i]
+            }
+            console.log("所有实参相乘的结果:", result)
+        }
+        plus(1, 2, 4, 3, 5, 6)
+    </script>
+</body>
+
+</html>

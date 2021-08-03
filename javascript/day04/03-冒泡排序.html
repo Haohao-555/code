@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-冒泡排序</title>
+</head>
+
+<body>
+    <script>
+        /*
+            (1) 排序算法
+                1）冒泡
+                2）插入排序
+            (2) 查找算法
+            (3) 背包算法... 人工智能特殊算法
+            
+        */
+        //  处理排序的时候，要清楚知道是降序还是升序
+        // 要求：升序： 从小到大排序
+        var numbers = [25, 3, 16, 36, 30, 11, 42, 47, 39, 20];
+        // 定义一个临时变量（第三方）
+        var temp
+
+        // 方法1
+        // for (var i = numbers.length; i > 0; i--) {
+        //     // 里面循环每执行一次，就会找到一个最大值，下次执行次数就减1
+        //     for (var j = 0; j < i - 1; j++) {
+        //         // 判断两个值的大小,如果前面那个比后面的数要大，则交换
+        //         if (numbers[j] > numbers[j + 1]) {
+        //             // 交换数字需要第三方来处理（切换别把现实中的交换思想带进来）
+        //             temp = numbers[j];
+        //             numbers[j] = numbers[j + 1];
+        //             numbers[j + 1] = temp
+        //         }
+        //     }
+        // }
+
+
+        for (var i = 1; i < numbers.length; i++) {
+            //随着i的增加， j的执行次数减少（1次）
+            // 第一轮： 9次； 第二轮： 8次； 第3轮：7 ....
+            for (var j = 0; j < numbers.length - i; j++) {
+                // 判断两个值的大小,如果前面那个比后面的数要大，则交换
+                if (numbers[j] > numbers[j + 1]) {
+                    // 交换数字需要第三方来处理（切换别把现实中的交换思想带进来）
+                    temp = numbers[j];
+                    numbers[j] = numbers[j + 1];
+                    numbers[j + 1] = temp
+                }
+            }
+        }
+        console.log("升序结果：", numbers)
+    
+        // 有基本的同学，尝试用while来书写
+    </script>
+</body>
+
+</html>

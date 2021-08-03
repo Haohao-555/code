@@ -1,0 +1,66 @@
+<!--
+ * @Date: 2021-07-09 15:59:44
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day04\04-超链接标签.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04-超链接标签</title>
+</head>
+
+<body>
+    <h2>超链接就是a标签</h2>
+
+    <!-- 属性href要跳转的路径 -->
+    <!-- 没有跳转效果 -->
+    <a>百度一下</a>
+    <!-- 跳转本页面 -->
+    <a href="">百度一下</a>
+    <!-- 跳转百度一下的网络地址 -->
+    <a href="https://baidu.com">百度一下</a>
+
+    <!-- 跳转本地文件 -->
+    <div>
+        <a href="01-img属性讲解.html">01-img属性讲解.html</a>
+    </div>
+
+    <!-- a标签 -->
+    <div>
+        <a href="02-img属性讲解.html" target="_parent">02-img属性讲解打开</a>
+    </div>
+
+    <iframe src="./01-img属性讲解.html" frameborder="0" width="400px" height="500px"></iframe>
+
+
+    <!-- 通向其他网页、文件、同一页面内的位置、电子邮件地址或任何其他 URL 的超链接。 -->
+    <div>
+        <p>播出号码</p>
+        <!-- 手机端 -->
+        <a href="tel:+130160770951">播出电话</a>
+    </div>
+
+    <div>
+        <p>发送邮箱</p>
+        <a href="mailto:gecedu@163.com">发送Email</a>
+    </div>
+
+    <div>
+        <h3>下载图片</h3>
+        <!-- 本地开启服务器，要协议：ip地址和端口号一致才行下载 
+             download="下载文件的名称"
+        -->
+        <a href="http://192.168.66.2:5500/day04/images/1.jpg" download>下载二哈图片</a>
+        
+    </div>
+
+
+
+</body>
+
+</html>

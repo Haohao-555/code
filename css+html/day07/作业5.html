@@ -1,0 +1,68 @@
+<!--
+ * @Date: 2021-07-14 19:16:35
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\作业5.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .left {
+            float: left;
+        }
+        .clearfix::after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+        .container {
+            width: 80%;
+            margin: 0px auto;
+            text-align: center;
+        }
+        .container .top {
+             height: 120px;
+        }
+        .container .banner {
+                height: 60px;
+        }
+        .container .main {
+             height: 280px;
+             margin-bottom: 6px;
+        }
+        .container .main .main_left{
+             height: 280px;
+             margin-right: 7px;
+             width: 30%;
+        }
+        .container .main .main_right{
+             height: 280px;
+             width: 69%;
+        }
+        .container .footer {
+             height: 180px;
+        }
+        .top, .banner,  .main_left, .main_right, .footer {
+            border: 1px dashed #333;
+            background-color: #edecfa;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">top</div>
+        <div class="banner">banner</div>
+        <div class="main clearfix">
+            <div class="main_left left">left</div>
+            <div class="main_right left"></div>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+</body>
+</html>

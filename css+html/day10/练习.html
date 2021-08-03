@@ -1,0 +1,69 @@
+<!--
+ * @Date: 2021-07-19 15:08:51
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day10\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        li {
+            padding: 3px 12px;
+            width: 100px;
+            height: 30px;
+            border: 1px solid #333;
+            line-height: 30px;
+            text-align: center;
+            background-color: #cccccc;
+            box-sizing: border-box;
+        }
+        /* .list > li:hover {
+             color: blue;
+        }  */
+        .list > li {
+            position: relative;
+        }
+        .list > li > .children-list { 
+            visibility: hidden;
+           position: absolute;
+           width: 100px;
+           left: 100px;
+           top: 0px;
+           margin-left: -1px;
+       }
+       
+       .list > li:hover > .children-list {
+           visibility: visible;
+       }
+    </style>
+</head>
+<body>
+     <ul class="list">
+         <li>游戏资料</li>
+         <li>商场合作
+            <ul class="children-list">
+                <li>1</li>
+                <li>2</li>
+            </ul>
+         </li>
+         <li>社区活动</li>
+         <li>赛事官网
+             <ul class="children-list">
+                 <li>1</li>
+                 <li>2</li>
+                 <li>1</li>
+                 <li>2</li>
+             </ul>
+         </li>
+         <li>自助系统</li>
+     </ul>
+
+     
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-img属性讲解</title>
+</head>
+
+<body>
+    <!-- 
+        1 路径
+        （1）绝对路径
+           1) 网络地址：https是网络协议
+           2)本地：file是本地文件协议
+         (2)相对路径
+
+
+        2 alt属性：给图片做注解：当图片加载不出来的时候显示的
+
+        3 width height: 属性: 给图片宽高属性值的时候，只给一个设置就可以，因为图片会根据原来的图片宽高比进行等比放大或者缩小
+            baidu.com
+            mi.com
+
+     -->
+    <div>
+        <p>网络绝对路径：</p>
+        <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/61454401f855cf5ed6477a6ac04bae5.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+            alt="二哈真可爱">
+    </div>
+
+    <div>
+        <p>本地绝对路径：</p>
+        <img src="file:///C:/Users/粤嵌/Desktop/GZ2145/day04/images/1.jpg" alt="" width="200px">
+    </div>
+
+    <div>
+        <!-- 
+            ./ 代表同一级； ../ 代表上一级； 同理可得：../../ 代表上两级；
+            注意：现在的编译器如果路径书写正确都是有智能提醒
+                 不止图片可以这些查找，视频，音频或者别的路径查询都符合
+         -->
+        <p>相对路径</p>
+        <img src="images/1.jpg" alt="" width="50%">
+        <img src="../day02/代码/images/2.jpg" alt="" title="二哈真的能拆家">
+
+
+
+        <a href="./02-img属性讲解.html" target="_parent">02-img属性讲解</a>
+    </div>
+</body>
+
+</html>

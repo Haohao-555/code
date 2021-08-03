@@ -1,0 +1,96 @@
+<!--
+ * @Date: 2021-07-07 19:24:03
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day02\作业2（完善）.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业2</title>
+    <style>
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      header {
+        width: 100vw;
+        height: 40px;
+        background-color: pink;
+      }
+      .item {
+        display: inline-block;
+        line-height: 40px;
+        margin-left: 70px;
+        position: relative;
+      }
+      .item:hover .hover_item {
+        visibility: visible;
+        height: 90px;
+      }
+      .item:hover {
+        cursor: pointer;
+      }
+      .hover_item {
+        background-color: pink;
+        transition: height 0.6s;
+        width: 100px;
+        height: 0px;
+        position: absolute;
+        left: -20px;
+        top: 41px;
+        visibility: hidden;
+      }
+      .hover_item li{
+          width: 100px;
+          height: 30px;
+          text-align: center;
+          line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="item">
+            游戏资料
+            <div class="hover_item">
+              <ul>
+                <li>游戏下载</li>
+                <li>新手指引</li>
+                <li>资料库</li>
+              </ul>
+            </div>
+          </li>
+          <li class="item">
+            商场/合作
+            <div class="hover_item">
+              <ul>
+                <li>点券充值</li>
+                <li>周边商场</li>
+              </ul>
+            </div>
+          </li>
+          <li class="item">
+            赛事官网
+          </li>
+          <li class="item">
+            自助系统
+            <div class="hover_item">
+                <ul>
+                    <li>联系客服</li>
+                    <li>账号注销</li>
+                </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

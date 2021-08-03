@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-二维数组练习-电影院座位</title>
+    <style>
+        /*空*/
+        .seats-0 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+
+        /*已售*/
+        .seats-2 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-position: 0 -120px;
+            background-image: url(./seats.png);
+            background-size: 100% auto;
+        }
+
+        /*可售*/
+        .seats-1 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+
+            background-image: url(./seats.png);
+            background-size: 100% auto;
+        }
+
+        /*已选*/
+        .seats-3 {
+
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-position: 0 -60px;
+            background-image: url(./seats.png);
+            background-size: 100% auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <span class="seats-1"></span>
+    <span class="seats-2"></span>
+    <span class="seats-3"></span> -->
+    <script>
+        var seatsArr = [
+            [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+
+            [1, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+
+            [2, 2, 1, 1, 2, 2, 1, 1, 1, 1],
+
+            [1, 1, 3, 3, 1, 2, 2, 1, 1, 1],
+
+            [1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
+
+            [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],
+
+            [1, 1, 0, 1, 1, 1, 1, 0, 1, 1]
+        ];
+
+        var result = ''
+
+        // 代码实现
+        // for (var i in seatsArr) {
+        //     // 取出一行行座位
+        //     // console.log(seatsArr[i])
+        //     // 循环子数组
+        //     for (var j in seatsArr[i]) {
+        //         // console.log(seatsArr[i][j])   —— 可以取到二维数组中一个个数据
+        //         if (seatsArr[i][j] == 0) {
+        //             result += "<span class='seats-0'></span>"
+        //         } else if (seatsArr[i][j] == 1) {
+        //             result += "<span class='seats-1'></span>"
+        //         } else if (seatsArr[i][j] == 2) {
+        //             result += "<span class='seats-2'></span>"
+        //         } else if (seatsArr[i][j] == 3) {
+        //             result += "<span class='seats-3'></span>"
+        //         }
+
+        //     }
+        //     // 要进行换行
+        //     result += "<br/>"
+
+        // }
+
+
+        // 简单写法
+        for (var i in seatsArr) {
+            // 取出一行行座位
+            // console.log(seatsArr[i])
+            // 循环子数组
+            for (var j in seatsArr[i]) {
+                // console.log(seatsArr[i][j])   —— 可以取到二维数组中一个个数据
+                result += "<span class='seats-" + seatsArr[i][j] + "'></span>"
+
+            }
+            // 要进行换行
+            result += "<br/>"
+
+        }
+
+        document.write(result)
+    </script>
+</body>
+
+</html>

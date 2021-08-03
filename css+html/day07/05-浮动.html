@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-浮动</title>
+    <style>
+        /*   
+            认识标准文档流及特性
+            文档流 : 指的是元素在文档结构中的排列方式；
+            标准文档流：网页在解析的时候，遵循于从上往下，从左往右的一个顺序，而这个顺序就是来源于标准文档流；
+            脱离文档流：打破原本的从上到下，从左到右的排列方式，比如重叠 、叠加 、覆盖等非正常的文档流的排列布局情况
+        */
+        main {
+            border: 5px solid orange;
+        }
+        /* main h2{} */
+        main div{
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            margin-bottom: 10px;
+        }
+        main .one {
+            background: orange;
+        }
+        main .two {
+            background: skyblue;
+            /* 如果是兄弟元素浮动造成的影响，则给受影响的元素添加浮动清楚 */
+            /* clear: left; */
+            /* 左浮动和有浮动一起清除 */
+            clear: both;
+        }
+        /* main .two {
+            height: 120px;
+            width: 120px;
+        } */
+        main .three, 
+        main .four{
+            clear: both;
+            /* float: right; */
+        }
+        .footer {
+            background: #000;
+            height: 200px;
+        }
+
+        .clear {
+            height: 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2>浮动：浮动曾被用来实现整个网站页面的布局，它使信息列得以横向排列（默认的设定则是按照这些列在源代码中出现的顺序纵向排列）</h2>
+        <h3>float: left 、right、none(默认，不处理)、inherit</h3>
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+     
+    </main>
+    <div class="footer"></div>
+    
+
+</body>
+
+</html>

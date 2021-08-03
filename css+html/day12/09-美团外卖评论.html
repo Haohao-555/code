@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-美团外卖评论</title>
+    <!-- 去除默认样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+      
+        /*  */
+        .ratings-list {
+            width: 100vw;
+            /* height: 100vh; */
+            padding: 0 10px;
+            box-sizing: border-box;
+            /* background: #ddd; */
+            /* overflow: hidden; */
+
+        }
+
+        .ratings-list .ratings-item {
+            /* 设置弹性盒子 */
+            display: flex;
+            border-bottom: 1px solid rgba(7, 17, 27, 0.2);
+            padding: 20px 0;
+        }
+
+        /* 去除最后一条评论的下划线 */
+        .ratings-list .ratings-item:last-child {
+            border-bottom: 0
+        }
+
+        .ratings-list .ratings-item .avatar-pic {
+
+            width: 40px;
+            flex: 0 0 40px;
+            margin-right: 5px;
+        }
+
+        .ratings-list .ratings-item .avatar-pic img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .ratings-list .ratings-item .comments {
+            flex: 1;
+        }
+
+        .ratings-list .ratings-item .comments {
+            /* 父相子绝 */
+            position: relative;
+        }
+
+        .ratings-list .ratings-item .comments .comments-date {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            /* 字体颜色 */
+            color: rgba(147, 153, 159);
+            font-size: 12px;
+        }
+
+        .ratings-list .ratings-item .comments .username {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .ratings-list .ratings-item .comments .delivery-time {
+            color: rgba(147, 153, 159);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .ratings-list .ratings-item .comments .comments-text {
+            line-height: 1.3;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .ratings-list .ratings-item .comments .pic-list {
+            width: 100%;
+            margin: 10px 0 15px;
+        }
+
+        .ratings-list .ratings-item .comments .pic-list img {
+            width: 80px;
+            height: 55px;
+            margin-right: 4px;
+        }
+
+        .ratings-list .ratings-item .comments .seller-reply {
+            background: #eee;
+            padding: 10px;
+            line-height: 1.4;
+            font-size: 13px;
+            color: rgba(147, 153, 159);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ratings-list">
+        <!-- 把一条评论信息完成 -->
+        <li class="ratings-item">
+            <!-- 左边：图片 -->
+            <div class="avatar-pic">
+                <img src="./images/avatar.jpg" alt="avatar.jpg">
+            </div>
+
+            <!-- 右边：评论详细内容 -->
+            <div class="comments">
+                <!-- 日期 -->
+                <span class="comments-date">2021-11-22</span>
+                <!-- 名字 -->
+                <h3 class="username">给我一杯82年可乐</h3>
+                <!-- 送达 -->
+                <div class="delivery-time">38分钟送达</div>
+                <!-- 评论信息 -->
+                <p class="comments-text">
+                    包装很好，送的餐具和酱料也很齐全。肉也很多!还是烤鸭专用酱好吃!非常满意!
+                </p>
+                <!-- 展示图片 -->
+                <div class="pic-list">
+                    <img src="./images/pic1.jpg" alt="pic1">
+                    <img src="./images/pic2.jpg" alt="pic2">
+                    <img src="./images/pic3.jpg" alt="pic3">
+                </div>
+                <!-- 商家回复 -->
+                <div class="seller-reply">
+                    商家回复 （1天后） ：感谢亲们对我们出品的认可，小店会在您的支持下，做得更好，期待您的再次光临，祝愿您的生活愉快，万事如意！
+                </div>
+            </div>
+        </li>
+
+        <li class="ratings-item">
+            <!-- 左边：图片 -->
+            <div class="avatar-pic">
+                <img src="./images/avatar.jpg" alt="avatar.jpg">
+            </div>
+            <!-- 右边：评论详细内容 -->
+            <div class="comments">
+                <!-- 日期 -->
+                <span class="comments-date">2021-11-22</span>
+                <!-- 名字 -->
+                <h3 class="username">给我一杯82年可乐</h3>
+                <!-- 送达 -->
+                <div class="delivery-time">38分钟送达</div>
+                <!-- 评论信息 -->
+                <p class="comments-text">
+                    包装很好，送的餐具和酱料也很齐全。肉也很多!还是烤鸭专用酱好吃!非常满意!
+                </p>
+                <!-- 展示图片 -->
+                <div class="pic-list">
+                    <img src="./images/pic1.jpg" alt="pic1">
+                    <img src="./images/pic2.jpg" alt="pic2">
+                    <img src="./images/pic3.jpg" alt="pic3">
+                </div>
+                <!-- 商家回复 -->
+                <div class="seller-reply">
+                    商家回复 （1天后） ：感谢亲们对我们出品的认可，小店会在您的支持下，做得更好，期待您的再次光临，祝愿您的生活愉快，万事如意！
+                </div>
+            </div>
+        </li>
+        <li class="ratings-item">
+            <!-- 左边：图片 -->
+            <div class="avatar-pic">
+                <img src="./images/avatar.jpg" alt="avatar.jpg">
+            </div>
+            <!-- 右边：评论详细内容 -->
+            <div class="comments">
+                <!-- 日期 -->
+                <span class="comments-date">2021-11-22</span>
+                <!-- 名字 -->
+                <h3 class="username">给我一杯82年可乐</h3>
+                <!-- 送达 -->
+                <div class="delivery-time">38分钟送达</div>
+                <!-- 评论信息 -->
+                <p class="comments-text">
+                    包装很好，送的餐具和酱料也很齐全。肉也很多!还是烤鸭专用酱好吃!非常满意!
+                </p>
+                <!-- 展示图片 -->
+                <div class="pic-list">
+                    <img src="./images/pic1.jpg" alt="pic1">
+                    <img src="./images/pic2.jpg" alt="pic2">
+                    <img src="./images/pic3.jpg" alt="pic3">
+                </div>
+                <!-- 商家回复 -->
+                <div class="seller-reply">
+                    商家回复 （1天后） ：感谢亲们对我们出品的认可，小店会在您的支持下，做得更好，期待您的再次光临，祝愿您的生活愉快，万事如意！
+                </div>
+            </div>
+        </li>
+        <li class="ratings-item">
+            <!-- 左边：图片 -->
+            <div class="avatar-pic">
+                <img src="./images/avatar.jpg" alt="avatar.jpg">
+            </div>
+            <!-- 右边：评论详细内容 -->
+            <div class="comments">
+                <!-- 日期 -->
+                <span class="comments-date">2021-11-22</span>
+                <!-- 名字 -->
+                <h3 class="username">给我一杯82年可乐</h3>
+                <!-- 送达 -->
+                <div class="delivery-time">38分钟送达</div>
+                <!-- 评论信息 -->
+                <p class="comments-text">
+                    包装很好，送的餐具和酱料也很齐全。肉也很多!还是烤鸭专用酱好吃!非常满意!
+                </p>
+                <!-- 展示图片 -->
+                <div class="pic-list">
+                    <img src="./images/pic1.jpg" alt="pic1">
+                    <img src="./images/pic2.jpg" alt="pic2">
+                    <img src="./images/pic3.jpg" alt="pic3">
+                </div>
+                <!-- 商家回复 -->
+                <div class="seller-reply">
+                    商家回复 （1天后） ：感谢亲们对我们出品的认可，小店会在您的支持下，做得更好，期待您的再次光临，祝愿您的生活愉快，万事如意！
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</body>
+
+</html>

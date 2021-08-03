@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            for(var i = 1;i <= 5; i++){
+                for(){
+                    //打印空格 4 3 2 1
+                }
+                for(var j = 1; j <= 2*i - 1; j++){
+                    //打印星星
+                    console.log("*");
+                }
+            }
+               *
+              ***
+             *****    
+            *******
+           ********* 
+            星星数: 2*i-1
+            第一行: 2*1-1
+            第二行: 2*2-1
+            第五行: 2*5-1
+        */
+
+        var rows = 20
+        var str = "";
+        var star = "";
+        for (var i = 1; i <= rows; i++) {
+            for (var k = 0; k < rows - i; k++) {
+                star += ` `;
+            }
+            // 现在网址
+            for (var j = 1; j <= i; j++) {
+                star += " *";
+            }
+            // 换行
+            star += "\n"
+        }
+
+        // 下部分
+
+        for (var i = rows - 1; i >= 1; i--) {
+            star += ` `
+            for (var k = 0; k < rows - i; k++) {
+                star += ` `;
+            }
+            for (var j = 1; j <= i; j++) {
+                star += "* ";
+            }
+            // 换行
+            star += "\n"
+        }
+
+        console.log(star);
+
+
+
+
+        // 页面打印等腰三角形
+        var num = 7
+        var str = '';
+        for (var i = 0; i < num; i++) {
+            for (var j = 0; j < (num - 1 - i); j++) {
+                str += '&nbsp';
+            }
+            for (var k = 0; k <= i; k++) {
+                str += '☆';
+            }
+            str += '<br>';
+        }
+        document.write(str);
+        // console.log(str);
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

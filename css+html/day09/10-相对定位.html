@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-相对定位</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            margin-bottom: 10px;
+        }
+        .box1 {
+            position: relative;
+            background: gray;
+            /*设置相对元素，还是会占据原来的位置 */
+            left: 40px;
+            /* top取值为60px,表示距离上边为50px，相对于自身（原来的位置）下移60px */
+            top: 60px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h3>
+        该关键字下，元素先放置在未添加定位时的位置，
+        再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。
+    </h3>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+</body>
+
+</html>

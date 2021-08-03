@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-for循环</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            border: 1px solid gray;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+            for(初始化循环变量;循环条件;循环后执行的代码){
+                循环条件成立,执行这里的代码
+            }
+        */
+
+        var sum = 0
+        for (var i = 1; i <= 100; i++) {
+            sum += i
+        }
+        // console.log("1-10的加法结果：", sum)
+
+        // 想输出1 - 100之间所有的奇数和偶数
+        // 奇数
+        // for (var i = 1; i <= 100; i = i + 2) {
+        //     console.log(i)
+        // }
+        // // 偶数
+        // for (var i = 2; i <= 100; i = i + 2) {
+        //     console.log(i)
+        // }
+
+
+        // for循环 嵌套
+        for (var i = 1; i < 10; i++) {
+            for (var j = 10; j >= 1; j--) {
+                // console.log(i , j)
+            }
+        }
+
+
+        // 99乘法表（1）
+        var str = ""
+        // 外层控制行
+        // for (var i = 1; i <= 9; i++) {
+        //     // 内层控制列
+        //     for (var j = 1; j <= 9; j++) {
+        //         // 连接字符串
+        //         str += "<span>" + j + "&times;" + i + "=" + i * j + "</span>"
+        //     }
+        //     str += "<br/>"
+        // }
+        // console.log(str)
+        // document.write(str)
+
+        // 99乘法表（2）
+        for (var i = 1; i <= 9; i++) {
+            // 内层控制列
+            for (var j = 1; j <= i; j++) {
+                // 连接字符串
+                str += "<span>" + j + "&times;" + i + "=" + i * j + "</span>"
+            }
+            str += "<br/>"
+        }
+        // console.log(str)
+        document.write(str)
+
+        // 
+        var a = 50
+        // 此写法错误
+        if (30 <= a < 60) { 
+            console.log(a)
+        }
+        // 正确写法
+        if (a >= 30 && a < 60) { 
+            console.log(a)
+        }
+
+        
+        
+    </script>
+</body>
+
+</html>

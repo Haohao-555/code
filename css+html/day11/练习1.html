@@ -1,0 +1,58 @@
+<!--
+ * @Date: 2021-07-20 15:53:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day11\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹性盒子</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style type="">
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: #32b2ac;
+            margin: 12px auto;
+            border: 1px solid #32b2ac; 
+            /* 弹性布局 */
+            display: flex;
+           
+            flex-direction: row;
+            flex-wrap: wrap;
+             /* flex-flow: row wrap; */
+
+        }
+        .container > div {
+            width: 85px;
+            height: 85px;
+            border-radius: 6px;
+            background-color: #ffb6b9;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            line-height: 80px;
+        }
+        .container > div:nth-child(odd) {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+</body>
+</html>

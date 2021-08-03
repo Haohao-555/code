@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-html语法和标签</title>
+</head>
+
+<body>
+    <!-- 
+        1.0 标签有两种：对称性标签和单一性标签 
+        对称性标签<h1>内容</h1>， 是以<h1>开头，以</h1>结尾，开头和结尾是具体内容
+        单一性标签：不对称，只有一个标签<meta>
+    -->
+
+    <h2>1、标签认识</h2>
+    <!-- 
+        
+        以p标签为例，p标签就是对称性标签，有开始标签和结束标签；
+            元素的内容，就是开始标签之后结束标签之前的所输入文本；
+            开始标签、结束标签和内容想结合便是完整的一个元素
+     -->
+
+    <h2>2、什么是元素属性</h2>
+
+    <!-- 
+         属性包括两部分：等号左边的属性名和等号右边的属性值；
+         注意：（1）在属性和元素名之间要有空格
+              （2）前面一个属性值和后面一个属性名之间要有空格
+              (3)一个属性名设置多个属性值，属性值之间必须要空格
+         类名：类似于人名
+         id：唯一属性，相当于身份证号码
+     -->
+    <p class="test aaa bbb" id="testId">p标签内容</p>
+    <!-- <p id="testId">另一个p标签</p>     -->
+
+
+
+
+
+    <h2>3、HTML 控制标记（标签）的类型</h2>
+    <!-- 
+        （3.1）无属性单一性标记。格式：<标记名称> 如：<br> 【不能设置属性】  —— 换行
+        （3.2）有属性单一性标记。格式：<标记名称> 如：<hr>  
+        （3.3）有属性对称性标记。例如：div,a,html,p,span等等
+        （3.3）无属性对称性标记。 title 
+    -->
+    325423
+    <br>
+    235432
+    <hr>
+    <hr size="30">
+    <hr color="red">
+    <hr color="orange" size="20">
+    <hr color="skyblue" size="20" width="60%" align="left">
+
+    <div class="box">div盒子</div>
+
+
+    <h2>4、html注释</h2>
+    <!-- 
+        快捷键：ctrl + /; 
+        注意：在标签中的手动注释和JavaScript表情啊中的注释是不一样的
+    -->
+
+
+    <h2>标签嵌套：父标签和子标签</h2>
+    <!-- 
+          双标签关系分为:包含关系，并且关系（兄弟元素）
+     -->
+    <div class="one">
+        <div class="two">
+            <div class="three">元素嵌套是没有限制的</div>
+            <div class="three">元素嵌套是没有限制的2</div>
+        </div>
+    </div>
+    
+    <!-- 称ul为父元素，称li为子元素，ul和li标签是父子关系（包含关系），但li标签和li标签是兄弟关系（并列关系） -->
+    <ul>
+        <li>one</li>
+        <li>two</li>
+    </ul>
+
+    <!-- 问题：认识什么标签；常用的标签有啥？具体应用在哪里？什么叫语义化？哪些是语义化标签？ -->
+</body>
+<script>
+    //
+</script>
+
+</html>

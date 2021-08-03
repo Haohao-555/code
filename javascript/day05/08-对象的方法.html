@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-对象的方法</title>
+</head>
+
+<body>
+    <script>
+        // var start = "点火开车";
+        // 定义一个car对象
+        var car = {
+            brand: "雪佛兰",
+            model: "Bel Air",
+            year: 1957,
+            mileage: 2021,
+            color: "red",
+            start: false,
+            passengers: 4,
+            fold: false,
+            speed: {
+                one: "100公里加速3.55s"
+            },
+            fireUp: function () {
+                // console
+                // 如何找到car对象中的start属性 —— this
+                // console.log("this的指向:", this);
+                // console.log(this.start)
+                // 修改属性start
+                this.start = true;
+                console.log("查看是否修改car对象的属性：", this.start)
+            },
+            stop: function () {
+                this.start = false
+            },
+            // 给对象添加"行为动作"  ==> 对象方法： 是对对象的动作的描述，动作可以改变属性
+            drive: function (num) {
+                // 怎么使用该对象中的属性？
+                // console.log("雪佛兰开车了，参数为：", num)
+                if (this.start == true) {
+                    console.log(this.brand + this.speed.one + "的速度驾驶了" + this.mileage + "km")
+                }
+            }
+
+        }
+
+        // 调用对象方法 对象名.方法（参数...）
+        // 点火方法
+        car.fireUp();
+        console.log("查看是否修改car对象的属性：", car.start)
+        car.drive("开车");
+        // 熄火
+        car.stop()
+        car.drive()
+    </script>
+</body>
+
+</html>

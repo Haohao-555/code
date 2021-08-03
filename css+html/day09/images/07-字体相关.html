@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-字体相关</title>
+    <style>
+        .p1 {
+            font-family: Helvetica, sans-serif;
+        }
+
+        .p2 {
+            font-family: "Times New Roman", Georgia, Serif;
+        }
+
+        .box1 {
+            font-style: italic;
+        }
+
+        .box2 {
+            font-style: oblique;
+            ;
+        }
+
+        .box4 {
+            font-variant: small-caps;
+        }
+
+        .box6 {
+            font-weight: bold;
+        }
+
+        .box7 {
+            font-weight: bolder;
+        }
+
+        .box8 {
+            font-weight: lighter;
+        }
+
+        .box9 {
+            font-weight: 100;
+        }
+
+        .box10 {
+            /* font:italic bold 12px/20px arial,sans-serif; */
+            /* 淘宝 */
+            /* font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif; */
+            /* 京东 */
+            font: 12px/1.5 Microsoft YaHei, Heiti SC, tahoma, arial, Hiragino Sans GB, "\5B8B\4F53", sans-serif;
+            /* color: #666; */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>1-font-family ( 字体系列 )</h2>
+    <p class="p1">p1段落标签</p>
+    <p class="p2">p2段落标签</p>
+
+    <h2>2-font-style ( 字体风格 )</h2>
+    <div class="box1">italic： 浏览器会显示一个斜体的字体样式。</div>
+    <div class="box2">oblique： 浏览器会显示一个倾斜的字体样式。</div>
+    <div class="box3">font-style 属性定义字体的风格,设置使用斜体、倾斜或正常字体。斜体字体通常定义为字体系列中的一个单独的字体</div>
+
+    <h2>3-font-variant ( 字体变形 )</h2>
+    <div class="box4">small-caps：浏览器Love you forever会显示小型大写字母的字体。</div>
+    <div class="box5">normal (默认值)：浏览器会显示一个标准的字体。</div>
+
+    <h2>4-font-weight ( 字体加粗 )</h2>
+    <div class="box6">bold：定义粗体字符。</div>
+    <div class="box7">bolder：定义更粗的字符。</div>
+    <div class="box8">lighter： 定义更细的字符。</div>
+    <div class="box9">100~900： 定义由粗到细的字符。400 等同于 normal，而 700 等同于 bold。(该属性值只有整百)</div>
+
+
+    <h2>5-简写形式：font</h2>
+    <div class="box10">
+        <pre>
+            font 简写属性在一个声明中设置所有字体属性。此属性可以设置："line-height"指定行间距。
+            可以按顺序设置如下属性：
+    
+            1. font-style
+            2. font-variant
+            3. font-weight
+            4. font-size/line-height
+            5. font-family
+        </pre>
+
+    </div>
+</body>
+
+</html>

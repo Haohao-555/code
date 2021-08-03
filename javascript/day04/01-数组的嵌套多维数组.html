@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-数组的嵌套多维数组</title>
+</head>
+
+<body>
+    <script>
+        var arr = [
+            [1, 2, 3, 4, 5],
+            [6, 7, 8, 9, 10],
+            [11, 12, 13, 14, 15],
+            [16, 17, 18, 19, 20],
+            [21, 22, 23, 24, 25]
+        ];
+        console.log("一维数组取值：", arr[1]);
+        console.log("二维数组取值：", arr[1][4]);
+
+        // 把二维数组种的所有值都加起来
+
+        // 遍历数组，取到对应的值
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            // console.log(arr[i])
+            for (var j = 0; j < arr[i].length; j++) {
+                // console.log(arr[i][j])
+                // sum = sum + arr[i][j]
+                sum += arr[i][j]
+            }
+        }
+        console.log("所有的数字之和：", sum)
+    </script>
+</body>
+
+</html>

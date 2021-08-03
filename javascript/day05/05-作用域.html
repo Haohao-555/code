@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-作用域</title>
+</head>
+
+<body>
+    <script>
+        // 测试变量作用域
+        // var num = 1;
+        // var fn = function () {
+        //     var num = 2;
+        //     console.log("函数内num:", num);
+        // }
+        // fn();
+        // console.log("函数外num: ",num) 
+
+        /*
+
+            （1）在全局作用域下的变量称为**全局变量**,在局部作用域下的变量称为**局部变量**
+            （2）如果需要使用某个变量，则现在局部能查找，找到则使用，否则在父级函数查找，
+                还是无法找到,则继续往上一级查找,以此类推,直到对顶层(全局作用域)，如果未找到，则报错
+            （3）在函数外，不能使用函数内的局部变量，但函数内可以使用全局变量
+
+            （4）块级作用域：ECMAscript 5.0 中，不支持块级作用，在es6，用let声明变量在支持块级作用域
+                函数作用域：按下面代码理解
+                作用域：避免变量和变量之间出现数据污染；
+                作用域链：在函数内部查找变量作用的范围，会一层层查找变量的作用范围，这时候就形成作用域链
+        */
+
+        // 函数外，为全局变量
+        var a = 10;
+        var b = 20;
+        var c = "函数外的变量c"
+        var fn1 = function () {
+            // 声明的变量为局部变量
+            // var c;
+            // 这里没有用var来声明变量d,d默认提升为全局变量
+            d = 60;
+            console.log("fn1函数内a==>", a)
+            console.log("fn1函数内b==>", b)
+            console.log("fn1函数内c==>", c)
+            // 未声明的变量，直接报错 ===> f is not defined
+            // console.log("fn1函数内未声明的f==>", f)
+            console.log("fn1函数内d==>", d)
+        }
+
+        // 调用函数
+        fn1();
+
+        // 在函数外使用函数内的变量
+        // c is not defined
+        // console.log("fn1函数内c==>", c); 
+        // console.log("fn1函数内d==>", d);   
+        // console.log(111)
+
+
+        // 声明变量提前
+        // var num = 1
+        // var num;
+
+        // 变量提前到代码块前面
+        // console.log("num的声明", num)
+        var num1 = 30
+        console.log("num + num1等于", num + num1)  // num = undefined + 30 = NaN
+        var num = 1
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法1</title>
+    <style>
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* 重点 */
+            margin: auto;
+            height: 300px;
+        }
+
+        .box {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background: skyblue;
+            margin: 20px auto;
+
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background: red;
+
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* 重点 */
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <img src="../images/1.jpeg" alt=""> -->
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>

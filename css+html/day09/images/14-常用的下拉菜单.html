@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 先去除默认样式 */
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .header {
+            width: 1000px;
+            background: #ccc;
+            margin: 20px auto
+        }
+
+        .clearfix::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        .header>li {
+            float: left;
+            padding: 4px 10px;
+            background: skyblue;
+            margin-right: 10px;
+
+            /* 想要基于父元素定位，必须加上position:relative */
+            position: relative;
+
+        }
+
+        .header>li>h3 {}
+
+        .header>li>h3>a {
+            color: white;
+        }
+
+        .header>li>ul {
+            width: 95px;
+            background: rgba(24, 60, 122, 0.8);
+            padding: 5px 0;
+
+            left: 0;
+            top: 67px;
+            position: absolute;
+
+            /* 最开始是消失的 */
+            display: none;
+        }
+
+        /* 悬停的样式只能加给自己或者子代元素 */
+        .header>li:hover ul {
+            display: block;
+        }
+
+        .header>li>ul>li {
+            text-align: center;
+           
+        }
+
+        .header>li>ul>li>a {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="header clearfix">
+        <li>
+            <h3><a href="javaScript:;">学校概况</a></h3>
+            <ul>
+                <li><a href="javaScript:;">学校简介</a></li>
+                <li><a href="javaScript:;">历史沿革</a></li>
+                <li><a href="javaScript:;">学校章程</a></li>
+                <li><a href="javaScript:;">现任领导</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <h3><a href="javaScript:;">人才培养</a></h3>
+            <ul>
+                <li><a href="javaScript:;">教务处</a></li>
+                <li><a href="javaScript:;">研究生院</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>

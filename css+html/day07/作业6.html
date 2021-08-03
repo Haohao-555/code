@@ -1,0 +1,84 @@
+<!--
+ * @Date: 2021-07-14 19:22:22
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\作业6.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .clearfix::after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+      header,
+      footer,
+      .main_top,
+      .main_center_item,
+      .main_bottom_item {
+        border: 1px dashed #333;
+        background-color: #edecfa;
+        margin-bottom: 6px;
+        margin: 6px auto;
+      }
+      header {
+        height: 60px;
+      }
+      main {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      main .main_top {
+          text-align: center;
+          width: 100%;
+          height: 120px;
+      }
+      main .main_bottom_item, main .main_center_item {
+          float: left;
+          width: 24%;
+          height: 80px;
+          margin-right: 11px;
+      }
+      main .main_bottom_item:last-child, main .main_center_item:last-child {
+          margin-right: 0px;
+      }
+      main .main_bottom_item {
+          height: 180px;
+      }
+      header,
+      footer {
+        width: 90%;
+        text-align: center;
+      }
+      footer {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>top</header>
+    <main>
+      <div class="main_top">banner</div>
+      <div class="main_center clearfix">
+          <div class="main_center_item"></div>
+          <div class="main_center_item"></div>
+          <div class="main_center_item"></div>
+          <div class="main_center_item"></div>
+      </div>
+      <div class="main_bottom clearfix">
+        <div class="main_bottom_item"></div>
+        <div class="main_bottom_item"></div>
+        <div class="main_bottom_item"></div>
+        <div class="main_bottom_item"></div>
+      </div>
+    </main>
+    <footer>footer</footer>
+  </body>
+</html>

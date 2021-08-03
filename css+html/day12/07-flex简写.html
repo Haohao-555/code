@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-align-content</title>
+    <style>
+        .flex-box {
+            display: flex;
+            /* 在父元素中设置弹性布局 */
+            height: 620px;
+            width: 620px;
+            border: 4px solid orange
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+
+            /* 父元素设置flex布局后,子元素设置flex */
+
+            /* 
+                参数介绍:默认值为 0 1 auto
+                (1) 参数1(flex-grow):  是否可以允许放大, 0代表不允许放大, 1是允许
+                (1) 参数2(flex-shrink):  是否可以允许缩小, 0代表不允许缩小, 1是允许
+                (1) 参数3(flex-basis): 默认值是auto,表示自适应(本身是多大就是多大)
+                          
+             */
+
+
+             /* 1、不能放大，能缩小，因为这里没有设置宽度，所以由文本撑开，宽度，auto的意思你本身多大，就是多大，不扩大 */
+            /* flex: 0 1 auto; */
+
+            /* 2、能放大，1表示等比放大（得有剩余宽度），跟缩小无关（0，1都可以出效果），这里测试是没有设置宽度 */
+            /* flex: 1 0 auto; */
+
+            /* 3、这里要给宽度，一定把宽度撑开到大于父元素设置的宽度,这里的第一个放大参数是0或者1都没有关系，第三参参数给的数据要合适（能撑开父元素） */
+            flex: 0 0 auto;
+
+            /* 
+                4、只写一个参数的代表意思：
+                        其中的第三个auto两种情况，如果如果本身已给宽度（正常情况下，横轴为主轴），auto的宽度就是width;
+                                                如果没有宽度，则由本身的内容撑开
+                （1）auto (1 1 auto) 
+                （2）none (0 0 auto)
+                （3）%（或者数字） <===>   1 1 %(或者数字)
+                （4）2 3  <==>  2 3 0%
+            */
+            /* flex: 1; */
+            /* flex: 1 1 0; */
+
+            /* 额外的细节:https://zhuanlan.zhihu.com/p/136223806 */
+        }
+
+        .box:nth-child(odd) {
+            background: skyblue;
+        }
+
+        .box:nth-child(even) {
+            background: pink;
+        }
+
+        /* .box:nth-child(5){
+            flex: 2;
+        } */
+
+      
+    </style>
+</head>
+
+<body>
+    <h2>flex简写</h2>
+    <div class="flex-box">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+
+
+
+
+</body>
+
+</html>

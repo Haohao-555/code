@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-循环的跳转</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // break: 退出当前整个循环
+    // continue 跳过本次循环, 继续下次循环
+
+
+    var num = 5;
+    var sum = 0;
+    while (num > 0) {
+        // console.log("num的值：", num)
+
+        if (num == 3) {
+            console.log(num)
+            // 如果num等于3，则跳出整个循环
+            break;
+        }
+        sum += num
+        num--
+    }
+    // console.log(sum)
+
+    for (var i = 1; i <= 10; i++) {
+        if (i == 6) {
+            // 如果i等于6，那么就中断，下面循环进行,这里只打印1，2，3，4，5
+            // break;
+
+            // continue 跳过本次循环, 继续下次循环，这里打印除了6之外1-10的数字
+            continue;
+        }
+        // console.log("i的值：", i)
+    }
+
+</script>
+
+</html>

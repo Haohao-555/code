@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-循环结构控制</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+         判断条件，只要满足条件，就会不断的从头到尾重复执行，直到不满足条件时，跳出循环。
+         注意：循环一定避免死循环（一定要有满足退出的条件）
+
+         形式：
+            while(条件){
+                //条件成立就会不断地执行这里的代码,直到条件不成立
+                //所以这里一般会伴随条件的更新
+                
+            }
+        */
+
+        var num = 1;
+        var sum = 0
+        // 通过循环，计算 1 -10 之间所有整数的总和
+        while (num <= 100) {
+            // console.log("num的值：", num)
+            sum = sum + num
+            // 让num每次运行都+1，从而到达退出循环的条件
+            num++
+        }
+        // console.log("1-10之间的总和",sum)
+
+        // 练习：实现阶乘： 6 - 18 之间阶乘
+        var num1 = 6;
+        var result = 1;
+        while (num1 <= 18) {
+            console.log(result)
+            result = result * num1
+            // 每次循环执行，让num1 + 1,从而达到退出循环的条件
+            num1 ++ 
+        }
+        // console.log(result)
+    </script>
+
+</body>
+
+</html>

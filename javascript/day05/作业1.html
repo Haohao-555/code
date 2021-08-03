@@ -1,0 +1,87 @@
+<!--
+ * @Date: 2021-07-30 16:05:20
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \javascript\day05\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = {
+        name: "小明",
+        age: 19,
+        address: "北京",
+        hobby: ["抽烟", "喝酒", "烫头"],
+        data: {
+          mother: "韩梅",
+          friend: ["lee", "Tom", "Jane"],
+        },
+      };
+      // 数组拷贝
+      /*
+        b 存放拷贝的对象
+        arr 数组
+        eleName 当前属性名称
+        feleName 当前元素的父级
+      */
+      function arrayCopy(b, arr, eleName, feleName) {
+        var flag = false;
+        if (feleName != undefined) {
+          if (b[feleName] == undefined) {
+            b[feleName] = {};
+          }
+          b[feleName][eleName] = [];
+        } else {
+          flag = true;
+          b[eleName] = [];
+        }
+        for (var i = 0; i < arr.length; i++) {
+          if (flag) {
+            b[eleName][i] = arr[i];
+          } else {
+            b[feleName][eleName][i] = arr[i];
+          }
+        }
+        flag = false;
+        return b;
+      }
+
+      function deepCopy(a, b = {}, eleName) {
+        for (var index in a) {
+          if (typeof a[index] == "object") {
+            //    判断是否是数组
+            if (a[index].constructor === Array) {
+              b = arrayCopy(b, a[index], index, eleName);
+            } else {
+              b = deepCopy(a[index], b, index);
+            }
+          } else {
+            if (eleName == undefined) {
+              b[index] = a[index];
+            } else {
+              if (b[eleName] == undefined) {
+                b[eleName] = {};
+              }
+              b[eleName][index] = a[index];
+            }
+          }
+        }
+        return b;
+      }
+      var b = deepCopy(a);
+      console.log("对象a is", a);
+      console.log("对象b is", b);
+      b.name = "小刚";
+      b.data.mother = "秦琪";
+      console.log("将b.name改为小刚， b.data.mother改为秦琪后")
+      console.log("a.name is",a.name, "a.data.mother is",a.data.mother);
+    </script>
+  </body>
+</html>

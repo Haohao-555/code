@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-函数</title>
+</head>
+
+<body>
+    <script>
+        // 计算1-100之间内的全部和
+        var total = 0;
+        for (var i = 1; i <= 100; i++) {
+            total += i
+        }
+        console.log("1-100之间的和：", total)
+
+        var total1 = 0;
+        for (var i = 1; i <= 200; i++) {
+            total1 += i
+        }
+        console.log("1-200之间的和：", total1)
+
+        var total2 = 0;
+        for (var i = 1; i <= 999; i++) {
+            total2 += i
+        }
+        console.log("1-999之间的和：", total2)
+
+
+        // 以上代码虽然可以直接复制，不能直接复用
+
+        // 可以定义一个函数，实现代码的复用 —— 封装一个函数
+        function plus(max) {
+            var total = 0;
+            for (var i = 1; i <= max; i++) {
+                total += i;
+            }
+            // 要累加好的结果返回出去
+            return total;
+        }
+
+        // 调用函数，调用函数后才会执行函数里面的代码
+        var n100 = plus(100);
+        var n101 = plus(101);
+
+        console.log("n100==>", n100)
+        console.log("n101==>", n101)
+
+
+        /*
+            函数定义：
+                function关键字声明一个函数
+                plus 函数名
+                (max) 传入plus函数的形参， (100)或者(200)是实参
+                function plus(max){
+                    // 函数内的代码块，,函数体 ，
+
+                    return total // 返回给调用该函数的变量的数值 
+
+                    // 假如函数内部没有返回值，接收的变量为undefined
+                }
+        */ 
+    </script>
+</body>
+
+</html>

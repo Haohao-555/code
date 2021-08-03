@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-多行文本</title>
+</head>
+
+<body>
+    <!-- 注意：不支持 value 属性 -->
+    <form action="" method="get">
+        <label for="proposal">请提出宝贵的建议</label><br>
+        <!--
+             cols：文本域的可视宽度：必须为整数
+             rows: 元素的输入文本的行数（显示高度）
+             特点：保留换行符和空格，本文默认对齐方式是左对齐
+         -->
+        <textarea id="proposal" placeholder="请输入您宝贵意见" name="username" id="" cols="20" rows="5" autocomplete="on">
+            kljfds 
+            ljkasdf  
+            lasd法律 
+            
+        </textarea><br>
+
+        <button>提交信息</button>
+    </form>
+</body>
+
+</html>

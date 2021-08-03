@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-背景属性2</title>
+    <style>
+        .box {
+            width: 360px;
+            height: 360px;
+            padding: 30px;
+            border: 40px solid red;
+            background-color: #ccc;
+            background-image: url(./images/2.jpg);
+            background-size: 200px;
+            background-repeat: no-repeat;
+            /* background-position: center; */
+
+            /* background-origin: padding-box; */
+            /* background-origin: border-box */
+            /* background-origin: content-box */
+        }
+
+        .box {
+            width: 360px;
+            height: 360px;
+            padding: 30px;
+            border: 40px solid red;
+            background-color: #ccc;
+            background-image: url(./images/3.jpg);
+            background-size: 200px;
+            background-repeat: no-repeat;
+            /* background-position: center; */  
+
+            /* background-clip: padding-box; */
+            /* background-clip: border-box; */
+            background-clip: content-box;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h2>background-origin (背景定位)</h2>
+    <div class="box"></div>
+
+
+    <h2>background-clip (背景的绘制区域)</h2>
+    <div class="box1"></div>
+</body>
+
+</html>

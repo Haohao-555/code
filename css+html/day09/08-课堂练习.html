@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-课堂练习</title>
+    <style>
+        .demo {
+            background: #eee;
+            width: 335px;
+            height: 175px;
+            padding: 5px;
+            border-radius: 10px;
+            margin: 20px auto
+        }
+
+        .demo>div {
+            width: 80px;
+            height: 40px;
+            background: #fff;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 40px;
+            color: gray
+        }
+
+        .demo div:nth-child(1) {
+            float: right;
+            height: 85px;
+            line-height: 85px;
+        }
+
+        .demo div:nth-child(n+2) {
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .demo div:nth-child(11) {
+            float: right;
+            height: 85px;
+            line-height: 85px;
+            margin-right: 0;
+            background: rgb(25, 137, 250);
+            color: white;
+        }
+
+        .demo div:nth-child(12) {
+            width: 165px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        每个按钮的宽高是多少？ 80px *40px
+        边距是多少？ 5px
+
+        总体盒子的宽度： 4 * 80 + 5 * 5 = 345px
+        总体盒子的高度： 4 * 40 + 5 * 5 = 185px
+     -->
+
+    <div class="demo">
+        <div>X</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>完成</div>
+        <div>0</div>
+        <div>.</div>
+    </div>
+</body>
+
+</html>

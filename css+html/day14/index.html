@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣学网</title>
+    <!-- 引入去除默认样式的css文件 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <!-- 引入主题颜色 -->
+    <link rel="stylesheet" href="./css/base.css">
+    <!-- 引入头部模块样式 -->
+    <link rel="stylesheet" href="./css/header.css">
+    <style>
+        .container {
+            background: #fff;
+            /* min-width: max-content */
+        }
+
+        /* 轮播图 */
+        .banner {
+            width: 100%;
+            overflow: hidden;
+            min-width: 960px;
+            /* min-width: max-content */
+            /* 去除由于换行或者空格所致的小间隙 */
+            font-size: 0;
+
+            /* 子元素用相对于该父元素定位 */
+            position: relative;
+        }
+
+        .banner .banner-pics {
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        .banner .banner-pics>li {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .banner .banner-pics>li>a {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .banner .banner-pics>li>a img {
+            width: 100%;
+        }
+
+        /* 左右 */
+        .prev-btn,
+        .next-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--theme-blue);
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            border-radius: 50%;
+            opacity: .2;
+            background-image: url(./images/right.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .prev-btn {
+            left: 250px;
+            background-image: url(./images/left.png);
+        }
+
+        .next-btn {
+            right: 250px;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            .prev-btn {
+                left: 100px;
+            }
+
+            .next-btn {
+                right: 100px;
+            }
+        }
+
+        /* 小圆点 */
+        .banner .page-control {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            /* 让标签自动计算水平居中的偏移宽度 */
+            /* margin-left: calc(50%); */
+            margin-left: -22px;
+        }
+
+        .banner .page-control .page-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--theme-gray);
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .banner .page-control .page-dot:last-child {
+            margin-right: 0;
+        }
+
+        /* 选中时的高亮 */
+        .banner .page-control .page-dot.active {
+            width: 10px;
+            height: 10px;
+            background: var(--theme-blue);
+        }
+
+        /* 热门学校 */
+        .container .wrapper {
+            width: 1200px;
+            margin: 0px auto;
+            background: #fff;
+        }
+
+
+        @media only screen and (max-width: 1200px) {
+            .container .wrapper {
+                width: 960px;
+            }
+        }
+
+        .wrapper .hot-school {
+            position: relative;
+            height: 40px;
+            /* border: 2px solid orange; */
+            padding:60px 0 30px 0;
+        }
+
+        .wrapper .hot-school h2 {
+            display: inline-block;
+            font-size: 40px;
+            color: #333;
+            vertical-align: bottom;
+            margin-right: 20px;
+
+        }
+
+        .wrapper .hot-school h3 {
+            display: inline-block;
+            /* vertical-align: bottom */
+            font-size: 25px;
+            color: var(--theme-gray);
+        }
+
+        .wrapper .hot-school p {
+            font-size: 20px;
+            color: var(--theme-blue);
+            display: inline-block;
+            vertical-align: bottom;
+            position: absolute;
+            bottom: 30px;
+            right: 0;
+        }
+
+        /* <!-- 课程与讨论 --> */
+
+        .lesson {
+            display: flex;
+            /* border: 4px solid red; */
+        }
+
+        .lesson .category-lesson {
+            flex: 1;
+        }
+
+        .lesson .hot-discuss {
+            width: 262px;
+            flex: 0 0 262px;
+        }
+
+        /* 课程分类 */
+        .lesson .category-lesson {
+            /* width: 32%; */
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .lesson-content {
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px #eee;
+            margin-bottom: 24px;
+            margin-right: 24px;
+        }
+
+        .lesson-content img {
+            width: 100%;
+            height: 200px;
+
+        }
+
+        .lesson-content .lesson-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin: 20px 0 14px 15px
+        }
+
+        .lesson-content .rating-score {
+            padding-left: 15px;
+
+        }
+
+        .lesson-content .rating-score .star {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url(./images/star-on-24.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .lesson-content .rating-score .score {
+            margin-left: 7px;
+            color: #fec45a;
+            font-size: 20px;
+        }
+        .lesson-label{
+            padding: 17px 0 14px 15px
+        }
+        .lesson-label span{
+            padding: 3px 10px;
+            color: white;
+            background:var(--theme-blue);
+            font-size: 15px;
+            border-radius: 5px;
+        }
+        .lesson-content .address {
+            padding: 0 0px 20px 15px;
+            font-size: 15px;
+            color: var(--theme-gray);
+        }
+
+        /* 讨论 */
+        .hot-discuss {
+            /* border: 1px solid orange ; */
+            padding: 0 10px;
+
+        }
+        .hot-discuss .discuss-header{
+            width: 100%;
+            font-size: 0;
+        }
+        .hot-discuss .discuss-header .discuss-title{
+            display: inline-block;
+            font-size: 30px;
+            color: #333;
+            font-weight: 500;
+            width: 65%;
+            vertical-align: middle;
+            /* border: 2px solid blue; */
+
+            /* 隐藏三剑客 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 28px;
+
+        }
+        .hot-discuss .discuss-header .discuss-more{
+            display: inline-block;
+            font-size: 15px;
+            color: var(--theme-blue);
+            /* vertical-align: middle; */
+        }
+
+
+        .hot-discuss .discuss-hot{
+           
+            margin-bottom: 37px;
+            
+        }
+        .hot-discuss .discuss-hot h3{
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+        }
+        .hot-discuss .discuss-hot p{
+            margin-top: 14px;
+            color: var(--theme-gray);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部栏 -->
+    <header class="edu-header">
+        <!-- 搜索栏 -->
+        <div class="header-bar">
+            <!-- 左边logo -->
+            <div class="logo"></div>
+
+            <!-- 中间搜索框 -->
+            <div class="search">
+                <i class="local-icon"></i>
+                <span class="city">广州</span>
+                <input type="search" name="search" id="search" placeholder="搜索培训机构或者课程">
+                <label for="search">搜索</label>
+            </div>
+
+            <!-- 个人中心 -->
+            <div class="link">
+                <a href="javascript:;">足迹</a>
+                <a href="javascript:;">消息</a>
+                <a href="javascript:;">收藏</a>
+                <a href="javascript:;">
+                    <img src="./images/avatar.png" alt="头像">
+                </a>
+            </div>
+
+        </div>
+
+        <!-- 导航栏 -->
+        <nav class="header-nav">
+            <ul class="clearfix">
+                <li class="nav-item active"><a href="javascript:;">主页</a></li>
+                <li class="nav-item"><a href="javascript:;">找学校</a></li>
+                <li class="nav-item"><a href="javascript:;">问答社区</a></li>
+                <li class="nav-item"><a href="javascript:;">咨询文章</a></li>
+                <li class="nav-item"><a href="javascript:;">趣学专题</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- 头部栏END -->
+
+    <!-- 页面主题部分 -->
+    <main class="container">
+        <!-- banner -->
+        <div class="banner">
+            <!-- 轮播图 -->
+            <ul class="banner-pics">
+                <li class="banner-item"><a href="javascript:;"><img src="./images/banner.jpg" alt="学习中,勿扰"></a></li>
+                <li class="banner-item"><a href="javascript:;"><img src="./images/banner.jpg" alt="学习中,勿扰"></a></li>
+            </ul>
+
+            <!-- 上下页的按钮 -->
+
+            <span class="prev-btn">&gt;</span>
+            <span class="next-btn">&gt;</span>
+
+            <!-- 小圆点 -->
+            <div class="page-control">
+                <span class="page-dot">1</span>
+                <span class="page-dot active">2</span>
+                <span class="page-dot">3</span>
+            </div>
+        </div>
+
+        <!-- 热门学校 -->
+        <div class="wrapper">
+            <!-- 头部介绍 -->
+            <div class="hot-school">
+                <h2>广州热门学校</h2>
+                <h3>报课不迷路</h3>
+                <p>更多热门学校&gt;</p>
+            </div>
+
+            <!-- 课程与讨论 -->
+
+            <div class="lesson">
+                <!-- 课程分类 -->
+                <div class="category-lesson">
+
+
+                    <div class="lesson-content">
+                        <!-- 图片 -->
+                        <img src="./images/智力围棋.png" alt="">
+                        <div class="lesson-name">智力围棋</div>
+                        <p class="rating-score">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="score">5.0分</span>
+                        </p>
+                        <!-- 培训方向 -->
+                        <p class="lesson-label">
+                            <span>IT</span>
+                            <span>互联网培训</span>
+                        </p>
+                        <!-- 地址 -->
+                        <p class="address">天河公园/上社</p>
+                    </div>
+                    <div class="lesson-content">
+                        <!-- 图片 -->
+                        <img src="./images/智力围棋.png" alt="">
+                        <div class="lesson-name">智力围棋</div>
+                        <p class="rating-score">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="score">5.0分</span>
+                        </p>
+                        <!-- 培训方向 -->
+                        <p class="lesson-label">
+                            <span>IT</span>
+                            <span>互联网培训</span>
+                        </p>
+                        <!-- 地址 -->
+                        <p class="address">天河公园/上社</p>
+                    </div>
+                    <div class="lesson-content">
+                        <!-- 图片 -->
+                        <img src="./images/智力围棋.png" alt="">
+                        <div class="lesson-name">智力围棋</div>
+                        <p class="rating-score">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="score">5.0分</span>
+                        </p>
+                        <!-- 培训方向 -->
+                        <p class="lesson-label">
+                            <span>IT</span>
+                            <span>互联网培训</span>
+                        </p>
+                        <!-- 地址 -->
+                        <p class="address">天河公园/上社</p>
+                    </div>
+                    <div class="lesson-content">
+                        <!-- 图片 -->
+                        <img src="./images/智力围棋.png" alt="">
+                        <div class="lesson-name">智力围棋</div>
+                        <p class="rating-score">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="score">5.0分</span>
+                        </p>
+                        <!-- 培训方向 -->
+                        <p class="lesson-label">
+                            <span>IT</span>
+                            <span>互联网培训</span>
+                        </p>
+                        <!-- 地址 -->
+                        <p class="address">天河公园/上社</p>
+                    </div>
+                    <div class="lesson-content">
+                        <!-- 图片 -->
+                        <img src="./images/智力围棋.png" alt="">
+                        <div class="lesson-name">智力围棋</div>
+                        <p class="rating-score">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="score">5.0分</span>
+                        </p>
+                        <!-- 培训方向 -->
+                        <p class="lesson-label">
+                            <span>IT</span>
+                            <span>互联网培训</span>
+                        </p>
+                        <!-- 地址 -->
+                        <p class="address">天河公园/上社</p>
+                    </div>
+
+
+                </div>
+                <!-- 热门讨论 -->
+                <div class="hot-discuss">
+                    <div class="discuss-header">
+                        <h2 class="discuss-title">热门讨论内容超出</h2>
+                        <p class="discuss-more">(去社区看看)</p>
+                    </div>
+
+                    <div class="discuss-hot">
+                        <h3>我的假期学习计划</h3>
+                        <p>XX万次浏览</p>
+                    </div>
+
+                    <div class="discuss-hot">
+                        <h3>少儿英语该如何启蒙？</h3>
+                        <p>XX万次浏览</p>
+                    </div>
+                    <div class="discuss-hot">
+                        <h3>掌握学习语言的技巧</h3>
+                        <p>XX万次浏览</p>
+                    </div>
+                    <div class="discuss-hot">
+                        <h3>掌握学习语言的技巧</h3>
+                        <p>XX万次浏览</p>
+                    </div>
+                    <div class="discuss-hot">
+                        <h3>生活就像海洋，只有意志坚强的人才能到达彼岸</h3>
+                        <p>XX万次浏览</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+    <!-- 页面主题部分 END -->
+
+    <!-- 尾部 -->
+    <!-- 尾部 END -->
+</body>
+
+</html>

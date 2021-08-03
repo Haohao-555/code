@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-边框制作三角形</title>
+    <style>
+        .box {
+            width: 0px;
+            height: 0px;
+            /* background: orange; */
+
+            border-width: 20px;
+            /* border-color: red green blue skyblue; */
+            border-style: solid;
+
+            /* border-right: 20px solid transparent;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent; */
+            border-color: transparent;
+            border-left-color: orange;
+        }
+
+        .box1 {
+            width: 0;
+            height: 0;
+
+            /* 换一种写法 */
+            border: 20px solid transparent;
+            border-top-color: red;
+        }
+
+
+        .box2 {
+            width: 0;
+            height: 0;
+
+            border: 20px solid transparent;
+            border-bottom-color: red;
+        }
+
+        .box3 {
+            width: 0;
+            height: 0;
+
+            border: 20px solid transparent;
+            border-right-color: red;
+        }
+
+        /* 借鉴小米商场的写法 */
+        .boxMi {
+            width: 0;
+            height: 0;
+            border-width: 0 20px 20px 20px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0,0) rgba(0, 0, 0,0) #ff6700 rgba(0, 0, 0,0) ;
+        }
+        /* 
+          右三角： border-width 的右边框长度为 0
+                  border-color 的左边给颜色
+        */
+        .right {
+            width: 0;
+            height: 0;
+            border-width: 20px 0px 20px 20px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0,0) rgba(0, 0, 0,0) rgba(0, 0, 0,0) skyblue;
+        }
+
+        .left {
+            width: 0;
+            height: 0;
+            border-width: 20px 20px 20px 0px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0,0) orange rgba(0, 0, 0,0) rgba(0, 0, 0,0) ;
+        }
+
+        .father {
+            height: 140px;
+            background: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- content是否能为0？ 可以 -->
+    <div class="box"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+
+    <h2>小米商场三角形的写法</h2>
+    <div class="father">
+        <div class="boxMi"></div>
+        <div class="right"></div>
+        <div class="left"></div>
+    </div>
+
+</body>
+
+</html>

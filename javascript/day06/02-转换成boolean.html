@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-转换成boolean</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+            转换为布尔类型，： Boolean() 布尔包装函数，自动把别的数据类型转成布尔类型
+        */
+        // 字符串类型，值的长度为1
+        var str = " ";
+        // console.log(s)
+        // 把其他数据类型转成布尔类型（对象）
+        var bol1 = new Boolean(str);
+        // 推荐（布尔包装函数）， 字面量 true 或者false
+        var bol2 = Boolean(str);
+        console.log("bol1 ==>", bol1)
+        console.log("bol2 ==>", bol2)
+
+
+        // 0 -0, null,undefined, false, "false", NaN, Infinity, -Infinity, "", " ", [], {}
+        console.log("0 ==>", Boolean(0))
+        console.log("-0 ==>", Boolean(-0))
+        console.log("null ==>", Boolean(null))
+        console.log("undefined ==>", Boolean(undefined))
+        console.log("false ==>", Boolean(false))
+        console.log("'false' ==>", Boolean("false"))
+        console.log("NaN ==>", Boolean(NaN))
+        console.log("Infinity ==>", Boolean(Infinity))
+        console.log("-Infinity ==>", Boolean(-Infinity))
+        console.log("' ' ==>", Boolean(" "))
+        console.log("'' ==>", Boolean(""))
+        console.log("! ==>", Boolean(!"adfasfd"))
+        console.log("数组 ==>", Boolean([false, false, false]))
+        console.log("对象 ==>", Boolean({}))
+
+        // if(变量 == true){}
+
+
+        // boolean()和if判断联系使用
+        var num1 = new Boolean(0)
+
+        var num2 = Boolean(0)
+        console.log("num1 ==>", num1)
+
+        // num1在if判断中始终为true, 因为num1是对象,即使里面的值为false(数组也是一样道理)
+        // 如何取到字面量布尔值,需要用到num1.valueOf()
+        if (num1) {
+            console.log("num1成立,执行")
+        }
+        console.log("num1.valueOf()取值==>", num1.valueOf())
+
+        if (num2 == true) {
+            console.log("num2成立,执行")
+        } else {
+            console.log("num2不成立,执行")
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-select</title>
+</head>
+
+<body>
+    <!-- slected属性代表被选中 -->
+    <form action="" method="GET">
+        <h3>select单选</h3>
+        <select name="slt" id="">
+            <option value="apple">苹果</option>
+            <option value="watermelon">西瓜</option>
+            <option value="banana" selected="selected">香蕉</option>
+            <option value="orange">橙子</option>
+        </select>
+
+        <h3>分组选中—— 单选</h3>
+        <select name="option">
+            <optgroup label="分组名称1">
+                <option>Tyrannosaurus</option>
+                <option>Velociraptor</option>
+                <option>Deinonychus</option>
+            </optgroup>
+            <optgroup label="分组名称2">
+                <option>Diplodocus</option>
+                <option>Saltasaurus</option>
+                <option>Apatosaurus</option>
+            </optgroup>
+        </select>
+
+
+        <!-- select 多个选择 -->
+        <div>
+            <!--进行多选的时候要按住ctrl，否则就是单选 -->
+            <h3>select多选</h3>
+            <select name="multi" id="" multiple>
+                <option value="apple">苹果</option>
+                <option value="watermelon">西瓜</option>
+                <option value="banana" selected="selected">香蕉</option>
+                <option value="orange">橙子</option>
+            </select>
+        </div>
+
+        <div>
+            <h3>datalist</h3>
+            <!-- list：跟输入input联动，绝大部分input元素,自动填充选项的 `<datalist>` 的id值 -->
+            <input type="text" name="phone" list="phone_list">
+            <datalist id="phone_list">
+                <option value="华为"></option>
+                <option value="苹果"></option>
+                <option value="vivo"></option>
+                <option value="oppo"></option>
+            </datalist>
+        </div>
+
+
+
+
+        <input type="submit" value="提交信息">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-元素实现媒体查询</title>
+    <style>
+        p {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+    <style media="all and (max-width: 500px)">
+        p {
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        也可以将媒体查询语句配合 **@import** 使用响应式导入其他样式表，但是我们**不建议使用**。因为他影响浏览器性能
+        /* 适用于所有屏幕的 基础样式 */
+        @import url("style.css") screen;
+        /* 应用于屏幕为纵向时（高度大于等于宽度）的样式 */
+        @import url('landscape.css') screen and (orientation: portrait);
+        /* 应用于打印设备样式 */
+        @import url("print.css") print
+    -->
+
+    <p>p标签</p>
+</body>
+
+</html>

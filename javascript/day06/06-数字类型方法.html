@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-数字类型方法</title>
+</head>
+
+<body>
+    <script>
+        /*
+            js数字
+                数字进制: 
+                    十进制: 0123456789;  
+                    二进制: 0 1(逢2进1)(cpu是二进制)              表示法: 0B或者0b开头后面接上0或者1的值
+                    八进制: 01234567(逢8进1)                      表示法: 0开头后面接上8之内的数字,否则变成十进制
+                    十六进制: 0123456789abcdef(逢16进1)            表示法: 0x开头后面接上16之内的数字(10-15为a-f)
+
+                    2\8\16进制转成十进制:计算方式如下:
+                    十进制转成2\8\16进制: 除2\8\16反向取余
+              
+
+        */
+        //   十进制
+        var a = 20; 
+        //   二进制
+        var bin2 = 0b11;   // 1 * 2^1 + 1* 2 ^0 = 2 + 1 = 3
+        // 八进制
+        var bin8 = 022;   // 2 * 8^1 + 2 * 8^0 = 18
+        // 十六进制
+        var bin16 = 0xff;  // 15 * 16^1 + 15 * 16^0 = 240 + 15 = 255
+        console.log('0b10二进制==>', bin2)
+        console.log('020二进制==>', bin8)
+        console.log('ff二进制==>', bin16)
+    </script>
+</body>
+
+</html>

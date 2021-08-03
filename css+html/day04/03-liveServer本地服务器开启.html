@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-liveServer本地服务器开启</title>
+</head>
+
+<body>
+    <h2>h2标签</h2>
+    <!-- 
+        通过命令行查询ip地址： ipconfig ： 192.168.66.2 —— 
+        在同一个内网内可以（热点或者wifi）
+     -->
+    <!-- 访问：http://192.168.66.2:5500 -->
+    <!-- 协议：   ip地址      端口号 -->
+
+    <!-- 
+            拓展知识点：协议、ip地址和端口号某一个不一致的话，都算不同源(浏览器有同源策略)
+
+
+            假如访问该图片的地址：file:///C:/Users/粤嵌/Desktop/GZ2145/day04/images/1.jpg
+            （1）用本地服务器（live server）开启浏览器，则无法显示  http://127.0.0.1:5500
+            （2) 用本地文件协议打开就行访问。                      file:///C:/Users/%E7%B2%A4%E5%B5%8C/Desktop/GZ2145/day04/01-img%E5%B1%9E%E6%80%A7%E8%AE%B2%E8%A7%A3.html
+         -->
+
+         <!-- <img src="./" alt=""> -->
+
+</body>
+
+</html>

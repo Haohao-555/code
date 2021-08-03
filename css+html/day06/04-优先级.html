@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-优先级</title>
+
+    <style>
+        /* * {
+            color: red !important;
+        } */
+
+        #boxId {
+            background: blue;
+            color: white;
+        }
+
+        .box1 {
+            background: green;
+            color: white;
+        }
+
+        /* div {
+            background: #ccc;
+            color: white;
+        } */
+
+        /* 优先级复杂点的讲解 */
+
+        .box2 #sonId1 {
+            background: skyblue;
+        }
+
+        #boxId2 .son1 {
+            background: yellow;
+            color: white;
+        }
+
+        /* 再次确认优先级 */
+
+        /* 1   100     10  = 111 */
+        div #sonId2 .grand {
+            background: skyblue;
+        }
+        /* 1  1    100 = 102 */
+        /* div div #grandId {
+            background: orange;
+        } */
+
+        /* 10  1   100   = 111 */
+        .box2 div #grandId {
+            background: orange;
+        }
+    </style>
+
+    <!-- 依据权重来判断，就是通过权重去计算【可以称为是css的特异性】 -->
+    <link rel="stylesheet" href="./css/css.css">
+</head>
+
+<body>
+    <!--  
+        结论：
+        （1）在优先级相同的情况下，遵从从上到下的原则,后面的相同的样式覆盖前面的
+        （2） !important关键字 > 内联样式(元素自身style设置属性) > id 选择器 > 类选择器 > 元素选择器 > 通配符选择器 
+                                                                  100         10         1
+             内部样式 > 外部样式
+        （3）先从高等级进行比较，高等级相同时，再比较低等级的，以此类推；
+        （4）css属性后面加 !important 时，无条件绝对优先（比内联样式还要优先）；
+    -->
+
+    <div id="boxId" class="box1">标签1</div>
+    <p class="p1">标签2</p>
+
+    <h2>复杂点</h2>
+    <div id="boxId2" class="box2">
+        <div class="son1" id="sonId1" style="color: black;">div子元素1</div>
+
+        <div class="son2" id="sonId2">
+            <div class="grand" id="grandId">
+                孙子元素2
+            </div>
+        </div>
+
+        <div class="son3" id="sonId3">div子元素3</div>
+
+    </div>
+</body>
+
+</html>

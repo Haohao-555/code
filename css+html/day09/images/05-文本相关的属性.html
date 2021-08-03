@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            /* font-size: 20px; */
+            /* 1-text-indent ( 缩进文本 ) */
+            text-indent: 4em;
+            /* 测试行内元素是否有该属性值 */
+            /* display: inline; */
+
+        }
+
+        .box2 {
+            /* text-align: center; */
+            text-align: right;
+            /* 测试行内元素是否有该属性值 */
+            /* display: inline; */
+        }
+
+        .box3 {
+            letter-spacing: 5px;
+        }
+
+        .box4 {
+            word-spacing: 10px;
+
+        }
+
+        .box5 {
+            /* 全部英文大写 */
+            /* text-transform: uppercase */
+            text-transform: capitalize
+        }
+
+        .box6 {
+            /* text-decoration: underline; */
+            /* text-decoration: overline; */
+            text-decoration: line-through;
+
+        }
+
+        .box6 a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        **介绍**：在 CSS 中可以通过设置文本属性定义文本的外观。
+        如：改变文本的颜色、字符间距，对齐文本，装饰文本，对文本进行缩进，等等。
+    </h2>
+    <h3> 1-text-indent ( 缩进文本 ) </h3>
+    <div class="box1">
+        CNKI全网资源，一站式快速搜索：覆盖中国90%以上的学术资源和海外重要学术文献数据库资源
+        航空行业情报，智能分类推送：领域专家学者的深度分析研究，从行业发展，科技研发再到管理经营；内容智能订阅推送
+        资源按需订购，最佳性价比组合：根据企业的实际需求进行资源的合理订购；价值资源+免费服务，您最佳的性价比组合
+        企业个性化方案，专属情报平台：这还不够？我们将按照您的个性化要求，再次为您开发知识服务内容和功能
+    </div>
+
+    <h3> 2-text-align ( 文本对齐方式 )</h3>
+    <!-- 
+        - left(默认)：把文本排列到左边。
+        - left(默认)：把文本排列到左边。
+        - right：	把文本排列到右边。
+        - center：	把文本排列到中间。
+        - justify：	实现两端对齐文本效果。（常用于打印输出）
+        - inherit：	规定应该从父元素继承 text-align 属性的值。
+     -->
+    <div class="box2">
+        CNKI全网资源，一站式快速搜索：
+    </div>
+
+    <h3>3-letter-spacing ( 字母或者字符的间距 )</h3>
+    <div class="box3">
+        该属性定义了在文本字符框之间插入多少空间。由于字符字形通常比其字符框要窄，
+        指定长度值时，会调整字母之间通常的间隔。因此，normal 就相当于值为 0。
+    </div>
+
+    <h3>4-word-spacing ( 单词的间距 —— 包括空格)</h3>
+    <div class="box4">
+        If I were girl, I will marry you.
+        该属性定义了在文本字符框之间插入多少空间。由于字符字形通常比其字符框要窄，
+        指定长度值时，会调整字母之间通常的间隔。因此，normal 就相当于值为 0。
+    </div>
+
+    <h3>5-text-transform ( 文本转换 )</h3>
+    <div class="box5">
+
+        该属性定义 if I were girl, I will marry you.了在文本字符框之间插入多少空间。由于字符字形通常比其字符框要窄，
+        指定长度值时，会调整字母之间通常的间隔。因此，normal 就相当于值为 0。
+    </div>
+
+    <h3>6-text-decoration ( 文本装饰 )</h3>
+    <div class="box6">
+        该属性定义 <a href="javaScript:;"> if I were girl, I will marry you.</a>了在文本字符框之间插入多少空间。由于字符字形通常比其字符框要窄，
+        指定长度值时，会调整字母之间通常的间隔。因此，normal 就相当于值为 0。
+    </div>
+
+    
+
+</body>
+
+</html>

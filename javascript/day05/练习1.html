@@ -1,0 +1,85 @@
+<!--
+ * @Date: 2021-07-30 09:34:50
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\javascript\day05\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .welcome {
+        word-break: normal;
+        width: 100px;
+        font-size: 16px;
+        line-height: 10px;
+        letter-spacing: -5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="welcome">欢迎访问我的个人博客 https://haohaostudy.xyz</p>
+
+    <script>
+            //   // 猴子偷桃
+            //   var peach = function (n) {
+            //     if (n == 1) {
+            //       return 1;
+            //     } else {
+            //       return 2 * peach(n - 1) + 2;
+            //     }
+            //   };
+
+            //   var day = 4;
+            //   var res1 = peach(day); // 1534
+            //   console.log(day+"天前一共摘了", res1, "个桃");
+            //   var dayNum = function (num, day) {
+            //     var oddNum = 0;
+            //     var evenNum = 0;
+            //     for (var i = day; i >= 1; i--) {
+            //       if (i % 2 == 0) {
+            //         evenNum = evenNum + (num / 2) + 1;
+            //         num = num - num / 2 - 1;
+            //       }else if (i == 1) {
+            //         oddNum = oddNum + num;
+            //       }else {
+            //         oddNum = oddNum + num / 2 + 1;
+            //         num = num - num / 2 - 1;
+            //       }
+            //     }
+            //     console.log("奇数天一共吃", oddNum);
+            //     console.log("偶数天一共吃", evenNum);
+            //   };
+            //   dayNum(res1, day);
+
+            // 斐波那契数
+            // var fibonacciArr = [0, 1];
+            // var fibonacci = function (n) {
+            //   if (n == 0) {
+            //     return fibonacciArr[0];
+            //   } else if (n == 1) {
+            //     return fibonacciArr[1];
+            //   } else {
+            //     return fibonacci(n - 1) + fibonacci(n - 2);
+            //   }
+            // };
+            // var index = 8;
+            // var res3 = fibonacci(index);
+            // console.log("斐波那契数数组下标为" + index + "的值为" + res3);
+
+            var car = {
+              brand: '雪佛兰',
+              model: 'Bel Air',
+              product_day: 1957,
+              carrying: 4,
+              color: 'red',
+              mileage: 1000,
+               
+            };
+    </script>
+  </body>
+</html>

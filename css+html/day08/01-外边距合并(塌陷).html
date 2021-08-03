@@ -1,0 +1,101 @@
+<!--
+ * @Date: 2021-07-15 17:44:48
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day08\01-外边距合并(塌陷).html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-外边距合并(塌陷)</title>
+    <style>
+        /* 
+            两个嵌套关系的（父子关系）块级元素，当父元素有上外边距或者没有上外边距（margin-top），子元素也有上外边距（margin-top）的时候。
+            两个上外边距会合成一个上外边距，以值相对较大的上外边距值为准。【上外边距值是看谁的值大，就以谁为准】
+
+            外边距塌陷和外边距合并问题：是重点，难点：css中的一个bug，上下外边距存在的bug，左右外边距就不存在此问题
+
+
+            外边距塌陷的解决办法：
+                给父元素添加代码段：
+                设置上边框（border-top: 1px solid transparent;）  【第1种解决办法】
+                设置内边距（padding-top: 1px;）(不建议)
+
+                触发BFC 【BFC 即块级格式化上下文】（推荐）
+                子元素或者父元素的float不为none
+                子元素或者父元素的position不为relative或static
+                父元素的overflow为auto或scroll或hidden
+                父元素的display的值为inline-block
+        */
+
+
+        .father {
+            width: 400px;
+            height: 400px;
+            background: skyblue;
+            display: inline-block;
+
+            /* 解决方法： */
+            /* border-top: 1px solid transparent; */
+            /* padding-top: 1px; */
+            /* display: inline-block; */
+            /* float: left; */
+            /* position: absolute; */
+            /* position: fixed; */
+            /* overflow: scroll; */
+
+            margin-top: 80px;
+            /* margin-left: -50px */
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background: #f0f0f0;
+            margin-top: 80px;
+            display: inline-block;
+            margin-bottom: 100px;
+        }
+
+        /* 兄弟关系 */
+        .bro1 {
+            height: 100px;
+            background: #ccc;
+            margin-bottom: 50px;
+            border: 1px solid #ccc;
+        }
+
+        .bro2 {
+            height: 100px;
+            background: red;
+            margin-top: 100px;
+            overflow: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="father">
+        <div class="son"></div>
+    </div> -->
+
+
+    <!-- 外边距合并的解决办法：
+    只设置其中一个块级元素的margin值即可（推荐）
+    给其中一个元素添加父元素，然后触发BFC规则（不推荐） -->
+
+    <h2>兄弟元素</h2>
+
+   
+    <div class="bro1"></div>
+    <div class="bro2"></div>
+
+
+</body>
+
+</html>

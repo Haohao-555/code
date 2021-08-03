@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-单元格合并</title>
+</head>
+
+<body>
+    <!-- 
+            HTML为表格提供了`<caption>`元素用来做表格的标题，
+            一般情况下`<caption>`会被作为table的第一个标签。
+            但是该标签可以放在table任意地方，最终显示显示时都会出现在table的最上方。
+         -->
+
+    <table border="1px" cellpadding="10px" cellspacing="0" align="center">
+        
+        <tr>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+        </tr>
+
+        <tr>
+            <td rowspan="3">语文</td>
+            <td>体育</td>
+            <td>英语</td>
+            <td>数学</td>
+            <td>政治</td>
+        </tr>
+        <tr>
+            <!-- <td>语文</td> -->
+            <td>数学</td>
+            <td>英语</td>
+            <td>自习</td>
+            <td>数学</td>
+        </tr>
+        <tr>
+            <!-- <td>语文</td> -->
+            <td>化学</td>
+            <td>英语</td>
+            <td colspan="2">数学</td>
+            <!-- <td>数学</td> -->
+        </tr>
+        <caption>9年级3班课程表</caption>
+    </table>
+
+
+
+
+</body>
+
+</html>

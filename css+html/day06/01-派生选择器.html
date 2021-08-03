@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-派生选择器</title>
+    <style>
+        /* 查询页面中所有class名为two的div元素 */
+        /* 交集选择器 */
+        div.boxOne {
+            background: orange;
+        }
+
+        p#p {
+            color: skyblue;
+        }
+
+        /* 后代选择器 */
+        .boxTwo .son1 {
+            color: red;
+        }
+
+        .boxTwo strong {
+            color: sandybrown;
+            font-size: 35px;
+        }
+
+        /* 直接子元素 */
+        .boxTwo>strong {
+            color: seagreen;
+        }
+
+        /* 相邻兄弟选择器 */
+        .boxThree + .boxP {
+            color: sienna;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1、交集选择器 -->
+    <h2>1、交集选择器</h2>
+    <div class="boxOne">盒子1</div>
+    <p class="boxOne" id="p">p标签</p>
+    <p class="boxOne">p标签2</p>
+
+    <!-- 2、后代选择器 -->
+    <h2>2、后代选择器</h2>
+    <div class="boxTwo son1">
+        <strong>子代元素的strong</strong>
+        <div class="son1">div子元素1</div>
+        <div class="son2">
+            <strong>后台元素strong</strong>
+        </div>
+        <div class="son3">div子元素3</div>
+        <div class="son4">div子元素4</div>
+    </div>
+
+    <h3>3、相邻兄弟选择器</h3>
+    <div class="boxThree">盒子3</div>
+    <p class="boxP">p标签</p>
+
+</body>
+
+</html>

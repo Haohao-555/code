@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-hack</title>
+    <style>
+        .test {
+            color: blue;
+        }
+
+        .test1 {
+            color: black;
+            /* 所有 */
+            /* color: white !important; */
+            /* 除了IE6外 */
+            color: orange\9\0;
+            /* IE9/10 */
+
+            /* color: green\0; */
+            /* IE8/9/10 */
+
+            *color: rgb(180, 180, 53);
+            /* IE6/7 */
+            /* +color: gold; */
+            /* IE6/7 */
+            /* *+color: blue; */
+            /* IE6/7 */
+            /* _color: red; */
+            /* IE6 */
+        }
+
+        @media \0screen\,screen\9 {
+
+            /*  IE6/7/8 */
+            .test2 {
+                color: gold;
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>条件级hack</h2>
+    <!--[if IE]>
+<p>你在非IE中将看不到我的身影</p>
+<![endif]-->
+
+    <!--[if gte IE 6]>
+<style>
+.test{color:red;}
+</style>
+<![endif]-->
+
+
+    <!--[if ! IE 7]>
+<style>
+.test{color:orange;}
+</style>
+<![endif]-->
+
+    <div class="test">IE版本6以上为红色</div>
+
+
+    <h2>属性级hack</h2>
+    <div class="test1">属性级hack测试</div>
+
+    <h2>选择器级hack</h2>
+    <div class="test2">选择器级hack测试</div>
+
+</body>
+
+</html>

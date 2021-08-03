@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-多列布局使用</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 用伪元素after清除浮动 */
+        .clearfix::after {
+            /* 必须要写 */
+            content: "";
+            /* 变成块级元素 */
+            display: block;
+            /* 清除浮动 */
+            clear: both;
+        }
+
+        .father {
+            width: 1200px;
+            margin: 0 auto;
+            border: 5px solid orange;
+        }
+
+
+
+        .father li {
+            /* 要求：一行5个盒子，4个“间隙”(5px)
+                设置盒子和盒子之间的右外边距
+                手动计算： （1200 - 4 * 5）/ 5 = 236px
+
+                css3可以直接计算
+              */
+            /* width: 236px; */
+            width: calc((1200px - 5px * 5 + 5px) / 5);
+            /* width: calc((100% - 5px * 5 + 5px) / 5); */
+            height: 100px;
+            /* 让他们在一行内显示 */
+            float: left;
+            margin-bottom: 10px;
+            margin-right: 5px;
+        }
+
+        .father li:nth-child(5n) {
+            margin-right: 0;
+        }
+
+        /* 奇数盒子 */
+        .father li:nth-child(2n + 1) {
+            background: pink;
+        }
+
+        /* 奇数盒子 */
+        .father li:nth-child(2n) {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h2></h2> -->
+    <ul class="father clearfix">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+    </ul>
+</body>
+
+</html>

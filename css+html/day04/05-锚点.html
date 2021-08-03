@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05-锚点</title>
+    <style>
+        .less {
+            /* border: 1px solid orange; */
+            background: skyblue;
+            display: inline-block;
+            width: 100px;
+            margin-right: 20px
+        }
+    </style>
+</head>
+
+<body>
+        <!-- - 
+            使用target时，考虑添加 rel="noopener noreferrer" 以防止针对 window.opener API 的恶意行为。
+        - 使用target=“_blank”链接到另一个页面将在与页面相同的进程中运行新页面。如果新页面执行开销大的的JS，那么页面的性能可能会受到影响。要避免这种情况，请使用rel=noopener。
+        - rel="noopener"：防止新标签页使用JavaScript的window.opener功能，该功能可能会访问包含链接（您的网站）的页面来执行恶意操作，例如窃取信息或共享受感染的代码。
+        - rel="noreferrer"：防止其他网站或跟踪服务（例如Google Analytics（分析））将您的页面标识为单击链接的来源 -->
+    <div>
+        <a href="https://baidu.com"  rel="noopener noreferrer" target="_blank">跳转百度</a>
+    </div>
+    <!-- <div style="height: 1000px;background:skyblue">头部</div> -->
+
+    <div>
+        <a href="">刷新页面，回到头部</a>
+    </div>
+
+    <div>
+        <a href="#">不刷新页面，回到头部</a>
+    </div>
+
+    <div>
+        <a href="JavaScript:;">不刷新，没有跳转的a标签</a>
+        <a href="JavaScript:;void(0)">不刷新，没有跳转的a标签</a>
+    </div>
+
+
+
+    <!-- - URL 片段是哈希标记（#）前面的名称，哈希标记可以指定当前同一页面内的位置。
+           URL 不限于基于 Web（HTTP）的文档，也可以使用浏览器支持的任何协议。
+         - 可以使用 href="#top" 或者 href="#" 链接返回到页面顶部。这种行为是 HTML5 的特性。 -->
+    <!-- 锚点 -->
+    <h2>锚点演示</h2>
+    <a class="less" href="#one">less-概览</a>
+    <a class="less" href="#two">less-混合（Mixins）</a>
+    <a class="less" href="#three">less-映射（Maps）</a>
+
+    <pre id="one">
+        <h3>概述</h3>
+            Less （Leaner Style Sheets 的缩写） 是一门向后兼容的 CSS 扩展语言。这里呈现的是 Less 的官方文档（中文版），包含了 Less 语言以及利用 JavaScript 开发的用于将 Less 样式转换成 CSS 样式的 Less.js 工具。
+
+
+            因为 Less 和 CSS 非常像，因此很容易学习。而且 Less 仅对 CSS 语言增加了少许方便的扩展，这就是 Less 如此易学的原因之一。
+            
+
+            
+            有关 Less 语言特性的详细文档，请参阅 Less 语言特性 章节
+            
+            有关 Less 内置函数的列表，请参阅 Less 函数手册 章节
+            
+            有关详细的使用说明，请参阅 Less.js 用法 章节
+            
+            有关第三方工具的详细信息，请参阅 工具 章节
+            
+            有关 Less 语言特性的详细文档，请参阅 Less 语言特性 章节
+            
+            有关 Less 内置函数的列表，请参阅 Less 函数手册 章节
+            
+            有关详细的使用说明，请参阅 Less.js 用法 章节
+            
+            有关第三方工具的详细信息，请参阅 工具 章节
+            
+            有关 Less 语言特性的详细文档，请参阅 Less 语言特性 章节
+            
+            有关 Less 内置函数的列表，请参阅 Less 函数手册 章节
+            
+            有关详细的使用说明，请参阅 Less.js 用法 章节
+            
+            有关第三方工具的详细信息，请参阅 工具 章节
+            
+            有关 Less 语言特性的详细文档，请参阅 Less 语言特性 章节
+            
+            有关 Less 内置函数的列表，请参阅 Less 函数手册 章节
+            
+            有关详细的使用说明，请参阅 Less.js 用法 章节
+            
+            有关第三方工具的详细信息，请参阅 工具 章节
+            
+            
+            
+            Less 到底为 CSS 添加了什么功能？以下就是这些新加功能的概览。
+    </pre>
+
+
+    <pre id="two">
+        <h3>混合</h3>
+            混合（Mixin）是一种将一组属性从一个规则集包含（或混入）到另一个规则集的方法。假设我们定义了一个类（class）如下：
+
+            .bordered {
+              border-top: dotted 1px black;
+              border-bottom: solid 2px black;
+            }
+            如果我们希望在其它规则集中使用这些属性呢？没问题，我们只需像下面这样输入所需属性的类（class）名称即可，如下所示：
+            
+            #menu a {
+              color: #111;
+              .bordered();
+            }
+            
+            .post a {
+              color: red;
+              .bordered();
+            }
+            .bordered 类所包含的属性就将同时出现在 #menu a 和 .post a 中了。（注意，你也可以使用 #ids 作为 mixin 使用。）
+            
+            了解关于混合（Mixin）的更多信息
+            
+            嵌套（Nesting）
+            Less 提供了使用嵌套（nesting）代替层叠或与层叠结合使用的能力。假设我们有以下 CSS 代码：
+            
+            #header {
+              color: black;
+            }
+            #header .navigation {
+              font-size: 12px;
+            }
+            #header .logo {
+              width: 300px;
+            }
+            用 Less 语言我们可以这样书写代码：
+            
+            #header {
+              color: black;
+              .navigation {
+                font-size: 12px;
+              }
+              .logo {
+                width: 300px;
+              }
+            }
+            用 Less 书写的代码更加简洁，并且模仿了 HTML 的组织结构。
+            
+            你还可以使用此方法将伪选择器（pseudo-selectors）与混合（mixins）一同使用。下面是一个经典的 clearfix 技巧，重写为一个混合（mixin） (& 表示当前选择器的父级）：
+            
+            .clearfix {
+              display: block;
+              zoom: 1;
+            
+              &:after {
+                content: " ";
+                display: block;
+                font-size: 0;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+              }
+            }
+    </pre>
+
+
+    <pre id="three">
+        <h3>映射</h3>
+            从 Less 3.5 版本开始，你还可以将混合（mixins）和规则集（rulesets）作为一组值的映射（map）使用。
+
+            #colors() {
+              primary: blue;
+              secondary: green;
+            }
+            
+            .button {
+              color: #colors[primary];
+              border: 1px solid #colors[secondary];
+            }
+            输出符合预期：
+            
+            .button {
+              color: blue;
+              border: 1px solid green;
+            }
+            参见： 映射（Maps）
+            
+            作用域（Scope）
+            Less 中的作用域与 CSS 中的作用域非常类似。首先在本地查找变量和混合（mixins），如果找不到，则从“父”级作用域继承。
+            
+            @var: red;
+            
+            #page {
+              @var: white;
+              #header {
+                color: @var; // white
+              }
+            }
+            与 CSS 自定义属性一样，混合（mixin）和变量的定义不必在引用之前事先定义。因此，下面的 Less 代码示例和上面的代码示例是相同的：
+            
+            @var: red;
+            
+            #page {
+              #header {
+                color: @var; // white
+              }
+              @var: white;
+            }
+            参见：懒加载
+    </pre>
+</body>
+
+</html>

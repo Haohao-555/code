@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-倍图响应加载图片</title>
+    <style>
+        /* 如果是一倍图就设置媒体查询 */
+        div i {
+            /* i是行内元素，要转换成行内块 */
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #ccc;
+            background: url(./images/star-on-16.png) no-repeat center/ 16px 16px;
+        }
+
+        /* 2倍图显示 iphone: 6 /7 /8 */
+        @media screen and (resolution: 2dppx) {
+            div i{
+                width: 24px;
+                height: 24px;
+                background: url(./images/star-on-24.png) no-repeat center/ 24px 24px;
+            }
+        }
+
+        /* 3倍图显示 iphone: 6 /7 /8  plus*/
+        @media screen and (resolution: 3dppx) {
+            div i{
+                width: 32px;
+                height: 32px;
+                background: url(./images/star-on-32.png) no-repeat center/ 32px 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!--
+ * @Date: 2021-08-02 10:01:32
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \javascript\day06\作业\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        name: "小明",
+        age: 19,
+        address: "北京",
+        hobby: ["抽烟", "喝酒", "烫头"],
+        data: {
+          mother: "韩梅",
+          friend: ["lee", "Tom", "Jane"],
+        },
+      };
+      function deepCopy(obj) {
+        // 检测形参是否为数组，还是对象
+        var newObj = obj.constructor === Array ? [] : {};
+        // 如果是基本数据类型 返回不处理
+        if (typeof obj !== "object") {
+          return obj;
+        } else {
+          for (var i in obj) {
+            //遍历出来的属性有可能是对象，如果是，则进行递归
+            if (typeof obj[i] === "object") {
+              newObj[i] = deepCopy(obj[i]);
+            } else {
+              newObj[i] = obj[i];
+            }
+          }
+        }
+        return newObj;
+      }
+      var b = deepCopy(obj);
+      b.name = "小红";
+      b.data.friend[1] = 'jack';
+      console.log(obj,b);
+/**
+ * 最开始拿到这题，知道说这题的本质就是将引用数据类型的赋值转换
+ * 成基本数据类型。而且得用递归来实现。
+ * 主要出现问题的地方是：
+ *    如何对代码量进行降低，简单化的能力还是不太够。
+ *    编程逻辑方面问题不是很大，大致的方向没问题。
+ * / 
+    </script>
+  </body>
+</html>

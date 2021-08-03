@@ -1,0 +1,70 @@
+<!--
+ * @Date: 2021-07-27 15:26:44
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\javascript\day02\练习2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        /* #table1 {
+           position: relative;
+           top: -482px;
+           left: 728px;
+       } 
+       #table2 {
+           position: relative;
+           top: -482px;
+           left: 728px;
+       } */
+    </style>
+  </head>
+  <body>
+    <script>
+      document.write("<table border=1 >");
+      for (var i = 1; i <= 9; i++) {
+        document.write(`<tr>`);
+        for (var j = 1; j <= i; j++) {
+          document.write("<td>", j, " * ", i, " = ", i * j, "</td>");
+        }
+        document.write(`</tr>`);
+      }
+      document.write("</table>");
+
+      document.write("<table border=1>");
+      for (var i = 9; i >= 1; i--) {
+        document.write(`<tr>`);
+        for (var j = 1; j <= i; j++) {
+          document.write("<td>", j, " * ", i, " = ", i * j, "</td>");
+        }
+        document.write(`</tr>`);
+      }
+      document.write("</table>");
+      
+      document.write("<table border=1 id='table2'>");
+      for (var i = 9; i >= 1; i--) {
+        document.write(`<tr>`);
+        for (var j = 1 ; j <= 10-i; j++) {
+          document.write("<td>", i, " * ", j, " = ", i * j, "</td>");
+        }
+        document.write(`</tr>`);
+      }
+      document.write("</table>");
+
+      document.write("<table border=1 id='table1'>");
+      for (var i = 1; i <= 9; i++) {
+        document.write(`<tr>`);
+        for (var j = 1 ; j <= 10-i; j++) {
+          document.write("<td>", i, " * ", j, " = ", i * j, "</td>");
+        }
+        document.write(`</tr>`);
+      }
+      document.write("</table>");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!--
+ * @Date: 2021-07-19 18:31:51
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day10\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .button {
+            position: relative;
+            background-color: #07c160;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            font-size: 12px;
+            cursor: pointer;
+            margin: 3px auto 0px;
+        }
+        span {
+            content: "";
+            width: 0px;
+            height: 0px;
+            border-width: 0px 12px 12px 12px;
+            border-color: rgba(0, 0, 0,0) rgba(0, 0, 0,0) #4a4a4a rgba(0, 0, 0,0);
+            border-style: solid; 
+            position: relative;
+            top: -22px;
+        }
+        .button > .list {
+            width: 120px;
+            height: 120px;
+            background-color: #4a4a4a;
+            position: absolute;
+            top: 41px;
+            left: -8px;
+            border-radius: 12px;
+        }
+        ul > li {
+            text-align: center;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            /* border-bottom: 0.5px solid #fff; */
+        }
+        ul > li > a {
+            color: #fff;
+            display: block;
+            width: 100px;
+            margin: 0px auto;
+            border-bottom: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="button">
+        <div class="text">
+            深色风格
+        </div>
+        <span></span>
+        <div class="list">
+             <ul>
+                 <li><a href="">选项一</a></li>
+                 <li><a href="">选项二</a></li>
+                 <li><a href="">选项三</a></li>
+             </ul>
+        </div>
+    </div>
+</body>
+</html>

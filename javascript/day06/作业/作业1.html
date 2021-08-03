@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的深拷贝</title>
+</head>
+
+<body>
+    <script>
+        // 引用数据类型都是浅拷贝，基本数据类型都是深拷贝
+        // 如何让对象进行深拷贝？ ==> 对对象的里面的每个数据进行基本数据类型的拷贝
+        var obj = {
+            name: "于谦",
+            age: 19,
+            address: "北京",
+            hobby: ["抽烟", "喝酒", "烫头"],
+            data: {
+                friends: ["lee", "Tom", "jane"],
+                a: {
+                    b: 1,
+                    c: 2
+                },
+                mother: "于谦的妈妈"
+            }
+        }
+
+
+        // 把对象的深拷贝封装成函数
+        function deepCopy(obj) {
+            // 先检测传递进行的形参是否为数组，还是对象
+            var newObj = obj.constructor === Array ? [] : {};
+            // 假如是基本数据类型，不处理
+            if (typeof obj !== 'object') {
+                return obj;
+            } else {
+                // 通过for in 方法一条条处理数据
+                for (var i in obj) {
+                    // 遍历的属性也可以为对象，如果是，则进行嵌套调用（递归）
+                    if (typeof obj[i] === "object") {
+                        newObj[i] = deepCopy(obj[i])
+                    } else {
+                        newObj[i] = obj[i];
+                    }
+                }
+            }
+
+            return newObj;
+        }
+
+        // 调用深拷贝函数
+        var b = deepCopy(obj);
+        // console.log(b)
+
+
+        // 修改值，判断是否真的为深拷贝？
+        obj.name = "郭德纲";
+        obj.data.friends[1] = "郭麒麟";
+        console.log("obj的数据==>", obj)
+        console.log("b的数据==>", b)
+
+
+        // console.log(deepCopy([5, 4, 3]))
+        // console.log(deepCopy({ a: 1, b: 2 }))
+    </script>
+</body>
+
+</html>

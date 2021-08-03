@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-表单最终作业</title>
+</head>
+
+<body>
+    <header>
+        <h2>感谢您抽出time to help us to 改进平台</h2>
+    </header>
+    <form action="" method="get">
+        <div>
+            <label>
+                Name：
+                <input type="text" name="name" placeholder="请输入您的姓名">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Email：
+                <input type="email" name="Email" placeholder="请输入您的宝贵邮箱">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                年龄(请选择)：
+                <input type="number" name="age" placeholder="年龄" max="99" min="10">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                请问您的职业是：
+                <select name="job" id="">
+                    <option value="学生">学生</option>
+                    <option value="teacher">老师</option>
+                    <option value="工人">工人</option>
+                    <option value="none">无产阶级</option>
+                    <option value="others">其他</option>
+                </select>
+            </label>
+        </div>
+
+
+        <div>
+            <p>你会想朋友推荐粤嵌学习平台吗？</p>
+            <label>
+                <input type="radio" name="recommend" id="" value="yes"> 会
+            </label>
+            <label>
+                <input type="radio" name="recommend" id="" value="maybe"> 可能会
+            </label>
+            <label>
+                <input type="radio" name="recommend" id="" value="no"> 不会
+            </label>
+        </div>
+
+
+        <div>
+            <p>您希望看到什么改进(可以全选)</p>
+            <label><input type="checkbox" name="prefer" value="web-project">前端项目</label>
+            <label><input type="checkbox" name="prefer" value="java-project">后端项目</label>
+            <label><input type="checkbox" name="prefer" value="data-visiblity">数据可视化</label>
+            <label><input type="checkbox" name="prefer" value="course">课程</label>
+            <label><input type="checkbox" name="prefer" value="happy-classes">班级学习氛围</label>
+            <label><input type="checkbox" name="prefer" value="addtional-courses">附加课程</label>
+        </div>
+
+        <div>
+            <p>有什么意见或者建议：</p>
+            <textarea name="comment" id="" placeholder="enter you comment here"></textarea>
+        </div>
+        <!-- <input type="image" src="./images/2.jpg" alt="" style="width: 100px;"> -->
+
+        <input type="submit" value="提交信息">
+
+    </form>
+</body>
+
+</html>

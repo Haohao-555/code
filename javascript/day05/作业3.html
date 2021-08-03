@@ -1,0 +1,75 @@
+<!--
+ * @Date: 2021-07-30 18:42:59
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\javascript\day05\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  0 1 1 2 3 5 8 13 21 34 
+     //  1 2 3 4 5 6 7 8 9 10
+    
+      var sumFibs = function () {
+          
+      }
+      
+      var toBins = function (n) {
+        var num = parseInt(n); 
+        var arr = [];
+        var str = "";
+        while (n > 0) {
+          arr.push(n % 2);
+          n = Math.floor(n / 2);
+        }
+        for (var i = arr.length - 1; i >= 0; i--) {
+          str += arr[i];
+        }
+        console.log(num + "的二进制是" + str);
+      };
+      toBins(18);
+
+      var dectoHex = function (n) {
+        var num = parseInt(n);
+        var arr = [];
+        var str = "";
+        while (n > 0) {
+          arr.push(n % 16);
+          n = Math.floor(n / 16);
+        }
+        for (var i = arr.length - 1; i >= 0; i--) {
+          switch (arr[i]) {
+            case 10:
+              arr[i] = "A";
+              break;
+            case 11:
+              arr[i] = "B";
+              break;
+            case 12:
+              arr[i] = "C";
+              break;
+            case 13:
+              arr[i] = "D";
+              break;
+            case 14:
+              arr[i] = "E";
+              break;
+            case 15 :
+              arr[i] = "F";
+              break;
+          }
+          str += arr[i];  
+        }
+        console.log(num + "的十六进制是" + str);
+      };
+      dectoHex(253);
+    </script>
+  </body>
+</html>

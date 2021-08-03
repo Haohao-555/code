@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+</head>
+
+<body>
+    <script>
+
+        // 1、创建dog对象
+        var dog = {
+            name: "旺财",
+            type: "中华田园犬",
+            age: 3,
+            showMsg: function () {
+                // this 代表调用当前的这个方法的对象
+                console.log(this.name + "是一条" + this.type + ",今年" + this.age + "岁了。")
+            }
+        }
+
+        dog.showMsg()
+
+
+        // 2、手机对象
+        var phone = {
+            make: "华为",
+            type: "荣耀系列",
+            color: "土豪金",
+            power: 50,
+            charge: function () {
+                if (this.power < 100) {
+                    // 充电
+                    this.power++;
+                    console.log("正在充电", this.power);
+                } else {
+                    console.log("电量为100，无需冲充电");
+                }
+            },
+            use: function () {
+                if (this.power == 0) {
+                    console.log("手机需要充电，无法正常使用");
+                } else {
+                    this.power--;
+                    console.log("手机使用中，电量为：", this.power);
+                }
+            }
+        }
+
+        // 先充电
+        phone.charge();
+        // 使用手机
+        phone.use();
+    </script>
+</body>
+
+</html>

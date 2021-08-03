@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-课堂练习1</title>
+    <!-- 去除默认样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .bigBox {
+            width: 150px;
+            margin: 10px auto;
+            background: rgb(204, 204, 204);
+            border: 1px solid #000;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .bigBox>li {
+            position: relative;
+            width: 120px;
+            padding: 5px 0;
+            text-align: center;
+
+            border-bottom: 1px solid #000;
+            /* 变成手指形式 */
+            cursor: pointer;
+        }
+
+        .bigBox>li:last-child {
+            border: 0;
+        }
+
+        .bigBox li ul {
+            position: absolute;
+            left: 138px;
+            top: -1px;
+            width: 150px;
+            /* 最开始要隐藏 */
+            display: none;
+            border: 1px solid #000;
+            background: rgb(204, 204, 204);
+            padding: 0px 10px;
+            box-sizing: border-box;
+        }
+
+        .bigBox li ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid #000;
+        }
+
+        .bigBox li ul li:last-child {
+            border: 0;
+        }
+
+        /* .bigBox>li:hover {
+            color: red;
+        } */
+
+        /* 悬停效果 */
+        .bigBox>li:hover ul {
+            display: block;
+        }
+    </style>
+</head>
+
+<!-- 学生的错误情况：hover进行悬停的时候，悬停所添加的样式只能给自身或者其后台子元素 -->
+
+<body>
+    <ul class="bigBox">
+        <li>
+            游戏资料
+            <ul>
+                <li>游戏下载</li>
+                <li>新手指引</li>
+                <li>资料库</li>
+            </ul>
+        </li>
+        <li>商城合作
+            <ul>
+                <li>点券充值</li>
+                <li>道聚城</li>
+                <li>周边商城</li>
+                <li>网吧特权</li>
+            </ul>
+        </li>
+        <li>社区活动
+
+        </li>
+        <li>赛事官网
+            <ul>
+                <li>LPL职业联赛</li>
+                <li>LDL发展联赛</li>
+                <li>全球总决赛</li>
+                <li>城市季中赛</li>
+                <li>德玛西亚杯</li>
+            </ul>
+        </li>
+        <li>自助系统
+            <ul>
+                <li>联系客服</li>
+                <li>封号查询</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+
+<!-- 面试题，如何让图片或者任一个盒子垂直居中，你能想到多少种？ -->
+
+</html>

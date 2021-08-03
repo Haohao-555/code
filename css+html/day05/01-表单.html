@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>8-表单</title>
+</head>
+<body>
+        <!-- 表单收集的数据被发送到web服务 -->
+        <!-- 
+            action:  属性定义了在提交表单时,应该把所收集的数据送给谁(/那个模块)(URL)去处理。
+            action的属性值为空，代表提交到什么页面 
+
+            methods:  GET POST PUT DELETE
+                      查   改   增   删除
+            
+            后来发现get和post能完成增删改查
+            GET: 查
+            POST: 改   增   删除
+
+            问题：面试题：GET和post请求的区别？
+        -->
+        <form action="" method="POST">
+            <!-- 1-本文 -->
+            用户：<input type="text" name="username"><br/>
+            <!-- 2-密码 -->
+            密码：<input type="password" name="pwd"><br/>
+            <!-- 3-数字 -->
+            数字：<input type="number" name="number"><br/>
+            邮箱：<input type="email" name="email"><br/>
+            电话：<input type="tel" name="tel"><br/>
+
+            <!-- 表单提交按钮 -->
+            <input type="submit" value="提交">
+        </form>
+
+        <!-- 
+            作业： （1）查询get和post的区别？
+                  （2）学会使用思维导图
+                  （3）使用有道云笔记记录笔记
+                  （4）预习form相关知识
+</body>
+</html>

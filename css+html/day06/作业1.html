@@ -1,0 +1,56 @@
+<!--
+ * @Date: 2021-07-13 18:30:28
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day06\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <style>
+        .item {
+            width: 80px;
+            height: 30px;
+            background-color: #000;
+            color: #fff;
+            line-height: 30px;
+            text-align: center;
+            position: relative;
+        }
+        .hover_item {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 40px;
+            background-color: aqua;
+            visibility: hidden;
+        }
+        .item:hover .hover_item{
+            cursor: pointer;
+            visibility:visible;
+        }
+        .hover_item::before {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 0px;
+            height: 0px;
+            content: " "; 
+            border-width: 10px; 
+            border-color: transparent transparent aqua transparent;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        下载APP
+        <div class="hover_item"></div>
+    </div>
+   
+</body>
+</html>

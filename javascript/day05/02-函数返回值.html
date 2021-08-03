@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-函数返回值</title>
+</head>
+
+<body>
+    <script>
+        /*
+            `return`语句可用来使函数提前返回。(可以不用要提前)
+            当 `return` 被执行时，函数立即返回而不再执行余下的语句。
+            一个函数总是会返回一个值。如果没有指定返回值，则返回 `undefined`。
+        */
+        var count = function (n) {
+            // 要求：传递过来的整数n之前所有偶数，加入arr数组中，并且返回出去
+            var arr = [];
+            for (var i = 0; i <= n; i++) {
+                if (i % 2 == 0) {
+                    // 找到偶数，而储存在数组中
+                    arr.push(i);
+                    // 最后打印结果为0，执行到这里，直接返回i, 结束循环执行，函数内剩下语句也不执行
+                    // return i;
+                    // console.log("测试return之后的代码1")
+                }
+            }
+            // console.log("测试return之后的代码2")
+
+            // return 1, 2, 3, 4, 5;  // return是可以返回多个值，但是不能是这种形式，要么是数组，要么对象
+
+            // 循环结束，返回结果
+            return arr;
+
+        }
+        var res = count(32);
+        console.log(res)
+
+    </script>
+</body>
+
+</html>

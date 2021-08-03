@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-转成数字</title>
+</head>
+
+<body>
+    <script>
+        console.log("最大值==>", Number.MAX_VALUE);
+        console.log("最小值==>", Number.MIN_VALUE);
+
+        // 用Number进行字符串转成number类型,必须原本就是数字(字符串数字)
+        console.log("'123'字符串数字 ==>", Number("123"));
+        console.log("'123.42134134'字符串数字 ==>", Number("123.42134134"));
+        console.log("'123a'字符串数字 ==>", Number("123a"));     // NaN
+        console.log("' ' ==>", Number(""));                     // 0
+        console.log("'' ==>", Number(" "));                     // 0
+        console.log("true ==>", Number(true));                  // 1
+        console.log("'true' ==>", Number('true'));              // NaN
+        console.log("false ==>", Number(false));                // 0
+        console.log("'false' ==>", Number('false'));            // NaN
+        console.log("NaN ==>", Number(NaN));                    // NaN
+        console.log("null ==>", Number(null));                  // 0
+        console.log("undefined ==>", Number(undefined));        // NaN
+
+
+
+        // parseInt和parsefloat
+        console.log("'123.42134134aaa'字符串数字 ==>", parseInt("123.42134134aaa"));
+        console.log("'123.42134134aaa'字符串数字 ==>", parseFloat("123.42134134aaa"));
+        console.log("'a123.42134134aaa'字符串数字 ==>", parseFloat("a123.42134134aaa"));   // NaN
+        console.log("'a123aaa'字符串数字 ==>", parseFloat("123aaa"));   // NaN
+    </script>
+</body>
+
+</html>

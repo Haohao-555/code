@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-浮动大练习——boostsrap导航</title>
+    <style>
+        /* 去除默认样式 */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ol,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 清除浮动 */
+        .clearfix::after {
+            content: '';
+            /* 变成块级元素 */
+            display: block;
+            /* 清除浮动 */
+            clear: both;
+        }
+
+        .navbar {
+            /* background: rgb(101, 75, 142); */
+        }
+
+        .navbar .container {
+            width: 1200px;
+            padding: 0 15px;
+            margin: 0 auto;
+            /* background: rgb(101, 75, 142); */
+        }
+
+        .navbar .container .navbar-header {}
+
+        .navbar .container .navbar-header .nav-left {
+            float: left;
+        }
+
+        .navbar .container .navbar-header .nav-left>li {
+            float: left;
+        }
+
+        .navbar .container .navbar-header li a {
+            display: block;
+            padding: 15px 10px;
+            font-weight: 500;
+            color: #563d7c;
+            font-size: 14px;
+        }
+
+        /* 右边 */
+        .navbar .container .navbar-header .nav-right {
+            float: right;
+        }
+
+        .navbar .container .navbar-header .nav-right>li {
+            float: left;
+        }
+
+        /* .navbar .container .navbar-header .nav-right>li>a {} */
+        .navbar .container .navbar-header .nav-left>li:nth-child(1) a {
+            font-size: 18px;
+            padding: 15px;
+            height: 20px;
+            line-height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <nav class="navbar-header clearfix">
+                <!-- 左边 -->
+                <ul class="nav-left clearfix">
+                    <li><a href="javaScript:;">Bootstrap 中文文档</a></li>
+                    <li><a href="javaScript:;">入门</a></li>
+                    <li><a href="javaScript:;">全局 CSS 样式</a></li>
+                    <li><a href="javaScript:;">组件</a></li>
+                    <li><a href="javaScript:;">JavaScript 插件</a></li>
+                    <li><a href="javaScript:;">定制</a></li>
+                    <li><a href="javaScript:;">网站实例</a></li>
+                </ul>
+                
+                <!-- 右边 -->
+                <ul class="nav-right clearfix">
+                    <li><a href="javaScritpt:;">v3</a></li>
+                    <li><a href="javaScritpt:;">优站精选</a></li>
+                    <li><a href="javaScritpt:;">官方博客</a></li>
+                    <li><a href="javaScritpt:;">返回 Bootstrap 中文网</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- 
+            同学们出现的问题：
+            （1）代码乱七八糟
+            （2）css样式零散
+            （3）命名其他不规范
+            （4）标签嵌套
+         -->
+    </header>
+
+    <footer style="height: 20px; background: #000;"></footer>
+</body>
+
+</html>

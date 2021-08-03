@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+</head>
+
+<body>
+    <script>
+        var arr = [
+            [1, 2, 3],
+            [5, 2, 1, 4],
+            [2, 1, 8],
+            [6, 7, 2, 4, 5, 1],
+        ]
+
+        // 定义一个新的数组
+        var newArr = [];
+        // for (var i = 0; i < arr.length; i++) {
+        //     // console.log(arr[i])
+        //     // 再来一波循环
+        //     for (var j = 0; j < arr[i].length; j++) {
+        //         // console.log(arr[i][j])
+        //         // 把遍历出来的每一个数字推进新的一维数组中
+        //         newArr.push(arr[i][j])
+        //     }
+        // }
+
+        // // 查看是否为一维数组
+        // console.log(newArr)
+
+        var newArr = [1, 2, 3, 5, 2, 1, 4, 2, 1, 8, 6, 7, 2, 4, 5, 1]
+        //////////////////////////////////
+        // 新的去重后的数据储存的数组
+        var arrOne = []
+        arrOne.push(newArr[0])
+        var num = 0;
+
+        // 方法1
+
+        // 去重
+        // 定义一个记录是否重复的变量
+        var isRepeat = false;
+        for (var i = 0; i < newArr.length; i++) {
+            // 最开始默认数值是不重复的
+            isRepeat = false;
+            // 因为是要去重的数组的每一个数据跟去重后的数组里面的每一个数组进行比对
+            for (var j = 0; j < arrOne.length; j++) {
+                if (arrOne[j] == newArr[i]) {
+                    isRepeat = true
+                    // 如果发现去重后的存储数组有该值，则不储存
+                }
+                // 次数计算
+                num++
+            }
+            // 如果不重复，则推入去重数组中(最后一项中)
+            if (!isRepeat) {
+                arrOne.push(newArr[i])
+            }
+        }
+
+
+        // 写法2
+
+        // var isRepeat = false;
+        // for (var i = 0; i < newArr.length; i++) {
+        //     // 最开始默认数值是不重复的
+        //     // 因为是要去重的数组的每一个数据跟去重后的数组里面的每一个数组进行比对
+        //     for (var j = 0; j < arrOne.length; j++) {
+        //         if (arrOne[j] == newArr[i]) {
+        //             isRepeat = true
+        //             // 在进行比对的时候，发现有相同数据时候，已经重复了，没有必要比对下去了
+        //             break;
+        //         } else {
+        //             isRepeat = false;
+        //         }
+        //         // 次数计算
+        //         num++
+        //     }
+
+        //     if (!isRepeat) {
+        //         arrOne.push(newArr[i])
+        //     }
+
+
+        // }
+        console.log("去重的总次数：", num)
+        console.log("去重后的数组：", arrOne)
+
+
+
+    </script>
+</body>
+
+</html>

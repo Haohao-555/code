@@ -1,0 +1,105 @@
+<!--
+ * @Date: 2021-07-13 09:12:09
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day06\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* el: nth-of-type(k)
+           找到 el 其父元素中所有 el 进行排序后，
+           根据 k 进行选中元素 
+           
+           nth-of-type(k) 找到 父元素下第k个ele元素
+           ele::nth-child(k) 第n个元素且这个元素为ele，若不是，则选择失败。
+        */
+        .ul1 li:nth-of-type(3) {
+            color: red;
+        }
+        
+        /* 
+        ele: first-of-type
+        找到 ele 其父元素的所有直接后代 ele 元素进行排序后，
+        在根据 first-of-type(第一个元素) 选中。
+        
+       
+        */
+       .ul2 li:first-of-type {
+            color: aqua;
+        }
+        
+        /* 
+          找到 el 其父元素中的所有直接后代，
+          在根据 first-child (第一个元素) 
+          选择的标签是否跟 el 一致，一致则选中。
+        */
+        .ul3 li:first-child {
+            color: yellow;
+        }
+      
+
+
+        /* 
+            效果应该是 1 为蓝色，但实际效果是不生效
+
+            :first-of-type 前面必须 标签 才能生效
+
+            因此改成 .ul4 li :first-of-type 才能生效
+        */
+        .ul4 .threeli:first-of-type {
+            color: blue;
+        }
+
+    </style>
+</head>
+<body> 
+    <h3>情况一： nth-of-type(k)</h3>
+    <ul class="ul1">
+        <li>1</li>
+        <li>2</li>
+        <p>123</p>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <hr>
+
+    <h3>情况二： first-of-type</h3>
+    <ul class="ul2">
+        <p>123</p>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <hr>
+    
+    <h3>情况三： first-child</h3>
+    <ul class="ul3">
+        <p>123</p>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <hr>
+
+    <h3>情况三： first-of-type</h3>
+    <ul class="ul4">
+        <li>1</li>
+        <li>2</li>
+        <li class="threeli">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <hr>
+</body>
+</html>

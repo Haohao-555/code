@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <style>
+      .clearfix::after {
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      header {
+        height: 50px;
+        width: 100%;
+        /* background-color: red; */
+      }
+      .container {
+        width: 1170px;
+        height: 50px;
+        padding: 0 15px;
+        background-color: pink;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+      .container .header_nav .left {
+        float: left;
+      }
+      .container .header_nav .right {
+        float: right;
+      }
+      .container .header_nav .left ul > li {
+        float: left;
+      }
+      .container .header_nav .right ul > li {
+        float: left;
+      }
+      .container .header_nav .left ul > li > a {
+        font-weight: 500;
+        color: #563d7c;
+        line-height: 20px;
+      }
+      .container .header_nav .left ul > li:first-child {
+        font-size: 18px;
+        padding: 15px;
+        margin-left: -15px;
+      }
+      .container .header_nav .left ul > li:nth-child(n + 2) {
+        font-size: 14px;
+        padding: 15px 10px;
+      }
+      .container .header_nav .right ul > li:nth-child(n) {
+        font-size: 14px;
+        padding: 15px 10px;
+        line-height: 20px;
+      }
+      .caret {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 2px;
+        vertical-align: middle;
+        border-top: 4px dashed;
+        border-right: 4px solid transparent;
+        border-left: 4px solid transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="header_nav clearfix">
+          <div class="left">
+            <ul class="clearfix">
+              <li><a href="javascript:;">Bootstrap 中文文档</a></li>
+              <li><a href="javascript:;">入门</a></li>
+              <li><a href="javascript:;">全局 CSS 样式</a></li>
+              <li><a href="javascript:;">组件</a></li>
+              <li><a href="javascript:;">JavaScript 插件</a></li>
+              <li><a href="javascript:;">定制</a></li>
+              <li><a href="javascript:;">网站实例</a></li>
+            </ul>
+          </div>
+          <div class="right ">
+            <ul class="clearfix">
+              <li>
+                <a href="javascript:;">v3<span class="caret"></span></a>
+              </li>
+              <li><a href="javascript:;">优站精选</a></li>
+              <li><a href="javascript:;">官方博客</a></li>
+              <li><a href="javascript:;">返回 Bootstrap 中文网</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <footer style="height: 10px; background-color: #000;"></footer>
+  </body>
+</html>

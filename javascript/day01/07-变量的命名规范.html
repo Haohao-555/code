@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-变量的命名规范</title>
+</head>
+
+<body>
+    <script>
+        /*
+            (1) 变量名: 严格区分大小写
+        */
+        var A = "A声明赋值";
+        var a = "a声明赋值";
+        // console.log(A, a)
+
+        // (2) 变量名必须以字母、下划线或美元符号开头。后使用任意数量的字母、数字、下划线或美元符号
+        var _user = "名字";
+        var  $ = "美刀";
+        var main3 = "main";
+        // console.log(_user, $, main3)
+
+        // (3) 不能使用任何内置保留关键字作为变量名
+        // var do = "do";
+        // console.log(do)
+
+        // (4) 命名的规格:如果变量名由多个单词组成,应用_连接或者驼峰命名法
+        var myFirstName = "林小强";     // 驼峰命名法
+        var my_first_name = "防水强";   // 下划线连接法
+        console.log(myFirstName, my_first_name)
+
+        // 字符串拼接
+        var str = "happy" + " birthday" + " to you!"
+        console.log(str)
+
+        var name = "name"
+        console.log(name)
+    </script>
+
+
+</body>
+
+</html>

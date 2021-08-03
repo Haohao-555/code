@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-Js网页中的位置</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            border: 1px solid orange;
+            text-align: center;
+        }
+    </style>
+
+
+    <!-- 
+        js 可以操作HTML+CSS 
+        浏览器执行html文件时，会先加载head标签里面的代码，然后执行body里面的代码
+    -->
+
+
+    <!-- 嵌入式js -->
+    <script>
+        // javascript一般情况会放在head标签中，但是不是最优方案
+
+        // 现在要修改div里面的样式，修改不了：因为先执行script标签里面的代码，
+        // 这时候，body标签的类名为box的元素未渲染出来，所以出现报错
+        document.getElementsByClassName('box')[0].style.backgroundColor = "orange"
+    </script>
+</head>
+
+<body>
+    <div class="box">box盒子</div>
+
+    <script>
+        document.getElementsByClassName('box')[0].style.backgroundColor = "skyblue"
+    </script>
+
+    <!-- 推荐：外链式   -->
+
+    <!-- 
+        原因：既有一个可用于任何网页且易于维护的JavaScript文件，
+        又在网页末尾引用它，这样它将在网页加载完毕后再加载。 
+    -->
+    <script src="./03.js"></script>
+</body>
+
+
+</html>

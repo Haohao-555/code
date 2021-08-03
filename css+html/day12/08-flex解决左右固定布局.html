@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-flex解决左右固定布局</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 600px;
+            background: #ddd;
+        }
+
+        .container .left {
+            /* 不放大，不缩小，固定宽度为200px */
+            flex: 0 0 200px;
+            margin-right: 20px;
+            background: skyblue;
+        }
+
+        .container .right {
+            /* 要能放大 */
+            /* flex: 1 0 auto; */
+            /* flex具体是代表哪三个参数？ */
+            flex: 1;
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">777</div>
+    </div>
+</body>
+
+</html>

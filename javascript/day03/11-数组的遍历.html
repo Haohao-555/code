@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-数组的遍历</title>
+</head>
+
+<body>
+    <script>
+        var scores = [60, 50, 60, 58, 54, 54, 58, 50, 52, 54, 48, 69,
+            34, 55, 51, 52, 44, 11, 69, 64, 66, 55, 52, 61,
+            46, 31, 57, 52, 44, 18, 41, 53, 55, 61, 51, 94];
+        var i = 0;
+        // console.log(scores)
+        // 只要索引小于数组的长度，就继续循环。
+        // while(i < scores.length){
+        //     // console.log(scores[i])
+
+        //     i++ // 最后，在再次循环前将索引加1。
+        // }
+
+        // // for循环把数组所有的数据取出来
+        // for(var j = 0; j < scores.length; j++){
+        //     console.log(scores[j])
+        // }
+
+        // 练习: 取数组的最大值和下标
+        var max = scores[0];
+        var min = scores[0];
+        var indexMax = 0;
+        var indexMin = 0;
+        for (var m = 0; m < scores.length; m++) {
+            // console.log(scores[m])
+            // 一个个数值进行对比
+            if (max < scores[m]) {
+                max = scores[m]
+                indexMax = m
+            }
+            if (min > scores[m]) {
+                min = scores[m]
+                indexMin = m
+            }
+        }
+        // console.log("最高分：" + max + ",最低分：", min)
+        // console.log("最高分下标：" + indexMax + ",最低分下标：", indexMin)
+
+
+        // for in 循环枚举
+        /*
+            for (变量 in 数组对象){
+                // 在此执行代码
+            }
+        */
+
+        // var n;   // 变量可以在for里面定义
+        for (var n in scores) {
+            console.log("下标", n)
+            console.log("通过下标取值", scores[n])
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-层叠上下文</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        .box {
+            width: 300px;
+            height: 180px;
+        }
+
+        .negative {
+            background: skyblue;
+            position: relative;
+            z-index: -1;
+        }
+
+        .block {
+            background: purple;
+            margin-top: -80px;
+            margin-left: 80px;
+        }
+
+        .float {
+            background: orange;
+            float: left;
+            margin-top: -120px;
+            margin-left: 120px;
+        }
+
+        .inline-float {
+            float: left;
+            background: pink;
+            margin-top: -100px;
+            margin-left: -200px;
+        }
+
+        .z-index0 {
+            position: absolute;
+            left: 160px;
+            top: 200px;
+            background: red;
+            z-index: 0;
+        }
+
+        .z-index {
+            position: absolute;
+            left: 180px;
+            top: 220px;
+            background: skyblue;
+            z-index: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box negative">negative-z-index</div>
+    <div class="box block">block-块级元素（块级元素文本内容）</div>
+    <!-- <div class="box inline-float">inline-float</div> -->
+    <div class="box float">float浮动</div>
+    <div class="box z-index">z-index为正值</div>
+    <div class="box z-index0">z-index为0的元素</div>
+
+</body>
+
+</html>

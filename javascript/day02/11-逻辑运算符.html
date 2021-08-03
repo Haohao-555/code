@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-逻辑运算符</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+            逻辑运算
+            && (逻辑与(并且))：&&符号两边的表达式的结果同时为真才为真
+            || (逻辑或 或者) ||符号两边的表达式的结果只要有一边为真就为真
+            !(逻辑非 取反): 将true变成false,将false变成true
+        */
+        // 与运算
+        // var a = 10 > 20 && 10 < 20;  // false && true 
+        var a = 30 > 20 && 20 < 40;    // true && true
+        console.log(a)
+
+        // 或运算
+        var b = 10 > 20 || 10 < 20;  // false || true
+        console.log(b)
+
+        // 逻辑非 取反
+        var bol = true
+        console.log(!1)
+        console.log(!0)
+
+        // 难点
+        // 左边 4- 3= 1 条件成立，但是这时候执行右边运算，返回右边的计算结果3
+        var c = 4 - 3 && 5 - 2;
+        console.log(c)
+
+        // 左边false不成立，所以，运行右边6-3，等于3，返回出来
+        var d = false || 6 - 3;
+        console.log(d)
+
+        // 左边已经为true，已经成立，不必要执行右边10 - 4
+        var e = true || 10 - 4;
+        var e = 9 || 10 - 4;
+        console.log(e)
+    </script>
+</body>
+
+</html>

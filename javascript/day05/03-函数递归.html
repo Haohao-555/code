@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-函数递归</title>
+</head>
+
+<body>
+    <script>
+        /*
+            (1) 递归函数就是调用函数自身去解决它的子问题。
+            (2) 在使用递归函数时一定要设置退出函数的条件，否则会发生死循环造成严重问题
+            (3) 递归分为两部分：
+                递出去
+                归处、出来
+            (4) 递归缺点是占用内存比较高，但是解决一些特殊问题非常方便
+                一般在不知道循环次数，但是有确认退出条件的重复代码代码时调用
+        */
+
+        //    常规的处理
+        // var factorial = function (n) {
+        //     var total = 1;
+        //     for (var i = 1; i <= n; i++) {
+        //         total *= i
+        //     }
+        //     return total
+        // }
+
+
+        // 递归处理
+        function factorial(num) {
+            // 能退出，乘到1，就要能退出
+            if (num <= 1) {
+                return 1;
+            }
+            return num * factorial(num - 1);
+        }
+        var res = factorial(6)
+
+        /*
+            6 * factorial(5) ==>
+            6 * 5 * factorial(4) ==>
+            6 * 5 * 4 * factorial(3) ==>
+            6 * 5 * 4 * 3 * factorial(2) ==>
+            6 * 5 * 4 * 3 * 2 * factorial(1) ==>
+            6 * 5 * 4 * 3 * 2 * 1 ==>
+            
+        */
+        console.log(res)
+
+        /*
+        
+            // 先递进
+                factorial(6)
+                =>  6 * factorial(5)
+                =>  6 * (5 * factorial(4))
+                =>  6 * (5 * (4 * factorial(3)))
+                =>  6 * (5 * (4 * (3 * factorial(2))))
+                =>  6 * (5 * (4 * (3 * (2 * factorial(1)))))
+                =>  6 * (5 * (4 * (3 * (2 * 1))))
+            // 再回归
+                =>  6 * (5 * (4 * (3 * 2)))
+                =>  6 * (5 * (4 * 6))
+                =>  6 * (5 * 24)
+                =>  6 * 120
+                =>  720
+        */
+
+
+        // 练习：猴子吃桃
+        /*
+            猴子n天前摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个，
+            第二天早上又将剩下的桃子吃掉一半，又多吃了一个。
+            以后每天早上都吃前一天剩下的一半零一个。
+            到1天前早上想再吃时，发见只剩下一个桃子了。求 n天前一共摘多少个桃子？
+
+            分析：
+                1天前：  只剩1个，   
+                2天前：x （x / 2）- 1 = 1   ==>  x = （1 + 1）* 2 = 4
+                3天前：y （y / 2）- 1 = 4   ==>  y = （4 + 1）* 2 = 10
+                4天前：z （z / 2）- 1 = 10   ==>  y = （10 + 1）* 2 = 22
+                5天前：m （m / 2）- 1 = 22   ==>  y = （22 + 1）* 2 = 46
+                ...
+            总公式：f(n) = (f(n -1) + 1 ) * 2
+        */
+        var monkeyPeach = function (d) {
+            // 退出递归条件
+            if (d <= 1) {
+                return 1
+            }
+            return (monkeyPeach(d - 1) + 1) * 2
+        }
+
+        console.log("3天前：", monkeyPeach(3))
+        console.log("4天前：", monkeyPeach(4))
+        console.log("5天前：", monkeyPeach(5))
+
+    </script>
+</body>
+
+</html>

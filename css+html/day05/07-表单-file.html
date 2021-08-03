@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-表单-file</title>
+</head>
+
+<body>
+    <!-- MIME认识：https://baike.baidu.com/item/MIME/2900607?fr=aladdin -->
+    
+    <!-- method提交方式为get不能满足文件提交，必须是post才能传输 -->
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        <!-- 规定提交的类型 -->
+        <h3>规定上传的文件类型</h3>
+        <input type="file" name="file" id="" accept="image/jpg">
+        <input type="file" name="file" id="" accept="image/gif">
+
+
+        <h3>文件多个上传</h3>
+        <input type="file" multiple>
+
+        <br><button type="submit">提交信息</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-插入排序</title>
+</head>
+
+<body>
+    <script>
+        var numbers = [25, 3, 16, 36, 30, 11, 42, 47, 39, 20];
+        // 定义一个临时变量（第三方）
+        var temp
+        /*
+        
+            要求：升序
+        */ 
+        for (var i = 0; i < numbers.length; i++) {
+            for (var j = i + 1; j > 0; j--) {
+                if (numbers[j] < numbers[j - 1]) {
+                    // 这里开始和左边已排好序的进行比较，如果小于前面的就换位
+                    temp = numbers[j]
+                    numbers[j] = numbers[j - 1]
+                    numbers[j - 1] = temp
+
+                } else {
+                    // 该数字已经找到所处的位置了，没有必要循环下去（此轮循环 —— 该内层循环）
+                    break;
+                }
+
+            }
+        }
+
+        // 用while处理插入排序
+        console.log(numbers)
+
+    </script>
+</body>
+
+</html>

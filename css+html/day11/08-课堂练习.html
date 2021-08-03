@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-课堂练习</title>
+    <style>
+        .star-on,
+        .star-half,
+        .star-off {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+        }
+
+        .star-on {
+            background: url(./images/star-on-32.png) center / 32px 32px no-repeat;
+        }
+        .star-half {
+            background: url(./images/star-half-32.png) center / 32px 32px no-repeat;
+        }
+        .star-off {
+            background: url(./images/star-off-32.png) center / 32px 32px no-repeat;
+        }
+
+
+        /* 375px < X < 414px */
+        @media screen and (min-width: 375px) and (max-width: 414px) {
+            .star-on {
+                background: url(./images/star-on-24.png) center / 24px 24px no-repeat;
+            }
+            .star-half {
+                background: url(./images/star-half-24.png) center / 24px 24px no-repeat;
+            }
+            .star-off {
+                background: url(./images/star-off-24.png) center / 24px 24px no-repeat;
+            }
+        }
+
+        
+        /* 375px > X */
+        @media screen and (max-width: 375px) {
+            .star-on {
+                background: url(./images/star-on-16.png) center / 16px 16px no-repeat;
+            }
+            .star-half {
+                background: url(./images/star-half-16.png) center / 16px 16px no-repeat;
+            }
+            .star-off {
+                background: url(./images/star-off-16.png) center / 16px 16px no-repeat;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="star-on"></span>
+        <span class="star-on"></span>
+        <span class="star-half"></span>
+        <span class="star-half"></span>
+        <span class="star-off"></span>
+        <span class="star-off"></span>
+    </div>
+</body>
+
+</html>

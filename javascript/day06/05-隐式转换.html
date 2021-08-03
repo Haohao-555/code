@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-隐式转换</title>
+</head>
+
+<body>
+    <script>
+        // (1) 字符串连接: 运算符+表示加法运算,JavaScript将把数字转换为字符串，再进行拼接。
+        console.log("44 + '55' ==>", 44 + "55");
+
+        // (2)算术运算符(++ -- - * / %) 或者比较运算符(> < >= <= != ==)会把两边转化为数字,进行运算
+        console.log("44 - '33' ==>", 44 - "33");    // 11
+        console.log("44 - '33a' ==>", 44 - "33a");  // NaN
+        console.log("66 * '2' ==>", 66 * "2");  // 132
+        console.log("66 - undefined ==>", 66 - undefined);  // NaN  ===>66 - Number(undefined) = 66 - NaN = NaN
+
+
+        console.log("66 > false ==>", 66 > false);  // 132 ,在比较过程中,会把false通过Number(false) ==> 0
+        console.log("66 == '66' ==>", 66 == '66');  // 132 ,在比较过程中,会把'66'通过Number('66') ==> 66
+        console.log("undefined <= null ==>", undefined >= null);  // false <===> Number(undefined) = NaN; Number(null) = 0; NaN <= 0  
+        console.log(null < 0, null > false, null < true)        // false false true  
+        console.log(null <= 0, null >= false, null <= true)     // true true true
+
+
+
+
+        // (3)关系运算符 == 和!=     
+        //     注意: === 和!== 他们是恒等,他们的类型和值豆都要相等,所以不涉及转化
+
+        /*
+            -  字符串和数字比较时，字符串转数字；
+            -  数字为布尔比较时，布尔转数字；
+            -  字符串和布尔比较时，两者转数字；
+            -  对象和布尔比较时，两者转数字；
+            -  对象和数值比较时，对象转数字；
+
+            注意:NaN和任意的值,包括自己都不相等, undefined和自己\null相等, null同理
+        */
+
+        // 规范中提到， 要比较相等性之前，不能将 null 和 undefined 转换成其他任何值，并且规定null 和 undefined 是相等的
+        console.log("undefined ==> null", undefined == null)   // true 
+        console.log("NaN == NaN ==>", NaN == NaN)            //false
+        // true true false false false false false, null是一样的测试
+        console.log(undefined == undefined, undefined == null, undefined == false, undefined == true, undefined == 0, undefined == '', undefined == " ")
+
+
+
+        // (4) 条件表达式 逻辑!(非)  ==> 将原本的true变成false, 原本的false变成true
+        var nul;
+        if (nul == true) { // false
+            console.log("nul执行")
+        }
+
+        if (0) {   // false
+            console.log("0执行")
+        }
+
+        if ("成立") {  // true
+
+            console.log("字符串执行")
+        }
+
+        if (" ") {  // true
+            console.log("' '执行")
+        }
+        if ("") {  // false
+            console.log("''执行")
+        }
+
+        if (!"成立") {  // true
+
+            console.log("字符串执行")
+        }
+
+        console.log(!NaN)  // true
+
+        
+    </script>
+</body>
+
+</html>

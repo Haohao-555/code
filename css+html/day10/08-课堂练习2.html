@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-课堂练习2</title>
+    <!-- 去除默认样式 -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        ul {
+            width: 150px;
+            border: 1px solid rgb(54, 49, 49);
+            cursor: pointer;
+            background: #ddd;
+        }
+
+        ul li {
+            position: relative;
+            padding: 5px 10px;
+            line-height: 30px;
+            text-align: center;
+            box-sizing: border-box;
+            /* border: 1px solid #000; */
+        }
+
+        /* 用伪元素after来添加下划线 */
+        ul li::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: #000;
+        }
+
+        ul li:last-child::after {
+           display: none;
+        }
+
+        .bigBox ul {
+            position: absolute;
+            top: 0;
+            left: 150px;
+            /* 最开始，ul被隐藏 */
+            display: none;
+        }
+
+        /* 点击li标签，让二级列表显示 */
+        .bigBox li:target a {
+            color: red;
+        }
+
+        .bigBox li:target ul {
+            display: block;
+        }
+    </style>
+</head>
+
+<!-- 学生的错误情况：hover进行悬停的时候，悬停所添加的样式只能给自身或者其后台子元素 -->
+
+<body>
+    <ul class="bigBox">
+        <li id="one">
+            <a href="#one">游戏资料</a>
+            <ul class="item">
+                <li>游戏下载</li>
+                <li>新手指引</li>
+                <li>资料库</li>
+            </ul>
+        </li>
+        <li id="two">
+            <a href="#two">商城合作</a>
+            <ul class="item">
+                <li>点券充值</li>
+                <li>道聚城</li>
+                <li>周边商城</li>
+                <li>网吧特权</li>
+            </ul>
+        </li>
+        <li>社区活动
+
+        </li>
+        <li id="three">
+            <a href="#three">赛事官网</a>
+            <ul class="item">
+                <li>LPL职业联赛</li>
+                <li>LDL发展联赛</li>
+                <li>全球总决赛</li>
+                <li>城市季中赛</li>
+                <li>德玛西亚杯</li>
+            </ul>
+        </li>
+        <li id="four">
+            <a href="#four"> 自助系统</a>
+            <ul class="item">
+                <li>联系客服</li>
+                <li>封号查询</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+
+<!-- 面试题，如何让图片或者任一个盒子垂直居中，你能想到多少种？ -->
+
+</html>

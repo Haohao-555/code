@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-伪元素选择器2</title>
+    <style>
+        /* 1-input表单获得光标时 */
+        input:focus {
+            color: white;
+            background: #000;
+        }
+
+        /* 2-伪类向元素的第一个子元素添加样式。 */
+        div:first-child {
+            color: violet;
+        }
+
+        .boxTwo:last-of-type {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>1-input表单获得光标时</h2>
+    <input type="text">
+
+    <h2>2-伪类向元素的第一个子元素添加样式。</h2>
+    <div class="boxOne">
+        <div>第1个div子元素</div>
+        <div>第2个div子元素</div>
+        <div>第3个div子元素</div>
+    </div>
+
+
+    <h2>3-选择器匹配属于其父元素的特定类型的首个子元素。</h2>
+    <div class="boxTwo">
+        <div>第1个div子元素2</div>
+        <div>第2个div子元素2</div>
+        <div>第3个div子元素2</div>
+    </div>
+
+</body>
+
+</html>

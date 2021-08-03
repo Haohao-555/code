@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-浮动清除</title>
+    <style>
+        /*   
+            认识标准文档流及特性
+            文档流 : 指的是元素在文档结构中的排列方式；
+            标准文档流：网页在解析的时候，遵循于从上往下，从左往右的一个顺序，而这个顺序就是来源于标准文档流；
+            脱离文档流：打破原本的从上到下，从左到右的排列方式，比如重叠 、叠加 、覆盖等非正常的文档流的排列布局情况
+        */
+        main {
+            /* margin: 20px; */
+            border: 5px solid orange;
+        }
+
+        /* main h2{} */
+        main div {
+            width: 100px;
+            height: 200px;
+            background: #ccc;
+            margin-bottom: 10px;
+            /* 全部子元素都浮动了 */
+            float: left;
+        }
+
+        main .one {
+            background: orange;
+        }
+
+        footer {
+            height: 200px;
+            background: gray;
+        }
+
+        /* .clear {
+            height: 100px;
+            剔除最后一个子元素的浮动
+            float: none;
+        } */
+
+        /* 用伪元素afer清除浮动 */
+        main::after {
+            content: '';
+            /* 清除浮动 */
+            clear: both;
+            /* 先变成块级元素 */
+            display: block;
+        }
+
+        /* 变成一种公用的类名 */
+        .clearfix::after {
+            content: '2o374890123847129384';
+            /* 清除浮动 */
+            clear: both;
+            /* 先变成块级元素 */
+            display: block;
+
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 父元素的高度是由子元素撑开的，如果全部子元素浮动了，脱离文档流，则父元素高度塌陷，高度为0 -->
+    <main class="clearfix">
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+        <!-- <div class="clear"></div> -->
+    </main>
+    <footer></footer>
+
+
+</body>
+
+</html>

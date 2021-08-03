@@ -1,0 +1,48 @@
+<!--
+ * @Date: 2021-07-30 17:10:16
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\javascript\day05\作业2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        var dog = {
+          name: '阿福',
+          type: '柴犬',
+          age: 2,
+          showMsg: function () {
+            console.log(this.name + "是一条" +this.type+ ",今年"+this.age+  "岁了。")
+          }
+        }
+       
+        var phone = {
+          make:'vivo',
+          type: 'x20',
+          color: 'block',
+          power: 100,
+          charge: function () {
+              if (this.power == 100) {
+                console.log("电量已满无需充电");
+              } else {
+                console.log("正在充电中");
+              }
+          },
+          use: function () {
+            if (this.power == 0) {
+              console.log("手机需要充电暂时无法使用")
+            }else {
+              this.power--;
+            }
+          }
+        }
+    </script>
+  </body>
+</html>

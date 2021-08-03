@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        main {}
+
+        main section {}
+
+        main section h2 {}
+
+        main section article {
+            margin-bottom: 20px;
+        }
+
+        main section .concern {
+            display: inline-block;
+        }
+
+        main section article>span {
+            font-weight: 540;
+            font-size: 18px;
+        }
+
+        main section .concern span {
+            background: rgb(255, 126, 0);
+            color: white;
+            padding: 1px 6px;
+        }
+
+        main section .concern::after {
+            display: inline-block;
+            content: '';
+            width: 0;
+            height: 0;
+            border-width: 8px 0px 8px 8px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) rgb(255, 126, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>《焦点访谈》扛稳粮食安全重任</h2>
+            <article>
+                 <!-- 这里有伪元素after加入制作小三角形 -->
+                <div class="concern"><span>聚焦</span></div>
+                <span>多支力量全力搜索在逃金钱豹</span>
+            </article>
+
+            <article>
+                <div class="concern">
+                    <span>关注</span>
+                    <!-- 这里有伪元素after加入制作小三角形 -->
+                </div>
+                <span>多支力量全力搜索在逃金钱豹</span>
+            </article>
+        </section>
+    </main>
+
+</body>
+
+</html>

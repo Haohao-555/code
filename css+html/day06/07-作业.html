@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        section div:nth-child(2)::first-letter {
+            color: red;
+        }
+
+        section div:nth-child(3)::first-letter {
+            color: rgb(160, 38, 37);
+        }
+
+        section div:nth-child(4)::first-letter {
+            color: rgb(119, 45, 46);
+        }
+
+        section div:nth-child(n+5)::first-letter {
+            color: gray
+        }
+
+        .title {
+            margin-top: 40px;
+        }
+
+        .title .content {
+            margin-bottom: 15px;
+        }
+
+        .title .content span {
+            /* padding: 10px; */
+            background: rgb(30, 99, 176);
+            color: white;
+            /* padding: 5px 20px;  */
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .title .content div {
+            display: inline-block;
+        }
+
+        .title .content:nth-child(4) span {
+            background: rgb(228, 38, 38)
+        }
+
+        .title .content:nth-child(n+5) span {
+            background: rgb(204, 204, 204)
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 作业1 -->
+    <section>
+        <h2>网抑云music hot music榜</h2>
+        <div>1 伤不起</div>
+        <div>2 海底</div>
+        <div>3 他应该在车底</div>
+        <div>4 富婆爱上我</div>
+        <div>5 如果当时</div>
+        <div>6 天外来物</div>
+    </section>
+
+    <!-- 作业2 -->
+    <div class="title">
+        <div class="content">
+            <span>回看</span>
+            <div>天气预报</div>
+        </div>
+
+        <div class="content">
+            <span>回看</span>
+            <div>焦点访谈</div>
+        </div>
+
+        <div class="content">
+            <span>回看</span>
+            <div>东方时空</div>
+        </div>
+        <div class="content">
+            <span>直播中</span>
+            <div>新闻1+1</div>
+        </div>
+        <div class="content">
+            <span>未开始</span>
+            <div>国际时讯</div>
+        </div>
+        <div class="content">
+            <span>未开始</span>
+            <div>国际时讯</div>
+        </div>
+    </div>
+</body>
+
+</html>

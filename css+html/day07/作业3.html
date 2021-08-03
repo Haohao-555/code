@@ -1,0 +1,112 @@
+<!--
+ * @Date: 2021-07-14 18:35:39
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 90%;
+            border: 1px solid #ffafaf;
+            margin: 0px auto;
+            text-align: center;
+        }
+        .left {
+            float: left;
+        }
+        .clearfix::after {
+            content: " ";
+            display: block;
+            clear: both;
+        }
+        
+        header {
+            height: 60px;
+            background-color: #ffff00;
+            border: 1px solid #000;
+            padding: 6px;
+            margin-bottom: 8px;
+        }
+        header .header_top {
+            margin-bottom: 6px;
+        }
+        header .header_top .logo {
+            width: 29%;
+            height: 26px;
+            background-color: red;  
+            margin-right: 13px;
+        }
+        header .header_top .search {
+            width: 70%;
+            height: 26px;
+            background-color: blue;
+        }
+        header .header_nav {
+              background-color: #ffc0cb;
+              width: 100%;
+              height: 28px;
+        }
+        main .main_top {
+            height: 180px;
+            border: 1px solid #333;
+            background-color: #00ff00;
+            margin-bottom: 8px;
+        }
+        main .main_bottom {
+            border: 1px solid #333;
+            margin-bottom: 8px;
+            padding: 4px;
+        }
+        main .main_bottom .main_bottom_left {
+            height: 120px;
+            width: 20%;
+            background-color: yellow;
+        }
+        main .main_bottom .main_center {
+            height: 120px;
+            background-color: #800080;
+            margin: 0px 20px;
+            width: 57%;
+        }
+        main .main_bottom .main_bottom_right {
+            height: 120px;
+            width: 20%;
+            background-color: #ffa500;
+        }
+        footer {
+            width: 100%;
+            height: 28px;
+            border: 1px solid #333;
+            background-color: #dddddd;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header_top clearfix">
+            <div class="logo left">#logo</div>
+            <div class="search left">#search</div>
+        </div>
+        <div class="header_nav">#nav</div>
+    </header>
+    <main>
+        <div class="main_top">
+              #picture
+        </div>
+        <div class="main_bottom clearfix">
+             <div class="main_bottom_left left">#left</div>
+             <div class="main_center left">#center</div>
+             <div class="main_bottom_right left">#right</div>
+        </div>
+    </main>
+    <footer>#footer</footer>
+</body>
+</html>

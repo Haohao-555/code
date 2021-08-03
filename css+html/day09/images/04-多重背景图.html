@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-多重背景图</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 600px;
+            padding: 30px;
+            border: 40px solid red;
+
+            background: url(./images/1.jpg) no-repeat center left / 200px,
+                        url(./images/2.jpg) no-repeat center left / 300px,
+                        url(./images/3.jpg) no-repeat center left/400px#ccc
+        }
+    </style>
+</head>
+
+<body>
+    <h3>
+        **注意**：background 简写多重值时,**背景颜色**一定要放在**最后一个多重值**中
+    </h3>
+    <div class="box"></div>
+
+</body>
+
+</html>

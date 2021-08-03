@@ -1,0 +1,1 @@
+document.getElementsByClassName('box')[0].style.backgroundColor = "pink"

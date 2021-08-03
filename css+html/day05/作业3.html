@@ -1,0 +1,112 @@
+<!--
+ * @Date: 2021-07-12 18:53:49
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day05\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业3</title>
+    <style>
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      li {
+        position: relative;
+        margin-bottom: 6px;
+      }
+      .content .item ul li span:first-child {
+        display: inline-block;
+        font-size: 4px;
+        color: #fff;
+        width: 30px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        margin-right: 10px;
+      }
+      .content .item:first-child ul li span:first-child {
+        background-color: #ff7e00;
+      }
+      .content .item:last-child ul li span:first-child {
+        background-color: #3db3e5;
+      }
+      .content .item ul li span:last-child {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .san {
+        position: absolute;
+        left:30px;
+        top: 7px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-left-width: 5px;
+        border-left-style: solid;
+        border-bottom: 5px solid transparent; 
+      } 
+      .content .item:first-child ul li span .san {
+        border-left-color: #ff7e00;
+      }
+      .content .item:last-child ul li span .san {
+        border-left-color: #3db3e5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="item">
+        <h3>《焦点访谈》抗稳粮食安全重任</h3>
+        <ul>
+          <li>
+            <span>聚焦
+                <i class="san"></i>
+            </span>
+            <span>多支力量全力搜寻在逃金钱豹 | 遇野生动物 尽量结伴而行</span>
+          </li>
+          <li>
+            <span>关注 <i class="san"></i></span>
+            <span>明星产品来了！新疆小棉花 开拓大市场 | 打造能源新格局</span>
+          </li>
+          <li>
+            <span>科技 <i class="san"></i></span>
+            <span>多功能腕机来了！只需挥一挥手可享便捷生活 | 新型火箭</span>
+          </li>
+          <li>
+            <span>说法 <i class="san"></i></span>
+            <span>逃不掉的罪恶 他逃亡18年后突然投案自首 | 难圆的财富梦</span>
+          </li>
+        </ul>
+      </div>
+      <div class="item">
+        <h3>《面对面》王霜：踢球的女孩</h3>
+        <ul>
+          <li>
+            <span>健康 <i class="san"></i></span>
+            <span>千万别忽视 胆囊里长了哪些东西易癌变？ | 冠心病之战</span>
+          </li>
+          <li>
+            <span>自然 <i class="san"></i></span>
+            <span>雄性织布雀竟然依靠筑巢技术来“娶老婆” | 座头鲸嬉戏日常</span>
+          </li>
+          <li>
+            <span>脱贫 <i class="san"></i></span>
+            <span>农村利益联合可助力乡村振兴 | 看他如何当好小猪的保姆？</span>
+          </li>
+          <li>
+            <span>体坛 <i class="san"></i></span>
+            <span>女超：新科冠军大胜升班马 | 邱敬园夺体操全锦赛双杠冠军</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

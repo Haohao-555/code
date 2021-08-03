@@ -1,0 +1,81 @@
+<!--
+ * @Date: 2021-07-07 14:07:37
+ * @Author: haohao
+ * @LastEditors: haohao
+ * @FilePath: \day02\2-标签语义化.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-标签语义化</title>
+</head>
+
+<body>
+    <!-- 
+        为什么要有语义化标签
+        1. 方便代码的阅读和维护
+        2. 对搜索引擎友好，有了良好的结构和语义你的网页内容自然容易被搜索引擎抓取，你网站的推广便可以省下不少的功夫。
+        3. 语义 Web 技术有助于利用基于开放标准的技术，从数据、文档内容或应用代码中分离出意义。 
+    -->
+    <!-- 1.0 标题 -->
+    <h1>标题1</h1>
+    <h2>标题2</h2>
+    <h3>标题3</h3>
+    <h4>标题4</h4>
+    <h5>标题5</h5>
+    <h6>标题6</h6>
+
+    <!-- 2.页面跳转a超链接标签 -->
+    <h2>a标签| 超链接用于页面之间或页面内部的跳转，行内元素</h2>
+    <a>百度一下</a>
+    <a href="">百度一下</a>
+    <a href="javascript:;">百度一下</a>
+    <a href="https://baidu.com/">百度一下</a>
+
+    <!-- 3. p标签 -->
+    <h2>p：定义段落，用于修饰文本，块级标签 —— paragraph99(p特点：有默认的上下外边距)</h2>
+    <p>段落1</p>
+    <p>段落2</p>
+
+    <!-- 4. div -->
+    <h2>div是最为典型的块级元素</h2>
+    <div>div标签</div>
+
+    <!-- 5. span -->
+    <h2>span是最为典型的行内元素</h2>
+    <span>吃饭</span>
+    <span>睡觉</span>
+    <span>打游戏</span>
+
+    <!-- 6. pre -->
+    <h2>修饰文本，保留换行符和空格，一般用于展示代码，块级标签</h2>
+    <pre>
+        for(var i = 0; i < 20; i++){
+            console.log(i)
+        }
+    </pre>
+
+    <!-- 7. code -->
+    <h2>code:定义计算机代码文本。</h2>
+    <code>
+        <!-- ddidiid -->
+        for(var i = 0; i < 20; i++){
+            console.log(i)
+        }
+    </code>
+
+    <!-- 8 strong:  -->
+    <strong>strong:用于修饰加粗文本，行内标签。</strong>
+    <b>用于修饰加粗文本，行内标签，**该标签没有语义性**</b>
+
+
+    <!-- 9.0 em -->
+    <h2>em: 把文本定义为强调的内容。</h2>
+    <em>em标签</em>
+</body>
+
+</html>

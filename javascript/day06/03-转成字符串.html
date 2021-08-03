@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-转成字符串</title>
+</head>
+
+<body>
+    <script>
+        var num = 1000;
+        console.log("num ==>", num)
+
+        var str = String(num)
+        console.log("str ==>", str)
+        console.log("typeof str ==>", typeof str)
+
+        // 截取一段数据: substr(0, 2) ===> 字符串对象的substr(开始的位置, 长度), 截取字符串
+        console.log("截取str的字符串前面两个数字 ==>", str.substr(0, 2))
+
+        var str2 = "想念是一  种会呼吸的痛";
+        console.log("截取str的字符串前面7数字 ==>", str2.substr(0, 7))
+
+
+
+        //转化成string类型的特殊情况 ==> 什么什么特殊情况,相当给这个值加上""
+        console.log("NaN ==>", String(NaN));
+        console.log("false ==>", String(false));
+        console.log("undefined ==>", String(undefined));
+        console.log("数组 ==>", String([1, 23, 67, "我很丑, 但是我有一颗爱你的心"]));
+        console.log("对象 ==>", String({ name: "么么哒", age: 18, hobby: ["抽烟", "蹦迪"] }));
+
+
+
+
+    </script>
+</body>
+
+</html>

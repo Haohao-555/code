@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法5</title>
+    <style>
+        img {
+            height: 300px;
+            width: 300px;
+            /* display: inline; */
+            vertical-align: middle;
+        }
+
+        .box {
+            text-align: center;
+            width: 600px;
+            height: 600px;
+            background: skyblue;
+            margin: 20px auto;
+        }
+        /* 因为img使用vertical-align是需要“参考系”的 */
+        .box::before {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 100%;
+            background: white;
+            /* display: none; */
+            opacity: 0;
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="../images/1.jpeg" alt="">
+        <!-- <div class="son"></div> -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-表格直列化</title>
+    <style>
+        colgroup:nth-child(1){
+            background: orange;
+            /* color属性设置无效，不能设置字体颜色 */
+            color: #fff;  
+        }
+        .my-col {
+            background: greenyellow
+        }
+
+        /* 给表格第一行设置一个背景颜色 */
+        thead tr:nth-child(1){
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        HTML 中提供 `<colgroup></colgroup>` 标签可以对表格中某一列（多列）设置样式。
+        HTML 中提供 `<col>` 标签可以对表格中某一列（多列）设置样式。 
+    -->
+    <table border="1px" cellpadding="10px" cellspacing="0" align="center" bgcolor="skyblue">
+        <colgroup span="2"></colgroup>
+        <col class="my-col" span="1">
+
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>intro</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>3476896</td>
+                <td>My first HTML</td>
+                <td>$53</td>
+                <td>this is good</td>
+            </tr>
+            <tr>
+                <td>3476896</td>
+                <td>My first HTML</td>
+                <td>$53</td>
+                <td>this is good</td>
+            </tr>
+            <tr>
+                <td>3476896</td>
+                <td>My first HTML</td>
+                <td>$53</td>
+                <td>this is good</td>
+            </tr>
+            <tr>
+                <td>3476896</td>
+                <td>My first HTML</td>
+                <td>$53</td>
+                <td>this is good</td>
+            </tr>
+          
+        </tbody>
+
+    </table>
+</body>
+
+</html>

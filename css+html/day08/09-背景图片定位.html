@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-背景图片定位</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 550px;
+            border: 4px solid orange;
+
+            background-image: url(./images/3.jpg);
+            /* 不平铺 */
+            background-repeat: no-repeat;
+
+            /* 
+                `<x> <y>` 分别表示图片相对盒子容器的x轴y轴的偏移量，
+                    可以是具体的距离长度值、百分比或者是关键字
+                1. x轴支持的关键字：left center right
+                2. y轴支持的关键字：top center bottom
+            */
+            /* background-position: right center; */
+            /* background-position: 20px center; */
+
+            /* background-postion:x y;
+            x：{容器(container)的宽度—背景图片的宽度}*x百分比，超出的部分隐藏。
+            y：{容器(container)的高度—背景图片的高度}*y百分比，超出的部分隐藏。 */
+            /* 20%是多少px，(600 - 468) * 20% = 26.4px*/
+            background-position: 50% center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- background-position属性允许您选择背景图像显示在其应用到的盒子中的位置。
+            它使用的坐标系中，框的左上角是(0,0)，框沿着水平(x)和垂直(y)轴定位。 -->
+    </div>
+</body>
+
+</html>

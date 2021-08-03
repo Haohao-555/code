@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-input支持的属性</title>
+</head>
+<body>
+    <form action="" method="get">
+        <!-- 1-**autocomplete**：**所有**input元素，用于表单的自动填充功能 -->
+        <h3>1、autocomplete和placeholder</h3>
+        <div>
+            <!-- 自动填充的功能，提交过信息，name的属性值是一致的 -->
+            用户名：<input type="text" name="username" autocomplete="off" placeholder="请输入用户名" value="霸刀总裁爱上我"><br>
+            <!-- 如果不写autocomplete的属性，默认属性值为on -->
+            用户2： <input type="text" name="password" id="" autocomplete="on">
+        </div>
+
+        <h3>2、autofocus</h3>
+        <!-- **autofocus**：**所有**input元素,页面加载时自动聚焦到此表单控件 -->
+        <div>
+            <!-- 假如一个页面设置多个autofoucs的属性，则除了第一有效外，其他都无效 -->
+            密码：<input type="text" name="password" autofocus>
+            密码2：<input type="text" name="password" autofocus>
+        </div>
+
+        <h3>3、disabled和maxlength</h3>
+        <!-- **所有**input元素,表单控件是否被禁用 -->
+        <div>
+            <!-- 假如一个页面设置多个autofoucs的属性，则除了第一有效外，其他都无效 -->
+            密码：<input type="text" name="password" disabled>
+            密码2：<input type="text" name="password" maxlength="3">
+        </div>
+
+        <h3>4、readonly和required</h3>
+        <!-- **绝大部分**input元素,存在时表示控件的值不可编辑(布尔值) -->
+        <!-- **绝大部分**input元素,表示此值为必填项或者提交表单前必须先检查该值(布尔值) -->
+        <div>
+            <!-- 假如一个页面设置多个autofoucs的属性，则除了第一有效外，其他都无效 -->
+            密码：<input type="text" name="password" readonly>
+            密码2：<input type="text" name="password" required>
+        </div>
+
+        <!-- 问题：disabled和readonly的区别在哪里？ -->
+
+        <button>提交信息</button>
+    </form>
+</body>
+</html>

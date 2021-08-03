@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-函数定义</title>
+</head>
+
+<body>
+    <script>
+        /*
+            函数创建
+                字面量函数
+                    1）关键字声明 function 函数名(参数.....){}
+                    2) 匿名函数 function(参数...){}
+        */
+        // 1、关键字
+        function sayLove(word) {
+            console.log("Hi, You are beautifil," + word + ",OK?")
+        }
+
+        // 调用函数
+        sayLove("I want to fall in love with you");
+        sayLove("Can you marry me");
+
+
+        //2、 匿名函数:function(){}是无法独立存在，必须要有一个表达式配合
+        // 匿名函数立即执行函数， 第一个()是一个表达式， 第二()的作用是执行匿名函数
+        (function (b) {
+            console.log("匿名函数，参数：", b)
+        })('匿名函数的参数');
+
+        +function (b) {
+            console.log("匿名函数+，参数：", b)
+        }('匿名函数的参数+');
+
+        -function (b) {
+            console.log("匿名函数-，参数：", b)
+        }('匿名函数的参数-')
+
+        !function (b) {
+            console.log("匿名函数!，参数：", b)
+        }('匿名函数的参数!')
+
+        ~function (b) {
+            console.log("匿名函数~，参数：", b)
+        }('匿名函数的参数~');
+
+
+
+        // 3、函数的表达式（推荐)
+        /*
+            var 变量名 = function ([参数列表]){
+                // 这里放函数体,函数体就是要重复执行代码块
+            }
+        */
+        var words = function (word, time) {
+            console.log("我将要离去了，还有一些话想对你说：", word)
+            console.log("第二个参数", time)
+
+            // 函数还可以函数其他函数,这时候形成闭包（作用域）
+            var car = function () {
+                console.log("老司机带带我，我要去江西！");
+            }
+            car()
+        }
+
+        // 调用函数
+        // words("你睡觉的时候，能不能不抢被子", 2021, 12, 21); 
+        // 如果函数两个参数或者更多，但是调用函数的时候只传递一个，则除了第一个参数有值外，别都为undefined
+        words("下'辈子'，希望别太短");
+
+        // 检测函数变量名的类型
+        console.log("变量名为words的函数的typeof类型为：", typeof words)    // function
+
+
+
+        // 4、函数构造函数 (不推荐)
+
+        // a是形参名，b是第二个形参名， return a + b是函数体
+        var flowers = new Function("a", "b", "return a+b")
+
+        // console.log(flowers)
+        // 调用函数
+        var res = flowers(4, 6)
+        var res = flowers("我喜欢花儿", "但我害怕花儿一天天枯萎")
+        console.log(res)
+
+
+
+    </script>
+</body>
+
+</html>

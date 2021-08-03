@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+      var day;
+      var hours;
+      var allHour = (80 / 8) * 3 + 80;
+      day = parseInt(allHour / 24);
+      hours = allHour % 24;
+      console.log("医护人员总共工作了", day , "天", hours , "小时");
+
+      var num = parseInt(prompt("请输入摄氏度").trim());
+      alert((5 / 9) * (num -32));
+    //   50 + 50 - 49 = 51
+    //   49 + 49 - 49 = 49
+    //   47 - 46 - 45 = -44
+    //   45 - 43 + 44 = 46
+  </script>  
+</body>
+</html>

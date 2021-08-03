@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-for循环小案例</title>
+</head>
+
+<body>
+    <script>
+        // 公鸡： 5元/只； 母鸡： 3元/只； 小鸡： 1元/3只
+        // 问： 100块买100只鸡，有多少种购买方法
+
+        /*
+            方法1： 穷举法
+            如果公鸡1， 母鸡1， 小鸡1， 不符合题目， 排除
+            如果公鸡1， 母鸡1， 小鸡2， 不符合题目， 排除
+            如果公鸡1， 母鸡1， 小鸡3， 不符合题目， 排除
+            ...
+        */
+        var count = 0;
+        // for (var gong = 0; gong <= 100; gong++) {
+        //     for (var mu = 0; mu <= 100; mu++) {
+        //         for (var xiao = 0; xiao <= 100; xiao++) {
+        //             // 满足鸡的总钱为100元的条件
+        //             if (gong + mu + xiao == 100 && gong * 5 + mu * 3 + xiao / 3 == 100) {
+        //                 console.log("公鸡：" + gong + ",母鸡：" + mu + ",小鸡：" + xiao)
+        //             }
+        //             // 计算循环次数
+        //             count ++
+        //         }
+        //     }
+        // }
+
+        // 方法2：
+        // for (var gong = 0; gong <= 100 / 5; gong++) {
+        //     for (var mu = 0; mu <= 100 / 3; mu++) {
+        //         for (var xiao = 0; xiao <= 100; xiao++) {
+        //             // 满足鸡的总钱为100元的条件
+        //             if (gong + mu + xiao == 100 && gong * 5 + mu * 3 + xiao / 3 == 100) {
+        //                 console.log("公鸡：" + gong + ",母鸡：" + mu + ",小鸡：" + xiao)
+        //             }
+        //             // 计算循环次数
+        //             count++
+        //         }
+        //     }
+        // }
+
+        
+        // 方法3
+        // for (var gong = 0; gong <= 100 / 5; gong++) {
+        //     for (var mu = 0; mu <= 100 / 3; mu++) {
+        //         // 如果执行到这个地方，那么公鸡和母鸡的数量是不是定了，则小鸡的数量可以计算
+        //         var xiao = 100 - gong - mu;
+
+        //         // 满足鸡的总钱为100元的条件
+        //         if (gong + mu + xiao == 100 && gong * 5 + mu * 3 + xiao / 3 == 100) {
+        //             console.log("公鸡：" + gong + ",母鸡：" + mu + ",小鸡：" + xiao)
+        //         }
+        //         // 计算循环次数
+        //         count++
+
+        //     }
+        // }
+
+
+        // 方法4：
+        for (var gong = 0; gong <= 100 / 5; gong++) {
+            for (var mu = 0; mu <= (100 - gong * 5) / 3; mu++) {
+                // 如果执行到这个地方，那么公鸡和母鸡的数量是不是定了，则小鸡的数量可以计算
+                var xiao = 100 - gong - mu;
+
+                // 满足鸡的总钱为100元的条件
+                if (gong + mu + xiao == 100 && gong * 5 + mu * 3 + xiao / 3 == 100) {
+                    console.log("公鸡：" + gong + ",母鸡：" + mu + ",小鸡：" + xiao)
+                }
+                // 计算循环次数
+                count++
+
+            }
+        }
+
+
+        /*  
+            1030000
+            72114
+            714
+            364
+
+        */
+        console.log("一共执行了：", count)
+
+
+    </script>
+</body>
+
+</html>

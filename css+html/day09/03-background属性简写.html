@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-background属性简写</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 600px;
+            padding: 30px;
+            border: 40px solid red;
+
+            /* background-color: rosybrown;
+            background-image: url(./images/3.jpg);
+            background-repeat: no-repeat;
+            background-position: center left;
+            background-size: 300px; */
+
+            background: yellowgreen url(./images/1.jpg) no-repeat center right / 200px 350px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <pre>
+        background属性是以下属性的合并简写形式：
+
+            1. background-color
+            2. background-image
+            3. background-attachment
+            4. background-position
+            5. background-size
+            6. background-repeat
+            7. background-origin
+            8. background-clip
+    </pre>
+</body>
+
+</html>

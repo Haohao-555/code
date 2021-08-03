@@ -1,0 +1,83 @@
+<!--
+ * @Date: 2021-07-14 14:14:01
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\day07\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>练习-浮动</title>
+    <style>
+        main {
+            width: 600px;
+            border: 1px solid pink;
+        }
+        main div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #333;
+            margin-bottom: 3px;
+        }
+        main .one {
+            width: 110px;
+            background-color: red;
+            float: left;
+        }
+        main .two {
+            width: 120px;
+            background-color: green;
+            text-align: center;
+        }
+        main .three {
+            width: 130px;
+            background-color: blue;
+            
+        }
+        main .four {
+            width: 140px;
+            background-color: aqua;
+        }
+        .clearfix::after {
+            content: "1eqjfkaskfvqwreofbsabdd";
+            clear: both;
+            /* 因为添加伪元素在页面是不存在的，故需要将其设置为块级元素 */
+            display: block;
+            /* 防止 content 输入内容 */
+            line-height: 0px;
+            visibility: hidden;
+            font-size: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        判断盒子在页面的位置
+            （1）判断盒子是否浮动，浮动则在浮动层（不占据文档流的位置）
+            （2）不浮动则在文档流上
+            （3）依次类推，根据文档流和浮动层存在的盒子按序排序
+     -->
+    <main>
+        <div class="one">1</div>
+        <div class="two">2</div>
+        <div class="three">3</div>
+        <div class="four">4</div>
+    </main>
+    <!-- 
+        清浮动
+ 
+        （1）就一个盒子设置浮动时，给造成影响的元素清除浮动
+             比如 盒子 one 设置浮动，造成影响的是盒子 two
+                  故 应该给盒子 two 添加 clear:left | right
+        
+        （2）所有子元素设置浮动时，父元素必须清除浮动，否则会导致父元素高度丢失 
+            并且在夫元素没有设置高度时，设置 margin 是不会生效的（只要高度存在就可以设置）。
+           
+            i: 父元素高度给定
+            ii: 用伪元素 after 清除浮动
+     -->
+</body>
+</html>

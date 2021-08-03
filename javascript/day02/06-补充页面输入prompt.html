@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-补充页面输入prompt</title>
+</head>
+<body>
+    <script>
+        /*
+            alert()             弹出警告框
+            document.write()    向body标签中输出内容
+            console.log()       调试使用
+        */ 
+        // 弹出一个输入框，点击确认对输入的值进行返回储存    
+        var str = prompt("请输入您的银行卡密码");
+        console.log(str)
+
+        // 弹出一个确定框
+        // 把确认的结果返回储存，如果点击是确定，则返回true，否则就是false
+        var res = confirm("你还记得我吗？"); 
+        console.log(res)
+    </script>
+</body>
+</html>

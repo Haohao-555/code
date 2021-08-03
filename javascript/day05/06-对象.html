@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-对象</title>
+</head>
+
+<body>
+    <script>
+        /*
+            javascript 创建对象
+                （1）字面量对象
+                    var obj = {
+                        属性名1： 属性值,
+                        属性名2： 属性值,
+                        属性名3： 属性值,
+                        ...
+                    }
+                 (2) 构造函数创建对象
+                    var obj = new Oject()
+        */
+        var girlFriend = {
+            sex: "女",
+            height: "大于165cm",
+            weight: "小于1T",
+            reading: true,
+            hobby: "电子竞技;阅读（网络小说）;消费",
+            salary: "10K",
+        }
+        // console.log(girlFriend)
+
+
+        // 1、第二种命名方式
+        var food = new Object();
+
+        // 可以通过 对象名.属性名称 访问对象属性值或者赋值
+        food.category = "水果"
+        console.log(food)
+        console.log("访问对象的属性category", food.category)
+
+
+
+        // 2、定义一个car对象
+        var car = {
+            brand: "雪佛兰",
+            model: "Bel Air",
+            year: 1957,
+            mileage: 2021,
+            color: "red",
+            passengers: 4,
+            fold: false,
+            speed: {
+                one: "100公里加速3.55s"
+            }
+            // age: "车龄6年"
+        }
+        console.log("car对象的打印：", car)
+
+        // 3、检索：访问对应的属性值
+        console.log("检索方式1：[属性名]", car['brand'])   // car['属性名']，其中的''必须需要，否则会被识别为变量从而产生错误
+        console.log("检索方式2：.属性名", car.brand);
+
+        // 如果你尝试检索一个并不存在的成员属性的值，将返回undefined
+        console.log("对象中无该成员属性的值的检索：", car.aaa)    // undefined
+
+        // || 运算符可以用来填充默认值(虽无该属性的值，但是有默认填充值)
+        console.log("给默认值：", car.name || "车的名字")
+
+
+        // 4、更新（添加），修改成员属性值 
+        // 原本存在的成员属性，更新； 否则就修改（更新）
+        car.engin = "CEU";   // 添加
+        car.powertain = "4.0T V8 双涡轮增压"
+
+        console.log("查看更新后的car对象", car)
+
+        // 5、另外访问
+        console.log(car.speed.one)
+
+        // 小细节  —— 在属性名上使用""或者''也是没有问题的
+        var obj = {
+            "one": 1,
+            "two": 2,
+        }
+        // console.log(obj)
+
+
+        // 6、对象是引用类型
+        var human = {
+            name: "jane",
+            age: 18,
+            sex: '女'
+        }
+
+        // human是引用数据类型，human赋值给girl是{}，是human的地址
+        var girl = human
+
+        // 赋值之后，修改里面的属性值
+        human.name = "water";
+
+        console.log("human对象", human)
+        console.log("girl对象", girl)
+
+
+
+        // 基本数据类型赋值
+        var a = 10;
+
+        // 基础数据类型的赋值，就是赋值一份数据给b
+        var b = a;
+
+        // 修改a的值
+        a = "a修改后的值"
+        console.log("a的值：", a)
+        console.log("b的值：", b)
+
+        // 如何让对象进行深拷贝？
+    </script>
+</body>
+
+</html>

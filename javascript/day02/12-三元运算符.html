@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-三元运算符</title>
+</head>
+
+<body>
+    <script>
+        /*
+            三元运算：
+            var res = 条件 ? 条件成立返回的结果: 条件不成立返回的结果
+        */
+        var age = 17.9999999;
+        var res = age >= 18 ? "已成年，可以fall in love with others" : "未成年，好好学习哟！"
+        // alert(res)
+
+        /*
+            练习：在页面prompt弹框中，输入一个性别， 
+            如果输入男，则，alert出："他是个猛男"
+            如果输入女，则，alert出："她是个温柔的女孩子"
+            如果输入双性，则，alert出："它喜欢的范围有点广"
+            如果输入其他内容，则，alert出："泰国回来的王刚"
+        */
+
+        var sex = prompt("请入性别，如：男、女、双性")
+        // console.log(sex)
+
+        var res = sex == "男" ? "他是个猛男" : 
+                  sex == "女" ? "她是个温柔的女孩子" :
+                  sex == "双性" ? "它喜欢的范围有点广" : "泰国回来的王刚";
+        alert(res)
+    </script>
+</body>
+
+</html>

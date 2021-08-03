@@ -1,0 +1,208 @@
+<!--
+ * @Date: 2021-07-28 17:32:45
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2145\javascript\day03\作业.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+   
+    <style>
+      td {
+        width: 100px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 实验一
+      // var cities = ["北京", "上海", "广州", "深圳"];
+      // var newCities = [];
+      // for (var i = 0; i < cities.length; i++) {
+      //   newCities[i] = cities[i];
+      // }
+      // console.log(newCities);
+
+      // 实验二
+      var uniteUnique = [
+        [1, 3, 2],
+        [5, 2, 1, 4, NaN],
+        [2, 1, undefined],
+        [undefined, null, NaN],
+      ];
+      console.log("二维数组为", uniteUnique);
+      var unique = [];
+      // 去重
+      function fun2(num) {
+        for (var i = 0; i < unique.length; i++) {
+          unique.indexOf();
+          if (num == unique[i]) {
+            return false;
+          }
+        }
+        return true;
+      }
+      // 去重 升级去重 NaN
+      function fun4(num) {
+        var flag = unique.indexOf(num);
+        console.log(num, flag);
+        if (unique.indexOf(num) === -1) {
+          return true;
+        }
+        return false;
+      }
+      // 二维降一维
+      function fun1() {
+        for (var i = 0; i < uniteUnique.length; i++) {
+          for (var j = 0; j < uniteUnique[i].length; j++) {
+            if (fun2(uniteUnique[i][j])) {
+              unique.push(uniteUnique[i][j]);
+            }
+          }
+        }
+      }
+      // 排序
+      function fun3(unique) {
+        var a;
+        for (var i = 0; i < unique.length; i++) {
+          for (var j = i + 1; j < unique.length; j++) {
+            if (unique[i] > unique[j]) {
+              a = unique[i];
+              unique[i] = unique[j];
+              unique[j] = a;
+            }
+          }
+        }
+      }
+
+      fun1();
+      fun3(unique);
+      console.log("降维，去重，排序后", unique);
+
+      // 实验三
+      // var num = parseInt(prompt("请输入数值"));
+      // var str = "";
+      // // 上三角
+      // for (var i = 1; i <= num + 1; i++) {
+      //   // 将一行中缺少的 * 用空格代替
+      //   for (var k = 0; k < num - i + 1; k++) {
+      //     str = str + " ";
+      //   }
+      //   // 判断该行多少个 *
+      //   for (var j = 1; j <= i - 1; j++) {
+      //     str = str + "* ";
+      //   }
+      //   // 该行*输出完毕 换行
+      //   str += "\n";
+      // }
+      // // 下三角 （同理）
+      // for (var i = num; i > 0; i--) {
+      //   for (var k = 0; k < num - i + 1; k++) {
+      //     str = str + " ";
+      //   }
+      //   for (var j = 1; j <= i - 1; j++) {
+      //     str = str + "* ";
+      //   }
+      //   str += "\n";
+      // }
+      // console.log(str);
+
+      // 实验四
+      // document.write("<table>");
+      // for (var i = 1; i <= 9; i++) {
+      //   document.write(`<tr>`);
+      //   for (var j = 1; j <= i; j++) {
+      //     document.write("<td>", j, " * ", i, " = ", i * j, "</td>");
+      //   }
+      //   document.write(`</tr>`);
+      // }
+      // document.write("</table>");
+
+      // document.write("<table>");
+      // for (var i = 9; i >= 1; i--) {
+      //   document.write(`<tr>`);
+      //   for (var j = i; j >= 1; j--) {
+      //     document.write("<td>", i, " * ", j, " = ", i * j, "</td>");
+      //   }
+      //   document.write(`</tr>`);
+      // }
+      // document.write("</table>");
+
+      // document.write("<table>");
+      // for (var i = 9; i >= 1; i--) {
+      //   document.write(`<tr>`);
+      //   var num = 9 - i;
+      //   for (var z = 1; z <= num; z++) {
+      //     document.write("<td></td>");
+      //   }
+
+      //   for (var j = i; j >= 1; j--) {
+      //     document.write("<td>", i, " * ", j, " = ", i * j, "</td>");
+      //   }
+      //   document.write(`</tr>`);
+      // }
+      // document.write("</table>");
+
+      // document.write("<table>");
+      // for (var i = 1; i <= 9; i++) {
+      //   document.write(`<tr>`);
+      //   var num = 9 - i;
+      //   for (var z = 1; z <= num; z++) {
+      //     document.write("<td></td>");
+      //   }
+      //   for (var j = 1; j <= i; j++) {
+      //     document.write("<td>", j, " * ", i, " = ", i * j, "</td>");
+      //   }
+      //   document.write(`</tr>`);
+      // }
+      // document.write("</table>");
+
+      var arr = [
+        1,
+        1,
+        "true",
+        true,
+        true,
+        5,
+        "F",
+        false,
+        undefined,
+        null,
+        null,
+        undefined,
+        NaN,
+        0,
+        1,
+        "a",
+        "a",
+        NaN,
+        "NaN",
+      ];
+
+      function uniqueUseNotAllEqual(array) {
+        var temp = [], //一个临时数组
+          mark = true; // 标识位
+
+        //遍历当前数组
+        for (var i = 0, j = array.length; i < j; i++) {
+          // 标识位的作用就是用来判断是否存在NaN,第一次找到保留到新数组中
+          // 然后标识位置改为false是为了再次找到的时候不推入数组
+          if (array[i] !== array[i]) {
+            // 这里的不等特性,也可以用isNaN判断[ES6]
+            mark && temp.indexOf(array[i]) == -1 ? temp.push(array[i]) : "";
+            mark = false;
+          } else temp.indexOf(array[i]) == -1 ? temp.push(array[i]) : "";
+        }
+        return temp;
+      }
+      uniqueUseNotAllEqual(arr);
+      console.log(uniqueUseNotAllEqual(arr));
+    </script>
+  </body>
+</html>

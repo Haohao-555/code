@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-粘性定位</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+            display: inline-block;
+        }
+        .box1 {
+            /* 粘性定位可以被认为是相对定位和固定定位的混合 */
+            position: sticky;
+            /* left: 20px; */
+            top: 10px;
+            background: orange;
+
+        }
+        .scroll {
+            height: 1200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box box1"></div>
+    <div class="box"></div>
+
+    <div class="scroll"></div>
+</body>
+</html>

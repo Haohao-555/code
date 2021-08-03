@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-绝对定位</title>
+
+    <style>
+        .father {
+            width: 500px;
+            height: 500px;
+            background: #ccc;
+            margin: 100px;
+
+            /* 如果子元素想相对父元素进行定位，则必须对父元素进行相对定位 */
+            position: relative;
+            /* position: fixed;
+            bottom: 10px;
+            right: 10px; */
+            
+        }
+        .father .son {
+            width: 100px;
+            height: 100px;
+            background: purple;
+            position: absolute;
+            bottom: 100px;
+            right: 200px;
+        }
+        /* 如果标签基于页面进行绝对定位，则参考系：文档左上角+视口宽高 */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <pre>
+        元素会被移出正常文档流，并不为元素预留空间，
+        该元素会相对于最近的非 static 定位祖先元素左上角为坐标原点进行偏移，
+        来确定元素位置
+    </pre>
+</body>
+</html>

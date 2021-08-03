@@ -1,0 +1,130 @@
+<!--
+ * @Date: 2021-08-02 18:48:18
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \javascript\day06\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function hex(num) {
+        switch (num) {
+          case 10:
+            num = "a";
+            break;
+          case 11:
+            num = "b";
+            break;
+          case 12:
+            num = "c";
+            break;
+          case 13:
+            num = "d";
+            break;
+          case 14:
+            num = "e";
+            break;
+          case 15:
+            num = "f";
+            break;
+        }
+
+        // 把处理好的结果返回出去
+        return num;
+      }
+      // 10进制 转换成 2/8/16进制
+      var binf1 = function (bin, num) {
+        var str = "";
+        var a;
+        var nums = num;
+        while (num > 0) {
+          var c = num % bin;
+          num = parseInt(num / bin);
+          if (bin == 16) {
+            a = hex(c);
+          } else {
+            a = c;
+          }
+          str = a + str;
+        }
+        console.log(nums+"转换成"+bin+"进制"+str);
+      };
+      binf1(16,13);
+
+    function hex1(num) {
+        switch (num) {
+          case "a":
+            num = 10;
+            break;
+          case "b":
+            num = 11;
+            break;
+          case "c":
+            num = 12;
+            break;
+          case "d":
+            num = 13;
+            break;
+          case "e":
+            num = 14;
+            break;
+          case "f":
+            num = 15;
+            break;
+        }
+
+        // 把处理好的结果返回出去
+        return num;
+      }
+    var tobin = function(bin, num) {
+        var arr = [...num];
+        var res = 0;
+        if (bin == 16) {
+            for (var i = arr.length-1; i >=2 ; i--) {
+                a = hex1(arr[i]);
+                res += parseInt(a) * Math.pow(bin, arr.length - i - 1);
+            }
+        }else if (bin == 2) {
+            for (var i = arr.length-1; i >=2 ; i--) {
+                res += parseInt(arr[i]) * Math.pow(bin, arr.length - i - 1);  
+            }
+        }else {
+            for (var i = arr.length-1; i >= 0 ; i--) {
+                res += parseInt(arr[i]) * Math.pow(bin, arr.length - i - 1);  
+            }
+        }
+        return res;
+    }
+      // 2/8/16进制 转换成 10进制
+      var binf2 = function(num) {
+          var res;
+          if (num.startsWith('0x')) {
+              // 16 进制
+               res = tobin(16, num);
+               console.log(num+"是16进制")
+          } else if (num.startsWith('0b') || num.startsWith('0B')){
+              // 二进制
+               res = tobin(2, num);
+               console.log(num+"是2进制")
+          }else if ((num.startsWith('0') || num.startsWith('1')) && !num.includes('9')) {
+              // 八进制
+               res = tobin(8, num);
+               console.log(num+"是8进制")
+          } else {
+              console.log(num +"您输入的格式有错误");
+          }
+             console.log(res)  
+      }
+      binf2('0b110');
+      binf2('0xff');
+      binf2('0g19');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-js书写位置</title>
+
+    <!-- 
+        type 该属性定义script元素包含或src引用的脚本语言。属性的值为MIME类型; 
+        支持的MIME类型包括`text/javascript`, `text/ecmascript`, 
+        `application/javascript`, 和`application/ecmascript`
+    -->
+
+    <!-- 嵌入式js -->
+    <!-- script标签常用的type属性值为text/javascript，H5可以不写，但是如果写错则无效果 -->
+    <script type="text/ecmascript">
+        alert('有钱又会哄女孩的男孩可以拥有多个女孩子的青春，但是我用尽全力只能.....')
+    </script>
+
+    <!-- 外链式 -->
+    <script src="./02.js">
+        // 在这里不执行
+        alert('我是外链式的代码，看不能执行')
+    </script>
+</head>
+
+<body>
+    <!-- 行内式 -->
+    <input type="button" value="点我试试" onclick="alert('Hello World')" />
+    <a href="javascript:alert('我喜欢的名花有主，喜欢我的惨不忍睹！')">超链接</a>
+</body>
+
+</html>

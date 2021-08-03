@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-overflow</title>
+    <style>
+        .box1 {
+            border: 3px dashed #ccc;
+            width: 100px;
+            height: 120px;
+
+            /* 内容超出部分，不可见（隐藏） */
+            overflow: hidden;
+        }
+
+        .box2 {
+            border: 3px dashed #ccc;
+            width: 100px;
+            height: 120px;
+
+            /* 内容超出部分，出现滚动条 */
+            overflow: scroll;
+        }
+
+        .box3 {
+            border: 3px dashed #ccc;
+            width: 100px;
+            height: 120px;
+
+            /* 内容超出部分，出现滚动条 */
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        overflow:CSS属性 overflow 定义当一个元素的内容太大而无法适应
+        块级格式化上下文 时候该做什么
+        (overflow: visible(默认) | hidden（隐藏） | scroll（出现滚动条，不管有没有内容超出） 
+        | auto（让浏览器自动检查是否有超出，如果有则出现滚动条） | inherit（继承父元素）;)
+    </h2>
+
+    <h3>演示1_—— hidden</h3>
+    <!-- 在不设置高度的情况下，元素的高度由文本内容撑开或者由子元素撑开 -->
+    <div class="box1">
+        内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤
+        内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤
+    </div>
+
+    <h3>演示2_—— scroll</h3>
+    <div class="box2">
+        内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤
+        内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤
+    </div>
+
+    <h3>演示3_—— auto</h3>
+    <div class="box3">
+        内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容
+        内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤内容内瓤
+    </div>
+
+    <div class="box1"></div>
+
+</body>
+
+</html>

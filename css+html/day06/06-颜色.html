@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-颜色</title>
+    <style>
+        /* 
+            (1) rgba: red green blue alpha(透明), 范围 0 - 255， alpha范围是0 - 1
+            (2) 十六进制：**十六进制值颜色** 十六进制值其实就是将rgb函数中，red、green、blue 0到255的取值转化为00到FF
+            (3) hsl色彩：是一种工业界的色彩标准，因为它能涵盖到人类视觉所能感知的所有颜色，所以在工业界广泛应用。
+                -h（Hue）：代表色调，取值在0度~360度之间，0度是红色，120度是绿色，240度是蓝色。360度也是红色。
+                -s（Saturation）：代表饱和度，是色彩的纯度，是一个百分比的值，取值在0%~100%，0%饱和度最低，100%饱和度最高
+                -l（Lightness）：代表亮度，也是一个百分比值，取值在0%~100%，0%最暗，100%最亮。
+        */
+        .box1 {
+            background: rgba(119, 211, 146, 0.5);
+        }
+
+        .box2 {
+            /* background: #00aaee; */
+            background: #0ae;
+            /* background: #fff; */
+        }
+
+        .box3 {
+            background: hsla(360, 50%, 50%, 1)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">盒子1——rgba</div>
+    <div class="box2">盒子2-十六进制</div>
+    <div style="background: red;">士大夫的撒</div>
+    <div class="box3">盒子3-hsl色彩</div>
+</body>
+
+</html>

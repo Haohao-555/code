@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-display</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background: rgba(128, 128, 128, 1);
+            margin-bottom: 10px;
+            opacity: 0.4;
+
+            /* rgba中的a是影响背景颜色，不影响内容；但opactity透明度是直接影响全部 */
+        }
+
+        .box1 {
+            /* 
+                隐藏： 跟visibility: hidden;区别在哪里？
+                display:none 消失，不占位置
+               visibility: hidden:视觉消失，占位置
+            */
+
+            /* 注意：css3的transition过渡效果对display:none无效 */
+            /* display: none; */
+            /* visibility: hidden; */
+
+            transition: all 0.3;
+        }
+
+        .father:hover .box1 {
+            /* block不仅仅有变成块级元素的作用，还有让元素显示的效果 */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>display除了行内，块级元素和行内块转变外，还有别的属性值：none和block</h2>
+    <div class="father">
+        <span>悬停显示</span>
+        <div class="box box1">盒子1</div>
+    </div>
+
+    <div class="box box2">盒子2</div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-伪元素选择器</title>
+    <style>
+        .box {
+            border: 2px solid #ccc;
+        }
+
+        /* "first-letter" 伪元素只能用于块级元素。
+            这个伪元素用于指定一个元素第一个字母的样式。
+            所有前导标点符号应当与第一个字母一同应用该样式。
+         */
+        .one::first-letter {
+            color: red;
+            font-size: 28px;
+        }
+
+        .one::first-line {
+            background: orange;
+        }
+
+        .two::first-letter {
+            color: skyblue;
+            font-size: 28px;
+        }
+
+        .p {
+            /* 转变类型  */
+            display: inline-block;
+        }
+
+        p::first-letter {
+
+            width: 100px;
+            height: 100px;
+            background: #000;
+            color: slateblue;
+            font-size: 36px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 在 CSS 中允许使用伪元素来添加一些选择器的特殊效果。 -->
+    <div class="box">
+        <p class="one">在 CSS 中允许使用<br>伪元素来添加<br>一些选择器的特殊效果。</p>
+        <p class="two">再次测试</p>
+    </div>
+    <h2>在伪元素在行内无效</h2>
+    <span>span标签</span>
+    <p class="p">p标签</p>
+</body>
+
+</html>

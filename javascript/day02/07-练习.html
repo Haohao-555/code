@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-练习</title>
+</head>
+
+<body>
+    <script>
+        // 实验1
+        // 一共工作了多少小时 
+        var totalHours = (80 / 8) * 3 + 80
+        // console.log("一共工作了：", totalHours)
+
+        var day = parseInt(totalHours / 24)
+        // console.log("工作了天数：",day)
+
+        // 取余
+        var hours = totalHours % 24;
+
+        console.log("医护人员总共工作了" + day + "天" + hours + "小时")
+
+
+
+        // 实验2
+        var celsius = prompt("请输入摄氏度")
+        // console.log(celsius)
+        var wd = (celsius * 9 / 5) + 32;
+        // 公式：华氏摄氏度 =（摄氏度 * 9 / 5）+ 32
+        alert("华氏摄氏度为" + wd)
+    </script>
+</body>
+
+</html>

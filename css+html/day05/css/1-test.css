@@ -1,0 +1,9 @@
+@import url(./2-test.css);
+.h2 {
+    color: goldenrod;
+    font-size: 36px;
+}
+
+h2 {
+    color: orange;
+}
