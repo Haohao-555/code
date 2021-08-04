@@ -107,7 +107,7 @@
         // 8、.slice(beginIndex[, endIndex]) 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
         var str6 = "用钱买开心,很开心!";
         console.log("slice测试==>", str6.slice(1, 3))    // 钱买 （不包括索引3指向的“开”）
-        console.log("slice测试==>", str6.slice(4, 9))    // 心！（索引值超出长度的，不用被理会，不会报错）
+        console.log("slice测试==>", str6.slice(4, 9))    // 心，,很开心（索引值超出长度的，不用被理会，不会报错）
         console.log("slice测试==>", str6.slice(2, -4))    // 买开心,       // 如果第二个参数是负数，那么它规定的是从数组尾部开始算起的元素。
         console.log("slice测试==>", str6.slice(-5, -2))    // ,很开     // 负数， 倒数位数，倒数第5个开始到倒数第2个 输出数据
         console.log("slice测试==>", str6.slice(2))    // 买开心,很开心!
