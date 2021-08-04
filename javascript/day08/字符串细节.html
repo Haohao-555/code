@@ -1,0 +1,76 @@
+<!--
+ * @Date: 2021-08-04 10:39:54
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day08\字符串细节.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1、.charAt(index)方法从一个字符串中返回指定的字符。
+          index 从 0 开始 空格是占一个位置的
+          获取一个超出字符串长度的位置，则返回"" 不报错
+          区别：通过字符串下标获取
+
+        2、.charCodeAt(index) 返回字符串指定位置的字符编码
+              用于键盘事件
+              区分大小写的
+              index 超出位置 返回 NaN
+              空格的编码号 32
+         
+        3、String.fromCharCode（unicode 编码） 把对应的编码还原字符串
+            可以用于代码加密 
+          
+        4、.indexOf(searchValue [, fromIndex])
+            searchValue 要查找的值 （会将传入的值转化成字符串）
+            fromIndex 从哪个地方开始找 （可写可不写）默认从 0 开始
+            'undefined'.indexOf() 0 不传参数强制设置为字符串 "undefined"
+        
+        5、.lastIndexOf(searchValue[, fromIndex]) **
+        
+        
+        6、.concat(str2, [, ...strN])
+         
+      */
+
+      // charCodeAt 和 String.fromCharCode
+      var str = "I love you bady";
+      var codeArr = [];
+      for (var index in str) {
+        codeArr.push(str.charCodeAt(index));
+      }
+      console.log(codeArr);
+      var s = "";
+      for (var index in codeArr) {
+        s += String.fromCharCode(codeArr[index]);
+      }
+      console.log(s);
+
+      var replaceString = function (oldS, newS, fullS) {
+        // 从下标为 0 开始
+        var index = 0;
+        // 记录上一次的小标
+        var i = index;
+         while(true) {
+            if (index == -1) {
+              break;
+            }
+            // 第一次判断
+            if (i = 0) {
+              
+            }
+         } 
+      }
+
+      replaceString("World", "Web", "Test World  Brave New World");
+    </script>
+  </body>
+</html>

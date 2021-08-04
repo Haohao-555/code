@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-数组函数</title>
+</head>
+
+<body>
+    <script>
+        /*
+
+        
+        */
+        // 1、`.push(element1, ..., elementN)` 方法将一个或多个元素添加到数组的末尾，并返回该数组的新长度
+        // 已将 —— 略
+
+        // 2、`.pop()` 删除数组最后一个元素,返回删除的元素,此方法更改数组的长度。
+        var arr1 = ["吴氏针灸", "word is big", "voice of canada"]
+        console.log("原来的数组==>", arr1)
+        // 使用pop之后
+        arr1.pop()
+        console.log("pop之后的数组==>", arr1)
+
+
+        // 3、`.unshift(element1, ..., elementN)` 方法将一个或多个元素添加到数组的开头，并返回该数组的新长度(该方法修改原有数组)。
+        var arr2 = ["吴氏针灸", "word is big", "voice of canada"]
+        console.log("原来的数组==>", arr2)
+        // 使用unshift
+        arr2.unshift("电音王者");
+        console.log("unshift之后的数组==>", arr2)
+
+        // 4、 `.shift()` 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。
+        console.log("shift之后==>", arr2.shift())
+        console.log("shift之后的数组==>", arr2)
+
+
+        // 5、`.sort([compareFunction])` 方法用原地算法对数组的元素进行排序，并返回数组
+        var arr3 = [110, 40, 2100, 4000, 550, 160, 250];
+
+
+        const months = ['March', 'Jana', 'Feb', 'Banana', 'Dec', "Apple"];
+        months.sort();
+        console.log(months); // ["Dec", "Feb", "Jan", "March"]
+
+        // var arr4 = arr3.sort()
+        // console.log("数组中的数字进行排列==>", arr4)    // 排序不了
+
+        console.log("原来的数组==>", arr3)
+        // sort()的参数为函数
+        var arr5 = arr3.sort(function (a, b) {
+            // console.log("a ==>", a)
+            // console.log("b ==>", b)
+            // return a - b    // 升序
+            return b - a    // 降序
+        })
+
+        console.log(arr5)
+
+
+
+    </script>
+</body>
+
+</html>

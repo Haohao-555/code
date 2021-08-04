@@ -1,0 +1,64 @@
+<!--
+ * @Date: 2021-08-04 14:14:47
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day08\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./data.js"></script>
+    <script>
+      // var name = "典"
+      // var position = "战士"
+      // for (var index in data) {
+      //     if (data[index].name.indexOf(name) !== -1) {
+      //       console.log(data[index]);
+      //     }
+      // }
+      //   var replaceString = function (oldStr, newStr, fullString) {
+      //     // 记录上一次的下标
+      //     var index = 0;
+      //     var str = "";
+      //     while (true) {
+      //       // 下一次判断的下标
+      //       var i = index;
+      //       // 检测 oldStr 的下标
+      //       index = fullString.indexOf(oldStr, index == 0? index : index+1);
+      //       // 判断是否找到
+      //       if (index == -1) {
+      //         break;
+      //       }
+      //       // 第一次
+      //       if (i == 0) {
+      //           str += fullString.slice(i, index)
+      //       } else {
+      //           str += fullString.slice(i + oldStr.length, index);
+      //       }
+      //       str += newStr;
+      //     }
+      //     return str;
+      //   };
+      //   console.log(
+      //     replaceString("World", "Web", "Test World  Brave New World!")
+      //   );
+
+      var setFirstLetterUpperCase = function (reS, fullS) {
+        var newstr = fullS.replaceAll(reS, function (mask) {
+          return reS.charAt(0).toUpperCase() + reS.slice(1, reS.length);
+        });
+        console.log(newstr);
+      };
+      setFirstLetterUpperCase(
+        "apples",
+        "apples are round, and apples are juicy."
+      );
+    </script>
+  </body>
+</html>

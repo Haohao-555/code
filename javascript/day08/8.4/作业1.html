@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            height: 100px;
+            line-height: 100px;
+            background-color: #ccc;
+            text-align: center;
+            width: 750px;
+            margin: 0 auto;
+            font-size: 0;
+        }
+        .wrap > span {
+            display: inline-block;
+            vertical-align: middle;
+            width: 60px;
+            height: 60px;
+            border: 1px solid #ccc;
+            line-height: 60px;
+            border-radius: 50%;
+            font-size: 18px;
+            margin: 0 10px;
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        .wrap > span:nth-child(7) {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var str = prompt("请输入值（字符串）");
+        var arr = str.split(",");
+        document.write("<div class='wrap'>")
+        for (var i in arr) {
+           document.write("<span>"+ arr[i]+ "</span>")
+        }
+        document.write("</div>")
+    </script>
+</body>
+</html>

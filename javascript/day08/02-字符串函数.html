@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-字符串函数</title>
+</head>
+
+<body>
+    <script>
+        // 字符串函数
+        /*
+            .charAt(index)
+            .charCodeAt(index)
+            String.fromCharCode()
+            .indexOf()
+            .lastIndexOf()
+            .concat()
+            .split()
+            .slice()
+            .substring()
+            .substr()   // 新版本废弃了
+
+
+            replace(substr, newSubStr|function)`)  //文本替换，替换匹配的第一个字符，返回新的字符串
+            replaceAll(substr, newSubStr|function)`)  //文本替换，替换匹配所有的字符串
+            toLowerCase()  把英文全部转成小写
+            toUpperCase()  把英文全部转成大写
+            .repeat()   //复制指定次数的字符
+            .trim()   // 去除首尾空格
+
+        */
+
+        // 1、replace(substr, newSubStr|function) 方法返回一个由替换值替换部分或所有的substr模式匹配项后的新字符串。
+        // 2、`str.replaceAll(substr, newSubstr|function)` 方法返回一个新字符串，新字符串所有满足 pattern 的部分都已被replacement 替换。
+        var str1 = "hello world, I love you, world, you are my world, do you? hello";
+
+        // 简单写法
+        // var words = ["卧槽", "tmd", "你奶奶的"]
+        console.log("换一个==>", str1.replace('hello', "hi"))
+        console.log("换全部==>", str1.replaceAll('hello', "hi"))
+
+        // 第二个参数是function
+        var str2 = str1.replace("world", function (match) {
+            // 要匹配的子串
+            // console.log(match)
+            // 把要替换的字符串返回处理
+            return "-" + match + "-"
+        })
+        console.log("replace的第二个参数使用function==>", str2)
+
+
+        // 3、 toLowerCase()  把英文全部转成小写
+        console.log("把英文全部转成小写==>", "I ADore you, DO YOU?我真是好love你".toLowerCase())
+
+        // 4、toUpperCase()  把英文全部转成大写
+        console.log("把英文全部转成大写==>", "I ADore you, DO YOU?我真是好love你".toUpperCase())
+
+
+        // 课堂练习
+        // 将字符串中所有指定单词全部首字母大写
+        function setFirstLetterUpperCase(word, res) {
+            // 获得第一个参数里面的字符串，将其首字符转成大写
+            var firstWordUpper = word.slice(0, 1).toUpperCase() + word.slice(1)
+            // console.log(firstWordUpper)
+            // 调用repalceAll 进行新旧值替换
+            return res.replaceAll(word, firstWordUpper)
+        }
+        console.log(setFirstLetterUpperCase("apples", "apples are round, and apples are juicy."))
+
+
+
+        // 5、`.repeat(count)` 构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。
+        // console.log("字符串abc ==>","abc".repeat(-1));   // 报错
+        console.log("字符串abc ==>", "abc".repeat(2));   // abcabc
+        console.log("字符串abc ==>", "abc".repeat(3));   // abcabcabc
+
+
+
+        // 6、`.trim()`方法会从一个字符串的两端删除空白字符。在这个上下文中的空白字符是所有的空白字符 (space, tab, no-break space 等) 
+        console.log("trim()不去除两边空格==>", "    我很 强   ")
+        console.log("trim()去除两边空格==>", "    我很   强   ".trim())
+    </script>
+</body>
+
+</html>

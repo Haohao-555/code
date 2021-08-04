@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var longestPalindrome = function (s) {
+          var str = s.split(" ").join('');
+          var len = str.length;
+          if (len <= 1) {
+              return false;
+          }
+          for (var index in str) {
+              if (str[index].toLowerCase() != str[len - 1 -index].toLowerCase()) {
+                  return false;
+              }
+          }
+          return true;
+      };
+     console.log(longestPalindrome("not a palindrome"));
+     console.log(longestPalindrome("A man a plan a canal Panama"));
+     console.log(longestPalindrome("never odd or even"));
+     console.log(longestPalindrome("nope"));
+     console.log(longestPalindrome("almostomla"));
+     console.log(longestPalindrome("Eyel for of l eye"));
+     console.log(longestPalindrome("a"));
+    </script>
+  </body>
+</html>
