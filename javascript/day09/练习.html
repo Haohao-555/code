@@ -14,27 +14,64 @@
   </head>
   <body>
     <script>
-      var reverseStr = function (str) {
-        var arr = [...str];
-        var newstr = "";
-        for (var i = arr.length - 1; i >= 0; i--) {
-          newstr += arr[i];
-        }
-        return newstr;
-      };
-      console.log(reverseStr("asfbe fbewjh osio fbw"));
+      //   var reverseStr = function (str) {
+      //     var arr = [...str];
+      //     var newstr = "";
+      //     for (var i = arr.length - 1; i >= 0; i--) {
+      //       newstr += arr[i];
+      //     }
+      //     return newstr;
+      //   };
+      //   console.log(reverseStr("asfbe fbewjh osio fbw"));
 
-       var arr = [
-           {name: "乔峰", age: 30},
-           {name: "郭靖", age: 24},
-           {name: "虚竹", age: 21},
-           {name: "小水水", age: 38},
-           {name: "诸葛亮", age: 28},
-       ]
-       var newarr = arr.filter((e, i) => {
-           return e.age < 25 ? e : ""; 
-       })
-       console.log(newarr);
+      //    var arr = [
+      //        {name: "乔峰", age: 30},
+      //        {name: "郭靖", age: 24},
+      //        {name: "虚竹", age: 21},
+      //        {name: "小水水", age: 38},
+      //        {name: "诸葛亮", age: 28},
+      //    ]
+      //    var newarr = arr.filter((e, i) => {
+      //        return e.age < 25 ? e : "";
+      //    })
+      //    console.log(newarr);
+
+      //   const items = ['item1', 'item2', 'item3']
+      //   const copy = [];
+      //   items.forEach(_ => copy.push(_))
+      //   console.log(copy);
+
+      // var destroyer = function () {
+      //   var arr = Array.from(arguments)[0];
+      //   var d = [];
+      //   Array.from(arguments).forEach((el, i) => {
+      //     if (i > 0) {
+      //       d.push(el);
+      //     }
+      //   });
+      //   arr.map((el, i, arr) => {
+      //     for (var index in d) {
+      //       if (el == d[index]) {
+      //         arr.splice(i, 1);
+      //       }
+      //     }
+      //   });
+      //   return arr;
+      // };
+      // console.log(destroyer([1, 2, 3, 4, 5, 6], 4, 5, 1));
+
+      // var diffArray = function (arr1, arr2) {
+      //   var arr = arr1.concat(arr2);
+      //   return arr.filter((el) => {
+      //     return arr1.indexOf(el) == -1 || arr2.indexOf(el) == -1;
+      //   });
+      // };
+      // console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
+
+      /*
+        map 不改变原数组
+        
+      */
     </script>
   </body>
 </html>

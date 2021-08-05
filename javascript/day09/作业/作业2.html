@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+</head>
+
+<body>
+    <script>
+        // 判断是否为回文函数
+        // 回文：忽略字符串大小写和空格的前提下，正着读和反着读都一样
+
+        function pailndrome(str) {
+            // console.log(str)
+            // 忽略大小写  —— 要不全部转成大写，要不全部转成小写
+            // str = str.toLowerCase()
+
+            // // 去除空格 —— 用没有空格的字符串替换有空格的字符串
+            // str = str.replaceAll(" ", "")
+            // console.log(str)
+
+            // 简写：一句话搞定
+            str = str.toLowerCase().replaceAll(" ", "")
+            // console.log(str)
+
+            // eye1forof1eye
+            // 通过循环，i 跟 length - 1 - i  对比
+            /*
+                        0   < == > length - 1 
+                        1   < == > length - 2 
+                        2   < == > length - 3 
+                        ...
+                        i   < == > length - 1 - i 
+            */
+            for (var i = 0; i < str.length / 2; i++) {
+                if (str[i] != str[str.length - 1 - i]) {
+                    // 如果不等于，不是回文字符串
+                    return false
+                }
+            }
+            // 如果循环结束，都满足就是回文
+            return true
+
+
+
+        }
+        // 调用函数
+        console.log(pailndrome("Eye1  3  Fo  r     of 1 eye"))
+        console.log(pailndrome("Eye1   Fo  r     of 1 eye"))
+    </script>
+</body>
+
+</html>

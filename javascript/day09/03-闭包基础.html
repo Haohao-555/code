@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-闭包基础</title>
+</head>
+
+<body>
+    <script>
+        function outFn() {
+            var a = 10;
+            var b = 20;
+            function innerFn() {
+                var c = 30
+                console.log("在内部函数中访问a==>", a, "b ==>", b, "c ==>", c)
+            }
+
+            // 这里可以使用c, c是innerFn里的局部变量
+            innerFn()
+            console.log("在函数outFn里面访问innerFn函数里定义的变量c==>", c)
+        }
+        // console.log("函数里面定义的变量a==>", a)  // a是函数内的局部变量,不能再函数外访问
+        //报错: Uncaught ReferenceError: innerFn is not defined at
+        // innerFn() 
+
+
+        // outFn()
+
+
+        // outFn里面就形成了一个闭包环境
+        // 为啥在函数内部定义变量(局部变量)  ===> 避免全局变量污染
+        // 什么叫局部变量: 寡人希望外面不能直接访问我,但外部可以"控制"我
+
+
+        /*
+            闭包 就是把局部变量的操作暴露给外面可以操作的连接桥梁
+            闭包 就是 一个函数(内部函数)调用另外一个函数(外部)的局部变量,那么这两个函数就形成了一个闭包环境
+
+            用途: 在js里用闭包形式来封装模块代码 或者 缓存数据
+        */
+
+        function outFn() {
+            var a = 10;
+            var innerFn = function () {
+                // 内部函数 innerFn 可以访问外部函数与outFn里面的所有变量和this arguments除外
+                a++;
+                console.log("成功调用a==>", a)
+            }
+            // 暴露函数里面的函数
+            return innerFn
+        }
+        var inner = outFn();
+        inner()     // 11
+        inner()     // 12
+        inner()     // 13
+
+
+        /*
+            0  1  2  3  4  5  6  7   8   9   10...   n
+            0  1  1  2  3  5  8  13  21  34  55 
+        */
+        var i = 0;
+        var fibonacci = function (n) {
+            i++
+            if (n < 2) {
+                return n
+            }
+            return fibonacci(n - 1) + fibonacci(n - 2)
+            // 简写:  return n<2?n:fibonacci(n-1) + fibonacci(n-2);
+        }
+
+        // console.log(fibonacci(0))   // 1 
+        // console.log(fibonacci(1))   // 1   
+        // console.log(fibonacci(2))   // 3     f(2) = f(1) + (0)
+        // console.log(fibonacci(3))   // 5     f(3) = f(2) + f(1) 
+
+        /*                                  没有数据缓存     有数据缓存
+            f(5) = f(4) + f(3)         ==> 9 + 5 + 1 = 15       1
+            f(4) = f(3) + f(2)         ==> 5 + 3 + 1 = 9        1
+            f(3) = f(2) + f(1)         ==> 1+ 3 + 1= 5          1
+            f(2) = f(1) + f(0)         ==> 3                    1
+            f(1) = 1                   ==> 1                    1
+            f(0) = 0                   ==> 1                    1
+        console.log(fibonacci(5))         
+        */
+
+        for (var j = 0; j <= 10; j++) {
+            console.log("<br/>" + fibonacci(j))
+        }
+        document.write("<br/>共执行了" + i + "次")    // 453次
+
+
+        // 用闭包方式来优化斐波那契
+        // 定义一个计算次数的变量
+        var x = 0
+        function outFn() {
+            var arr = [0, 1]
+
+            var fib = function (n) {
+                x++
+                var num = arr[n]
+                if (typeof num !== "number") {
+                    // 如果在数组中取出的斐波那契失败,用递归重新计算并入数组中
+                    num = fib(n - 1) + fib(n - 2);
+                    arr[n] = num;
+                }
+                return num;
+            }
+
+
+            return fib;
+        }
+
+        var aaa = outFn()
+        // aaa(10)
+
+        for (var j = 0; j <= 10; j++) {
+            console.log("<br/>" + aaa(j))
+        }
+        document.write("<br/>共执行了" + x + "次")    // 453次
+
+
+
+    </script>
+</body>
+
+</html>
