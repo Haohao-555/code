@@ -1,0 +1,40 @@
+<!--
+ * @Date: 2021-08-05 10:31:20
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day09\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var reverseStr = function (str) {
+        var arr = [...str];
+        var newstr = "";
+        for (var i = arr.length - 1; i >= 0; i--) {
+          newstr += arr[i];
+        }
+        return newstr;
+      };
+      console.log(reverseStr("asfbe fbewjh osio fbw"));
+
+       var arr = [
+           {name: "乔峰", age: 30},
+           {name: "郭靖", age: 24},
+           {name: "虚竹", age: 21},
+           {name: "小水水", age: 38},
+           {name: "诸葛亮", age: 28},
+       ]
+       var newarr = arr.filter((e, i) => {
+           return e.age < 25 ? e : ""; 
+       })
+       console.log(newarr);
+    </script>
+  </body>
+</html>

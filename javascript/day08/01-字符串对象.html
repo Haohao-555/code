@@ -1,181 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01-字符串对象</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script src="./data.js"></script>
     <script>
-        // 1.0 charAt(index)  返回字符串指定位置的字符  ==> index 一个介于0 和字符串长度减1之间的整数。默认值为0
-        var str1 = "If I were a boy";
-        console.log(str1.charAt(0))   // 获得第1个位置的字符
-        console.log(str1.charAt(1))   // 获得第2个位置的字符
-        console.log(str1.charAt(2))   // 获得第3个位置的字符（空格）
-        console.log(str1.charAt(50))   // 假如去获取一个超出字符串长度的位置，则返回""
-        console.log("通过字符串下标获得==>", str1[1], str1[0], str1[99])  // f I undefined
+      // 1.0 charAt(index)  返回字符串指定位置的字符  ==> index 一个介于0 和字符串长度减1之间的整数。默认值为0
+      var str1 = "If I were a boy";
+      console.log(str1.charAt(0)); // 获得第1个位置的字符
+      console.log(str1.charAt(1)); // 获得第2个位置的字符
+      console.log(str1.charAt(2)); // 获得第3个位置的字符（空格）
+      console.log(str1.charAt(50)); // 假如去获取一个超出字符串长度的位置，则返回""
+      console.log("通过字符串下标获得==>", str1[1], str1[0], str1[99]); // f I undefined
 
+      // 2.0 charCodeAt(index)   定 index 处字符的 UTF-16 代码单元值的一个数字(小于 65,536 的值)；如果 index 超出范围，charCodeAt() 返回 NaN。。
+      // var str2 = "猪之歌，猪你的鼻子有两个孔";
+      var str2 = "I love you baby";
+      console.log("I编码==>", str2.charCodeAt(0)); // I ==> 73  i ==> 105
+      console.log("o编码==>", str2.charCodeAt(3)); // o ==> 111
+      console.log("' '编码==>", str2.charCodeAt(1)); //  32
+      console.log("编码==>", str2.charCodeAt(99)); // NaN
 
-        // 2.0 charCodeAt(index)   定 index 处字符的 UTF-16 代码单元值的一个数字(小于 65,536 的值)；如果 index 超出范围，charCodeAt() 返回 NaN。。
-        // var str2 = "猪之歌，猪你的鼻子有两个孔";
-        var str2 = "I love you baby";
-        console.log("I编码==>", str2.charCodeAt(0))     // I ==> 73  i ==> 105
-        console.log("o编码==>", str2.charCodeAt(3))     // o ==> 111
-        console.log("' '编码==>", str2.charCodeAt(1))     //  32
-        console.log("编码==>", str2.charCodeAt(99))     // NaN
+      var codeArr = [];
+      for (var i = 0; i < str2.length; i++) {
+        codeArr.push(str2.charCodeAt(i));
+      }
+      console.log("codeArr==>", codeArr);
 
-        var codeArr = []
-        for (var i = 0; i < str2.length; i++) {
-            codeArr.push(str2.charCodeAt(i))
+      // 3 String.fromCharCode(unicode 编码号)  === >把对应的编码还原成字符串
+      var s = "";
+      for (var i in codeArr) {
+        s += String.fromCharCode(codeArr[i]);
+      }
+      console.log("String.fromCharCode把对应编码还原成字符串 ==>", s);
+
+      // 4、`.indexOf(searchValue [, fromIndex])` 方法返回调用它的 String 中第一次出现的指定值的索引，
+      // 从 fromIndex 处进行搜索。如果未找到该值，则返回 -1。
+      var str3 =
+        "If you were a good girl, I will give everything to you, including my life. Do you love me";
+      console.log("you字符第一次出现的位置==>", str3.indexOf("you")); // 3
+      console.log("your字符第一次出现的位置==>", str3.indexOf("your")); // 没有找到，返回-1
+      console.log("you字符从下标为5开始找==>", str3.indexOf("you", 5)); // 从字符串位置5开始之后找you, 位置51
+
+      // 5、`.lastIndexOf(searchValue[, fromIndex])` 方法返回调用 String 的指定值最后一次出现的索引，
+      // 在一个字符串中的指定位置 fromIndex处从后向前搜索。如果没找到这个特定值则返回-1 。
+      console.log("you字符最后一次次出现的位置==>", str3.lastIndexOf("you")); // 78
+
+      // 6.0 `.concat(str2, [, ...strN])`方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。
+      // str2 [, ...strN] 需要连接到 str 的字符串。
+      var str4 = "I have a pen ";
+      var str5 = "I have a apple";
+      console.log("字符串合并==>", str4.concat(str5));
+
+      // 7.0 `.split([separator[, limit]])` 方法使用指定的分隔符字符串将一个String对象分割成子字符串数组，
+      // 以一个指定的分割字串来决定每个拆分的位置。
+      // var str5 = "I want to see the sun-raise with you";
+      var str5 = "I ,wan,t to se,e the sun-raise with you";
+      var newArr = str5.split(" ");
+      console.log("split拆分==>", newArr);
+      console.log("用split进行分割，会不会对原变量造成影响==>", str5); // 不会
+
+      // 根据, 进行拆分
+      var newArr1 = str5.split(",");
+      console.log("利用,进行拆分==>", newArr1);
+
+      // 限制分割的次数
+      var newArr2 = str5.split(",", 2);
+      console.log("利用,进行拆分,限制次数为2==>", newArr2);
+
+      // 练习，通过名字筛选英雄数据
+      // 确认所有英雄数据已经进来
+      // console.log(data)
+      // 封装函数，参数（字符串==> 英雄名）
+      function heroSlt(str) {
+        // 定义要返回的数组
+        var arr = [];
+        // 循环数据，传递过来参数跟英雄名字进行一个个对比（indexOf）
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].name.indexOf(str) != -1) {
+            arr.push(data[i]);
+          }
         }
-        console.log("codeArr==>", codeArr)
+        // 处理完成之后，然后数据返回出去
+        return arr;
+      }
 
-        // 3 String.fromCharCode(unicode 编码号)  === >把对应的编码还原成字符串
-        var s = ""
-        for (var i in codeArr) {
-            s += String.fromCharCode(codeArr[i])
-        }
-        console.log("String.fromCharCode把对应编码还原成字符串 ==>", s)
+      // 调用函数
+      // console.log(heroSlt("典"))
+      // console.log(heroSlt("亚"))
+      // console.log(heroSlt("云"))
+      // console.log(heroSlt("大宝剑"))
 
+      // 8、.slice(beginIndex[, endIndex]) 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
+      var str6 = "用钱买开心,很开心!";
+      console.log("slice测试==>", str6.slice(1, 3)); // 钱买 （不包括索引3指向的“开”）
+      console.log("slice测试==>", str6.slice(4, 9)); // 心，,很开心（索引值超出长度的，不用被理会，不会报错）
+      console.log("slice测试==>", str6.slice(2, -4)); // 买开心,       // 如果第二个参数是负数，那么它规定的是从数组尾部开始算起的元素。
+      console.log("slice测试==>", str6.slice(-5, -2)); // ,很开     // 负数， 倒数位数，倒数第5个开始到倒数第2个 输出数据
+      console.log("slice测试==>", str6.slice(2)); // 买开心,很开心!
 
-        // 4、`.indexOf(searchValue [, fromIndex])` 方法返回调用它的 String 中第一次出现的指定值的索引，
-        // 从 fromIndex 处进行搜索。如果未找到该值，则返回 -1。
-        var str3 = "If you were a good girl, I will give everything to you, including my life. Do you love me"
-        console.log("you字符第一次出现的位置==>", str3.indexOf("you"))     // 3
-        console.log("your字符第一次出现的位置==>", str3.indexOf("your"))     // 没有找到，返回-1
-        console.log("you字符从下标为5开始找==>", str3.indexOf("you", 5))     // 从字符串位置5开始之后找you, 位置51
+      // 9-`.substring(indexStart[, indexEnd])` 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。
+      // 这里获得子集不包括参数2的指向的字符
+      var str7 = "GOOD-LUCK-TO-YOU";
+      console.log(str7.substring(1, 2)); // O     获取从位置1 到位置2 结束的字符子集
+      console.log(str7.substring(1, 4)); // OOD   获取从位置1 到位置4 结束的字符子集
+      console.log(str7.substring(3, 8)); // D-LUC  获取从位置3 到位置8 结束的字符子集
+      console.log(str7.substring(3)); // D-LUCK-TO-YOU  获取从位置3 到字符串结束都要
+      console.log(str7.substring(-2, 3)); //GOO  注意：indexStart 和 indexEnd 数小于 0 或为 NaN，则被当作 0。
 
+      // 10、substr 返回一个字符串中从指定位置开始到指定字符数的字符。
+      // 注意：该方法未来将要被舍弃请尽量避免使用该方法，使用substring替代它
+      var str8 = "秋刀鱼的滋味，猫跟你都想了解";
+      console.log("substr使用===>", str8.substr(1, 5)); // 刀鱼的滋味
+      console.log("substr使用===>", str8.substr(-4, 3)); // 都想了
 
-        // 5、`.lastIndexOf(searchValue[, fromIndex])` 方法返回调用 String 的指定值最后一次出现的索引，
-        // 在一个字符串中的指定位置 fromIndex处从后向前搜索。如果没找到这个特定值则返回-1 。
-        console.log("you字符最后一次次出现的位置==>", str3.lastIndexOf("you"))     // 78
-
-
-        // 6.0 `.concat(str2, [, ...strN])`方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。
-        // str2 [, ...strN] 需要连接到 str 的字符串。
-        var str4 = "I have a pen ";
-        var str5 = "I have a apple"
-        console.log("字符串合并==>", str4.concat(str5))
-
-
-        // 7.0 `.split([separator[, limit]])` 方法使用指定的分隔符字符串将一个String对象分割成子字符串数组，
-        // 以一个指定的分割字串来决定每个拆分的位置。 
-        // var str5 = "I want to see the sun-raise with you";
-        var str5 = "I ,wan,t to se,e the sun-raise with you";
-        var newArr = str5.split(" ");
-        console.log("split拆分==>", newArr)
-        console.log("用split进行分割，会不会对原变量造成影响==>", str5)   // 不会
-
-        // 根据, 进行拆分
-        var newArr1 = str5.split(",")
-        console.log("利用,进行拆分==>", newArr1)
-
-        // 限制分割的次数
-        var newArr2 = str5.split(",", 2)
-        console.log("利用,进行拆分,限制次数为2==>", newArr2)
-
-        // 练习，通过名字筛选英雄数据
-        // 确认所有英雄数据已经进来
-        // console.log(data)
-        // 封装函数，参数（字符串==> 英雄名）
-        function heroSlt(str) {
-            // 定义要返回的数组
-            var arr = []
-            // 循环数据，传递过来参数跟英雄名字进行一个个对比（indexOf）
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].name.indexOf(str) != -1) {
-                    arr.push(data[i])
-                }
-
-            }
-            // 处理完成之后，然后数据返回出去
-            return arr;
-        }
-
-        // 调用函数
-        // console.log(heroSlt("典"))
-        // console.log(heroSlt("亚"))
-        // console.log(heroSlt("云"))
-        // console.log(heroSlt("大宝剑"))
-
-
-
-        // 8、.slice(beginIndex[, endIndex]) 方法提取某个字符串的一部分，并返回一个新的字符串，且不会改动原字符串。
-        var str6 = "用钱买开心,很开心!";
-        console.log("slice测试==>", str6.slice(1, 3))    // 钱买 （不包括索引3指向的“开”）
-        console.log("slice测试==>", str6.slice(4, 9))    // 心，,很开心（索引值超出长度的，不用被理会，不会报错）
-        console.log("slice测试==>", str6.slice(2, -4))    // 买开心,       // 如果第二个参数是负数，那么它规定的是从数组尾部开始算起的元素。
-        console.log("slice测试==>", str6.slice(-5, -2))    // ,很开     // 负数， 倒数位数，倒数第5个开始到倒数第2个 输出数据
-        console.log("slice测试==>", str6.slice(2))    // 买开心,很开心!
-
-
-        // 9-`.substring(indexStart[, indexEnd])` 方法返回一个字符串在开始索引到结束索引之间的一个子集, 或从开始索引直到字符串的末尾的一个子集。
-        // 这里获得子集不包括参数2的指向的字符
-        var str7 = "GOOD-LUCK-TO-YOU";
-        console.log(str7.substring(1, 2))   // O     获取从位置1 到位置2 结束的字符子集
-        console.log(str7.substring(1, 4))   // OOD   获取从位置1 到位置4 结束的字符子集
-        console.log(str7.substring(3, 8))   // D-LUC  获取从位置3 到位置8 结束的字符子集
-        console.log(str7.substring(3))   // D-LUCK-TO-YOU  获取从位置3 到字符串结束都要
-        console.log(str7.substring(-2, 3))   //GOO  注意：indexStart 和 indexEnd 数小于 0 或为 NaN，则被当作 0。
-
-
-
-        // 10、substr 返回一个字符串中从指定位置开始到指定字符数的字符。
-        // 注意：该方法未来将要被舍弃请尽量避免使用该方法，使用substring替代它
-        var str8 = "秋刀鱼的滋味，猫跟你都想了解"
-        console.log("substr使用===>", str8.substr(1, 5))   // 刀鱼的滋味
-        console.log("substr使用===>", str8.substr(-4, 3))   // 都想了
-
-
-
-        // 练习：**实现替换字符串中所有指定字符为新字符的函数**
-        /*
+      // 练习：**实现替换字符串中所有指定字符为新字符的函数**
+      /*
             1. 创建一个替换字符串函数replaceString
             2. 函数接收三个参数 oldS旧字符, newS新字符, fullS完整字符串
             3. 函数返回一个新字符串，要求将完整字符串中所有旧字符替换成新字符
 
             replaceString("World", "Web", "Test World  Brave New World 777"); // "Test Web  Brave New Web"
         */
-        function replaceString(oldStr, newStr, fullString) {
-            // (1) 检测要处理的字符串变量中所有的旧值  ===> indexOf() --只能检测一次，就返回   
-            //                 ==>解决方法：循环，退出方式：indexOf再进行检测，返回-1
-            // (2) 检测后的“替换”  ===> slice()
+      function replaceString(oldStr, newStr, fullString) {
+        // (1) 检测要处理的字符串变量中所有的旧值  ===> indexOf() --只能检测一次，就返回
+        //                 ==>解决方法：循环，退出方式：indexOf再进行检测，返回-1
+        // (2) 检测后的“替换”  ===> slice()
 
-            // 因为要退出程序，所以定义一个记录检测下标的变量
-            var str = ""
-            var index = 0;
-            while (true) {
+        // 因为要退出程序，所以定义一个记录检测下标的变量
+        // var str = ""
+        // var index = 0;
+        // while (true) {
 
-                // 记录上次查到（检测到）旧值的下标
-                var i = index;
-                // 从上次查询好的位置的下一个开始检测
-                index = fullString.indexOf(oldStr, index == 0? index : index + 1)
-                // 检测完成，index == -1,则退出循环
-                if (index == -1) {
-                    break;
-                }
-                // 第一次检测，赋值字符串从0开始，保存之前的数据
-                if (i == 0) {
-                    str += fullString.slice(0, index)
-                } else {
-                    // 如果不是第一次查找，赋值字符串片段，从上一次位置复制 直至 这一次查找到的位置
-                    str += fullString.slice(i + oldStr.length, index)
-                }
-                // 拼接要替换的值
-                str += newStr;
-            }
+        //     // 记录上次查到（检测到）旧值的下标
+        //     var i = index;
+        //     // 从上次查询好的位置的下一个开始检测
+        //     index = fullString.indexOf(oldStr, index == 0? index : index + 1)
+        //     // 检测完成，index == -1,则退出循环
+        //     if (index == -1) {
+        //         break;
+        //     }
+        //     // 第一次检测，赋值字符串从0开始，保存之前的数据
+        //     if (i == 0) {
+        //         str += fullString.slice(0, index)
+        //     } else {
+        //         // 如果不是第一次查找，赋值字符串片段，从上一次位置复制 直至 这一次查找到的位置
+        //         str += fullString.slice(i + oldStr.length, index)
+        //     }
+        //     // 拼接要替换的值
+        //     str += newStr;
+        // }
 
-            // 获得字符串最后一段代码
-            str += fullString.slice(i + oldStr.length)
-            return str
+        // // 获得字符串最后一段代码
+        // str += fullString.slice(i + oldStr.length)
+        // return str
 
+        // 另外一种简介的写法
+        var index = 0;
+        while (true) {
+          index = fullString.indexOf(oldStr, index);
+          if (index >= 0) {
+            fullString =
+              fullString.slice(0, index) +
+              newStr +
+              fullString.slice(index + oldStr.length);
+          } else {
+            break;
+          }
         }
-        console.log(replaceString("World", "Web", "Test World  Brave New World!"));
-    </script>
-</body>
 
+        return fullString;
+      }
+      console.log(
+        replaceString("World", "Web", "Test World  Brave New World!")
+      );
+      console.log(
+        replaceString(
+          "傻逼",
+          "**",
+          "傻逼, 你真的是个大傻逼，我怎么可能跟你做朋友,傻逼999"
+        )
+      );
+    </script>
+  </body>
 </html>
