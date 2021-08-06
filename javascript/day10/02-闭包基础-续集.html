@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-闭包基础</title>
+</head>
+
+<body>
+    <script>
+
+
+        // 用闭包方式来优化斐波那契
+        // 定义一个计算次数的变量
+        var x = 0
+        function outFn() {
+            var arr = [0, 1]
+
+            var fib = function (n) {
+                x++
+
+                var num = arr[n]
+                // 为啥需要这个判断，例如：fib(6)是需要计算的，fib(5) + fib(4)
+                if (typeof num !== "number") {
+                    // 如果在数组中取出的斐波那契失败,用递归重新计算并入数组中
+                    num = fib(n - 1) + fib(n - 2);
+                    arr[n] = num;
+                }
+                // console.log(arr)
+                return num;
+            }
+
+
+            return fib;
+        }
+
+        var aaa = outFn()
+        // aaa(10)
+
+        for (var j = 0; j <= 10; j++) {
+            console.log(aaa(j))
+        }
+        // console.log(aaa(0))
+        // console.log(aaa(1))
+        // console.log(aaa(2))
+        // console.log(aaa(3))
+        // console.log(aaa(4))
+        // console.log(aaa(5))
+        // console.log(aaa(6))
+        // console.log(aaa(7))
+        // console.log(aaa(8))
+        // console.log(aaa(9))       // 一次性取下标为9，就要17次
+        // console.log(aaa(10))     // 一次性取下标为10，就要19次
+        // document.write("<br/>共执行了" + x + "次")    
+
+
+        // 假如一次性执行
+        // console.log(aaa(10))
+        document.write("<br/>共执行了" + x + "次")
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

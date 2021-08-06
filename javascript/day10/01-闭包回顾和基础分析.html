@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-闭包回顾和基础分析</title>
+</head>
+
+<body>
+    <script>
+        var b = 100;
+        // 闭包：一个函数中可以使用另一个函数的变量，这个变量叫闭包，这个函数叫闭包函数
+        // （1）形式1
+        // function outFn() {
+        //     var a = 10;
+
+        //     function innerFn() {
+        //         console.log(a)
+        //     }
+        //     innerFn()
+        // }
+
+        // 调用函数
+        // outFn()
+
+
+        // (2) 形式2
+        // function outFn(a) {
+        //     function innerFn() {
+        //         console.log(a)
+        //     }
+        //     innerFn()
+        // }
+        // outFn(30)
+
+
+        // (3) 闭包的作用是为了延伸变量作用范围
+        // function outFn() {
+        //     var a = 10;
+
+        //     function innerFn() {
+        //         a++;
+        //         console.log(a)
+        //     }
+        //     innerFn()
+        // }
+
+        // // 这里调用函数outFn，每次调用a都重新被初始化
+        // outFn()  // 11
+        // outFn()  // 11
+        // outFn()  // 11
+
+
+        // function outFn() {
+        //     var a = 10;
+
+        //     function innerFn() {
+        //         a++;
+        //         console.log(a)
+        //     }
+
+        //     return innerFn
+        // }
+
+        // console.log("测试是否能访问函数内的a变量==>", a)   a is not defined
+        // var res = outFn();
+        // res()    // 11
+        // res()    // 12
+        // res()    // 13
+        // res()    // 14 
+
+        // outFn()()   // 11    ==> outFn()   ==> innerFn()   11
+        // outFn()()   // 11
+        // outFn()()   // 11
+
+
+        // (4) 另一种写法
+        // function outFn() {
+        //     var a = 10;
+
+        //     return function () {
+        //         a++;
+        //         console.log(a)
+        //     }
+        // }
+
+        // var res = outFn();
+        // res()    // 11
+        // res()    // 12
+        // res()    // 13
+        // res()    // 14 
+
+
+        // (5) 闭包里有多个函数
+        function outFn() {
+            var a = 10;
+
+            function innerFn1() {
+                a++;
+                console.log(a)
+            }
+
+            function innerFn2() {
+                a += 2
+                console.log(a)
+            }
+
+            // return innerFn1 innerFn2    —— 不能书写这种形式
+            // return innerFn1, innerFn2    —— 这种只能返回一个函数innerFn2
+            return { innerFn1, innerFn2 }
+
+        }
+        var res = outFn()
+        res.innerFn2()
+        res.innerFn1()
+        res.innerFn2()
+        res.innerFn1()
+
+
+    </script>
+</body>
+
+</html>

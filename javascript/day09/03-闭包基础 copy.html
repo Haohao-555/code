@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>03-闭包基础</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var index = 0;
-        var outFunc = function () {
-            var memo = [0, 1];
-            var fib = function (n) {
-                console.log(memo)
-                index++;
-                var result = memo[n];
-                if (typeof result !== 'number') {
-                    result = fib(n - 1) + fib(n - 2);
-                    memo[n] = result;
-                }
-                return result;
-            };
+      /*
+          利用闭包实现斐波那契数列
+        */
+      var index = 0;
+      var outFunc = function () {
+        var memo = [0, 1];
+        var fib = function (n) {
+          index++;
+          var result = memo[n];
+          if (typeof result !== "number") {
+            result = fib(n - 1) + fib(n - 2);
+            memo[n] = result;
+          }
+          return result;
+        };
 
-            return fib;
-        }
+        return fib;
+      };
 
+      var aaa = outFunc();
 
-        var aaa = outFunc()
+      for (var j = 0; j <= 10; j++) {
+        console.log("<br/>" + aaa(j));
+      }
 
-        for (var j = 0; j <= 10; j++) {
-            console.log("<br/>" + aaa(j))
-        }
-        
-        aaa(5)
-        document.write("<br/>共执行了" + index + "次")    // 29
+      aaa(5);
+      document.write("<br/>共执行了" + index + "次"); // 29
     </script>
-</body>
-
+  </body>
 </html>

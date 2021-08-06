@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-练习</title>
+</head>
+
+<body>
+    <script>
+        function gamePerson() {
+            // 局部变量
+            var HP = 40
+
+
+
+            // // 获得血量
+            var getHp = function () {
+                return HP
+            }
+            // 血量+1
+            var incrementHp = function () {
+                return HP = HP + 1
+            }
+
+            // 血量 -1
+            var decrementHp = function () {
+                return --HP
+            }
+            return { getHp, incrementHp, decrementHp }
+
+
+
+            // 换另外一种写法  —— 不建议
+            // return {
+            //     getHp: function () {
+            //         return HP
+            //     },
+            //     incrementHp: function () {
+            //         return HP = HP + 1
+            //     },
+            //     decrementHp: function () {
+            //         return --HP
+            //     }
+            // }
+        }
+
+
+        var gameHp = gamePerson()
+        console.log(gamePerson.HP) //undefined
+        // 获得血量HP
+        console.log(gameHp.getHp())
+        // 血量 + 1
+        console.log(gameHp.incrementHp())
+        console.log(gameHp.incrementHp())
+        console.log(gameHp.incrementHp())
+
+        // 血量 -1
+        console.log(gameHp.decrementHp())
+        console.log(gameHp.decrementHp())
+
+
+        console
+    </script>
+</body>
+
+</html>

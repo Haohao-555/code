@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-对象的基础</title>
+</head>
+
+<body>
+    <script>
+        /*
+            面向过程： 先做什么， 然后做啥...
+            面向对象编程
+                关注对象状态，改变对象的状态一般是调用对象的方法
+            
+            var dog  = {
+                name: "二哈",
+                jiao: function(){
+                    console.log(this.name +"叫")
+                }
+            }
+
+            // 现实世界实体都可以映射为对象
+            var cart = {
+                // 状态和数据写成属性
+                goods: [],
+                totalPrice: "", 
+                num: 999,
+                pay: function(){
+                    // 行为动作写法方法
+                },
+                add: function(){},
+                delete: function{}
+            }
+
+            // 之前教过创建对象：
+            （1）字面量对象
+            （2） 按约定函数来创建对象（工厂模式）
+            （3）构造函数创建对象
+        */
+
+        // （1） 字面量对象
+        var cat1 = {
+            name: "小昭",
+            // 方法
+            miao: function () {
+                console.log(this.name + "miaomiaomiao")
+            }
+        }
+        // 给对象添加属性和属性值 ==> cat1.属性 = 属性值 或者 cat1[属性] = 属性值
+        cat1.age = 2,
+            cat1["sex"] = "母"
+        // 添加方法
+        cat1.lickHair = function () {
+            console.log(this.name + "是只" + this.sex + "miao,会舔毛")
+        };
+        console.log("cat1==>", cat1)
+
+        // 查看属性和方法
+        console.log("cat1的名字==>", cat1.name)
+        console.log("cat1的行为方法==>", cat1.miao())
+
+
+
+        // 2  按约定函数来创建对象（工厂模式） ==> 函数名字首字母是大写
+        /*
+            优点： 一个地方定义的所有属性和方法，解决代码重复的问题。
+            缺点：dog1和dog2之间没有内在的联系，不能反映出它们是同一个原型对象的实例。
+        */
+        function Dog(aaa, bbb) {
+            return {
+                name: aaa,
+                color: bbb
+            }
+        }
+
+        // 实例化对象，就等于是在调用函数：
+        var dog1 = Dog("二哈", "黑白相间")
+        var dog2 = Dog("阿拉斯加", "黑白相间或者棕白")
+        console.log("dog1 ==>", dog1)
+        console.log("dog2 ==>", dog2)
+
+
+
+
+        // 3 构造函数模式 
+        // 此处函数当作构造函数来使用，区别于普通函数，首字母一般大写
+
+        /*
+            是一个普通函数，但是内部使用了**this**变量。再对构造函数使用**new**运算符，
+            就能生成实例，并且**this**变量会绑定在实例对象上。
+        */
+        function Car(brand, color, price) {
+            // this是指向当前对象 Car
+            console.log("构造函数里的this==>", this)
+            // 我们将每个形参都赋给了关键字this的属性
+            this.brand = brand;
+            this.color = color;
+            this.price = price;
+            // 在构造函数里面定义方法
+            this.run = function () {
+                //  this是指向当前对象 Car
+                // console.log("构造函数里的方法的this==>", this)
+
+                // (function () {
+                //     // 这里指向全局的window对象
+                //     console.log("匿名函数立即执行函数里的this", this)
+                // })()
+
+
+                // function aaa() {
+                //     // 这里指向全局的window对象
+                //     console.log("函数aaa中的this", this)
+                // }
+                // aaa()
+            }
+        }
+
+        // 生成实例对象了。
+        var car1 = new Car("玛莎拉蒂", "粉色", "1000万")
+
+        console.log("构造函数Car ==>", car1)
+        car1.run()
+
+        // 访问构造函数实例化出来的对象里的属性   
+        console.log(car1.brand)
+        // console.log(brand)    不能访问
+
+        // var car2 = new Car("玛莎拉蒂2", "粉色", "1000万")
+        // console.log("构造函数Car2 ==>", car2)
+
+
+        /*
+            （1）new 过程创建一个空对象
+            （2）设置this,指向创建的空对象，this 就是创建该空对象的引用
+            （3）设置this之后，调用函数Dog，并将"玛莎拉蒂/"粉色"/"1000万"作为实参传递给它
+             (4) this对象的属性赋值
+             (5) 构造函数执行完毕，运算符new返回this指向新创建的对象的引用。
+        */
+
+    </script>
+</body>
+
+</html>

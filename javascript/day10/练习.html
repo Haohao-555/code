@@ -27,28 +27,202 @@
         return function (str) {
           return str
             .split("")
-            .map(_ => entity[_] || _)
+            .map((_) => entity[_] || _)
             .join("");
         };
       }
       var converHTML = deentityify();
-      console.log(converHTML("<span> 123 </span>"));
-      console.log(converHTML("Dolce & Gabbana"));
-      console.log(converHTML('he"ll"o world'));
+      console.log(converHTML("<span> 123 </span>")); // &lt;span&gt; 123 &lt;/span&gt;
+      console.log(converHTML("Dolce & Gabbana")); //  Dolce &amp; Gabbana
+      console.log(converHTML('he"ll"o world')); // he&quot;ll&quot;o world
+      //  调用函数结束后，函数内部的 entity 变量的内存空间并没有被释放
 
       // 练习 2
       var destroyer = function () {
         //  转成数组，可以使用数组API
         var arr = Array.from(arguments);
+
         // 搜集（除第一个参数外）参数
         var d = arr.filter((el, i) => i > 0);
-        return arr[0].filter(_ => d.indexOf(_) == -1);
+
+        return arr[0].filter((_) => d.indexOf(_) == -1);
       };
       console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
       console.log(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3));
       console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
       console.log(destroyer([2, 3, 2, 3], 2, 3));
       console.log(destroyer(["tree", "hamburger", 53], "tree", 53));
+
+      /*
+        一个功能模块，有很多变量和函数
+        可以设置前缀、序列号、最终得到编号
+        serial_marker 是一个完整的模块，有自己的函数和数据
+        模块里面的数据只能有模块内部的函数修改，外部无法修改
+        但是可以调用方法 serial_marker模块里的函数修改内部变量
+      
+      */
+      var serial_masker = function () {
+        // 前缀
+        var prefix = "";
+        // 序列号
+        var seq = "";
+
+        // 得到前缀
+        var set_prefix = function (pre) {
+          prefix = pre;
+        };
+        // 得到序列号
+        var set_seq = function (num) {
+          seq = num;
+        };
+
+        // 获得编码 = 前缀 + 序列号
+        var get_serial = function () {
+          return prefix + ":" + seq;
+        };
+
+        // 返回一个对象，里面存储这三个函数
+        return { set_prefix, set_seq, get_serial };
+      };
+      var maker = serial_masker();
+
+      // 设置前缀
+      maker.set_prefix("粤A");
+
+      // 设置序列号
+      maker.set_seq("888888");
+
+      // 获得编号
+      var str = maker.get_serial();
+      console.log("编号1 ==>", str);
+
+      // 练习 3
+      var gamePerson = function () {
+        var HP = 40;
+        var incrementHp = function () {
+          HP++;
+        };
+        var decrementHp = function () {
+          HP--;
+        };
+        var getHp = function () {
+          return HP;
+        };
+        return { incrementHp, decrementHp, getHp };
+      };
+      var gamep1 = gamePerson();
+      console.log(gamep1.HP);
+      console.log(gamep1.getHp());
+      gamep1.incrementHp();
+      console.log(gamep1.getHp());
+      gamep1.decrementHp();
+      gamep1.decrementHp();
+      console.log(gamep1.getHp());
+
+      /*
+        面向过程，先做什么，然后做啥....
+        面向对象编程
+            关注对象状态，改变对象的状态一般是调用对象的方法
+            
+        var dog = {
+          name: "二哈",
+          jiao: function () {
+            console.log(this.name + "叫")
+          }
+        }
+
+        // 现实世界实体都可以映射为对象
+        var cart = {
+          // 状态和数据写成属性
+           goods: [],
+           totalPrice: "",
+           num: 999,
+           pay: function () {
+             // 行为动作写成方法
+           },
+           add: function(){},
+           delete: function(){},
+        }
+        
+        // 之前教过创建对象，
+        （1）字面量对象
+        （2）按约定函数来创建对象（工厂模式）
+        （3）构造函数创建对象
+      */
+
+      // (1) 字面量对象
+      var cat1 = {
+        name: "小昭",
+        // 方法
+        miao: function () {
+          console.log(this.name + "miaomiaomiao");
+        },
+      };
+      // 给对象添加属性和属性值 ==> cat1.属性 = 属性值 、cart[属性] = 属性值
+      cat1.age = 2;
+      cat1["sex"] = "男";
+      // 添加方法
+      cat1.lickHair = function () {
+        console.log(this.name + "是只" + this.sex + "猫，会舔毛");
+      };
+      console.log("cat1 ==>", cat1);
+
+      // 查看属性和方法
+      console.log("cat1的名字 ==>", cat1.name);
+      console.log("cat1的行为方法 ==>", cat1.miao);
+
+      // 按约定函数来创建对象（工厂模型） ==> 函数首字母大写
+      /*
+       优点：一个地方定义的所有属性和方法，解决代码重复的问题
+       缺点：dog1和dog2之间没有内在的联系，不能反映出它们是一个原型对象的实例
+      */
+      function Dog(aaa, bbb) {
+        return {
+          name: aaa,
+          color: bbb,
+        };
+      }
+
+      // 实例化对象
+      var dog1 = new Dog("二哈", "黑白相间");
+      var dog2 = new Dog("阿拉斯加", "黑白相间或者棕白");
+      console.log("dog1 ==>", dog1);
+      console.log("dog2 ==>", dog2);
+
+      // 3 构造函数模式
+      // 此处函数当作构造函数来使用，区别于普通函数，首字母一般大写
+      function Car(brand, color, price) {
+        // this 是指向 window 对象 （可以理解为页面的全世界）
+        console.log("构造函数里的this ==>", this);
+        // 我们将每个形参都赋给了关键字this的属性
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
+        // 在构造函数里面定义方法
+        this.run = function () {
+          console.log("构造函数里的方法的this ==>", this);
+        };
+      }
+      // 生成实例对象
+      var car1 = new Car("玛莎拉蒂", "粉色", "1000万");
+      var car2 = new Car("保时捷", "蓝色", "500万");
+      console.log("构造函数Car ==>", car1);
+      console.log("构造函数Car ==>", car2);
+ 
+      function Coffee(roast, ounces) {
+        this.roast = roast;
+        this.ounces = ounces;
+        this.getSize = function () {
+          return ounces == 8 ? "small" : ounces == 12 ? "meduim" : "large"
+        }
+        this.toString = function () {
+          return " You' ve ordered a "+this.getSize(ounces)+ " " +this.roast+ "coffee";
+        }
+      }  
+      var houseBlend = new Coffee("House Blend", 12);
+      console.log(houseBlend.toString());
+      var darkRoast = new Coffee("Dark Roast", 16);
+      console.log(darkRoast.toString());   
     </script>
   </body>
 </html>

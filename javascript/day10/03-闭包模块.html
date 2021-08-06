@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-闭包模块</title>
+</head>
+
+<body>
+    <script>
+        /*
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&apos;"
+        */
+
+        // 把字符串文本里面的特殊符号转成 实体符号
+
+
+        // map可以修改原来的数组，返回一个修改好的新数组（不会改变原来数组）
+        // function coverHTML(str) {
+        //     // var newStr = ""
+        //     // 把要转成实体符号的字符串进行拆分，然后可以进行一个个判断
+        //     var strArr = str.split("")
+
+        //     var coverArray = strArr.map(function (e) {
+        //         // console.log(e)
+        //         switch (e) {
+        //             case "&":
+        //                 return "&amp;"
+        //                 break;
+        //             case "<":
+        //                 return "&lt;"
+        //                 break;
+        //             case ">":
+        //                 return "&gt;"
+        //                 break;
+        //             case '"':
+        //                 return "&quot;"
+        //                 break;
+        //             case "'":
+        //                 return "&apos;"
+        //                 break;
+        //             default:
+        //                 return e
+        //         }
+        //         // console.log(e)
+        //         // return newStr
+        //     }).join("")
+        //     console.log(coverArray)
+
+        //     // 把处理好的数据返回出去
+        //     return coverArray
+
+        // }
+
+        // console.log(coverHTML("<span>'span标签'<span>"))
+        // console.log(coverHTML('<a>span标签"<a>'))
+
+
+        // 把上面的效果转成闭包
+        // // // 闭包真正的作用代码模块化
+        // function coverHTML2(str) {
+
+        //     //布局变量, entity被重新初始化(多次)
+        //     // 函数执行完成, entity是会释放
+        //     var entity = {
+        //         "&": "&amp;",
+        //         "<": "&lt;",
+        //         ">": "&gt;",
+        //         '"': "&quot;",
+        //         "'": "&apos;"
+        //     }
+        //     // 把字符串拆分为数组，然后进行map处理（遍历，数据修改和返回），返回出来，
+        //     // 最后拼接为字符串，把最终结果返回出去
+
+        //     return str.split("").map(function (e) {
+        //         // console.log(e)
+        //         return entity[e] || e
+        //     }).join("")  //把处理好的数组每一项拼接起来
+        // }
+        // // 会初始化entity一次
+        // var strOne = coverHTML2("<span>'span标签'<span>")
+        // console.log(strOne)
+        // var strTwo = coverHTML2('<a>span标签"<a>')
+        // // // 会初始化entity一次 
+        // console.log(strTwo)
+
+
+
+        //////////// 用闭包实现 实体替换///////// 
+        // // 闭包真正的作用代码模块化
+        function coverHTML3() {
+            /*
+                用闭包entity做成局部变量
+                使用时候cover被执行，entity变量只会被初始化一次
+                会一直存在于内存
+            */ 
+            var entity = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&apos;",
+                "a": "A"
+            }
+
+            var cover = function (str) {
+                return str.split("").map(function (e) {
+                    return entity[e] || e
+                }).join("")  //把处理好的数组每一项拼接起来
+            }
+            return cover
+
+        }
+
+        var cov = coverHTML3()
+        var str1 = cov("<span>'span标签'<span>")
+        console.log(str1)
+        var str2 = cov('<a>"a标签标签"</a>')
+        console.log(str2)
+        var str3 = cov('<a>"b标签标签"</a>')
+        console.log(str2)
+        var str4 = cov('<a">"b标签标签"</a>')
+        console.log(str2)
+
+
+    </script>
+</body>
+
+</html>
