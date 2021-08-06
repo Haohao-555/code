@@ -1,0 +1,54 @@
+<!--
+ * @Date: 2021-08-06 09:30:35
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day10\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 练习 1
+      function deentityify() {
+        //    替换参数
+        var entity = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&apos;",
+        };
+        return function (str) {
+          return str
+            .split("")
+            .map(_ => entity[_] || _)
+            .join("");
+        };
+      }
+      var converHTML = deentityify();
+      console.log(converHTML("<span> 123 </span>"));
+      console.log(converHTML("Dolce & Gabbana"));
+      console.log(converHTML('he"ll"o world'));
+
+      // 练习 2
+      var destroyer = function () {
+        //  转成数组，可以使用数组API
+        var arr = Array.from(arguments);
+        // 搜集（除第一个参数外）参数
+        var d = arr.filter((el, i) => i > 0);
+        return arr[0].filter(_ => d.indexOf(_) == -1);
+      };
+      console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
+      console.log(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3));
+      console.log(destroyer([3, 5, 1, 2, 2], 2, 3, 5));
+      console.log(destroyer([2, 3, 2, 3], 2, 3));
+      console.log(destroyer(["tree", "hamburger", 53], "tree", 53));
+    </script>
+  </body>
+</html>
