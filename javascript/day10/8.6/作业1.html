@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fun(n, o) {
+        console.log(o);
+        return {
+          fun: function (m) {
+            return fun(m, n);
+          },
+        };
+      }
+      /*
+        此时，o 并没有接受到参数，故输出 undefined
+        a = {
+           fun: function (m) {
+            return fun(m, n);
+          },
+        }
+      */
+      var a = fun(0); // undefined
+
+      /*
+        根据上面可得 a 是一个对象
+        a.fun(1) 调用的是 对象 a 的 fun 方法， 并且 m = 1。 
+        而此时 return fun(m, n) 中 fun(m, n) 是执行外层的 fun ,并且此时 n 的值为之前传递 0 
+        即 fun(1, 0)
+        console.log(o) 输出结果就是 0 并且在后面的操作中，由于没有链式调用使得 n 的值没有被覆盖，故 n 始终为 0  
+        
+      */
+      a.fun(1); // 0
+      a.fun(2); // 0
+      a.fun(3); // 0
+
+      /*
+        fun(0) 跟第一个道理一样， 此时在函数中 n = 0 输出为 undefined
+        fun(0).fun(1) 跟第二个道理一样，只是现在调用外层的参数是 fun(1, 0)  输出为 0
+        fun(0).fun(1).fun(1) 跟第二个道理一样，只是现在调用外层的参数是 fun(1, 1)  输出为 1
+        fun(0).fun(1).fun(1).fun(2) 跟第二个道理一样，只是现在调用外层的参数是 fun(2, 1)  输出为 1
+        fun(0).fun(1).fun(1).fun(2).fun(3) 跟第二个道理一样，只是现在调用外层的参数是 fun(3, 2)  输出为 2
+        
+        总结：链式调用时，会保存上一层函数函数中第一个参数（即 n）并且在 返回内部函数的作用下将 n 在次作用到下一个函数中
+      */
+      var b = fun(0).fun(1).fun(1).fun(2).fun(3).fun(4); // undefined 0 1 1 2
+
+      // 跟上面同理
+      var c = fun(0).fun(1); // undefined  0
+      /*
+       这个跟上面的不一样，这时候 c.fun(2) 跟上面的 c = fun(0).fun(1) 已经是断开联系了，
+       故通过 c.fun(2) 是无法与 c 之前的操作有所联系，而此时在fun()闭包函数中的 n 就始终是 1，不管后面如何调用（除链式调用外）
+       c.fun(3) 同理
+      */
+      c.fun(2); // 1
+      c.fun(3); // 1
+    </script>
+  </body>
+</html>
