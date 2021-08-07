@@ -1,0 +1,48 @@
+<!--
+ * @Date: 2021-08-07 09:10:17
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day10\8.6\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./data.js"></script>
+    <script>
+      function classification(data) {
+        var dian = [];
+        var fun = [];
+        var jia = [];
+        var sheng = [];
+        data.map((el) => {
+          if (el.type == "dianzi") {
+            dian.push(el);
+          } else if (el.type == "funzhuang") {
+            fun.push(el);
+          } else if (el.type == "jiadian") {
+            jia.push(el);
+          } else if (el.type == "shengxian") {
+            sheng.push(el);
+          }
+        });
+        return {
+          dian,
+          fun,
+          jia,
+          sheng,
+        };
+      }
+      var res = classification(data);
+      console.log(res.dian);
+      console.log(res.fun);
+      console.log(res.jia);
+      console.log(res.sheng);
+    </script>
+  </body>
+</html>

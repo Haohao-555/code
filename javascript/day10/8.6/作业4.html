@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 作业4： 封装一个函数，传递一个参数进行判断是否为数字、字母、、汉字（'\u4e00' <= 汉字 <= '\u9fa5'）还是其他字符 -->
+    <script>
+      function judgeParam(param) {
+        // 判断是不是数字类型
+        var pattern1 = /^[0-9]*$/;
+        // 判断是不是汉字
+        var pattern2 = /^[\u4e00-\u9fa5]{0,}$/;
+        // 判断是不是字母
+        var pattern3 = /^[A-Za-z]+/;
+        if (pattern1.test(param)) {
+            return "参数 " + param + " 是数字";
+        } else if (pattern2.test(param)){
+            return "参数 " + param + " 是汉字";
+        } else if (pattern3.test(param)) {
+            return "参数 " + param + " 是字母";
+        } else {
+            return "参数  " + param + " 是其他字符";
+        }
+       
+      }
+      console.log(judgeParam("测试"));
+      console.log(judgeParam("ABcdsje"));
+      console.log(judgeParam(1332341));
+      console.log(judgeParam("*$%$&#@*@#"));
+    </script>
+  </body>
+</html>

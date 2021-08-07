@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 作业3：敏感词替换
+      // 要求，根据敏感词库进行话语敏感词替换，敏感词必须是连续的，敏感词有几个字符，就替换成几个其他字符
+      // 敏感词库
+      var wordsDatabase = ["沙雕", "MMD", "操", "草", "卧槽", "TMD", "干"];
+      // 语句
+      var word =
+        "MMD，我昨天买了表，卧槽，我只买贵的，但是还是高仿的，500万，卧槽这谁顶得住呀，沙雕商家，草，MMD;TMD是人干的事吗？";
+      function replaceString(str, arr, char) {
+        
+        //str: 需要进行替换的字符串
+        //arr: 敏感词库
+        //char: 需要替换的字符
+         wordsDatabase.forEach((el) => {
+           word = word.replaceAll(el, function() {
+               return char.repeat(el.length);
+           });
+        });
+        return word;
+      }
+      console.log(replaceString(word, wordsDatabase, "*"));
+    </script>
+  </body>
+</html>
