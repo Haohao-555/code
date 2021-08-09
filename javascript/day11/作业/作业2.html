@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            要求:
+            1.创建一个手机对象
+            2.要求使用闭包实现一个私有变量systemVersion 保存
+                当前手机系统版本
+            3.对象包含方法showVersion打印输出当前手机私有变量systemVersion值
+            4.对象包含方法runApp,该方法接受一个参数app. app值
+                是一个对象包含app名、app支持版本，app内容（一段字符串)
+                i.若当前app支持版本高于systemVersion输出当前手机不支持此app请更新版本
+                ii.若当前app支持版本小于等于systemVersion输出当前app的内容
+            5.对象包含updateSystemVersion方法接受一个参数version，
+                可以更新当前手机对象私有变量systemVersion值
+        */
+
+        // var phone = function () {
+        //     var systemVersion = 12;
+        //     return {
+        //         showVersion: function () {
+        //             console.log(systemVersion)
+        //         },
+        //         runApp: function (app) {
+        //             if (app.version > systemVersion) {
+        //                 console.log("当前手机不支持此app请更新版本")
+        //             } else {
+        //                 console.log(app.content)
+        //             }
+        //         },
+        //         updateSystemVersion: function (version) {
+        //             // 更新当前手机对象私有变量systemVersion值
+        //             systemVersion = version
+        //         }
+        //     }
+        // }
+        // var phoneShow = phone()
+        // phoneShow.showVersion();
+
+        // // 查看是否支持app的版本
+        // phoneShow.runApp({ name: "抖音", version: 13, content: "抖音发现生活" })
+
+        // // 更新系统,并且查看版本
+        // phoneShow.updateSystemVersion(17)
+        // phoneShow.showVersion()
+
+        // // 查看是否支持app的版本
+        // phoneShow.runApp({ name: "抖音", version: 13, content: "抖音发现生活" })
+
+
+
+
+        // 换种写法
+        var phone = (function () {
+            var systemVersion = 12;
+            return {
+                showVersion: function () {
+                    console.log(systemVersion)
+                },
+                runApp: function (app) {
+                    if (app.version > systemVersion) {
+                        console.log("当前手机不支持此app请更新版本")
+                    } else {
+                        console.log(app.content)
+                    }
+                },
+                updateSystemVersion: function (version) {
+                    // 更新当前手机对象私有变量systemVersion值
+                    systemVersion = version
+                }
+            }
+        })()
+
+        phone.showVersion();
+
+        // // 查看是否支持app的版本
+        phone.runApp({ name: "抖音", version: 13, content: "抖音发现生活" })
+
+        // // 更新系统,并且查看版本
+        phone.updateSystemVersion(17)
+        phone.showVersion()
+
+        // // 查看是否支持app的版本
+        phone.runApp({ name: "抖音", version: 13, content: "抖音发现生活" })
+
+    </script>
+</body>
+
+</html>

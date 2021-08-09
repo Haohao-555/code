@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun(n, o) {
+            console.log(o);
+            return {
+                aaa: function (m) {
+                    return fun(m, n)
+                }
+            }
+        }
+        // 传参进去，只传了n = 0, o没有传参，所以打印为undefined 
+        var a = fun(0);  // undefined
+
+        // 返回a里面的aaa函数，此时m = 1,该函数返回值为fun(1, 0)
+        // 打印结果：0
+        a.aaa(1)
+        // 返回a里面的aaa函数，此时m = 2,该函数返回值为fun(2, 0)
+        // 打印结果：0 
+        a.aaa(2)
+        // 返回a里面的aaa函数，此时m = 2,该函数返回值为fun(2, 0)
+        // 打印结果：0 
+        a.aaa(3)
+
+        // （1）调用全局fun函数，n=0, o等于undefined；
+        //  (2) 调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(1,0), 打印0
+        //  (2) 调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(1,0), 打印0
+        //  (2) 调用window.fun(1, 0)里面的aaa(2),其返回值为window.fun(2,1), 打印1
+        //  (2) 调用window.fun(2, 1)里面的aaa(3),其返回值为window.fun(3,2), 打印2
+        var b = fun(0).aaa(1).aaa(2).aaa(3)  // undefined
+
+        // 调用全部函数fun，传值0，n = 0, o为undefined，然后返回aaa函数
+        // 此时m = 1,该函数返回fun(1, 0), 打印为0
+        var c = fun(0).aaa(1)
+        // c就是返回的函数fun(1,0),调用aaa函数，先打印1
+        // c就是返回的函数fun(1,0),调用aaa函数，先打印1
+        c.aaa(2)
+        c.aaa(3)
+    </script>
+</body>
+
+</html>

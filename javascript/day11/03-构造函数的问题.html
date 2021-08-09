@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+
+        function Cat(name, color) {
+            this.name = name;
+            this.color = color;
+            this.miao = function () {
+                console.log(this.name, "会miaomiao地叫")
+            }
+        }
+        // 实例化对象
+        var cat1 = new Cat("汤姆猫", "blue");
+        var cat2 = new Cat("田园猫", "yellow");
+
+        console.log(cat1.name)
+        console.log(cat2.name)
+        console.log("---------")
+
+        // 打印方法
+        cat1.miao()
+        cat2.miao()
+
+
+        // 构造函数方法每次实例化一个实例,都会单独创建一个空间来存放同一个对象
+        // 缺点：浪费内存
+        console.log(cat1.name == cat2.name)   // false
+        console.log(cat1.miao == cat2.miao)   // false
+
+
+    </script>
+</body>
+
+</html>

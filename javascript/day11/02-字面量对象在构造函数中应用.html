@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-字面量对象在构造函数中应用</title>
+</head>
+
+<body>
+    <script>
+        // 常规写法：
+        // function Hero(name, sex, age, tall, skin, weight, hair) {
+        //     this.name = name;
+        //     this.sex = sex;
+        //     this.age = age;
+        //     this.tall = tall;
+        //     this.skin = skin;
+        //     this.weight = weight;
+        //     this.hair = hair
+        //     this.msg = function () {
+        //         return this.name + this.age + this.tall
+        //     };
+        //     // 其他方法
+        // }
+
+        // var chuiZi = new Hero("大锤", "女", 30, 166, "褐色", 63, "skyblue")
+        // console.log(chuiZi.msg())
+
+
+        // 实用写法
+        function Hero(param) {
+            this.name = param.name;
+            this.sex = param.sex;
+            this.age = param.age;
+            this.tall = param.tall;
+            this.skin = param.skin;
+            this.weight = param.weight;
+            this.hair = param.hair
+            this.msg = function () {
+                return this.name + this.age + this.tall
+            };
+            // 其他方法
+        }
+
+        var param = {
+            name: "大锤",
+            sex: "女",
+            age: 30,
+            tall: 166,
+            skin: "褐色",
+            weight: 63,
+            hair: "skyblue"
+        }
+        var chuiZi = new Hero(param)
+        console.log(chuiZi.msg())
+
+        // 练习：**使用闭包保护对象内的属性不被外部修改**
+        // 私有属性和公共属性
+        function Bird(weight, color, kind) {
+            // 公共属性
+            this.color = color;
+            this.kind = kind;
+
+            // 私有属性: 只能在构造函数Bird中访问，不能在Bird以外访问
+            var age = 2;
+            var weight = weight
+
+            // 构造函数的参数是局部变量， 创建对象的时候，它已经是一个私有属性
+            // 这个属性只能内部的函数范文，不能在外部访问
+            this.getWeight = function () {
+                return weight;
+            }
+            this.addWeight = function () {
+                weight++
+            }
+        }
+
+        // 每次实例化都会初始化构造函数
+        var bird1 = new Bird(5, "灰白", "麻雀")
+        var bird2 = new Bird(10, "白色", "丹顶鹤")
+
+        console.log(bird1)
+        console.log(bird2)
+        console.log(bird1.age)   // undefined
+        console.log(bird1.weight)   // undefined
+
+        console.log(bird2.getWeight()) // 10
+
+        bird2.addWeight()
+        bird2.addWeight()
+        console.log(bird2.getWeight()) // 12
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-原型对象</title>
+</head>
+
+<body>
+    <script>
+        // JavaScript对象可从其他对象那里继承属性和行为。JavaScript使用原型式继承，
+        // 其中其属性和方法被继承的对象称为原型。
+
+        // 构造函数 —— Star
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+
+        // 通过原型对象拓展Star构造函数（公共方法在原型对象中）
+
+        Star.prototype.sing = function () {
+            console.log(this.name + "会唱歌")
+        }
+        Star.prototype.dance = function () {
+            console.log(this.name + "会跳舞")
+        }
+        console.dir(Star)
+        console.log(Star.prototype)
+        console.log("-----------")
+
+
+
+        /*
+            （1）每个构造函数都有一个原型prototype,这个原型的只是一个对象，所以我们常称呼为原型对象
+                 原型对象的作用是共享
+            （2）每个实例对象也有一个属性叫__proto__或者[[prototype]]，因为在对象上，所以称“对象原型”,
+                 其作用是：“指向构造函数的原型对象”
+                 
+        */
+
+        // 实例化两个对象
+        var star1 = new Star("凡凡", 29)
+        var star2 = new Star("凡凡2", 30)
+
+        console.log(star1)
+        console.log(star2)
+
+        console.log("实例化对象的__proto__属性跟构造函数的原型（原型对象）是一个东西==>", Star.prototype === star1.__proto__) // true
+        console.log("实例化对象的__proto__属性跟构造函数的原型（原型对象）是一个东西==>", Star.prototype === star2.__proto__) // true
+
+
+        // 往上找
+        console.log("star1.__proto__ ==>", star1.__proto__)   // 找到Star构造函数的原型对象（prototype）
+        // Star的构造函数的原型对象prototype的原型对象？  —— object
+        console.log("star1.__proto__.__proto__ ==>", star1.__proto__.__proto__)
+        console.log("star1.__proto__.__proto__.__proto__==>", star1.__proto__.__proto__.__proto__)   // null
+
+
+        // 练习
+        function Bird(name) {
+            this.name = name;
+            // 属性numLegs被公用，写在构造函数的原型（原型对象）中
+            // this.numLegs = 2;
+        }
+        Bird.prototype.numLegs = 2;
+        var duck = new Bird("duck");
+        var canary = new Bird("canary");
+        console.log(duck.numLegs); // 在控制台输出 2
+        console.log(canary.numLegs); // 在控制台输出 2
+
+    </script>
+</body>
+
+</html>

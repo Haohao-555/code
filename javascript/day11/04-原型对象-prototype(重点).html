@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-原型对象-prototype</title>
+</head>
+
+<body>
+    <script>
+        // JavaScript对象可从其他对象那里继承属性和行为。JavaScript使用原型式继承，
+        // 其中其属性和方法被继承的对象称为原型。
+
+        // 构造函数 —— Star
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sing = function () {
+                console.log("会唱歌")
+            }
+        }
+
+        // 构造函数通过“原型”分配的函数是所有对象共享的
+        // js规定，每个“构造函数”都有一个prototype属性，指向另一个对象，注意这个prototype也是个对象
+        // 这个对象中的所有属性和方法，都会被构造函数拥有
+
+        // 因为prototype叫原型，然后它也是个对象，所以我们通常喜欢叫prototype为原型对象  [[protype]]
+        console.dir(Star)
+        console.log(Star.prototype)  // 得到一个对象
+
+        // 怎么给对象添加属性和方法?
+        Star.prototype.sex = "男";
+        Star.prototype.dance = function () {
+            console.log("会跳舞")
+        }
+        console.log(Star.prototype)
+
+        // 实例化两个对象
+        var star1 = new Star("凡凡", 29)
+        var star2 = new Star("凡凡2", 30)
+
+        // 构造函数中是没有sex属性， 但是在构造函数原型对象中可以访问
+        console.log("可以访问构造函数原型对象中的属性==>", star1.sex)
+        console.log("可以访问构造函数原型对象中的属性==>", star2.sex)
+
+        star1.dance()
+        star2.dance()
+
+        console.log("------")
+        console.log("确定方法是同一个内存的==>", star1.dance === star2.dance)  // true
+        console.log("确定方法是同一个内存的==>", star1.sing === star2.sing)    // false
+ 
+    </script>
+</body>
+
+</html>

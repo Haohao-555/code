@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./data.js"></script>
+    <script>
+        // console.log(data)
+        function productCategory(data, isAsc) {
+            // data  是要处理的数据
+            // isAsc true代表价格升序，false就是降序
+            var product = {};
+            for (var i = 0; i < data.length; i++) {
+                if (!product[data[i].type]) {
+                    // 判断product对象是否含有该字段
+                    product[data[i].type] = [];
+                }
+                // 往相同的数组中推入新的数据
+                product[data[i].type].push(data[i])
+            }
+
+            // 价格排序
+            for (var j in product) {
+                product[j].sort(function (a, b) {
+                    // if (isAsc == true) {
+                    //     return a["price"] - b["price"]
+                    // } else {
+                    //     return b["price"] - a["price"]
+                    // }
+
+                    return isAsc ? a["price"] - b["price"] : b["price"] - a["price"]
+                })
+            }
+
+            // console.log("类型==>", arr)
+            return product;
+        }
+        console.log(productCategory(data, false))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!--
+ * @Date: 2021-08-09 18:34:39
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day11\8.9\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Robot(name, year, owner) {
+        this.name = name;
+        this.year = year;
+        this.owner = owner;
+      }
+
+      Robot.prototype.maker = "GECRus";
+      Robot.prototype.speakWarning = function () {
+        alert("Warning warning!!");
+      };
+      Robot.prototype.makeCoffee = function () {
+        alert("Making coffee");
+      };
+      
+      var robby = new Robot("Robby", 1956, "Dr.Morblus");
+      robby.makeCoffee = function () {
+        alert("喝咖啡时去星巴克");
+      };
+
+      var rosle = new Robot("Rosle", 1962, "George jetson");
+      robby.cleanRoom = function () {
+        alert("快速的清理房间中....");
+      };
+
+      console.log(robby.maker);
+      robby.makeCoffee();
+      robby.speakWarning();
+
+      console.log(rosle.maker);
+      rosle.makeCoffee();
+      rosle.speakWarning();
+      robby.cleanRoom();
+    </script>
+  </body>
+</html>

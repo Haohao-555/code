@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-prototype原型重新</title>
+</head>
+
+<body>
+    <script>
+        function Dog(name, breed, weight) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+        }
+
+        Dog.prototype.jiao = function () {
+            console.log("狗叫叫");
+        }
+
+        var dog1 = new Dog("旺财1", "二哈类", 150)
+        dog1.jiao() 
+        console.log("Dog构造函数重写前==>", Dog.prototype)
+
+        var Animal = {
+            special: "犬科",
+            bark: function (vioce) {
+                console.log("狗的叫法", vioce)
+            }
+        }
+
+        // 重写Dog的原型（原型对象）
+        Dog.prototype = Animal;
+        console.log("Dog构造函数重写后==>", Dog.prototype)
+
+        // 实例化对象
+        var dog2 = new Dog("旺财2", "二哈类", 150)
+        // dog2.jiao()  // dog1.jiao is not a function
+        dog2.bark("aoaoaoaoao")  // dog1.jiao is not a function
+
+
+        // 
+
+    </script>
+</body>
+
+</html>

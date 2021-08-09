@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 作业3：敏感词替换
+        // 要求，根据敏感词库进行话语敏感词替换，敏感词必须是连续的，敏感词有几个字符，就替换成几个其他字符
+        // 敏感词库
+        var wordsDatabase = ['沙雕', 'MMD', '操', '草', '卧槽', 'TMD', "干"];
+        // 语句
+        var word = 'MMD，我昨天买了表，卧槽，我只买贵的，但是还是高仿的，500万，卧槽这谁顶得住呀，沙雕商家，草，MMD;TMD是人干的事吗？';
+        function replaceString(str, arr) {
+            //str: 需要进行替换的字符串
+            //arr: 敏感词库
+            //需要替换的字符: *
+
+            // 方法1： 最简单形式
+            // var newArr = ""
+            // str = str.replaceAll('沙雕', "**")
+            // str = str.replaceAll('MMD', "***")
+            // str = str.replaceAll('操', "*")
+            // str = str.replaceAll('草', "*")
+            // str = str.replaceAll('卧槽', "**")
+            // str = str.replaceAll('TMD', "***")
+            // str = str.replaceAll('干', "*")
+            // return str
+
+
+            // 方法2：
+            // 遍历敏感词库，取出每个敏感词
+            for (var i in arr) {
+                // 拼接需要的*号个数
+                // var strStar = "*"
+                // for (var j = 1; j < arr[i].length; j++) {
+                //     strStar += "*"
+                // }
+
+                // 一句话搞定
+                var strStar = "*".repeat(arr[i].length);
+
+                // console.log(strStar)
+                str = str.replaceAll(arr[i], strStar)
+            }
+
+            return str
+        }
+
+        // console.log(replaceString(word))
+        console.log(replaceString(word, wordsDatabase))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 作业4： 封装一个函数，传递一个参数进行判断是否为数字、字母、、汉字（'\u4e00' <= 汉字 <= '\u9fa5'）还是其他字符
+
+        var str = "8";
+        function check(str) {
+            var result = (0 <= str && str <= 9) ? "数字" : 
+                         ("a" <= str && str <= "z" || "A" <= str && str <= "Z") ? "字母" :
+                        '\u4e00' <= str && str <= '\u9fa5'? "汉字": "其他"
+            return result
+        }
+        console.log("字符串数字判断==>", check("8"))
+        console.log("数字判断==>", check(9))
+        console.log("字母判断==>", check("a"))
+        console.log("字母判断==>", check("Z"))
+        console.log("汉字判断==>", check("汉"))
+        console.log("其他判断==>", check("-"))
+        console.log("其他判断==>", check("&"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-方法查找规格和原型链.html</title>
+</head>
+
+<body>
+    <script>
+
+        // 构造函数 —— Star
+        function Star(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sing = function () {
+                console.log(this.name + "在构造函数内会唱歌")
+            }
+        }
+
+
+        // 通过原型对象拓展Star构造函数（公共方法在原型对象中）
+        Star.prototype.sing = function () {
+            console.log(this.name + "在原型（原型对象）里会唱歌")
+        }
+        Star.prototype.dance = function () {
+            console.log(this.name + "原型（原型对象）里会跳舞")
+        }
+
+        // 实例化两个对象
+        var star1 = new Star("凡凡", 30)
+        var star2 = new Star("凡凡2", 31)
+
+        // 实例上的和原型（原型对象）存在相同的属性和方法
+        // 有没有覆盖？如果没有覆盖，则先调用谁？ —— 没有覆盖,优先使用实例中的方法和属性
+        star1.sing()
+        console.log(star1)
+
+
+        // 调用对象的方法的时候，先查找当前实例对象中是否含有该方法，如果不存在，就在对象原型上继续查找
+        // 如果还是不存在，继续往上上层对象的原型查找， 这个过程就是js的原型链
+
+
+
+    </script>
+</body>
+
+</html>

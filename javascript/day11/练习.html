@@ -1,0 +1,129 @@
+<!--
+ * @Date: 2021-08-09 09:03:51
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day11\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 作业1
+      function fun(n, o) {
+        console.log(o);
+        return {
+          fun: function (m) {
+            return fun(m, n);
+          },
+        };
+      }
+      // 传参进去，只传了 n = 0 o没有传参，所以打印为 undefined
+      var a = fun(0);
+
+      //  返回 a 里面的 aaa 函数，此时 m = 1，该函数返回值为 fun(1, 0)
+      a.fun(1);
+      //  返回 a 里面的 aaa 函数，此时 m = 2，该函数返回值为 fun(2, 0)
+      //   打印结果：0
+      a.fun(2);
+      //  返回 a 里面的 aaa 函数，此时 m = 2，该函数返回值为 fun(2, 0)
+      //   打印结果：0
+      a.fun(3);
+      //   (1)调用全局fun函数， n = 0 ,o 等于 undefined
+      //   (2)调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(1,0)，打印 0
+      //   (3)调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(1,0)，打印 0
+      //   (4)调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(2,1)，打印 1
+      //   (5)调用window.fun(0, undefined)里面的aaa(1),其返回值为window.fun(3,2)，打印 2
+      var b = fun(0).fun(1).fun(2).fun(3); // undefined
+      //   调用全局函数fun，传值0，n = 0, o 为undefined，然后返回 fun 函数
+      // 此时 m = 1，该函数返回fun(1, 0)， 打印为 0
+      var c = fun(0).fun(1);
+      //   c 就是返回的函数 fun(1, 0) ，调用fun函数，先打印1
+      //   c 就是返回的函数 fun(1, 0) ，调用fun函数，先打印1
+      c.fun(2);
+      c.fun(3);
+
+      //   作业2
+      var phone = function () {
+        var systemVersion = 12;
+        return {
+          showVersion: function () {
+            console.log(systemVersion);
+          },
+          runApp: function (app) {
+            if (app.version > systemVersion) {
+              console.log("当前手机不支持此app请更新版本");
+            } else {
+              console.log(app.content);
+            }
+          },
+          updateSystemVersion: function (version) {
+            // 更新当前手机对象私有变量systemVersion 值
+            systemVersion = version;
+            console.log();
+          },
+        };
+      };
+      var phoneShow = phone();
+      phoneShow.showVersion();
+
+      //   查看是否支持 app 的版本
+      phoneShow.runApp({ name: "抖音", version: 13, content: "抖音发现生活" });
+
+      // 更新系统,并且查看版本
+      phoneShow.updateSystemVersion(17);
+      phoneShow.showVersion();
+
+      // 换种写法
+      var phone = (function () {
+        var systemVersion = 12;
+        return {
+          showVersion: function () {
+            console.log(systemVersion);
+          },
+          runApp: function (app) {
+            if (app.version > systemVersion) {
+              console.log("当前手机不支持此app请更新版本");
+            } else {
+              console.log(app.content);
+            }
+          },
+          updateSystemVersion: function (version) {
+            // 更新当前手机对象私有变量systemVersion 值
+            systemVersion = version;
+            console.log();
+          },
+        };
+      })();
+      phone = phone();
+      phone.showVersion();
+
+      //   查看是否支持 app 的版本
+      phone.runApp({ name: "抖音", version: 13, content: "抖音发现生活" });
+
+      // 更新系统,并且查看版本
+      phone.updateSystemVersion(17);
+      phone.showVersion();
+      // 作业6
+      function productCategory(data) {
+        var product = {};
+        for (var i = 0; i < data.length; i++) {
+          if (!product[data[i].type]) {
+            // 判斷 product 对象是否含有该字段
+            product[data[i].type] = [];
+          }
+          // 在相同的数组中推入新的数据
+          product[data[i].type].push(data[i])
+        }
+        // console.log("类型 ==>", arr);
+        return product;
+      }
+      console.log(productCategory(data));
+    </script>
+  </body>
+</html>

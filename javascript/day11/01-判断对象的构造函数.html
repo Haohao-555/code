@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-判断对象的构造函数</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数  可以一组相同属性和行为的对象集中描述
+        function Dog(name, color) {
+            this.name = name;
+            this.color = color;
+            this.bark = function () {
+                console.log("汪汪汪....")
+            }
+        }
+
+        // Tom是Dog构造函数实例化出来的对象
+        var Tom = new Dog("Tom", "black")
+        // 给构造函数的实例添加额外的属性
+        Tom.age = 8;
+        // 给实例化出来的对象添加一个额外的方法
+        Tom.run = function () {
+            console.log(this.name, "今年" + this.age + "岁,但是还是跑得很快")
+        }
+        // 调用新添加的的方法
+        Tom.run()
+        console.log(Tom)
+
+        // 实例化另外一个对象
+        var Tom2 = new Dog("Tom2", "white")
+        console.log(Tom2)
+
+
+        function Cat(name, color, weight) {
+            this.name = name;
+            this.color = color;
+            this.weight = weight
+        }
+
+        // 实例化一只猫的对象
+        var wangcai = new Cat("旺财", "white", "30KG");
+
+        // (1) 使用运算符`instanceof`来确定对象是由哪个构造函数创建的。
+        console.log("判断旺财是猫还是狗==>", wangcai instanceof Cat)   // true
+        console.log("判断旺财是猫还是狗==>", wangcai instanceof Dog)   // false
+        console.log("判断Tom是猫还是狗==>", Tom instanceof Dog)   // true
+        console.log("判断Tom2是猫还是狗==>", Tom instanceof Dog)   // true
+
+
+        // (2) 可以通过对象的构造器属性来确认它的构造函数  
+        // 判断写法： obj.construtor == 构造函数名
+        console.log("构造器属性来确认它的构造函数==>", Tom.constructor == Dog)
+        console.log("构造器属性来确认它的构造函数==>", Tom2.constructor == Cat)
+
+    </script>
+</body>
+
+</html>
