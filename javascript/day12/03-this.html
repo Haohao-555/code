@@ -31,19 +31,19 @@
             console.log("独立函数==>", this)     // window
             console.log("独立函数==>", this.x)   // 1
         }
-
         foo()
 
         // (2) 对象内部的方法 this，指向当前对象
         var obj = {
             x: 2,               // 对象的属性
             foo: function () {    // 把函数的地址复制给foo
+                x = 4
                 // 这里的this 指向obj
                 console.log("对象里面this==>, ", this.x)    // 2
 
                 var a = function () {
                     // 指向window
-                    console.log(this.x)
+                    console.log(this.x) // 4
                 }
                 a()         // 1
             }
@@ -77,10 +77,10 @@
 
         /*
             改变函数内部this的指向
-                (1).apply(thisArg, [argsArray]))
+                (1).apply(thisArg, [argsArray])
                     ==> 函数名.apply(this指向的对象, 参数数据组) 改变函数名里面的this指向，并执行这个函数
                             调用函数，并改变该函数内部的this指向，并且传递arr参数数组给函数
-                (2).call(thisArg, [argsArray]))
+                (2).call(thisArg, [argsArray])
                     ==> 调用函数并改变函数内部的this指向，传入参数，它的功能跟apply相似
                         区别：apply参数是数组，call是参数列表
                 (3).bind() 改变函数内部的this指向，但是没有调用函数，需要手动执行
@@ -149,10 +149,10 @@
         console.log("直接调用==>", modules.getX())
 
         // 10  把函数值复制外部的getX2,getX2是在上下文在最外部，所以执行的getX2内部的this指向window
-        var getX2 = modules.getX;
+        var getX2 = modules.getX; 
         console.log("外部的getX2变量==>", getX2());
 
-        var getX3 = getX2.bind(modules)
+        var getX3 = getX2.bind(modules) // 并没有执行
         console.log("外部的getX3变量==>", getX3());
     </script>
 </body>
