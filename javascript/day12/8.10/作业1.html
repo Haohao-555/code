@@ -1,0 +1,71 @@
+<!--
+ * @Date: 2021-08-10 18:30:15
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day12\8.10\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Dog() {
+        this.species = "狗科"  
+        this.bark = function () {
+        console.log("小狗的bark");
+        };
+        this.run = function () {
+          console.log("小狗的run")
+        };
+        this.wag = function () {
+          console.log("小狗的wag")
+        };
+      }
+
+      function ShowDog(name, breed, weight, handler) {
+          Dog.call(this);
+          this.name = name;
+          this.breed = breed;
+          this.weight = weight;
+          this.handler = handler;
+          this.stack = function (){
+              console.log("表演犬立正");
+          }
+          this.gait = function (walk) {
+              console.log(walk);
+          }
+          this.bait = function () {
+              console.log("让表演犬饱餐一顿");
+          }
+          this.groom = function () {
+              console.log("让表演犬洗个澡")
+          }
+      }
+      var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+      var dog = new Dog();
+      console.log("表演犬是否有继承小狗的 species 属性，值为",scotty.species);
+      console.log("表演犬的构造是否为 ShowDog",scotty.constructor == ShowDog);
+      console.log("小狗的构造是否为 Dog",dog.constructor == Dog);
+      console.log("----------表演犬调用小狗的方法----------")
+      scotty.run();
+      scotty.bark();
+      scotty.wag();
+      console.log("----------表演犬调用自身方法----------")
+      scotty.stack();
+      scotty.gait("跑步");
+      scotty.bait();
+      scotty.groom();
+      console.log("----------小狗调用自身方法----------")
+      dog.run();
+      dog.bark();
+      dog.wag();
+      console.log("----------小狗尝试调用表演犬方法----------")
+      dog.stack();
+    </script>
+  </body>
+</html>

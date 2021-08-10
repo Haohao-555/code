@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-对象方法</title>
+</head>
+
+<body>
+    <script>
+        // {f: 5} 在内存的堆结构中创建一个对象，然后把对象在内存中的地址给obj
+        // var obj = { f: 5 }
+        // {    
+        //     foo: {                       以字典结构保存对象数据
+        //         [[value]]: 5             属性值
+        //         [[writable]]: true       是否可修改
+        //         [[enumerable]]: true     属性是否可以枚举（循环）
+        //         [[configurable]]: true   属性是否可以配置
+        //     }
+        // }
+
+
+        // 非严格模式 
+        // var obj = {}
+        // Object.defineProperty(obj, "name", {
+        //     value: "小强",
+        //     writable: false
+        // })
+
+        // // 尝试修改obj的属性：name
+        // // 当writable为false时，默认是修改的，严格模式下，会报错
+        // obj.name = "大强";
+
+        // console.log("obj==>", obj)
+
+
+        // 严格模式
+        (function() {
+
+            // 开启严格模式
+            "use strict";
+
+            var obj = {}
+            Object.defineProperty(obj, "sex", {
+                value: "男",
+                writable: false
+            })
+
+            // 尝试修改obj的属性：sex
+            // 当writable为false时，默认是修改的，严格模式下，会报错
+            // obj.sex = "女"
+            // 报错 Uncaught TypeError: Cannot assign to read only property 'sex' of object '#<Object>'：
+            console.log("obj==>", obj)
+            // 非严格模式下：window; 严格模式：undefined
+            console.log(this)
+        })()
+
+        // console.log(111)
+
+
+    </script>
+</body>
+
+</html>

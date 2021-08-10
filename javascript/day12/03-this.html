@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-this</title>
+</head>
+
+<body>
+    <script>
+        // {f: 5} 在内存的堆结构中创建一个对象，然后把对象在内存中的地址给obj
+        // var obj = { f: 5 }
+
+        // {    
+        //     foo: {                       以字典结构保存对象数据
+        //         [[value]]: 5             属性值
+        //         [[writable]]: true       是否可修改
+        //         [[enumerable]]: true     属性是否可以枚举（循环）
+        //         [[configurable]]: true   属性是否可以配置
+        //     }
+        // }
+
+        // 函数也是引用类型： 上下文（所处环境）不同的上下文，函数的执行方式不一样
+
+
+        // (1) 独立函数内部的this指向是全局window对象
+        var x = 1;
+        var foo = function () {
+            console.log("独立函数==>", this)     // window
+            console.log("独立函数==>", this.x)   // 1
+        }
+
+        foo()
+
+        // (2) 对象内部的方法 this，指向当前对象
+        var obj = {
+            x: 2,               // 对象的属性
+            foo: function () {    // 把函数的地址复制给foo
+                // 这里的this 指向obj
+                console.log("对象里面this==>, ", this.x)    // 2
+
+                var a = function () {
+                    // 指向window
+                    console.log(this.x)
+                }
+                a()         // 1
+            }
+        }
+
+        obj.foo()   // 对象的函数，叫对象方法，指向obj
+
+
+        // (3) 构造函数内部的this, 指向new运算符创建的对象
+        function Dog() {
+            this.name = "旺财";
+            this.color = "yellow";
+        }
+        Dog.prototype.say = function () {
+            console.log("Dog构造函数的原型的方法==>", this)
+        }
+
+        var dog = new Dog();
+        var dog1 = new Dog();
+        dog1.tall = "很高"
+        dog.say()
+        dog1.say()
+
+
+        /*
+            (1) 在普通函数中，this指向全局window对象
+            (2) 在对象方法中，this指向当前对象
+            (3) 在构造函数中，this指向实例化的对象
+        */
+
+
+        /*
+            改变函数内部this的指向
+                (1).apply(thisArg, [argsArray]))
+                    ==> 函数名.apply(this指向的对象, 参数数据组) 改变函数名里面的this指向，并执行这个函数
+                            调用函数，并改变该函数内部的this指向，并且传递arr参数数组给函数
+                (2).call(thisArg, [argsArray]))
+                    ==> 调用函数并改变函数内部的this指向，传入参数，它的功能跟apply相似
+                        区别：apply参数是数组，call是参数列表
+                (3).bind() 改变函数内部的this指向，但是没有调用函数，需要手动执行
+
+        */
+
+        function Product(name, price) {
+            this.name = name
+            this.price = price
+        }
+
+
+        function Food(name, price) {
+            // 调用Product函数，并修改Product内部的this指向当前Food的this
+            // 并且传递参数，参数用数组的方式传递
+            // console.log(this)
+            // Product(name, price)
+
+            // 用apply来书写
+            // var arr = [name, price]
+            // Product.apply(this, arr)
+
+            // 用call来写
+            // Product.call(this, name, price)
+
+            // 用bind来写
+            Product.bind(this, name, price)()
+        }
+
+        var food1 = new Food("甜点", 100)
+        var food2 = new Food("甜点2", 200)
+        // console.log(food1)
+        // console.log(food2)
+
+
+        // (1) 用apply或call处理
+        // 求数组中最大的值
+        var arr = [4, 1, 88, 56, 999, 12, 7, 1000];
+        Array.prototype.findMax = function () {
+            console.log(this)
+            // return Math.max.apply(this, this)
+
+            // a.apply.(b, c) 调用a函数，并且改变a函数内部的this指向b，并传入c数组作为参数
+            // 调用Math.max函数并且改变内部this的指向，并传递数组参数给max函数
+            // 其中的null是window
+            // return Math.max.apply(null, this)
+
+            // 用call处理 —— 解构ES6写法
+            // console.log(...this)
+            return Math.max.call(null, ...this)
+        }
+        console.log(arr.findMax())
+
+
+        // (2) bind
+        var x = 10;
+        var modules = {
+            x: 100,
+            // getX是对象的属性
+            getX: function () {
+                console.log(this)
+                return this.x
+            }
+        }
+        // 100, 上下文 在modules的对象里
+        console.log("直接调用==>", modules.getX())
+
+        // 10  把函数值复制外部的getX2,getX2是在上下文在最外部，所以执行的getX2内部的this指向window
+        var getX2 = modules.getX;
+        console.log("外部的getX2变量==>", getX2());
+
+        var getX3 = getX2.bind(modules)
+        console.log("外部的getX3变量==>", getX3());
+    </script>
+</body>
+
+</html>

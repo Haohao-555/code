@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-函数原型</title>
+</head>
+
+<body>
+    <script>
+        function abc() { };
+        var o = {
+            abc: function () { }
+        }
+        console.log(o);  // __proto__指向Object.prototype
+
+        // 函数对象的原型 ==> Function.prototype
+        Function.prototype.hello = function () {
+            console.log("你好，所有的函数子弟们！")
+        }
+        abc.hello()
+
+        var aaa = function () { }
+        aaa.hello();
+        // 打印对象的原型，console.dir(打印数据的结构)
+        console.dir(aaa)
+
+        // // 往构造函数的原型上添加多一个自定义函数
+        Function.prototype.methods = function (name, func) {
+            // console.log("执行函数原型上的methods自动方法")
+            // this会指向调用的对象
+            // if (!this.prototype[name]) {
+            //     this.prototype[name] = func
+            // }
+            // console.log(this)
+        }
+
+        aaa.methods("goods", function () {
+            console.log(name)
+        })
+
+
+        // 给Array的原型添加一个求和的方法
+        Array.prototype.getSum = function (n) {
+            var sum = 0;
+            // this会指向调用的对象
+            for (var i = 0; i < this.length; i++) {
+                sum += this[i]
+            }
+            // 把计算结果返回出去
+            return sum
+        }
+
+        // 调用方法
+        console.log([1, 4, 6, 8].getSum())
+        console.log([1, 4, 6, 8, 10].getSum())
+
+
+        Date.prototype.bbb = function () {
+            console.log("Date内置对象的新添加方法")
+        }
+        var date1 = new Date()
+        console.dir(date1)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-原型验证</title>
+</head>
+
+<body>
+    <script>
+        function Animal() {
+            this.name = "Jack",
+                this.sex = "woman"
+        }
+
+        Animal.prototype.special = "猫科";
+        // 实例化对象
+        var cat1 = new Animal()
+        var cat2 = new Animal()
+        var dog = {}
+
+        // 判断cat 是否有继承来自于Animal的原型对象
+        console.log(Animal.prototype.isPrototypeOf(cat1))      // true
+        console.log(Animal.prototype.isPrototypeOf(dog))      // fasle
+
+        console.log(cat1.__proto__)
+        // console.log(dog.__proto__)
+
+        console.log("判断name是否为cat1实例化对象的属性==>", cat1.hasOwnProperty("name"))    //  true
+        // special是原型对象中的属性，cat1只是继承而已
+        console.log("判断name是否为cat1实例化对象的属性==>", cat1.hasOwnProperty("special"))  // false
+
+
+        // in运算符可以用来判断，某个实例是否含有某个属性，不管是不是本地属性。
+        console.log("判断name是否为cat1实例化对象的属性==>", "name" in cat1)    //  true
+        console.log("判断name是否为cat1实例化对象的属性==>", "special" in cat1)    //  true
+    </script>
+</body>
+
+</html>

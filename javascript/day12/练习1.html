@@ -1,0 +1,70 @@
+<!--
+ * @Date: 2021-08-10 08:54:28
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day12\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //   函数对象
+      //   function abc() {}
+      //   var o = {
+      //     abc: function () {},
+      //   };
+      //   console.log(o); // __proto__ 指向 Object.prototype（object）
+
+      //   //   函数对象的原型 ==> Function.prototype
+      //   Function.prototype.hello = function () {
+      //     console.log("你好，所有函数子弟们");
+      //     console.dir(this);
+      //   };
+      //   abc.hello(); // 所有函数都可以调用 hello
+
+      //   var aaa = function () {};
+      //   aaa.hello();
+      //   //   打印对象的原型
+      //   console.dir(aaa);
+
+      //   //   往构造函数的原型上添加多一个自定义函数
+      //   // Function.prototype.methods = function (name, func) {
+      //   //     //  console.log("执行函数原型上的 methods自定义方法");
+      //   //     // this 会指向调用的对象
+      //   //     console.log(this);
+      //   // }
+      //   // aaa.methods()
+      //   Function.hello();
+
+      function Product(name, price) {
+        console.log("this is", this);
+        this.name = name;
+        this.price = price;
+      }
+      function Food(name, price) {
+        /*
+          此时this 是指向 Food ,要将 this 传递给 Product
+            
+          new Product(name, price); 而这个是将product（this此时是指到product）
+          传递到 Product 导致赋值不了
+           console.log(food instanceof Food); // true
+           console.log(food instanceof Product); // false
+        */
+        // new Product(name, price);
+        Product.apply(this, [name, price]);
+        // Product.call(this, name, price);
+        // Product.bind(this, name, price)();
+      }
+      var food = new Food("甜品", 100);
+      console.log("food is", food);
+      console.log(food.name);
+
+    </script>
+  </body>
+</html>
