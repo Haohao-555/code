@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-严格模式针对的类型</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        // 1 变量需要先声明，后使用
+        // var a;
+        // function fn1() {
+        //     "use strict";
+        //     a = 55;
+        //     console.log("a==>", a)
+        // }
+        // fn1()
+
+
+        // 2 严格模式引起静默失败
+        // var obj = {}
+        // Object.defineProperty(obj, "name", {
+        //     value: "想你的液",
+        //     writable: false
+        // })
+        // // obj.name = 40;
+        // console.log("obj.name==>", obj.name)
+
+        // // 在严格模式下，只有getter可读，没有setter
+        // var dog = {};
+        // Object.defineProperty(dog, "name", {
+        //     get: function () {
+        //         return "Tom"
+        //     }
+        // });
+        // console.log("dog.name==>", dog.name)
+        // // 给dog.name进行修改
+        // // 给对象name进行修改，必然会set方法，
+        // // 严格模式下，没有该方法，直接报错：Cannot set property name of #<Object> which has only a getter
+        // // dog.name = "Jack";
+        // console.log("dog.name==>", dog.name)
+        // // console
+
+
+        // // 给不可扩展对象的新属性赋值
+        // var obj1 = {}
+        // Object.preventExtensions(obj1)
+        // obj1.aaa = "aaa";
+        // console.log("obj1==>", obj1)
+
+
+        // 3 能删除顺序ing，但是不能删除原型
+        // function fn2() { }
+        // //  Cannot delete property 'prototype' of function fn2(){}
+        // // delete fn2.prototype;
+        // console.dir(fn2)
+
+
+        // 4 函数的参数名不能一样
+        // function fn3(arg1, arg1, arg3) {
+        //     console.log(arg1, arg3)
+        // }
+        // fn3(1, 3, 3)        
+
+
+        // 5 在严格模式下，函数内部的this指向为undefined
+        function fn3() {
+            console.log("函数内的this指向==>",this)
+        }
+        window.fn3()
+        fn3()
+
+        
+
+    </script>
+</body>
+
+</html>

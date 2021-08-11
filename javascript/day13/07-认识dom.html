@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-认识dom</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            DOM          文档对象模型
+            D   document 文档
+            O   Object   对象
+            M   Model    模型
+
+            在浏览器中，（1）用户自定义对象； （2）内置对象 Math, Array, String() Date()
+                         (3) 浏览器内建对象，浏览器对象window 文档内建对象document 
+
+
+            DOM树： 建立DOM,浏览器在加载html文档后，就开始建立DOM树，document文档对象是最顶层
+            节点：
+                文档节点：document
+                元素节点：html元素 div元素
+                属性节点： 元素的属性节点
+                文本节点： 文本内容节点
+        */
+
+        // console.dir(document)
+        // 创建元素节点
+        var h1 = document.createElement("h1")
+        // 创建文本节点
+        var text = document.createTextNode("我是个好人")
+        // 把文本节点text放入元素节点内部
+        h1.appendChild(text)
+
+        // 把h1标签放入body里面
+        document.body.appendChild(h1)
+
+        console.log(h1, text)
+
+    </script>
+</body>
+
+</html>

@@ -56,8 +56,6 @@
 
 
 
-
-
         ////////
         function Shape(x, y) {
             this.x = 0;
@@ -100,6 +98,48 @@
         console.log("aaa==>", aaa)
         aaa.move(20, 20)
         aaa.draw()
+
+
+        // 练习
+        // var People = function () {}
+        // People.prototype.y = 20
+        // People.prototype.x = 40
+        // People.prototype.showNum = function () { }
+        // //通过构造函数创建实例
+        // var p = new People();
+        // console.log(p)
+
+
+        var People = function () { }
+
+        People.prototype = Object.create(null, {
+            "x": {
+                value: 20,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            "y": {
+                value: 40,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            },
+            showNum: {
+                value: function () {
+                    console.log("showNum方法")
+                },
+                writable: true,
+                enumerable: true,
+                configurable: true
+            }
+        })
+        // 实例化对象进行测试
+        var p = new People()
+        console.log(p)
+        // 调用方法
+        p.showNum()
+
     </script>
 </body>
 

@@ -35,9 +35,10 @@
             this.name = name;
             this.color = color;
         }
-
+        
         // 实例化鸟对象
         var bird1 = new Bird("黄灵", "白色")
+        console.dir(bird1.__proto__)
         console.log(bird1)
         console.log("判断bird1是否为构造函数Bird的实例", bird1 instanceof Bird, bird1.constructor === Bird)   // true true
         // 第一种方式，不能访问到原型
@@ -78,17 +79,17 @@
                 Dog.prototype和Animal.prototype现在指向了同一个对象，
                 那么任何对Cat.prototype的修改，都会反映到Animal.prototype。
         */
-        // function Dog(name, color) {
-        //     this.name = name;
-        //     this.color = color;
-        // }
+        function Dog(name, color) {
+            this.name = name;
+            this.color = color;
+        }
 
-        // Dog.prototype = Animal.prototype
-        // // 把原型对象构造函数指向改回来
-        // Dog.prototype.constructor = Dog;
+        Dog.prototype = Animal.prototype
+        // 把原型对象构造函数指向改回来
+        Dog.prototype.constructor = Dog;
 
-        // var dog1 = new Dog("旺财", "黄色");
-        // console.log(dog1)
+        var dog1 = new Dog("旺财", "黄色");
+        console.log(dog1)
 
 
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-dom元素获取</title>
+</head>
+
+<body>
+    <h2 id="first-id">h2标签</h2>
+
+    <script>
+        // 获得元素节点
+        // (1) 根据id值获得元素节点，没有找到，返回null
+        var firstId = document.getElementById("first-id")
+        console.log("firstId==>", firstId)
+        console.log("类型==>", typeof firstId)
+        // console.dir(firstId)
+    </script>
+</body>
+
+</html>

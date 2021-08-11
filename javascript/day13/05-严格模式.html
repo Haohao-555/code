@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-严格模式</title>
+</head>
+
+<body>
+    <script src="./test.js"></script>
+    <script>
+        /*
+            严格模式作用：约束一些“马虎”代码，不合理的兼容
+            严格模式如何开启: 在脚本开始，在script标签里面或者文件里开启； 在函数内部
+        */
+
+        // 在脚本开始时开启，直接作用整个script标签
+        // "use strict";
+
+
+        function fn() {
+            // 在函数内部开启严格模式只能影响函数内部的，不影响全局
+            "use strict";
+            // num1 = 666;
+            // console.log("num1==>", num1)
+        }
+        // 调用函数
+        fn()
+
+        var num = 0555;
+        console.log(num)
+
+
+
+    </script>
+</body>
+
+</html>

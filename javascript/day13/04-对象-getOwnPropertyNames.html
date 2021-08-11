@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-对象-etOwnPropertyNames</title>
+</head>
+
+<body>
+    <script>
+        // Object.getOwnPropertyNames() :返回一个由指定对象的所有自身属性的属性名（包括不可枚举属性）组成的数组
+        var arr = [10, 20, 30, 7, 21];
+
+        // ["0", "1", "2", "3", "4", "length"]
+        console.log("数组中所有可用的属性==>", Object.getOwnPropertyNames(arr))
+
+        var people = Object.create(null, {
+            name: {
+                value: "举个栗子",
+                enumerable: true
+            },
+            sex: {
+                value: "女",
+                enumerable: true
+            },
+            age: {
+                value: 18,
+                enumerable: false
+            },
+            sex: {
+                value: "女",
+                enumerable: true
+            },
+            weight: {
+                value: 50,
+                enumerable: true
+            },
+        })
+
+
+        console.log(people)
+        // 输出可枚举
+        for (var i in people) {
+            console.log("for...in==>", i, people[i])
+        }
+
+        var all = Object.getOwnPropertyNames(people)
+        console.log("all==>", all)
+        all.forEach(function (v) {
+            console.log("属性名==>", v)
+        })
+
+        /*
+            Object.defineProperty 掌握
+            Object.assign()    了解
+            Object.create()    了解
+            Object.keys : 自己看
+        */
+    </script>
+</body>
+
+</html>
