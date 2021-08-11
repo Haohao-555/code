@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-对象方法.get和set</title>
+</head>
+
+<body>
+    <script>
+        //     foo: {                       以字典结构保存对象数据
+        //         [[value]]: 5             属性值
+        //         [[writable]]: true       是否可修改
+        //         [[enumerable]]: true     属性是否可以枚举（循环）
+        //         [[configurable]]: true   属性是否可以配置
+        //     }
+        // }
+
+
+        var aaa = 16;
+
+        var human = {
+            name: "love",
+        }
+        Object.defineProperty(human, "age", {
+            // 在访问age属性的时候自动触发，这就是age属性的getter方法
+            get: function () {
+                console.log("get方法被执行")
+                // aaa = aaa >= 18 ? "已成年" : "未成年";
+                // // 这个返回赋值给age
+                // return aaa
+
+                return aaa >= 18 ? "已成年" : "未成年";
+
+            },
+            set: function (val) {
+                // set提供的参数为修改后的参数
+                console.log("修改属性时的参数==>", val)
+                // 在修改age属性时，set会自动执行，这就是age属性setter的方法
+
+                aaa = val
+            }
+
+        })
+        // console.log("访问年龄==>")
+        // human.age
+        // console.log("human==>", human)
+        // console.log("human.age==>", human.age)
+
+        // 修改age属性
+        // human.age = 25;
+        // console.log("设置之后，age==>", human.age)
+        // console.log("设置之后，age==>", human)
+
+
+        // 练习
+        var obj = {};
+        var aaa = 889;
+        Object.defineProperty(obj, "count", {
+            get: function () {
+                if (aaa < 18) {
+                    aaa = 18
+                }
+                return aaa
+            },
+            set: function (val) {
+                if (val >= 18) {
+                    aaa = val
+                }
+            }
+        })
+        console.log("输出count的值==>", obj.count)
+        obj.count = 1
+        console.log(obj.count) // 889
+        obj.count = 'abx'
+        console.log(obj.count) // 889
+        obj.count = 27
+        console.log("aaa==>", aaa)
+
+        console.log(obj.count) // 27
+
+
+
+        // 构造函数的属性
+        function Dog() {
+            Object.defineProperty(this, "name", {
+                get: function () {
+                    return name
+                },
+                set: function (val) {
+                    name = val
+                }
+            })
+        }
+
+        // 实例化对象
+        var dog1 = new Dog();
+        dog1.name = "旺财"
+        // dog1.aaa = "aaa"
+        console.log(dog1)
+
+
+
+        // 可配置属性
+        function Cat() {
+            // var color = ""
+            Object.defineProperty(this, "color", {
+                // value: 50,
+                // writable: true,
+                // value,writable和getter/setter不能同时出现
+                get: function () {
+                    return color
+                },
+                set: function (val) {
+                    color = val
+                }
+            })
+        }
+
+        // 实例化对象
+        var cat1 = new Cat();
+        cat1.color = "白色"
+        console.log(cat1)
+
+
+        // 构造函数原型对象可以设置getter/setter并且可以被继承
+
+    </script>
+</body>
+
+</html>

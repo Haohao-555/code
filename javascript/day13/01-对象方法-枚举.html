@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-对象方法2</title>
+</head>
+
+<body>
+    <script>
+        //     foo: {                       以字典结构保存对象数据
+        //         [[value]]: 5             属性值
+        //         [[writable]]: true       是否可修改
+        //         [[enumerable]]: true     属性是否可以枚举（循环）
+        //         [[configurable]]: true   属性是否可以配置
+        //     }
+        // }
+
+        // 枚举
+        (function () {
+            var obj = { name: "吹水强", sex: "男", hobby: "睡觉" }
+            Object.defineProperty(obj, "age", {
+                value: 18,
+                writable: true,
+                // 是否可以被枚举，假如已defineProerty给对象添加属性，默认不能被枚举
+                // enumerable: true
+            })
+
+            // 修改属性值
+            obj.age = 20;  // 修改不了
+            console.log("obj==>", obj)
+            console.log("obj.age==>", obj.age)
+
+            // 枚举
+            for (var i in obj) {
+                console.log("对象属性==>", i)
+            }
+        })()
+
+    </script>
+</body>
+
+</html>

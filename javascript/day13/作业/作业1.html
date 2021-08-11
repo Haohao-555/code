@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Dog() {
+            this.species = "犬科";
+            this.bark = function () {
+                console.log("狗狗会叫")
+            };
+            this.run = function () {
+                console.log("狗狗会跑")
+            };
+            this.wag = function () {
+                console.log("狗狗会摇尾巴")
+            }
+        }
+
+        function ShowDog(name, breed, weight, handler) {
+            // 继承Dog的属性和方法，但无法继承Dog构造函数的原型上的方法和属性
+            Dog.call(this)
+        }
+
+        // 给表演狗添加自己特属于自己的方法
+        ShowDog.prototype.stack = function () {
+            console.log("会立正")
+        }
+        ShowDog.prototype.gaity = function () {
+            console.log("类似奔跑")
+        }
+        ShowDog.prototype.bait = function () {
+            console.log("狗狗饱餐一顿")
+        }
+        ShowDog.prototype.groom = function () {
+            console.log("小狗洗澡")
+        }
+
+        // 实例化表演狗对象
+        var ShowDog1 = new ShowDog("Scotty", "Scotty Terrier", 15, "Cookie")
+        console.log(ShowDog1)
+
+    </script>
+</body>
+
+</html>

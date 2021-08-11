@@ -6,15 +6,73 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        
+      //   // 对象
+      //   (function () {
+      //     var obj = {
+      //       name: "吹水强",
+      //       sex: "男",
+      //       hobby: "睡觉",
+      //     };
+      //     Object.defineProperty(obj, "age", {
+      //       value: 18,
+      //       writable: false, // 是否能被修改
+      //       enumerable: true, // 是否可以被枚举
+      //     });
+      //     // 修改属性值
+      //     obj.age = 25; // 修改不了
+      //     console.log("obj.age ==>", obj.age);
+
+      //     // 枚举
+      //     for (var i in obj) {
+      //       console.log("对象属性值 ==>", i);
+      //     }
+      //   })();
+
+      //   var obj = {};
+      //   var aaa = 27;
+      //   Object.defineProperty(obj, "count", {
+      //     get: function () {
+      //       if (aaa < 18) {
+      //         aaa = 18;
+      //       }
+      //       return aaa;
+      //     },
+      //     set: function (val) {
+      //       if (val >= 18) {
+      //         aaa = val;
+      //       }
+      //     },
+      //   });
+      //   // obj.count 时就调用了 get 方法
+      //   console.log(obj.count);
+      //   obj.count = 1;
+      //   console.log(obj.count);
+      //   obj.count = "abx";
+      //   console.log(obj.count);
+      //   obj.count = 27;
+      //   console.log(obj.count);
+
+      var People = function () {};
+      People.prototype = Object.create(null, {
+        "y": {
+          value: 20,
+        },
+        "x": {
+          value: 40,
+        },
+        "showNum":{
+            value: function() {}
+        },
+      });
+      console.log(new People());
     </script>
-</body>
+  </body>
 </html>

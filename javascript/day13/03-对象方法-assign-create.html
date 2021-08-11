@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-对象方法</title>
+</head>
+
+<body>
+    <script>
+        // Object.assign()方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
+        // 注意：针对对象中有重复出现的属性，后面的属性会覆盖前面
+        var obj1 = { a: 1, b: 2, c: 3 };
+        var obj2 = { d: 3, e: 4, f: 9 };
+        var obj3 = { dd: 3, ee: 4, ff: 9, c: "obj3的属性c" };
+
+        var result = Object.assign(obj1, obj2, obj3)
+
+        console.log("obj1==>", obj1)
+        console.log("obj2==>", obj2)
+        console.log("obj3==>", obj3)
+        console.log("result==>", result)
+
+
+
+
+        // Object.create  Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。
+        // a = Object.create(b)  ==>  从b对象中创建一个a的对象，并且把b的对象作为a的对象原型
+
+        var animal = {
+            head: "大头",
+            foot: "大脚"
+        };
+        var people = Object.create(animal);
+        people.name = "Tom";
+        console.log(people)
+
+        // 创建对象并且属性添加
+        var duck = Object.create(animal, {
+            "mouth": {
+                value: "扁扁的嘴巴",
+                writable: true,
+                enumerable: true
+            },
+            "wing": {
+                value: "鸭翅",
+                writable: true,
+                enumerable: true
+            }
+        })
+        console.log(duck)
+
+
+
+
+
+
+
+        ////////
+        function Shape(x, y) {
+            this.x = 0;
+            this.y = 0;
+        }
+
+        Shape.prototype.move = function (x, y) {
+            this.x += x;
+            this.y += y;
+            console.info('Shape moved.');
+        }
+
+
+        function Pancel() {
+            this.ttt = "宣纸材料"
+        }
+
+        Pancel.prototype.name = "画板";
+        Pancel.prototype.draw = function () {
+            console.log("正在绘画...")
+        }
+
+        // 同时继承
+        function ReactAngle() {
+            Shape.apply(this, [10, 10])
+            Pancel.apply(this)
+        }
+
+        // 继承
+        // ReactAngle.prototype = Object.create(Shape.prototype)  
+        // // 也是继承，直接赋值，但是会覆盖上面一句
+        // ReactAngle.prototype = Object.create(Pancel.prototype)
+
+        // 合并两个原型对象
+        Object.assign(Shape.prototype, Pancel.prototype)
+        ReactAngle.prototype = Object.create(Shape.prototype)
+
+        // 实例化对象，查看是否都继承两个父类的所有属性和方法
+        var aaa = new ReactAngle()
+        console.log("aaa==>", aaa)
+        aaa.move(20, 20)
+        aaa.draw()
+    </script>
+</body>
+
+</html>
