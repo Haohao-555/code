@@ -1,0 +1,60 @@
+<!--
+ * @Date: 2021-08-12 18:30:11
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day14\8.12\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .item {
+        color: aqua;
+      }
+      li {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+      <li>123</li>
+    </ul>
+    <script>
+      function EasyElement(select) {
+        this.select = select;
+        this.el = document.getElementsByTagName(select);
+        this.length = document.getElementsByTagName(select).length;
+      }
+      EasyElement.prototype.setClassName = function () {
+        console.log(this);
+        for (var i = 0; i < this.el.length; i++) {
+          this.el[i].className = "item";
+        }
+      };
+      EasyElement.prototype.setStyle = function (s) {
+        for (var i = 0; i < this.el.length; i++) {
+          for (var propert in s) {
+            this.el[i].style.setProperty(propert, s[propert]);
+          }
+        }
+      };
+      easyElement = new EasyElement("li");
+      easyElement.setClassName();
+      easyElement.setStyle(
+          { color: "red", 
+            border: "1px solid #ff0000" ,
+            width: "100px",
+            height: "30px",
+          }
+     );
+    </script>
+  </body>
+</html>
