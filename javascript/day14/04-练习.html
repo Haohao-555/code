@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>DOM结构</h1>
+    <ul id="list">
+        <li><a href="http://www.baidu.com" class="baidu" id="baidu">百度</a></li>
+        <li class="baidu google"><a href="#">google</a></li>
+    </ul>
+    <table id="dataList">
+        <tbody>
+            <tr>
+                <td>Data11</td>
+                <td>Data12</td>
+            </tr>
+            <tr>
+                <td>Data21</td>
+                <td>Data22</td>
+            </tr>
+        </tbody>
+    </table>
+    <form>
+        <input type="text" name="username" id="username">
+        <input type="text" name="password" id="password">
+    </form>
+
+    <script>
+        // (1)获取 id 为 list 的元素
+        var list = document.getElementById("list");
+        console.log("id为list的元素==>", list)
+
+        // (2) 获取所有 h1 标签元素
+        var h1 = document.getElementsByTagName("h1")
+        console.log("获取所有 h1 标签元素==>", h1)
+
+        // (3) 通过获取name 为 username 页面元素(多个)
+        var eName = document.getElementsByName("username")
+        console.log("通过获取name 为 username 页面元素==>", eName[0])
+
+
+        //(4) 获取类名class为baidu页面元素
+        var bd = document.getElementsByClassName("baidu")
+        console.log("获取类名class为baidu页面元素==>", bd[1])
+
+
+        // (5) 获取所有td
+        var tds = document.getElementsByTagName("td")
+        console.log("获取所有td==>", tds)
+
+        // (6) 优化速度
+        // 先通过id为dataList 获取元素table，然后通过table获取想要的元素td
+        // var table = document.getElementById("dataList")
+        // console.log("先通过id为dataList 获取元素table==>", table)
+        // var td = table.getElementsByTagName("td")
+        // console.log(td)
+
+        // 一句话搞定
+        var td = document.getElementById("dataList").getElementsByTagName("td")
+        console.log(td)
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-dom元素获取-多个.html</title>
+</head>
+
+<body>
+    <ul>
+        <li class="item one">列表1</li>
+        <li class="item">列表2</li>
+        <li class="">列表3</li>
+        <li class="item one">列表4</li>
+        <li class="item">列表5</li>
+    </ul>
+
+    <ol>
+        <li class="item">ol的列表</li>
+        <li class="one">ol的列表2</li>
+    </ol>
+    <p class="item">p标签</p>
+
+    <h2 class="one">蓝色字体的h2标签</h2>
+    <script>
+        // （1）通过类名获得多个元素： 
+        // getElementsByClassName()：返回一个包含了所有指定类名的子元素的**动态类数组对象**
+        // 不是数组
+        var items = document.getElementsByClassName("item")
+        console.log(items)
+        // 如果取到具体的某一个元素呢？
+        console.log("第1个item==>", items[0])
+        console.log("第3个item==>", items[2])
+        console.log(items.constructor == Array)   // false
+
+        // 想让取到的元素们的字体颜色变红
+        // for...in 用来循环HTMLCollection集合对象，循环所有可以枚举的属性,不用使用
+        // for (var i in items) {
+        //     console.log(i)
+        // }
+
+        // 用for循环
+        for (var i = 0; i < items.length; i++) {
+            // console.log(items[i])
+            items[i].style.color = "orange"
+        }
+
+
+        var blue = document.getElementsByClassName("one")
+        console.log("类名为one的元素集合==>", blue)
+        blue[0].style.color = "blue"
+        blue[0].style.fontSize = "40px"
+
+    </script>
+</body>
+
+</html>

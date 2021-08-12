@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            实现机器人与太空机器人原型对象 
+                要求: 
+                1.创建- -个机器人原型(Robot) 他拥有自身的属性name、year、 owner。 拥有统-属性maker、 speak、 makeCoffee 
+                2.创建一个太空机器人原型他拥有上述机器人的所有属性方法，还拥有自身的不同的属性: homePlanet, 和统一新方法: speak、 pilot 
+                3.请使用今天所学的对象方法配合面向对象的方法实现以上效果
+        */
+        function Robot(name, year, owner) {
+            this.name = name;
+            this.year = year;
+            this.owner = owner
+        }
+
+        // 将共享方法放在Robot的原型（原型对象）
+        // Robot.prototype.maker = "LSQ";
+        // Robot.prototype.speak = function () {
+        //     console.log("你好呀!我是" + this.name)
+        // }
+        // Robot.prototype.makeCoffee = function () {
+        //     console.log("Making Coffee!")
+        // }
+
+        // 换一种写法(这里Robot原型被重写)
+        Robot.prototype = {
+            maker: "LSQ",
+            speak: function () {
+                console.log("你好呀!我是" + this.name)
+            },
+            makeCoffee: function () {
+                console.log("Making Coffee!")
+            }
+        }
+        // 把原型独享的构造函数重新指向Cat构造函数，避免潜在错误 （一定要记得改回来）
+        Robot.prototype.constructor = Robot;
+
+
+
+
+
+
+        // 太空机器人的构造函数
+        function spaceRobot(name, year, owner, homePlanet) {
+            var arr = [name, year, owner];
+            // 这里的this是spaceRobot的this,最终会指向spaceRobot实例化的对象
+            Robot.apply(this, arr);    // 第一种继承方法，不能继承Robot原型上的属性和方法
+            // 自身不同属性
+            this.homePlanet = homePlanet;
+        }
+
+
+
+        // 因为是使用apply对Robot进行继承属性和方法，但是Robot的原型上的属性和方法是拿不到的，所以...
+        // 让spaceRobot的原型 的对象原型  ==> Robot原型
+        // spaceRobot.prototype = Object.create(Robot.prototype)
+        // spaceRobot.prototype.speak = function () {
+        //     if (this.name == "Simon") {
+        //         // this.__proto__.__proto__.speak.call(this)
+        //         // 另一种写法：调用父级的原型里的方法
+        //         Robot.prototype.speak.call(this)
+        //     } else {
+        //         console.log(this.name + ":我在宇宙中向你发送信...")
+        //     }
+        // }
+
+        // spaceRobot.prototype.pilot = function () {
+        //     console.log(this.name + ":推进器开始点火")
+        // }
+
+
+        // 换另一种写法
+        spaceRobot.prototype = Object.create(Robot.prototype, {
+            speak: {
+                value: function () {
+                    if (this.name == "Simon") {
+                        // this.__proto__.__proto__.speak.call(this)
+                        // 另一种写法：调用父级的原型里的方法
+                        Robot.prototype.speak.call(this)
+                    } else {
+                        console.log(this.name + ":我在宇宙中向你发送信...")
+                    }
+                },
+                writable: true,
+                enumerable: true
+            },
+            pilot: {
+                value: function () {
+                    console.log(this.name + ":推进器开始点火")
+                },
+                writable: true,
+                enumerable: true
+            }
+        })
+
+
+
+        // 实例化对象并进行方法调用
+        var c3po = new spaceRobot("C3P0", 1977, "Luke skywalker", "Tatooine");
+        console.log(c3po)
+        c3po.speak(); // "C3P0 说:我在宇宙中向你发送信...
+        c3po.pilot(); // "C3PO 推进器开始点火”
+        console.log(c3po.name + "的制造者是" + c3po.maker);
+        var simon = new spaceRobot("Simon", 2009, "Carla Diana", "Earth");
+        simon.makeCoffee(); // "Making coffee"
+        simon.speak(); // "你好呀!我是Simon"
+
+
+    </script>
+</body>
+
+</html>

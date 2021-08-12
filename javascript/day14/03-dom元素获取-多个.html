@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-dom元素获取-多个.html</title>
+</head>
+
+<body>
+    <ul class="ulList">
+        <li>li标签1</li>
+        <li class="one">li标签2</li>
+        <li>li标签3</li>
+        <li class="one">li标签4</li>
+    </ul>
+
+    <ol>
+        <li name="two">ol里面的li标签</li>
+        <li>ol里面的li标签</li>
+        <li>ol里面的li标签</li>
+        <li>ol里面的li标签</li>
+        <li name="two">ol里面的li标签</li>
+    </ol>
+    <script>
+        /*
+          (2) getElementsByTagName()：返回一个包含了所有指定标签名称元素的动态类数组对象
+        */
+        // var lis = document.getElementsByTagName("ul> li")   ==> 不能指定某某标签下的元素
+        var lis = document.getElementsByTagName("li")
+        console.log(lis)
+
+        // 获得页面全部标签，包括html
+        var all = document.getElementsByTagName("*")
+        console.log(all)
+
+
+        // (3) `querySelectAll()`一旦返回匹配元素的列表伪数组，就可以像任何数组一样使用他的属性与方法。
+        // 想指定ul标签下的所有li标签
+        // var list = document.querySelectorAll("ul > li")
+        var list = document.querySelectorAll(".ulList > li")
+        var list = document.querySelectorAll(".ulList > .one")
+        console.log(list)
+
+        // (4) document.getElementsByName(): 根据标签name属性名称获得元素，返回是一个nodeList对象，
+        // 如果没有则返回空对象，不是数组
+        var two = document.getElementsByName("two")
+        console.log(two)
+
+    </script>
+</body>
+
+</html>

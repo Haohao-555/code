@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-获得元素的方法对比</title>
+</head>
+
+<body>
+    <ul class="list">
+        <li class="list-li">测试1</li>
+        <li class="list-li">测试2</li>
+    </ul>
+    <script>
+        /*
+            区别： querySelectorAll 和getElementByClassName, getElementsByTagName返回值
+                （1）querySelectorAll 返回的是NodeList，静态对象，元素发生变化，NodeList不会更新
+                （2）getElementByClass, getElementsByTagName 返回的是HTMLCollection对象是一个动态对象，随着元素修改或者删除变化而变化
+                （3）HTML DOM 中的HTMLCollection是即时更新的（Live）;当其包含的文档机构发生变化时，自动更新
+                （4）NodeList是一个静态集合，随后的文档对象模型任何变动都不会影响集合的内容
+        */
+        var ul = document.getElementsByClassName("list")[0]
+        var list = document.getElementsByClassName("list-li")
+        console.log("通过类名取得==>", list)
+        var lis = document.querySelectorAll(".list > li")
+        console.log("通过querySelectorAll取得==>", lis)
+
+        // 创建li标签，添加进ul标签中 - 10个li
+        for (var i = 1; i <= 10; i++) {
+            // 创建元素节点
+            var li = document.createElement("li")
+            // 给每个li标签添加类名
+            li.className = "list-li";
+
+            // 往标签中加入文本
+            li.innerText = i
+            // console.log(li)
+
+            // 依次添加到ul标签中
+            ul.appendChild(li)
+
+        }
+
+        // 查看是否更新
+        console.log("通过类名取得==>", list)
+        console.log("通过querySelectorAll取得==>", lis)
+    </script>
+</body>
+
+</html>

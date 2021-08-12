@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-dom元素获取</title>
+</head>
+
+<body>
+    <h2 id="first-id">h2标签1111</h2>
+
+    <h3>h3标签——表哥，我又来</h3>
+    <div class="one">
+        <h3>h3标签——表哥，我又来</h3>
+    </div>
+
+    <div class="one">
+        <h3>h3标签1——表哥，我又来</h3>
+    </div>
+
+    <input type="text" name="aaa">
+
+    <script>
+        // 获得元素节点
+        // (1) 根据id值获得元素节点，没有找到，返回null
+        var firstId = document.getElementById("first-id")
+        console.log("firstId==>", firstId)
+        console.log("类型==>", typeof firstId)
+        console.dir(firstId)
+
+
+        // (2) querySelect()：使用css选择器语法,
+        // 返回文档中与指定选择器或选择器组匹配的第一个 HTMLElement对象。 
+        // 如果找不到匹配项，则返回null。
+        // var one = document.querySelector("h3")
+        // 可以指定哪个标签下的h3标签
+        var one = document.querySelector(".one> h3")
+        console.log(one)
+
+        var input = document.querySelector("input[name='aaa']")
+        console.log(input)
+    </script>
+</body>
+
+</html>

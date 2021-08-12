@@ -14,6 +14,13 @@
   </head>
   <body>
     <script>
+      /*
+        实验:实现机器人与太空机器人原型对象 
+            要求: 
+            1.创建- -个机器人原型(Robot) 他拥有自身的属性name、year、 owner。 拥有统-属性maker、 speak、 makeCoffee 
+            2.创建一个太空机器人原型他拥有上述机器人的所有属性方法，还拥有自身的不同的属性: homePlanet, 和统一新方法: speak、 pilot 
+            3.请使用今天所学的对象方法配合面向对象的方法实现以上效果 
+      */
       function Robot(name, year, owner) {
         this.name = name;
         this.year = year;
@@ -26,16 +33,59 @@
       Robot.prototype.makeCoffee = function () {
         console.log("Making coffee");
       };
+      // 换种写法
+      //   Robot.prototype = {
+      //     maker: "微软",
+      //     speak: function() {
+      //       console.log("你好呀！我是" + this.name);
+      //     },
+      //     makeCoffee: function() {
+      //       console.log("Making coffee");
+      //     }
+      //   }
+      //  Robot.prototype.constructor = Robot;
+
       function SpaceRobot(name, year, owner, homePlanet) {
         Robot.apply(this, [name, year, owner]);
         this.homePlanet = homePlanet;
       }
-      // 将 SpaceRobot 的原型对象指向 Robot 的原型对象
-      SpaceRobot.prototype = Robot.prototype;
+
+      SpaceRobot.prototype = Object.create(Robot.prototype);
       SpaceRobot.prototype.constructor = SpaceRobot;
 
+      // 将 SpaceRobot 的原型对象指向 Robot 的原型对象
+      // SpaceRobot.prototype = Robot.prototype;
+      // SpaceRobot.prototype.constructor = SpaceRobot;
+
+      // SpaceRobot.prototype = Object.create(Robot.prototype, {
+      //   speak: {
+      //     value: function () {
+      //       if (this.name == "Simon") {
+      //         // this.__proto__.__proto__.speak.call(this);
+      //         Robot.prototype.speak.call(this);
+      //       } else {
+      //         console.log(this.name + "说，我在宇宙中向你发送消息....");
+      //       }
+      //     },
+      //     writable: true,
+      //     enumerable: true,
+      //   },
+      //   pilot: {
+      //     value: function () {
+      //       console.log(this.name + "推进器开始点火");
+      //     },
+      //     writable: true,
+      //     enumerable: true,
+      //   },
+      // });
+
       SpaceRobot.prototype.speak = function () {
-        console.log(this.name + "说，我在宇宙中向你发送消息....");
+        if (this.name == "Simon") {
+          // this.__proto__.__proto__.speak.call(this);
+          Robot.prototype.speak.call(this);
+        } else {
+          console.log(this.name + "说，我在宇宙中向你发送消息....");
+        }
       };
       SpaceRobot.prototype.pilot = function () {
         console.log(this.name + "推进器开始点火");
