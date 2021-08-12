@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-nodeList</title>
+</head>
+
+<body>
+    <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+    </ul>
+    <script>
+        var list = document.querySelectorAll("ul>li")
+        console.log(list)
+        // NodeList 不是一个数组，是一个类似数组的对象(Like Array Object)。虽然 NodeList 不是一个数组，但是可以使用 `forEach()` 来迭代
+
+        /*
+            NodeList.length     获得元素个数
+            NodeList.item()     可以获得第几元素，如果是下标越界 返回null， 正常的数组下标越界是返回undefined
+            NodeList.forEach()  可用来循环迭代 
+          */
+
+        list.forEach(function (item, index, arr) {
+            // console.log(item, index, arr)
+            if (index % 2 == 0) {
+                item.style.fontSize = "30px"
+            } else {
+                item.style.color = "skyblue"
+            }
+        });
+
+    </script>
+</body>
+
+</html>

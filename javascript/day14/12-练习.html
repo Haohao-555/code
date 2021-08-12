@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-练习</title>
+</head>
+
+<body>
+    <div class="seller">
+        <h3>商家名</h3><span class="distance">30</span>
+    </div>
+    <div class="seller">
+        <h3>KFC</h3><span class="distance">1800</span>
+    </div>
+    <div class="seller">
+        <h3>麦当劳</h3><span class="distance">600</span>
+    </div>
+    <div class="seller">
+        <h3>汉堡王</h3><span class="distance">2752</span>
+    </div>
+    <div class="seller">
+        <h3>海底捞</h3><span class="distance">4412</span>
+    </div>
+    <div class="seller">
+        <h3>喜茶</h3><span class="distance">5300</span>
+    </div>
+
+    <script>
+        // 代码实现
+        var spans = document.querySelectorAll(".distance")
+        // console.log(spans)
+        spans.forEach(function (item, index) {
+            // console.log(item.firstChild.nodeValue)
+            // 获得每个类名为distance的span标签里的第一个子节点，即文本节点的值
+            var distance = item.firstChild.nodeValue;
+            // console.log(distance)
+            // 定义一个用于拼接的字符串变量
+            var changeValue = ""
+            // 根据距离进行判断
+            if (distance < 50 ) {
+                changeValue = "<" + 50 + "m"
+            } else if (distance < 1000) {
+                changeValue = distance + "m"
+            } else if (distance >= 1000) {
+                changeValue = (distance / 1000).toFixed(1) + "km"
+            } else {
+                changeValue = null
+            }
+
+            item.firstChild.nodeValue = changeValue
+        })
+
+    </script>
+</body>
+
+</html>

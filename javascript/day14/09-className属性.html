@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-className属性</title>
+    <style>
+        .active {
+            width: 100px;    
+            height: 100px;
+            background: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">box盒子</div>
+    <script>
+        var box = document.getElementsByClassName("box")[0]
+        // console.log(box)
+        // 多设置类名
+        box.className = "box active"
+        // console.log(box)
+        // //让类名变成空
+        // box.className = ""
+    </script>
+</body>
+
+</html>

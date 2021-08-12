@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-节点分类</title>
+</head>
+
+<body>
+
+    <div class="box" id="boxId">
+        <div>子元素div</div>
+        <!-- 
+            This is 注释
+            this is 注释2
+         -->
+        盒子文本1
+        盒子文本2
+        <p>p段落标签</p>
+    </div>
+    <script>
+        /*
+            一个节点叫node, 写代码要关注元素节点，这些节点都继承于 Node 对象。
+            每个node节点都有自己的nodeType nodeValue
+            nodeValue 节点值
+            nodeType  节点类型
+            节点类型：
+                元素节点(1)  html标签就是元素节点， nodeType = 1， nodeValue = null
+                属性节点(2)  nodeType = 2, nodeValue节点就是属性的值
+                文本节点(3)  除文本内容外，很多浏览器处理空格 或者 换行符时会保留一个空格符，
+                                空白也是文本节点， \n 换行
+                注释节点(8)  注释内容也是dom树里的一个节点，nodeType = 8  nodeValue的值就是注释内容
+                文档节点(9)  document对象 nodeType = 9  nodeValue = null
+        */
+        var box = document.querySelector("div")
+        // console.log(box)
+        // 通过console.dir查看box数据结构
+        // console.dir(box)
+
+        // 想查看div标签内部所有的子节点，
+        var kids = box.childNodes;
+        console.dir(kids)
+
+
+        // 获得class属性节点
+        var attribute = box.getAttributeNode("id")
+        console.log(attribute)
+        console.dir(attribute)
+
+        // 文档节点
+        console.dir(document)
+
+
+    </script>
+</body>
+
+</html>

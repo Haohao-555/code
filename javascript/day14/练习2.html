@@ -1,0 +1,132 @@
+<!--
+ * @Date: 2021-08-12 14:44:29
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day14\练习2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 400px;
+        height: 400px;
+        background-color: skyblue;
+      }
+      ul > li {
+        width: 48px;
+        height: 48px;
+        border: 1px solid #0000ff;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      var list = document.getElementsByTagName("li");
+      var bgc;
+      for (var i = 0; i < list.length; i++) {
+        if (i % 9 == 0) {
+          list[i].style.backgroundColor = "#f9bcdd";
+        }
+        if ((i + 1) % 9 == 0) {
+          list[i].style.backgroundColor = "#fff1ac";
+        }
+        if ((i + 2) % 9 == 0) {
+          list[i].style.backgroundColor = "yellow";
+        }
+        if ((i + 3) % 9 == 0) {
+          list[i].style.backgroundColor = "#d5a4cf";
+        }
+        if ((i + 4) % 9 == 0) {
+          list[i].style.backgroundColor = "orange";
+        }
+        if ((i + 5) % 9 == 0) {
+          list[i].style.backgroundColor = "pink";
+        }
+        if ((i + 6) % 9 == 0) {
+          list[i].style.backgroundColor = "palegreen";
+        }
+        if ((i + 7) % 9 == 0) {
+          list[i].style.backgroundColor = "aqua";
+        }
+        if ((i + 8) % 9 == 0) {
+          list[i].style.backgroundColor = "#fff591";
+        }
+      }
+    </script>
+  </body>
+</html>

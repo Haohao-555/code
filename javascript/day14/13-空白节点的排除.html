@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-空白节点的排除</title>
+</head>
+
+<body>
+    <div id="boxId">
+        <p>段落1</p>
+        <p>段落2</p>
+        <!-- 注释注释1 -->
+        <p class="p">段落3</p>
+        <!-- 注释注释2 -->
+        <p>段落4</p>
+        <span class="span">span标签</span>
+        <!-- <span>下一个span标签</span> -->
+    </div>
+    <script>
+        function getPrevElement(element) {
+            console.log(element)
+            // 获得下一个节点
+            var prev = element.previousSibling;
+
+            // 判断一个节点是否为元素节点，如果不是元素节点，则继续往前找，直至找到元素节点
+            while (prev.nodeType != 1 && prev) {
+                prev = prev.previousSibling
+                // 假如没有上一个兄弟节点，直接返回null
+                if (prev == null) {
+                    return null
+                }
+            }
+            // 把找到的结果返回出去
+            return prev
+        }
+
+        var p3 = document.querySelector(".p")
+        // console.log("类名为p的第3个p标签的下一个节点是==>", p3.nextSibling.nextSibling)
+        console.log("类名为p的第3个p标签的上一个节点是==>", getPrevElement(p3))
+
+
+        function getNextElement(element) {
+            console.log(element)
+            // 获得下一个节点
+            var next = element.nextSibling;
+            // console.log(next)
+
+            // 判断一个节点是否为元素节点，如果不是元素节点，则继续往前找，直至找到元素节点
+            while (next && next.nodeType != 1 ) {
+                next = next.nextSibling;
+                // 假如没有下一个兄弟节点，直接返回null
+                // if (next == null) {
+                //     return null
+                // }
+            }
+            // 把找到的结果返回出去
+            return next
+        }
+
+        var span = document.querySelector(".span")
+        // console.log("类名为p的第3个p标签的下一个节点是==>", p3.nextSibling.nextSibling)
+        console.log("类名为span的span标签的下一个节点是==>", getNextElement(span))
+
+
+
+    </script>
+</body>
+
+</html>

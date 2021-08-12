@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-dom属性设置</title>
+    <style>
+        .on {}
+    </style>
+</head>
+
+<body>
+    <div id="boxId">
+        father and mother
+    </div>
+    <script>
+        // 用变量boxId获得id名为boxId的div元素对象
+        var boxId = document.getElementById("boxId")
+        console.log(boxId)
+
+        // 修改该div的id属性
+        boxId.id = "ddddd";
+
+        // 获得或者设置元素对象的style属性，得到是一个对象那个,CSSStyleDeclaration的实例对象
+        // 设置 元素对象style其实是标签元素的行内样式，style属性
+        console.log(boxId.style)
+
+        boxId.style.borderStyle = "solid";
+        boxId.style.borderWidth = "2px";
+        boxId.style.borderColor = "orange";
+        boxId.style.background = "skyblue";
+        
+
+    </script>
+</body>
+
+</html>

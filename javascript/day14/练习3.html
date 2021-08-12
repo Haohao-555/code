@@ -1,0 +1,74 @@
+<!--
+ * @Date: 2021-08-12 15:17:47
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day14\练习3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- 
+      将列表中商家距离转换为指定格式
+            > 要求：
+            >
+            > - 列表中所有商家列表默认格式为
+                     <div class="seller"><h3>商家名</h3><span class="distance">距离</span></div>
+            > - 例：`<div class="seller"><h3>必胜客</h3><span class="distance">150</span></div>`
+            > - 要求将页面中所有商家的距离元素内文本内容修改成指定格式
+            > - 当距离小于 50 时展示 <50m
+            > - 当距离小于 1000 时展示 xxxm，例 800 转换为 800m
+            > - 当距离大于等于 1000 时展示 x.xKM，例 4753 转换为 4.7km
+            > - 当距离有误时展示 null
+    -->
+    <div class="seller">
+      <h3>商家名</h3>
+      <span class="distance">30</span>
+    </div>
+    <div class="seller">
+      <h3>KFC</h3>
+      <span class="distance">1800</span>
+    </div>
+    <div class="seller">
+      <h3>麦当劳</h3>
+      <span class="distance">600</span>
+    </div>
+    <div class="seller">
+      <h3>汉堡王</h3>
+      <span class="distance">2752</span>
+    </div>
+    <div class="seller">
+      <h3>海底捞</h3>
+      <span class="distance">4412</span>
+    </div>
+    <div class="seller">
+      <h3>喜茶</h3>
+      <span class="distance">5300</span>
+    </div>
+    <script>
+        var span = document.getElementsByClassName("distance");
+        var content;
+        for (var i = 0; i < span.length; i++) {
+          // var distance = span[i].firstChild.nodeValue
+          var distance = span[i].textContent;
+          if (distance < 50) {
+            content = "<50m";
+          } else if (distance < 1000) {
+            content = distance + "m";
+          } else if (distance >= 1000) {
+            content = (distance / 1000).toFixed(1) + "km";
+          } else {
+            content = "null";
+          }
+          span[i].textContent = content;
+          // span[i].firstChild.nodeValue = content
+        }
+    </script>
+  </body>
+</html>
