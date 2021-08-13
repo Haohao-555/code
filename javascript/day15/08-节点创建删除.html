@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-节点创建删除</title>
+</head>
+
+<body>
+    <div class="bigBox">
+        <div class="box">box盒子</div>
+        <h2></h2>
+
+        <h3>h3标签</h3>
+        <span>这是span标签</span>
+        <div class="one">
+            <div class="two">
+                <div class="three">祖孙3辈</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        尾部
+    </div>
+    <script>
+        // （1）`createTextNode()`** 创建一个新的文本节点。这个方法可以用来转义 HTML 字符。
+        var h2 = document.createTextNode("文本节点内容")
+        console.log(typeof h2)
+        console.log(h2)
+        // 区分innerHTML或者innerText获得文本的类型
+        // console.log("用innerHTML或得到的文本的类型==>", typeof document.querySelector(".box").innerHTML)
+
+        // 把创建的文本节点插入到页面中h2标签中
+        // document.querySelector("h2").innerHTML = h2   //innerHTML插入的是字符串
+        document.querySelector("h2").appendChild(h2)
+
+
+        // （2）parent.removeChild(): 方法从DOM中删除一个子节点。返回删除的节点
+
+        // 注意：被移除的这个子节点仍然存在于内存中,只是没有添加到当前文档的DOM树中,
+        //          因此,你还可以把这个节点重新添加回文档中。
+
+        // 删除span标签
+        var bigBox = document.querySelector(".bigBox")
+        bigBox.removeChild(document.querySelector("span"))
+        // 删除嵌套的div
+        var aaa = bigBox.removeChild(document.querySelector(".one"))
+
+        console.log(document.getElementsByClassName("one")[0])  // undefined,没有在dom树中
+
+
+        // 把删除的类名为one的div,找回来
+        console.log(aaa)
+        document.getElementsByClassName("footer")[0].appendChild(aaa)
+
+
+    </script>
+</body>
+
+</html>

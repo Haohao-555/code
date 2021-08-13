@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul class="rating-list">
+        <li class="rating-item">
+            <h3 class="username">用户名</h3>
+            <p>用户评论内容</p>
+            <span class="score">2.8</span>
+        </li>
+        <li class="rating-item">
+            <h3 class="username">某团用户</h3>
+            <p>这家饭店很好吃，菜品价格亲民。喜欢吃辣的小伙伴值得一试。</p>
+            <span class="score">4.5</span>
+        </li>
+        <li class="rating-item">
+            <h3 class="username">某饿了用户</h3>
+            <p>可能我吃不了辣，对于我来说太辣了</p>
+            <span class="score">1.8</span>
+        </li>
+        <li class="rating-item">
+            <h3 class="username">某点评用户</h3>
+            <p>同事们对这家店一致好评！已经是部门聚餐指定地点了</p>
+            <span class="score">4.9</span>
+        </li>
+    </ul>
+    <script>
+        var score = document.querySelectorAll(".score")
+        console.log("是否获取所有的分数标签==>", score)
+
+        // 通过循环，处理这个四个分数标签所有的逻辑
+        score.forEach(function (item, index) {
+            // 获得分数 ==> 类名为score之间的内容
+            var scoreValue = item.innerHTML;
+            // console.log("分数==>", scoreValue)
+
+            // 获得该遍历出来的元素的上一条元素节点
+            var prevTag = item.previousElementSibling;
+            // console.log(prevTag)
+            // console.log("上一个元素节点的内容==>", prevTag.innerHTML)
+
+            // 根据分数判断颜色显示和“好评”或者“差评”的内容和颜色添加
+            if (scoreValue < 3) {
+                item.style.color = "#ccc";
+                // 添加差评
+                prevTag.innerHTML = "差评：" + prevTag.innerHTML;
+                // 给评论添加颜色
+                prevTag.style.color = "#ccc"
+                item
+            } else {
+                item.style.color = "#fc0";
+                // 添加好评
+                prevTag.innerHTML = "好评：" + prevTag.innerHTML;
+                // 给评论添加颜色
+                prevTag.style.color = "#0af"
+            }
+        })
+    </script>
+</body>
+
+
+</html>

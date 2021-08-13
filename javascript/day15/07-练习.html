@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">3333</div>
+
+    <ul class="list">
+        <li>item-1</li>
+        <li>item-2</li>
+        <li>item-3</li>
+        <li>item-4</li>
+        <li>item-5</li>
+    </ul>
+    <script>
+        /*
+            在今天讲解的作业的基础上，
+            要求增加功能：
+            1. selector 属性支持接受一个单一型html字符串,当为html字符串时实例对象将会创建一个dom元素
+                而不是获取页面上的指定原则器的元素，例： `var easyDiv = new EasyElement('<div>')`
+            2. 创建元素同样支持上面的所有属性与方法
+            3. 增加 `append` 方法， 该方法接受一个 `选择器`/`DOM元素`/`EasyElement实例` 作为参数,
+                并将当前el元素全部作为参数的子元素添加到参数元素内部
+            4. 若`append`方法接受`EasyElement实例`作为元素时，
+                当前实例对象的el只会作为`EasyElement实例`的第一个元素的子元素添加到其内部
+            5. 增加一个 `html` 方法，当该方法接受参数时会将参数作为`EasyElement实例`中每个元素的
+                innerHTML值，若该方法无参数时返回`EasyElement实例`第一个元素的innerHTML值
+        */
+
+        function EasyElement(selector) {
+            // 如果传入的selector是一个<div>标签，则创建标签，并存入this.el中
+            if (selector[0] == "<" && selector[selector.length - 1] == ">") {
+                // 假如要创建的是<div>标签，先取出div(不要<>),才能通过createElement进行创建
+                // var str = selector.substr(1, str.length - 2);
+                // var tag = document.createElement(str)
+
+                // 一句话搞定
+                var tag = document.createElement(selector.substr(1, selector.length - 2));
+
+                this.selector = selector;
+                // 把创建的元素对象存入数组中
+                this.el = [tag];
+                this.length = this.el.length
+            } else {
+                this.selector = selector;
+                this.el = document.querySelectorAll(selector);
+                this.length = this.el.length;
+            }
+
+        }
+
+        // 目标："<div>"  ==> div
+        // var str = "<h1>";
+        // var newStr = str.substr(1, str.length - 2);   // [0 , length - 1 ]
+        // // newStr = newStr.substr(0,)
+        // console.log(newStr)
+
+
+        EasyElement.prototype.setClassName = function (aaa) {
+            // 因为元素节点不是一个，而是列表（多个）
+            this.el.forEach(function (item, index) {
+                // 用className进行类名添加时，注意，别变成替换，记得把之前的有的类名补上
+                // item.className = aaa    // 替换类名
+
+                // 添加的时候保存之前的类名
+                item.className = (item.className + " " + aaa).trim()
+            })
+        }
+
+        // 添加样式
+        EasyElement.prototype.setStyle = function (styleObj) {
+            // 规定传值的类型
+            if (typeof (styleObj) !== "object") {
+                return;
+            }
+
+            // 循环节点列表，给每个节点加上style样式
+            this.el.forEach(function (item, index) {
+                // 一句话搞定
+                Object.assign(item.style, styleObj)
+
+
+                // 好理解写法  —— 先理解这个
+                // for (var key in styleObj) {
+                //     // 通过循环样式对象，把其中的一个个样式给遍历出来的元素节点
+                //     item.style[key] = styleObj[key]
+                // }
+            })
+
+        }
+
+
+        // append方法
+        EasyElement.prototype.append = function (parent) {
+            // 判断添加元素是否为EasyElment的实例
+            if (parent instanceof EasyElement) {
+                // 如果parent是EasyElment的实例，那么把当前元素添加进去parent的以第一个实例
+                parent.el[0].appendChild(this.el[0])
+            } else {
+
+                // parent是一个EasyElment的实例
+                if (typeof parent == "object") {
+                    parent.appendChild(this.el[0])
+                } else {
+                    document.querySelector(parent).appendChild(this.el[0])
+                }
+
+            }
+        }
+
+        // html方法
+        EasyElement.prototype.html = function (htmlContent) {
+            // 判断如果没有参数，返回第一个el元素的innerHTML的值
+            if (htmlContent == undefined || htmlContent.length == 0) {
+                return this.el[0].innerHTML
+            }
+
+            // 设置el元素里innerHTML为htmlContent的参数值
+            this.el.forEach(function (item, index) {
+                item.innerHTML = htmlContent
+            })
+        }
+
+
+
+
+        ////////////////////// 验证EasyElementd的功能是否正常/////////////////////////////
+
+        // 将id=app的div转化成 `EasyElement实例` 
+        var easyApp = new EasyElement('#app') // 初始化
+
+        console.log(easyApp.selector) // "#app"
+        console.log(easyApp.el) // "NodeList(1)"
+        console.log(easyApp.length) // 1
+
+        easyApp.setClassName('.test .app') // 所有元素class属性为 '.test .app'
+
+        easyApp.setStyle({  // 设置所有元素style样式
+            backgroundColor: '#ccc',
+            fontSize: "40px"
+        })
+
+
+        // // 使用创建一个h2元素的EasyElement实例
+        // var easyH2 = new EasyElement('<h2>') // 初始化
+        // console.log(easyH2.selector) // "<h2>"
+        // console.log(easyH2.el) // "Array(1)" 这里是个数组包含一个创建出来的 h2 元素
+        // console.log(easyH2.length) // 1
+
+        // easyH2.setClassName('item') // 所有元素class属性为 '.test .app'
+
+        // // 添加样式
+        // easyH2.setStyle({  // 设置所有元素style样式
+        //     color: 'red',
+        //     backgroundColor: '#ccc',
+        //     border: '1px solid #fc0'
+        // })
+
+        // // 设置内容
+        // easyH2.html(123132131)
+        // console.log(easyH2.html()) // 123132131
+
+        // // 添加页面
+        // easyH2.append('.list') // 将easyH2添加至选择器值为'.list'的第一个元素内部
+        // easyH2.append(document.getElementById('app')) // 将easyH2添加至指定DOM节点中
+
+
+        // 实例化对象，创建一个h1元素
+        var h1 = new EasyElement("<h1>")
+        console.log(h1)
+        // 设置样式
+        h1.setStyle({
+            backgroundColor: "skyblue",
+            color: "white"
+        })
+        // 设置内容
+        h1.html("这是标题")
+        // 渲染在页面中
+        h1.append("#app")
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

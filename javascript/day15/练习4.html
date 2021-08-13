@@ -1,0 +1,124 @@
+<!--
+ * @Date: 2021-08-13 14:20:04
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day15\练习4.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <ul class="list">
+      <li>item-1</li>
+      <li>item-2</li>
+      <li>item-3</li>
+      <li>item-4</li>
+      <li>item-5</li>
+    </ul>
+    <script>
+      function EasyElement(selector) {
+        if (selector[0] == "<" && selector[selector.length - 1] == ">") {
+          //   把创建的元素对象存入数组中
+          this.selector = selector;
+          this.el = [
+            document.createElement(selector.slice(1, selector.length - 1)),
+          ];
+          this.length = this.el.length;
+        } else {
+          this.selector = selector;
+          this.el = document.querySelectorAll(selector);
+          this.length = this.el.length;
+        }
+      }
+      //   添加类名
+      EasyElement.prototype.setClassName = function (className) {
+        //    因为元素节点不是一个，而是一个列表（多个）
+        this.el.forEach((item, index) => {
+          //    用className进行类名添加时，注意，别变成替换，记得把之前有的类名补上
+          item.className = (item.className + " " + className).trim();
+        });
+      };
+      //   添加样式
+      EasyElement.prototype.setStyle = function (styObj) {
+        //   规定传值的类型
+        if (typeof styObj !== "object") {
+          return;
+        }
+        //循环节点列表，给每个节点加上 style 样式
+        this.el.forEach((item, index) => {
+          Object.assign(item.style, styObj);
+        });
+      };
+
+      EasyElement.prototype.append = function (parent) {
+        // 判断添加的元素是否为 EasyElment 的实例
+        if (parent instanceof EasyElement) {
+          // 如果 parent 是 EasyElement 的实例，那么把当前元素添加进去 parent第一个实例
+          parent.el[0].appendChild(this.el[0]);
+        } else {
+          // parent 是一个 EasyElement 的实例
+          if (typeof parent == "object") {
+            parent.appendChild(this.el[0]);
+          } else {
+            document.querySelector(parent).appendChild(this.el[0]);
+          }
+        }
+      };
+
+      EasyElement.prototype.html = function (htmlContent) {
+        //   如果没有参数，返回第一个 el 元素的 innerHTML 的值
+        if (htmlContent == undefined || htmlContent.length == 0) {
+          return this.el[0].innerHTML;
+        }
+        // 设置 el 元素里 innerHTML 为 htmlContent 的参数值
+        this.el.forEach((_) => {
+          _.innerHTML = htmlContent;
+        });
+      };
+
+      //   实例化对象
+      var easyApp = new EasyElement("#app");
+      //   查看对象是否符合题意
+      console.log(easyApp.selector); // "#app"
+      console.log(easyApp.el); // "NodeList(1)"
+      console.log(easyApp.length); // 1
+      easyApp.setClassName(".test .app"); // 所有元素class属性为 '.test .app'
+      easyApp.setStyle({
+        // 设置所有元素style样式
+        backgroundColor: "#ccc",
+      });
+
+      var easyH2 = new EasyElement("<h2>"); // 初始化
+
+      console.log(easyH2.selector); // "<h2>"
+      console.log(easyH2.el); // "Array(1)" 这里是个数组包含一个创建出来的 h2 元素
+      console.log(easyH2.length); // 1
+
+      easyH2.setClassName("item"); // 所有元素class属性为 '.test .app'
+
+      easyH2.setStyle({
+        // 设置所有元素style样式
+        color: "red",
+        backgroundColor: "#ccc",
+        border: "1px solid #fc0",
+      });
+
+      easyH2.html(123132131);
+
+      console.log(easyH2.html()); // 123132131
+
+      // easyH2.append('.list') // 将easyH2添加至选择器值为'.list'的第一个元素内部
+
+      // easyH2.append(document.getElementById('app')) // 将easyH2添加至指定DOM节点中
+
+      easyH2.append(easyApp); // 将easyH2 添加至指定的其他 EasyElement实例第一个元素中
+    </script>
+  </body>
+</html>

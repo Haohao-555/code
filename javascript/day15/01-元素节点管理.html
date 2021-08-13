@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-元素节点管理</title>
+</head>
+
+<body>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <!-- 注释1 -->
+        <li class="item">列表3</li>
+        <!-- 注释2 -->
+        <li>列表4</li>
+        <li>列表5</li>
+    </ul>
+    <script>
+        /*
+            现在只关注元素节点（标签节点）属性节点
+            el.previousElementSibling 返回当前元素在其父元素的子元素节点中的前一个元素节点,如果该元素已经是第一个元素节点,则返回null。
+            el.nextElementSibling 返回当前元素在其父元素的子元素节点中的后一个元素节点,如果该元素已经是最后一个元素节点,则返回null。
+            el.firstElementChild  返回对象的第一个子 元素, 如果没有子元素，则为null。
+            el.chidren 获得el里面所有的子元素
+            el.parentElement 获得el的父元素
+            el.parentNode 获得el的父元素节点
+        */
+        var ul = document.getElementsByTagName("ul")[0]
+        var li = document.getElementsByClassName("item")[0]
+        console.log(li)
+
+        // el.previousElementSibling：获取前面一个元素节点
+        li.previousElementSibling.style.color = "red"
+        // el.nextElementSibling：获得下一个元素节点
+        li.nextElementSibling.style.backgroundColor = "skyblue"
+
+        // el.firstElementChild：获得第1个子元素节点
+        ul.firstElementChild.style.fontSize = "35px"
+
+        // el.firstElementChild: 获得最后一个子元素节点
+        ul.lastElementChild.style.color = "orange"
+
+        // el.chidren 获得el里面所有的子元素
+        console.log(ul.children)
+
+        // el.parentElement 获得el的父元素
+        console.log(li.parentElement)
+
+        // el.parentNode 获得el的父元素节点
+        console.log(li.parentNode)
+
+        // 绕口令
+        // li.parentElement.parentElement.style.backgroundColor = "orange"
+        // li.parentElement.parentElement.firstElementChild.firstElementChild.style.backgroundColor = "orange"
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {   
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /*
+            1.创建一个便捷DOM原型对象 (EasyElement) 他拥有自身的属性selector、el、 length。
+              拥有统一-方法 setClassName, setStyle
+            2. selector属性为字符串类型css选择器，在原型实例化时作为参数传入
+            3. e|属性为通过selector获取到的节点列表
+            4. length属性为通过selector 获取到的节点列表的长度
+            5. setClassName方法支持给所有selector获取到的节点列表元素设置class属性
+            6. setStyle方法接受一个style object支持给所有selector获取到的节点列表元索设置多个style属性
+        */
+
+        function EasyElement(selector) {
+            this.selector = selector;
+            this.el = document.querySelectorAll(selector);
+            this.length = this.el.length;
+        }
+
+        // 添加方法
+        EasyElement.prototype.setClassName = function (aaa) {
+            // 因为元素节点不是一个，而是列表（多个）
+            this.el.forEach(function (item, index) {
+                // 用className进行类名添加时，注意，别变成替换，记得把之前的有的类名补上
+                // item.className = aaa    // 替换类名
+
+                // 添加的时候保存之前的类名
+                item.className = (item.className + " " + aaa).trim()
+            })
+
+        }
+
+        // 添加样式
+        EasyElement.prototype.setStyle = function (styleObj) {
+            // 规定传值的类型
+            if (typeof (styleObj) !== "object") {
+                return;
+            }
+
+            // 循环节点列表，给每个节点加上style样式
+            this.el.forEach(function (item, index) {
+                // 一句话搞定
+                Object.assign(item.style, styleObj)
+
+
+                // 好理解写法  —— 先理解这个
+                // for (var key in styleObj) {
+                //     // 通过循环样式对象，把其中的一个个样式给遍历出来的元素节点
+                //     item.style[key] = styleObj[key]
+                // }
+            })
+
+        }
+
+
+        var obj = {
+            background: "red",
+            color: "white",
+            fontSize: "28px",
+            marginBottom: "10px"
+        }
+
+        // 实例化对象
+        var p1 = new EasyElement("li")
+        // 查看对象是否符合题意
+        console.log(p1)
+
+        // 设置类名
+        p1.setClassName("active")
+
+        // 设置样式
+        p1.setStyle(obj)
+
+        
+    </script>
+</body>
+
+</html>

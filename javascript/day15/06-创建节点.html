@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-创建节点</title>
+</head>
+
+<body>
+    <div class="box">
+        <h2>广州天河有一例疫情，大家注意...</h2>
+
+    </div>
+    <div class="two">
+        <h2>第二个盒子</h2>
+    </div>
+    <script>
+        /*
+        （1）createElement()方法用于创建一个由标签名称 tagName 指定的 HTML 元素并返回。
+        （2）appendChild()：方法将一个节点附加到指定父节点的子节点列表的末尾处。如果将被插入的节点已经存在于当前文档的文档树中，
+            那么 appendChild() 只会将它从原先的位置移动到新的位置（不需要事先移除要移动的节点）。
+            形式：ele1.appendchild(ele2)  ==> ele2追加ele1的内部尾部
+        */ 
+
+        var box = document.querySelector(".box");
+        var h2 = document.createElement("h2");
+        console.log("创建h1标签==>", h2)
+        // 让标签里面假如内容
+        h2.innerHTML = "震惊！！！为啥首寓页面母猪嚎叫？究竟是人性的扭曲，还是道德的沦丧......"
+        // document.write(h1)  不行
+        box.appendChild(h2)
+
+        // 注意：一个节点不可能同时出现在文档的不同位置。（好记：只能当一个人的儿子）
+        // 所以，如果某个节点已经拥有父节点，在被传递给此方法后，它首先会被移除，再被插入到新的位置。
+        var boxTwo = document.querySelector(".two")
+        boxTwo.appendChild(h2)
+    </script>
+</body>
+
+</html>

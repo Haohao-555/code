@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-节点内容修改2</title>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <style>
+            div {
+                background: purple;
+            }
+        </style> -->
+        <p style="display:none">段落标签</p>
+        <!-- 这是注释1 -->
+        <div>box盒子1</div>
+        <!-- 这是注释2-->
+        <span>span标签</span>
+        <div>box盒子2</div>
+    </div>
+
+    <script>
+        /*
+        (3) textContent
+            返回一个节点及其后代的文本内容,textContent 的值取决于具体情况：(不解析html代码)
+            - 如果节点是一个 document，或者一个 DOCTYPE ，则 textContent 返回 null。
+            - 如果节点是个 注释、文本节点，textContent 返回节点内部的文本内容，例如 Node.nodeValue。
+            - 对于元素节点类型，textContent 将所有子节点的 textContent 合并后返回
+        */
+        var box = document.querySelector(".box")
+        console.log(box)
+        var content = box.textContent;
+        console.log("textContent获得的内容输出==>", content)
+
+        // box.textContent = "<style>em{color: orange}</style><em>广州天河有一例疫情了，好可怕</em>";
+
+
+        /*
+            （4）该属性表示一个节点及其后代的“渲染”文本内容，
+             注意：请避免使用该方法，因为他不会返回任何一个被css隐藏了的标签。
+                （并且因为要判断元素是否渲染导致该api很消耗性能）
+        */
+        var text = box.innerText
+        console.log("innerText获得的内容输出==>", text)
+        // 页面内容修改 —— 也不解析html的代码
+        // box.innerText = "<style>h2{color:red}</style><h2>天呀，天河区，天天都下午，这是我内心的现实表达吗？</h2>"
+        // box.innerHTML = "<style>h2{color:red}</style><h2>天呀，天河区，天天都下午，这是我内心的现实表达吗？</h2>"
+
+        /*
+            区别：textContent 会获得元素之间的所有内容，包括隐藏 和代码内容
+                  innerText 只会获得元素间可视内容，在IE11之间，性能没有textContent好
+        */
+        
+    </script>
+</body>
+
+</html>

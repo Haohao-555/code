@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-补充表单元素常用属性</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="">
+            用户名：<input type="text" value="某美团用户" class="one" placeholder="请输入您的用户名">
+        </label>
+        <br />
+
+        <select name="form-select" class="asd">
+            <option value="a">aaa</option>
+            <option value="b">bbb</option>
+            <option value="ccc" selected>ccc</option>
+        </select>
+
+        <br>
+        <h2>多选</h2>
+        <!-- 多选 -->
+        <label for="">
+            爱好：
+            <input type="checkbox" value="吃饭" checked>吃饭
+            <input type="checkbox" value="睡觉">睡觉
+            <input type="checkbox" value="打游戏">打游戏
+            <input type="checkbox" value="上厕所">上厕所
+        </label>
+
+        <h2>单选</h2>
+        <!-- 单选 -->
+        <label for="">
+            <input type="radio" name="sex" value="man">男
+            <input type="radio" name="sex" value="woman">女
+        </label>
+    </form>
+    <script>
+        // （1）.value: 该属性可设置或者返回表单元素的 value 属性值。
+        var inputOne = document.querySelector(".one")
+        console.log(inputOne)
+        console.log("获得input里面的value值==>", inputOne.value)
+        // 设置value值
+        inputOne.value = "新的value值";
+
+        var slt = document.querySelector(".asd")
+        console.log("获得slt里面的value值==>", slt.value)
+        // slt.value = "ddd的slt"
+
+
+        // (2) .placeholder:该属性可设置或者返回表单元素的 placeholder 属性值。
+        console.log("获得input里面的placeHolder的值==>", inputOne.placeholder)
+        // 进行修改
+        inputOne.placeholder = "修改的提示"
+
+
+        // 单选和多选理解
+        var checkbox = document.querySelectorAll("[type=checkbox]")
+        // console.log(checkbox)
+        // 想在js中让某个兴趣爱好，显示被选中
+        checkbox.forEach(function (element, index) {
+            // console.log("用forEach遍历过程中，获得value值==>", element.value)
+
+            // 全部选中
+            // element.checked = true
+
+            // 全部取消
+            // element.checked = false
+
+            // 反选
+            element.checked = !element.checked
+        })
+
+        
+        var radio = document.querySelectorAll("[type=radio]")
+        // console.log(radio)
+        // console.log("raido的值==>", radio[0].value, radio[1].value)
+
+
+        // 选中
+        radio[1].checked = true
+    </script>
+</body>
+
+</html>
