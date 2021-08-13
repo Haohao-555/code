@@ -1,0 +1,154 @@
+<!--
+ * @Date: 2021-08-13 18:33:43
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day15\8.13\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 600px;
+        margin: 0px auto;
+      }
+      ul > li {
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+      }
+      .item {
+        width: 600px;
+        display: block;
+        border-bottom: 2px solid #e5e5e5;
+        padding: 12px 8px;
+        box-sizing: border-box;
+        position: relative;
+      }
+      .pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        vertical-align: text-top;
+      }
+      .username {
+        display: inline-block;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 12px;
+      }
+      .score_container {
+        display: block;
+        position: absolute;
+        top: 39px;
+        left: 63px;
+      }
+      .score_icon {
+        display: inline-block;
+        width: 30px;
+        height: 20px;
+        font-size: 10px;
+        text-align: center;
+        line-height: 20px;
+        color: #fff;
+        background-color: #ffc600;
+        border-radius: 3px;
+        margin-right: 10px;
+      }
+      .score {
+        font-size: 13px;
+        color: #666;
+      }
+      .bad {
+          color: red !important;
+      }
+      .content {
+        margin-top: 20px;
+        padding-bottom: 20px;
+        color: #666;
+        line-height: 26px;
+        font-size: 14px;
+        text-align: justify;
+      }
+      .date {
+        font-size: 12px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container"></ul>
+  </body>
+  <script src="./data.js"></script>
+  <script>
+    //   日期替换
+    function repeatDate(str) {
+      var date = new Date(str);
+      return (
+        date.getFullYear() +
+        "年" +
+        (date.getMonth() + 1) +
+        "月" +
+        (date.getDay() + 1) + 
+        "日"
+      );
+    }
+    // 手机号码替换
+    function repeatPhone(phone) {
+      return phone.split("").fill("*", 3, 7).join("");
+    }
+    var container = document.querySelector(".container");
+
+    data.forEach((_) => {
+      var flag =  _.score < 3;
+      var li = document.createElement("li");
+      var img = document.createElement("img");
+      var username = document.createElement("span");
+      var score_container = document.createElement("div");
+      var score_icon = document.createElement("span");
+      var score = document.createElement("span");
+      var content = document.createElement("div");
+      var date = document.createElement("div");
+   
+      li.className = "item";
+
+   
+      img.className = "pic";
+      img.setAttribute("src", _.pic);
+
+   
+      username.className = "username";
+      username.innerHTML = _.username + "+" + repeatPhone(_.tel);
+
+      score_container.className = "score_container";
+      score_icon.className = "score_icon";
+      score_icon.innerHTML = "评分"
+      score.className = flag? "bad" : "score";
+      score.innerHTML = _.score;
+
+      content.className = "content " +( flag? "bad" : "score");
+      content.innerHTML = _.comment;
+      
+      date.className = "date";
+      date.innerHTML = repeatDate(_.date);
+
+      li.appendChild(img);
+      li.appendChild(username);
+
+      li.appendChild(score_container);
+      score_container.appendChild(score_icon);
+      score_container.appendChild(score);
+    
+      li.appendChild(content);
+
+      li.appendChild(date);
+
+      container.appendChild(li);
+      console.log(container);
+    });
+  </script>
+</html>

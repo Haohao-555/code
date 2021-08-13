@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td, th {
+            width: 100px;
+            height: 40px;
+        }
+        td {
+            font-size: 20px;
+            text-align: center;
+        }
+        table {
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body>
+    <table class="shopcart" border="1px" cellspacing= "0">
+        <tr class="food">
+            <th>商品名</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>总价</th>
+            <th>配送额</th>
+            <th>情况</th>
+        </tr>
+        <tr class="food">
+            <td class="goodName">毛巾</td>
+            <td class="price">4</td>
+            <td class="number">10</td>
+            <td class="total-price"></td>
+            <td class="lines-price"></td>
+            <td class="pay-btn"></td>
+        </tr>
+        <tr class="food">
+            <td class="goodName">牙刷</td>
+            <td class="price">2</td>
+            <td class="number">3</td>
+            <td class="total-price"></td>
+            <td class="lines-price"></td>
+            <td class="pay-btn"></td>
+        </tr>
+        <tr class="food">
+            <td class="goodName">牙膏</td>
+            <td class="price">12</td>
+            <td class="number">4</td>
+            <td class="total-price"></td>
+            <td class="lines-price"></td>
+            <td class="pay-btn"></td>
+        </tr>
+    </table>
+    <script>
+        // 设置每一件产品的配送额度
+       ( function lines() {
+            var lines = document.getElementsByClassName("lines-price");
+            // 毛巾
+            lines[0].innerHTML = 30;
+            // 牙刷
+            lines[1].innerHTML = 10;
+            // 牙膏
+            lines[2].innerHTML = 36;
+        })();
+       
+    </script>
+</body>
+</html>
