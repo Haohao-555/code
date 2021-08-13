@@ -1,0 +1,44 @@
+<!--
+ * @Date: 2021-08-13 10:05:23
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day15\练习2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="title">h2标题</h2>
+    <div class="box">
+      <i>测试</i>
+    </div>
+    <script>
+      // （1）nodeValue 修改节点的内容
+      var title = document.getElementById("title");
+      console.log(title);
+      // 获得 h2 里的文本节点，并且修改 nodeValue 的值，也就是文本内容
+      title.firstChild.nodeValue = "今日头条";
+
+      // (2) .innerHTML 属性设置或获取 HLML 语法表示的元素的后代（获得 或者 修改元素间的内容，如果 innerHTML 里面有 html 代码会被解析）
+      var box = document.getElementsByClassName("box")[0];
+      console.log(box);
+      console.log("获得类名为 box 的 div 元素间的内容", box.innerHTML);
+      // 进行修改
+      // box.id = "id修改"
+      box.innerHTML = "你好，我爱中国";
+      box.innerHTML = "<h3 style='color: red;'>你好，中国</h3>"
+
+
+
+
+
+
+      
+    </script>
+  </body>
+</html>

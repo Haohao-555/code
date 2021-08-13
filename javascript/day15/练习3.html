@@ -1,0 +1,72 @@
+<!--
+ * @Date: 2021-08-13 10:53:28
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day15\练习3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .score {
+        color: #ccc;
+      }
+      .goodscore {
+        color: #fc0;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="rating-list">
+      <li class="rating-item">
+        <h3 class="username">用户名</h3>
+        <p>用户评论内容</p>
+        <span class="score">2.8</span>
+      </li>
+      <li class="rating-item">
+        <h3 class="username">某团用户</h3>
+        <p>这家饭店很好吃，菜品价格亲民。喜欢吃辣的小伙伴值得一试。</p>
+        <span class="score">4.5</span>
+      </li>
+      <li class="rating-item">
+        <h3 class="username">某饿了用户</h3>
+        <p>可能我吃不了辣，对于我来说太辣了</p>
+        <span class="score">1.8</span>
+      </li>
+      <li class="rating-item">
+        <h3 class="username">某点评用户</h3>
+        <p>同事们对这家店一致好评！已经是部门聚餐指定地点了</p>
+        <span class="score">4.9</span>
+      </li>
+    </ul>
+    <script>
+      // nodelist 是静态列表 可用 forEach 遍历
+      var item = document.querySelectorAll(".rating-item");
+      // HTMLCollection 是动态列表 不能使用 forEach  和 for in 遍历 只能用 for
+      var items = document.getElementsByClassName("rating-item");
+      
+    //   var newConent = "";
+    //   var className = "";
+    //   var fontColor = "";
+
+      item.forEach(_ => {
+        var content = _.getElementsByTagName("p")[0];
+        var score = _.getElementsByClassName("score")[0];
+
+        var flag = score.innerHTML < 3;
+
+        flag ? (newConent = "差评: ") : (newConent = "好评: ");
+        flag ? (className = " score") : (className = " goodscore");
+        flag ? (fontColor = "#ccc") : (fontColor = "#0af");
+
+        content.innerHTML = newConent + content.innerHTML;
+        content.style.color = fontColor;
+        score.className = (score.className + className).trim();
+      });
+    </script>
+  </body>
+</html>
