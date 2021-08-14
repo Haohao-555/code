@@ -1,0 +1,43 @@
+<!--
+ * @Date: 2021-08-14 10:17:22
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day14\测试.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+        <li>列表1</li>
+        <li id="two">列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+     </ul>
+     <script>
+        var second = document.getElementById("two");
+         
+        // 获得前面的兄弟节点
+        var prevNode = second.previousElementSibling;
+        console.log(prevNode) // nodeType: 3 nodeValue: /n
+        prevNode.style.background = "green" //Uncaught TypeError: Cannot set property 'background' of undefined 
+        
+        // 获得后面的兄弟节点
+        var nextNode = second.nextElementSibling; 
+        console.log(nextNode)  // nodeType: 3 nodeValue: /n 
+         
+        var ul = document.getElementsByTagName("ul")[0]
+        
+        var first = ul.firstElementChild
+        console.log(first) // nodeType: 3 nodeValue: /n 
+     
+        var last = ul.lastElementChild;
+        console.log(last) // nodeType: 3 nodeValue: /n  
+     </script>
+  </body>
+</html>
