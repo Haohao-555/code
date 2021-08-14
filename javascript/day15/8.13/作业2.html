@@ -1,71 +1,112 @@
+<!--
+ * @Date: 2021-08-13 20:02:55
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day15\8.13\作业2.html
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        td, th {
-            width: 100px;
-            height: 40px;
-        }
-        td {
-            font-size: 20px;
-            text-align: center;
-        }
-        table {
-            margin: 0px auto;
-        }
+      td,
+      th {
+        width: 100px;
+        height: 60px;
+      }
+      td {
+        font-size: 20px;
+        text-align: center;
+      }
+      table {
+        margin: 0px auto;
+      }
+      .btn {
+          width: 80px;
+          height: 38px;
+          outline: none;
+          color: blue;
+          background-color: #fff;
+          padding: 0px;
+          margin: 0px;
+          border: 1px solid blue;
+      }
     </style>
-</head>
-<body>
-    <table class="shopcart" border="1px" cellspacing= "0">
-        <tr class="food">
-            <th>商品名</th>
-            <th>单价</th>
-            <th>数量</th>
-            <th>总价</th>
-            <th>配送额</th>
-            <th>情况</th>
-        </tr>
-        <tr class="food">
-            <td class="goodName">毛巾</td>
-            <td class="price">4</td>
-            <td class="number">10</td>
-            <td class="total-price"></td>
-            <td class="lines-price"></td>
-            <td class="pay-btn"></td>
-        </tr>
-        <tr class="food">
-            <td class="goodName">牙刷</td>
-            <td class="price">2</td>
-            <td class="number">3</td>
-            <td class="total-price"></td>
-            <td class="lines-price"></td>
-            <td class="pay-btn"></td>
-        </tr>
-        <tr class="food">
-            <td class="goodName">牙膏</td>
-            <td class="price">12</td>
-            <td class="number">4</td>
-            <td class="total-price"></td>
-            <td class="lines-price"></td>
-            <td class="pay-btn"></td>
-        </tr>
+  </head>
+  <body>
+    <table class="shopcart" border="1px" cellspacing="0">
+      <tr>
+        <th>商品名</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>总价</th>
+        <th>配送额</th>
+        <th>情况</th>
+      </tr>
+      <tr class="food">
+        <td class="goodName">毛巾</td>
+        <td class="price">4</td>
+        <td class="number">10</td>
+        <td class="total-price"></td>
+        <td class="lines-price"></td>
+        <td class="pay-btn"></td>
+      </tr>
+      <tr class="food">
+        <td class="goodName">牙刷</td>
+        <td class="price">2</td>
+        <td class="number">3</td>
+        <td class="total-price"></td>
+        <td class="lines-price"></td>
+        <td class="pay-btn"></td>
+      </tr>
+      <tr class="food">
+        <td class="goodName">牙膏</td>
+        <td class="price">12</td>
+        <td class="number">4</td>
+        <td class="total-price"></td>
+        <td class="lines-price"></td>
+        <td class="pay-btn"></td>
+      </tr>
     </table>
+
     <script>
-        // 设置每一件产品的配送额度
-       ( function lines() {
-            var lines = document.getElementsByClassName("lines-price");
-            // 毛巾
-            lines[0].innerHTML = 30;
-            // 牙刷
-            lines[1].innerHTML = 10;
-            // 牙膏
-            lines[2].innerHTML = 36;
-        })();
-       
+      // 设置每一件产品的配送额度
+      (function lines() {
+        var lines = document.getElementsByClassName("lines-price");
+        // 毛巾
+        lines[0].innerHTML = 30;
+        // 牙刷
+        lines[1].innerHTML = 10;
+        // 牙膏
+        lines[2].innerHTML = 36;
+      })();
+      
+      window.onload = function () {
+        var tr = document.querySelectorAll(".food");
+        tr.forEach((_) => {
+          var price = _.getElementsByClassName("price")[0];
+          var number = _.getElementsByClassName("number")[0];
+          var lines = _.getElementsByClassName("lines-price")[0];
+          var payBtn = _.getElementsByClassName("pay-btn")[0];
+          var totalPrice = _.getElementsByClassName("total-price")[0];
+          // 计算总价
+          totalPrice.innerHTML = price.innerHTML * number.innerHTML;
+          //    计算差值
+          var diff = totalPrice.innerHTML - lines.innerHTML;
+          if (diff >= 0) {
+            var btn = document.createElement("button");
+            btn.className = "btn";
+            btn.innerHTML = "立即购买"
+            payBtn.appendChild(btn);
+          }else {
+              payBtn.innerHTML = "还差" + Math.abs(diff)+ "元"
+              console.log("差"+ Math.abs(diff))
+          }
+        });
+      };
     </script>
-</body>
+  </body>
 </html>
