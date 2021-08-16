@@ -1,0 +1,115 @@
+<!--
+ * @Date: 2021-08-16 19:05:55
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day16\8.16\作业2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .select {
+        width: 200px;
+        height: 28px;
+        border: solid 1px #4a59e7;
+        margin: 20px auto;
+        position: relative;
+        line-height: 28px;
+        font-size: 14px;
+      }
+
+      .select p {
+        width: 50px;
+        height: 28px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: center;
+        color: #fff;
+        background: #4a59e7;
+        cursor: pointer;
+      }
+
+      .select span {
+        display: block;
+        width: 150px;
+        text-indent: 15px;
+      }
+
+      .select ul {
+        border: solid 1px #4a59e7;
+        width: 100%;
+        position: absolute;
+        left: -1px;
+        top: 28px;
+        display: none;
+      }
+
+      .select ul.active {
+        display: block;
+      }
+
+      .select ul li {
+        line-height: 27px;
+        text-indent: 15px;
+        border-top: solid 1px #4a59e7;
+        margin-top: -1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <span>请选择城市</span>
+      <p>选择</p>
+      <ul>
+        <li>北京</li>
+        <li>广州</li>
+        <li>上海</li>
+        <li>深圳</li>
+        <li>厦门</li>
+      </ul>
+    </div>
+    <script>
+      //补充下列代码
+      function Select(id) {
+        this.select = document.getElementById(id);
+      }
+
+      Select.prototype.init = function () {
+        this.select.setAttribute("class", "select");
+      };
+
+      var oSelect = new Select("box");
+      oSelect.init();
+
+      // 显示下拉框
+      function showList() {
+        var ul = document.getElementsByTagName("ul")[0];
+        ul.setAttribute("class", "active");
+      }
+
+     
+      //   添加点击事件
+      document.querySelector("p").addEventListener("click", showList);
+      document.querySelector("span").addEventListener("click", showList);
+
+      //   给 li 标签添加事件
+      document.querySelectorAll("li").forEach((_) => {
+        _.addEventListener("click", function () {
+          document.querySelector("span").innerText = _.innerText;
+          document.getElementsByTagName("ul")[0].className = "";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-元素属性管理</title>
+</head>
+
+<body>
+    <label for="">用户名：<input type="text" id="username" value="" placeholder="请输入用户名"></label>
+    <br>
+    <label for="">密码：<input type="text" checked="checked" class="second" value="" placeholder="请输入密码"></label>
+
+    <script>
+        // (1) getAttributeNode() 返回指定元素的指定属性节点
+        // 该用法是属于属性节点，所以没有父节点、兄弟节点或者子节点
+        var input = document.querySelector("input")
+        // console.log(input)
+        // attributeNode = input.getAttributeNode("type")
+        // attributeNode = input.getAttributeNode("id")
+        attributeNode = input.getAttributeNode("placeholder")
+        console.log("attributeNode==>", typeof attributeNode)
+        console.log("attributeNode==>", attributeNode)
+
+        // 通过属性节点设置属性的值
+        input.getAttributeNode("id").value = "newUsername";
+        input.getAttributeNode("placeholder").value = "在js中新的提示输入";
+
+
+        // （2）hasAttribute() 返回一个布尔值，指示该元素是否包含有指定的属性（attribute）。
+        var second = document.getElementsByClassName("second")[0];
+        console.log("是否含有类名==>", second.hasAttribute("class"))   // true
+        console.log("是否含有id名==>", second.hasAttribute("id"))      // false
+        console.log("是否含有checked==>", second.hasAttribute("checked"))     // false
+        console.log("--------------")
+
+        // (3) getAttribute()返回元素上一个指定的属性值。如果指定的属性不存在，则返回  null 或 "" （空字符串）
+        console.log("获取类名==>", second.getAttribute("class"))
+        console.log("获取属性checked==>", second.getAttribute("checked"))
+        console.log("获取属性type==>", second.getAttribute("type"))
+
+
+        // (4) setAttribute() 设置指定元素上的某个属性值。如果属性已经存在，则更新该值；
+        // 否则，使用指定的名称和值添加一个新的属性。
+        // second.setAttribute("ClaSS", "third second")
+        second.setAttribute("class", "third second")
+        second.setAttribute("value", "罗非鱼刺身真的很不错，去广工商捞两斤")
+        second.setAttribute("disabled", "disabled")
+
+
+        // (5) removeAttribute() 从指定的元素中删除一个属性。
+        second.removeAttribute("value");
+        second.removeAttribute("checked");
+
+    </script>
+</body>
+
+</html>

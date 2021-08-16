@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-事件属性绑定问题</title>
+</head>
+
+<body>
+    <div class="box">
+        <button class="btn">按钮1</button>
+        <button class="btn">按钮2</button>
+        <button class="btn">按钮3</button>
+        <button class="btn">按钮4</button>
+    </div>
+
+    <button class="add">添加一个按钮</button>
+    <script>
+
+        /*
+            问题：当多个元素公用一个事件，这时候需要循环，但是更好的方法做成事件监听
+        */
+        // 获得多个元素
+        // var buttons = document.querySelectorAll(".box button")
+        // console.log(buttons)
+
+        // buttons.forEach(function (item, index) {
+        //     // 通过forEach循环给所有的button绑定点击事件
+        //     item.onclick = function () {
+        //         console.log("通过forEach循环绑定点击内容==>", index, this.textContent)
+        //     }
+        // })
+
+
+        // var index = 5
+        // document.querySelector(".add").onclick = function () {
+        //     //创建一个按钮元素对象
+        //     var btn = document.createElement("button");
+        //     // 设置按钮文本
+        //     btn.textContent = "按钮" + index;
+
+        //     // 因为创建出来的新按钮是没有点击事件的，所以需要绑定
+        //     btn.onclick = function () {
+        //         console.log(this.innerHTML)
+        //     }
+        //     // 添加到对应的页面中
+        //     document.querySelector(".box").appendChild(btn)
+        //     index++;
+
+        // }
+
+
+
+        // 问题：forEach只能给NodeList使用
+        var btns = document.getElementsByClassName("btn")
+        // console.log(btns)
+
+        // 回去思考，有多少种方法解决该打印问题
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                console.log("点击事件绑定成功==>", i)
+            }
+        }
+
+    </script>
+</body>
+
+</html>

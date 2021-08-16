@@ -1,0 +1,31 @@
+<!--
+ * @Date: 2021-08-16 14:38:34
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day16\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="purchase">购物列表</p>
+    <ul>
+      <li class="goods" title="可购买">洗衣机</li>
+      <li class="goods" title="可购买">电脑</li>
+      <li class="goods" title="可购买">手机</li>
+      <li class="goods" title="可购买">空调</li>
+      <li class="goods">宇宙空间站</li>
+      <li class="goods" title="可购买">汽车</li>
+      <li class="goods">火箭</li>
+    </ul>
+    <script>
+      document.getElementById("purchase").setAttribute("id", "a list of goods");
+      document.querySelectorAll(".goods").forEach(_ =>  _.setAttribute("title", "a gentle reminder"))
+    </script>
+  </body>
+</html>

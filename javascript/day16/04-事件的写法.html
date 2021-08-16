@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-事件的写法</title>
+</head>
+
+<body>
+    <button onclick="alert('别那么大力，你点痛我了')">点击我</button>
+    <a href="javascript:noJump()">超链接标签</a>
+    <button class="bgChange">随机改变颜色</button>
+    <script>
+        /*
+            事件使用方法
+                （1）内行事件处理器（请勿使用）
+                （2）元素属性绑定事件函数
+                （3）添加事件监听器
+                （4）
+        */
+
+        // （1）内行事件处理器（请勿使用）
+        function noJump() {
+            alert("点击了超链接标签")
+        }
+
+        // （2）元素属性绑定事件函数
+        /*
+            事件作为标签属性的时候，一般都是用 on + 事件名字  onclick ondbclick onmouseover onmouseenter onmousemove等
+            获得 元素，并设置onclick 事件属性 = 属性的值是一个匿名函数
+        */
+        var bgChange = document.querySelector(".bgChange")
+        // console.log(bgChange)
+        console.dir(bgChange)
+
+        function randomColor() {
+            return Math.floor(Math.random() * 256)
+        }
+
+        // bgChange.onclick = function () {
+        //     // 随机获得颜色
+        //     var rgb = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"
+        //     // console.log("rgb==>", rgb)
+        //     document.body.style.backgroundColor = rgb
+        // }
+
+
+        // 具名函数 
+        var index = 0;
+        var sltColor = function () {
+            // 记录点击次数
+            index++;
+            console.log("index==>", index)
+            // 随机获得颜色
+            var rgb = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")"
+            // console.log("rgb==>", rgb)
+            document.body.style.backgroundColor = rgb;
+            // 判断次数是否为5次，如果是，则取消事件
+            if (index >= 5) {
+                bgChange.onclick = null
+                console.dir(bgChange)
+            }
+        }
+        bgChange.onclick = sltColor
+
+        // 取消事件
+        // onmousedown
+        // onmouseup
+
+    </script>
+</body>
+
+</html>

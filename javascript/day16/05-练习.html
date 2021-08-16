@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* .box {} */
+
+        .box span {
+            display: block;
+            width: 100px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 30px;
+            background: #ccc;
+        }
+
+        .box button {
+            background: skyblue;
+            width: 100px;
+            height: 40px;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 id="title">JS基础 - 作业1</h3>
+
+    <div class="box">
+        <span>0</span>
+        <button>点击一下</button>
+    </div>
+</body>
+<script>
+    var button = document.querySelector("button")
+    var span = document.querySelector("span")
+    console.log(button, span)
+    // var index = 0;
+    button.onclick = function () {
+        // 每次点击，index加1
+        // index++;
+        // if (index > 10) {
+        //     index = 0
+        // }
+        // span.textContent = index
+
+
+        // 另外写法
+        span.textContent = Number(span.textContent) + 1
+        if (span.textContent > 10) {
+            span.textContent = 0
+        }
+
+    }
+
+    // 鼠标按下，颜色变化
+    button.onmousedown = function () {
+        // console.log(this)
+        this.style.backgroundColor = "rgb(135,206,235)"
+    }
+
+    // 鼠标弹起，颜色变化
+    button.onmouseup = function () {
+        console.log(this)
+        button.style.backgroundColor = "rgb(0,191,255)"
+    }
+
+</script>
+
+</html>

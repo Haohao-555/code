@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .floor {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            line-height: 100px;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            width: 80px;
+            height: 40px;
+            /* outline: none; */
+            border: 1px solid #ccc;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floor">5</div>
+    <div class="floor">4</div>
+    <div class="floor">3</div>
+    <div class="floor">2</div>
+    <div class="floor">1</div>
+
+    <button>爬楼梯</button>
+</body>
+<script>
+    var button = document.querySelector("button")
+    var floors = document.querySelectorAll(".floor")
+    // console.log(floors)
+
+    // 需要一个记录是第几楼的白变量
+    var index = 4;
+    button.onclick = function () {
+        // 先移除上一次的红色背景
+        // floors[index + 1].style.backgroundColor = "white"
+        floors.forEach(function (item, index) {
+            // 循环，全部移除红色
+            item.style.backgroundColor = "white"
+        })
+
+        // console.log(111)
+        // 通过循环
+
+        // 让当前楼层的背景变成红色
+        floors[index].style.backgroundColor = "red"
+        // 每次点击楼层-1
+        index--;
+
+        // 当楼层爬完，index < 0
+        if (index < 0) {
+            // this.onclick = null
+
+            // 假如要重新开始
+            index = 4;
+        }
+    }
+</script>
+
+</html>

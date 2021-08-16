@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-监听事件移除</title>
+</head>
+
+<body>
+    <button class="box">
+        点击
+    </button>
+    <script>
+        var box = document.getElementsByClassName("box")[0];
+        // 之前点击事件的绑定和移除
+        // box.onclick = function(){}  绑定
+        // box.onclick = null          移除
+
+
+        var boxClick = function () {
+            console.log("点击事件")
+            // 移除事件监听，至少需要两个参数，
+            // box.removeEventListener("click", boxClick)     // 移除失败，添加监听的参数和移除监听的参数不一致
+            box.removeEventListener("click", boxClick, false)    // 移除成功
+
+        }
+
+        var boxClick2 = function () {
+            console.log("点击事件2")
+            // 移除事件监听，至少需要两个参数
+            // box.removeEventListener("click", boxClick2, false)    // 移除成功
+            box.removeEventListener("click", boxClick2, true)    // 移除失败  添加监听的参数和移除监听的参数不一致
+        }
+
+        // 事件监听进行绑定
+
+        /*
+            options ：可选属性，一个指定有关 listener 属性的可选参数对象。可用的选项如下：
+                    - capture:  Boolean，表示事件是否使用**捕获模式**。（事件的捕获会在后面的课程中学习） 
+                    - once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。
+                    - passive: Boolean，该属性用来改善的滚屏性能，当值设置为true时，
+                        表示 listener 永远不会 **阻止浏览器默认事件**即永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，
+                        客户端将会忽略它并抛出一个控制台警告。（阻止浏览器默认事件会在后面的课程中学习）
+        */
+        box.addEventListener("click", boxClick, true)
+        box.addEventListener("click", boxClick2, false)
+    </script>
+</body>
+
+</html>

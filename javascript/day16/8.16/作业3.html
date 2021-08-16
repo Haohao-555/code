@@ -1,0 +1,60 @@
+<!--
+ * @Date: 2021-08-16 18:38:17
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day16\8.16\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <ul class="list">
+        <li title="item-1">item-1</li>
+        <li title="item-1">item-1</li>
+        <li title="item-2">item-2</li>
+        <li title="item-3">item-3</li>
+        <li title="item-4">item-4</li>
+    </ul>
+    <script>
+        function EasyElement(selector) {
+            this.selector = selector;
+            this.el = document.querySelector(selector)
+            this.length = 1;
+        }
+        EasyElement.prototype.setClassName = function () {
+            
+        }
+        EasyElement.prototype.setStyle = function () {
+            
+        }
+        EasyElement.prototype.append = function () {
+            
+        }
+        EasyElement.prototype.html = function() {
+            
+        }
+        EasyElement.prototype.attr = function(atr,value) {
+            if (value) {
+               this.el.setAttribute(atr, value); 
+            } else {
+                return this.el.getAttribute(atr) 
+            }
+        }
+        EasyElement.prototype.removeAttr = function(atr) {
+                this.el.removeAttribute(atr)     
+        }
+        var EasyLi = new EasyElement('ul li');
+        console.log(EasyLi.attr('title'))
+        EasyLi.attr('title', '666')
+        console.log(EasyLi.attr('title'))
+        EasyLi.removeAttr('title')
+        console.log(EasyLi.attr('title'));
+    </script>
+</body>
+</html>

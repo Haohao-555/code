@@ -1,0 +1,62 @@
+<!--
+ * @Date: 2021-08-16 15:40:49
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day16\练习4.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            font-size: 30px;
+            line-height: 300px;
+            color: aqua;
+            border: 1px solid aqua;
+        }
+        span {
+            display: block;
+        }
+        button {
+           position: relative;
+           top: -270px;
+           left: 0px;  
+           margin-top: 220px;
+           outline: none;
+           background-color: #fff;
+           padding: 12px 10px;
+           border: 1px solid aqua;
+           color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h3 id ="title">JS基础 - 作业1</h3>
+
+    <div class="box">
+        <span>0</span>
+        <button >点击一下<tton>
+    </div>
+    <script>
+        var index = 0;
+        var btn = document.querySelector("button")
+        var span = document.querySelector("span")
+        console.log(span)
+        btn.onclick = function () {
+            index++;
+            if (index == 10) {
+                index = 0;
+            }
+           span.innerText = index;
+        }
+    </script>
+</body>
+</html>

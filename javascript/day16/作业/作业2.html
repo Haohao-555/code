@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <h2>购物车列表</h2>
+        <ul class="shopcart">
+            <li class="food">
+                <span class="food-name">爆炒一头鲍</span>
+                <span class="price">18.8</span>
+                <span class="num">2</span>
+            </li>
+            <li class="food">
+                <span class="food-name">白灼走地鸡</span>
+                <span class="price">100</span>
+                <span class="num">1</span>
+            </li>
+            <li class="food">
+                <span class="food-name">罗非鱼刺身</span>
+                <span class="price">10</span>
+                <span class="num">2</span>
+            </li>
+            <li class="food">
+                <span class="food-name">肥宅快乐水</span>
+                <span class="price">2.5</span>
+                <span class="num">4</span>
+            </li>
+            <li class="food">
+                <span class="food-name">单身鸽子汤</span>
+                <span class="price">150</span>
+                <span class="num">1</span>
+            </li>
+        </ul>
+
+        <!-- 显示是否符合配送 -->
+        <div class="shopCart-bar">
+            <h3 class="total-price"></h3>
+            400起送
+            <div class="pay-btn"></div>
+        </div>
+    </div>
+    <script>
+        var totalPrice = 0;
+        var prices = document.querySelectorAll(".price");
+        var nums = document.querySelectorAll(".num")
+        console.log(prices, nums)
+
+        // 通过循环计算总价格（买了多少钱）
+        prices.forEach(function (item, index) {
+            // 单价
+            var price = item.innerHTML;
+            // 数量
+            var num = nums[index].innerHTML;
+
+            // 总价
+            totalPrice += price * num;
+        })
+        // console.log("买了==>", totalPrice)
+
+        // 把买了多少钱显示出来
+        var totalElement = document.querySelector(".total-price")
+        var payBtn = document.querySelector(".pay-btn")
+
+        totalElement.textContent = totalPrice + "元"
+
+        // 如果还没有到达配送费，显示差多少钱，如果够配送费，则显示立即购买
+        if (totalPrice >= 400) {
+            payBtn.textContent = "立即购买"
+        } else {
+            payBtn.textContent = "还差" + (400 - totalPrice).toFixed(2) + "元起送"
+        }
+    </script>
+</body>
+
+</html>

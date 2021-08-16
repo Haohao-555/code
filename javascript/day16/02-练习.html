@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-练习</title>
+</head>
+
+<body>
+    <p id="purchase">购物列表</p>
+    <ul>
+        <li class="goods" title="可购买">洗衣机</li>
+        <li class="goods" title="可购买">电脑</li>
+        <li class="goods" title="可购买">手机</li>
+        <li class="goods" title="可购买">空调</li>
+        <li class="goods">宇宙空间站</li>
+        <li class="goods" title="可购买">汽车</li>
+        <li class="goods">火箭</li>
+
+    </ul>
+    <script>
+        // 问题1：将页面中到 id 是 purchase 的元素的 title 属性值设置为 a list of goods
+        var p = document.getElementById("purchase");
+        p.setAttribute("title", "a list of goods")
+
+        // 问题2：将class 是 goods 元素，并且拥有title属性的元素将其 title 值设置为 a gentle reminder。
+        var lis = document.querySelectorAll("ul>li")
+        // console.log(lis)
+        lis.forEach(function (item, index) {
+            // class为goods；有title属性
+            if (item.hasAttribute("class") && item.getAttribute("class") == "goods" && item.hasAttribute("title")) {
+                item.setAttribute("title", "a gentle reminder")
+            }
+        })
+    </script>
+</body>
+
+</html>
