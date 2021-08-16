@@ -1,0 +1,41 @@
+<!--
+ * @Date: 2021-08-16 08:49:37
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day16\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 把创建一个评论模块标签封装成一个函数
+      function render (data) {
+          // 先创建 li 标签
+          var li = document.createElement("li")
+          li.className = "rating-item";
+
+          // 创建图片标签
+          var img = document.createElement("img";)
+          img.src = data.pic
+
+          // 让 img 标签成为 li 标签的子元素
+          li.append(img);
+          
+          //   把创建浩的 li 标签返回出去
+          return li;
+
+      }
+      var ul = document.querySelector(".rating-list")
+      data.forEach((item, index) => {
+        //   把 li 标签添加到 ul 中
+         ul.append((item));
+      })
+    </script>
+  </body>
+</html>
