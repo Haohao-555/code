@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">3333</div>
+
+    <ul class="list">
+        <li title="item-1">item-1</li>
+        <li title="item-1">item-2</li>
+        <li title="item-2">item-3</li>
+        <li title="item-3">item-4</li>
+        <li title="item-4">item-5</li>
+    </ul>
+    <script>
+
+        function EasyElement(selector) {
+            // 如果传入的selector是一个<div>标签，则创建标签，并存入this.el中
+            if (selector[0] == "<" && selector[selector.length - 1] == ">") {
+                // 假如要创建的是<div>标签，先取出div(不要<>),才能通过createElement进行创建
+                // var str = selector.substr(1, str.length - 2);
+                // var tag = document.createElement(str)
+
+                // 一句话搞定
+                var tag = document.createElement(selector.substr(1, selector.length - 2));
+
+                this.selector = selector;
+                // 把创建的元素对象存入数组中
+                this.el = [tag];
+                this.length = this.el.length
+            } else {
+                this.selector = selector;
+                this.el = document.querySelectorAll(selector);
+                this.length = this.el.length;
+            }
+
+        }
+
+        EasyElement.prototype.setClassName = function (aaa) {
+            // 因为元素节点不是一个，而是列表（多个）
+            this.el.forEach(function (item, index) {
+                // 用className进行类名添加时，注意，别变成替换，记得把之前的有的类名补上
+                // item.className = aaa    // 替换类名
+
+                // 添加的时候保存之前的类名
+                item.className = (item.className + " " + aaa).trim()
+            })
+        }
+
+        // 添加样式
+        EasyElement.prototype.setStyle = function (styleObj) {
+            // 规定传值的类型
+            if (typeof (styleObj) !== "object") {
+                return;
+            }
+
+            // 循环节点列表，给每个节点加上style样式
+            this.el.forEach(function (item, index) {
+                // 一句话搞定
+                Object.assign(item.style, styleObj)
+
+                // 好理解写法  —— 先理解这个
+                // for (var key in styleObj) {
+                //     // 通过循环样式对象，把其中的一个个样式给遍历出来的元素节点
+                //     item.style[key] = styleObj[key]
+                // }
+            })
+
+        }
+
+
+        // append方法
+        EasyElement.prototype.append = function (parent) {
+            // 判断添加元素是否为EasyElment的实例
+            if (parent instanceof EasyElement) {
+                // 如果parent是EasyElment的实例，那么把当前元素添加进去parent的以第一个实例
+                parent.el[0].appendChild(this.el[0])
+            } else {
+
+                // parent是一个EasyElment的实例
+                if (typeof parent == "object") {
+                    parent.appendChild(this.el[0])
+                } else {
+                    document.querySelector(parent).appendChild(this.el[0])
+                }
+
+            }
+        }
+
+        // html方法
+        EasyElement.prototype.html = function (htmlContent) {
+            // 判断如果没有参数，返回第一个el元素的innerHTML的值
+            if (htmlContent == undefined || htmlContent.length == 0) {
+                return this.el[0].innerHTML
+            }
+
+            // 设置el元素里innerHTML为htmlContent的参数值
+            this.el.forEach(function (item, index) {
+                item.innerHTML = htmlContent
+            })
+        }
+
+
+        // attr ==> 设置属性或者查看属性， 需要两个参数：属性 属性值
+        EasyElement.prototype.attr = function (attrName, attrValue) {
+            // 设置属性
+            if (attrName && attrName.length > 0 && attrValue && attrValue.length > 0) {
+                this.el[0].setAttribute(attrName, attrValue)
+            } else if (attrName && attrName.length > 0) { // 查看属性
+                return this.el[0].getAttribute(attrName)
+            } else {
+                console.log("参数错误。。。")
+            }
+        }
+
+        // 移除属性
+        EasyElement.prototype.removeAttr = function (attrName) {
+            this.el[0].removeAttribute(attrName)
+        }
+
+
+        ////////////////////// 验证EasyElementd的功能是否正常/////////////////////////////
+        var EasyLi = new EasyElement("ul li");
+        console.log(EasyLi.attr("title")); //item-1
+
+        EasyLi.setStyle({
+            fontSize: "50px",
+            color: "red"
+        })
+        EasyLi.attr("title", "666");
+        console.log(EasyLi.attr("title")); //666
+
+        EasyLi.removeAttr("title");
+        console.log(EasyLi.attr("title")); //null
+
+
+
+    </script>
+</body>
+
+</html>

@@ -113,6 +113,14 @@
       </div>
     </div>
     <script>
+      /*
+      要求：
+          - 1. 点击发表按钮获取输入域的文本
+          - 2. 把输入域的文本渲染在列标区域
+          - 3. 把当前发表的时间显示在当前这条消息里面
+          - 4. 点击“x”标签，直接删除当前这条消息
+          - 5. 当输入域为空，不允许发表消息变
+      */
       function getTime() {
         var date = new Date();
 
@@ -164,6 +172,7 @@
               .querySelector("#ul_box")
               .removeChild(e.target.parentElement);
           });
+          
           // 设置内容
           button.innerText = "x";
           currentTime.innerText = t;
@@ -173,6 +182,7 @@
           li.appendChild(button);
           li.appendChild(currentTime);
           ul.appendChild(li);
+          
         }else {
             alert("请输入内容")
         }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-鼠标事件</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            background: skyblue;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+            鼠标事件：
+                (1) click 当用户点击某个对象时调用的事件句柄
+                (2) dblclick 当用户双击某个对象时调用的事件句柄
+                (3) mouseover 鼠标移动到某个元素之上
+                (4) mouseout 鼠标从某元素离开
+                (5) mousedown 鼠标按钮按下
+                (6) mouseup 鼠标按键被松开
+                (7) mousemove 鼠标在某个元素内移动
+                (8) mouseenter 鼠标光标从元素外部移动到元素内部时触发,这个事件不冒泡
+                (9) mouseleave 位于元素内部的鼠标光标移动到元素范围之外触发,这个事件不冒泡
+                (10) contextmenu 鼠标右键菜单展开时
+        */
+
+        var box = document.getElementById("box")
+        // console.log(box)
+
+        // box.onclick = function () {
+        //     console.log("单击")
+        // }
+        // box.ondblclick = function () {
+        //     console.log("双击")
+        // }
+
+        // box.addEventListener("click", function () {
+        //     console.log("点击")
+        // })
+
+        // box.addEventListener("dblclick", function () {
+        //     console.log("双击")
+        // })
+
+        // box.addEventListener("mouseover", function (e) {
+        //     console.log("参数e==>,打印参数所在的位置==>" + "x:" + e.offsetX + "y:" + e.offsetY)
+        //     console.log("鼠标移动到某个元素之上")
+        // })
+
+        // box.addEventListener("mouseout", function () {
+        //     console.log("鼠标从某元素离开")
+        // })
+
+        // box.addEventListener("mousedown", function (e) {
+        //     console.log("鼠标按下位置：" + "x:" + e.offsetX + ";y:" + e.offsetY)
+        // })
+
+        // box.addEventListener("mouseup", function (e) {
+        //     console.log("鼠标松开（弹起）：" + "x:" + e.offsetX + ";y:" + e.offsetY)
+        // })
+
+
+        // 鼠标移动
+        // 回调函数有一个参数，event, 会简写为e，这是一个事件对象
+        // box.addEventListener("mousemove", function (e) {
+        //     console.log(e)
+        //     console.log("鼠标移动：" + "x:" + e.offsetX + ";y:" + e.offsetY)
+        //     /*
+        //         (1) clientX和clientY
+        //         (2) offsetX和offsetY
+        //         (3) pageX和pageY
+        //     */
+        // })
+
+        box.addEventListener("contextmenu", function () {
+            console.log("鼠标右键了")
+        })
+
+
+
+    </script>
+</body>
+
+</html>

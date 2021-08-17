@@ -1,0 +1,61 @@
+<!--
+ * @Date: 2021-08-17 18:38:28
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day17\8.17\作业2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业2</title>
+    <style>
+        .container {
+            width: 1226px;
+            height: 600px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: red;
+            margin: 0 auto;
+        }
+        .item {
+           width: 306.5px;
+           height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+  <script>
+      var div = document.querySelectorAll(".item");
+     function randomColor() {
+        return Math.floor(Math.random() * 256)
+    }
+    div.forEach(_ => {
+        _.addEventListener("click", function () {
+            _.style.backgroundColor = "rgb(" + randomColor() + "," + randomColor() + "," + randomColor() + ")";
+        })
+    })
+  </script>  
+</body>
+</html>

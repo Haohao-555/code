@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .select {
+            width: 200px;
+            height: 28px;
+            border: solid 1px #4a59e7;
+            margin: 20px auto;
+            position: relative;
+            line-height: 28px;
+            font-size: 14px;
+        }
+
+        .select p {
+            width: 50px;
+            height: 28px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            text-align: center;
+            color: #FFF;
+            background: #4a59e7;
+            cursor: pointer;
+        }
+
+        .select span {
+            display: block;
+            width: 150px;
+            text-indent: 15px;
+        }
+
+        .select ul {
+            border: solid 1px #4a59e7;
+            width: 100%;
+            position: absolute;
+            left: -1px;
+            top: 28px;
+            display: none;
+        }
+
+        .select ul.active {
+            display: block;
+        }
+
+        .select ul li {
+            line-height: 27px;
+            text-indent: 15px;
+            border-top: solid 1px #4a59e7;
+            margin-top: -1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span>请选择城市</span>
+        <p>选择</p>
+        <ul>
+            <li>北京</li>
+            <li>广州</li>
+            <li>上海</li>
+            <li>深圳</li>
+            <li>厦门</li>
+        </ul>
+    </div>
+    <script>
+        /*
+            面向对象编程开发模拟select元素 
+
+            > 要求：
+            > - 创建一个`Select`原型对象
+            > - 该原型在实例化时接受id字符串作为参数获取页面中指定元素
+            > - `Select` 原型包含一个原型方法`init()` 用来初始化页面中的DOM元素实现选择器效果
+                > - 点击选择和展示文本元素会显示对应的选择列表
+                > - 点击选择列表的每项，都会将当前被点击项的文本内容展示到展示文本元素上并隐藏选择列表
+        */
+
+        //补充下列代码
+        function Select(id) {
+            this.el = document.getElementById(id)
+            this.el.className = "select"
+        }
+
+        // 初始化
+        Select.prototype.init = function () {
+            // 先获得所有的子元素
+            var children = this.el.children;
+            // console.log("this.el的所有子元素==>", children)
+            var span = children[0]
+            var p = children[1]
+            var ul = children[2];
+
+            // 保存该this的指向
+            var that = this
+
+            // 点击span或者p标签，显示ul
+            span.addEventListener("click", function () {
+                // ul.style.display = "block"
+
+                // 通过active类名
+                // ul.className = "active"
+                // 拓展classList
+                ul.classList.add("active")    // 移除类名：ul.classList.remove("active")
+            })
+            p.addEventListener("click", function () {
+                ul.classList.add("active")
+            })
+
+            // 给所有的ul标签下的所有li标签绑定点击事件
+            var lis = ul.children;  // HTMLCollection forEach不能使用
+            // console.log("lis==>", lis)
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].addEventListener("click", function () {
+                    // 选中后，直接让ul消失
+                    // this.parentElement.classList.remove("active")
+                    // ul.classList.remove("active")
+                    that.el.children[2].classList.remove("active")
+
+                    // 获得li标签里的文本
+                    // console.log(this.textContent)
+                    // 放在span标签中
+                    span.textContent = this.textContent
+                })
+            }
+
+        }
+
+        var oSelect = new Select('box');
+        oSelect.init();
+    </script>
+</body>
+
+</html>

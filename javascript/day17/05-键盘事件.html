@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-键盘事件</title>
+</head>
+
+<body>
+    输入框：<input type="text">
+    <script>
+        /*
+            keydown   某个键盘按键被按下时触发.(不区分大小写)                      
+            keyup     某个键盘按键被松开时触发                                     
+            keypress  除 Shift、Fn、CapsLock 外的任意键被按住。而且按住不放(长按),会连续触发。  
+        */
+
+        var input = document.getElementsByTagName("input")[0]
+
+        // 按下
+        // input.addEventListener("keydown", function (e) {
+        //     console.log("e的参数==>", e)
+        //     // 获得e.keyCode 获得键盘按键编码
+        //     console.log("键盘按下==>", e.keyCode)
+        // })
+
+        // 弹起
+        // input.addEventListener("keyup", function (e) {
+        //     // 获得e.keyCode 获得键盘按键编码
+        //     console.log("键盘弹起==>", e.keyCode)
+        // })
+
+        input.addEventListener("keypress", function (e) {
+            // 获得e.keyCode 获得键盘按键编码
+            console.log("keypress==>", e.keyCode)
+        })
+
+
+    </script>
+</body>
+
+</html>

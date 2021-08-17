@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-循环绑定点击索引值问题</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin-bottom: 10px;
+            background: #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li data-index="0">appple</li>
+        <li data-index="1">banana</li>
+        <li data-index="2">watermelon</li>
+        <li data-index="3">peach</li>
+        <li data-index="4">orange</li>
+
+    </ul>
+    <script>
+        // 问题：forEach只能给NodeList使用
+        var btns = document.getElementsByTagName("li")
+        // console.log(btns)
+
+        // 回去思考，有多少种方法解决该打印问题
+        // for (var i = 0; i < btns.length; i++) {
+        //     btns[i].onclick = function () {
+        //         console.log("点击事件绑定成功==>", i)
+        //     }
+        // }
+
+
+        // 方法1：闭包
+        // for (var i = 0; i < btns.length; i++) {
+        //     // 利用立即执行函数和闭包的特性
+        //     (function (i) {
+        //         btns[i].onclick = function () {
+        //             console.log("索引值==>", i)
+        //         }
+        //     })(i)
+        // }
+
+        // 方法2：属性绑定没有标签元素都有自己属性和方法，现在添加多一个属性（索引值）
+        // for (var i = 0; i < btns.length; i++) {
+        //     btns[i].index = i
+        //     btns[i].onclick = function () {
+        //         console.log("索引值==>", this.index)
+        //     }
+        // }
+
+        // 方法3：ES6: let 块级作用域
+        // for (let i = 0; i < btns.length; i++) {
+        //     btns[i].onclick = function () {
+        //         console.log("点击事件绑定成功==>", i)
+        //     }
+        // }
+
+
+        // // 方法4： data-* = "索引值"
+        // for (let i = 0; i < btns.length; i++) {
+        //     btns[i].onclick = function () {
+        //         console.log("点击事件绑定成功==>", this.dataset.index)
+        //     }
+        // }
+
+
+        // 方法5： 事件委托
+        var ul = document.getElementsByTagName("ul")[0]
+        ul.addEventListener("click",function(e){
+            console.log(e.target.dataset.index)
+        })
+
+        // console.dir(btns[0])
+        // console.dir(btns[1])
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        button,
+        input,
+        textarea {
+            border: 0;
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .layout {
+            width: 560px;
+            margin: 0 auto;
+            height: 1000px;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .header>div textarea {
+            /* width: 100%; */
+            /* 改变盒子大小计算方式 */
+            /* box-sizing: border-box; */
+            width: 530px;
+            height: 60px;
+            resize: none;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-size: 20px;
+        }
+
+        .header>div button {
+            width: 140px;
+            height: 40px;
+            background-color: #fff;
+            cursor: pointer;
+            float: right;
+        }
+
+        .header>div button:hover {
+            background-color: skyblue;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .list {
+            background-color: #fff;
+            margin: 10px 0 0 0;
+        }
+
+        .list ul {
+            padding: 15px 20px;
+        }
+
+        .list ul li {
+            border: 3px solid #ccc;
+            padding: 10px 10px;
+            position: relative;
+            margin: 0 0 10px 0;
+        }
+
+        .list ul li .txt {
+            font-size: 18px;
+            padding: 0 0 10px 0;
+        }
+
+        .list ul li .delete {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+
+        .list ul li .delete:hover {
+            background-color: #ccc;
+        }
+
+        .list ul li .currentTime {
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <div class="header clearfix">
+            <div>
+                <textarea id="textarea_box" placeholder="请输入此刻的心情"></textarea>
+            </div>
+            <div>
+                <button id="button_box">发表</button>
+            </div>
+        </div>
+        <div class="list">
+            <ul id="ul_box">
+                <!-- 
+                <li>
+                    <p class="txt">xxxx</p>
+                    <button class="delete">×</button>
+                    <div class="currentTime">2021-03-09 14:23:59</div>
+                </li>
+                 -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        /*
+            使用addEventListener实现心情便签页面
+                - 1. 点击发表按钮获取输入域的文本
+                - 2. 把输入域的文本渲染在列标区域
+                - 3. 把当前发表的时间显示在当前这条消息里面
+                - 4. 点击“x”标签，直接删除当前这条消息
+                - 5. 当输入域为空，不允许发表消息变
+        */
+
+        // (1) 点击发表
+        var btn_box = document.querySelector("#button_box")
+        // 获得文本域的元素
+        var textarea_box = document.querySelector("#textarea_box")
+        // 获得列表容器元素
+        var ul_box = document.querySelector("#ul_box")
+
+        // 查看是否真的获取成功
+        // console.log(btn_box, textarea_box, ul_box)
+
+        // 点击事件监听
+        btn_box.addEventListener("click", function () {
+            // 获得文本域里的值
+            var val = textarea_box.value
+            // console.log("文本域里的值==>", val)
+            // 文本域内容不能为空的判断
+            // if (val === "" || val.length <= 0) {
+            //     alert("内容不能为空")
+            // }
+
+
+            // 简略的写法
+            if (val === "" || val.length <= 0) return alert("内容不能为空")
+
+            // 创建li标签
+            var li = document.createElement("li");
+            li.innerHTML =
+                // 方法2的删除 
+                // "<p class='txt'>" + val + "</p><button class='delete' onclick='del(this)'>X</button><div class='currentTime'>" + getTime() + "</div>"
+                // 方法1的删除
+                "<p class='txt'>" + val + "</p><button class='delete'>X</button><div class='currentTime'>" + getTime() + "</div>"
+
+            // 把li标签添加入ul标签中
+            ul_box.appendChild(li)
+
+
+            // 删除功能 —— 方法1
+            var deleteLi = li.querySelector(".delete");
+            // console.log("++++++++++++", deleteLi);
+            // li创建出来后紧接着将当前li标签里面的button设置点击事件
+            deleteLi.addEventListener("click", del);
+
+            textarea_box.value = ""; //清空文本区
+
+            // 发表成功后，清除文本域的内容
+            textarea_box.value = null
+        })
+
+        // 删除功能 —— 方法1
+        function del() {
+            // console.log(this)    this指向调用者
+            // this.parentElement.parentElement.removeChild(this.parentElement); //移除li标签
+            ul_box.removeChild(this.parentElement); //移除li标签
+            // deleteLi.removeEventListener("click", del); //移除对应删除按钮的通过addEventListener()方法创建的事件
+        }
+
+        // 删除功能 —— 方法2
+        // function del(el) {
+        //     // 你怎么知道我删除哪条？
+        //     console.log("删除==>", el)
+        //     ul_box.removeChild(el.parentElement)
+        // }
+
+
+        // 把时间戳的解析为时间封装成函数
+        function getTime() {
+            var date = new Date();
+            // 获得年月日，时分秒
+            var y = date.getFullYear()
+            var M = date.getMonth() + 1;
+            var d = date.getDate();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            // 年月日时分秒 都需要补零处理
+            M = prefixIntrger(M);
+            d = prefixIntrger(d);
+            h = prefixIntrger(h);
+            m = prefixIntrger(m);
+            s = prefixIntrger(s);
+            return y + "-" + M + "-" + d + " " + h + ":" + m + ":" + s;
+        }
+
+        // 时间补零因为是多次调用，所以封装成函数
+        var prefixIntrger = function (n) {
+            if (n < 10) {
+                n = "0" + n;
+            }
+            return n
+        }
+
+
+    </script>
+</body>
+
+</html>

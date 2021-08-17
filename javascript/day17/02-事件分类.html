@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-事件分类</title>
+    <script>
+
+        // 因为先执行该script标签，button还未渲染，所以获取不到
+        var btn = document.querySelector("button")
+        console.log("btn==>", btn)
+
+        // load: 页面元素(包括图像多媒体等)资源及其相关资源已完成加载。
+        window.onload = function () {
+            var btn = document.querySelector("button")
+            console.log("btn==>", btn)
+        }
+    </script>
+</head>
+
+<body>
+
+    <button>测试事件load</button>
+
+    <!-- 单个标签 -->
+    <div class="tag" style="overflow: scroll;width: 150px;height: 150px">
+        <div style="width: 250px;height: 100px;">内容1</div>
+        <div style="width: 250px;height: 100px;">内容2</div>
+        <div style="width: 250px;height: 100px;">内容3</div>
+    </div>
+
+
+    <div class="box" style="position: sticky;top: 0;left: 0;">
+        <button class="scroll10">滚动10px</button>
+        <button class="scroll100">滚动100px</button>
+        <button class="scroll500">滚动到500px的位置</button>
+    </div>
+
+
+    <div style="height: 600px;color: red;">盒子1</div>
+    <div style="height: 600px;color: red;">盒子2</div>
+    <div style="height: 600px;color: red;">盒子3</div>
+    <div style="height: 600px;color: red;">盒子4</div>
+
+    <!-- <h3>视频</h3>
+    <video controls
+        src="http://ali.cdn.kaiyanapp.com/1628685263342_e36ae4bc.mp4?auth_key=1629182932-0-0-e1c7ea7a5fa7f577f72baa5f3cd49207"></video>
+
+    <br>
+    <img src="https://hbimg.huabanimg.com/7863a2a83b7510e84af36f40686ac9fa913e7cc1674252-S6k3Wz_fw658/format/webp"
+        alt="">
+    <br>
+    <img src="https://hbimg.huabanimg.com/7863a2a83b7510e84af36f40686ac9fa913e7cc1674252-S6k3Wz_fw658/format/webp"
+        alt=""> -->
+
+        
+    <!-- 测试offsetLeft和offsetTop -->
+    <div class="box" style="width: 100px;height: 100px;background: red;margin: 100px"></div>
+
+    <script>
+        /*
+            1、资源事件
+                load  加载完成以后触发，一般用在文档 或 图片 或 音频 或 视频
+                beforeunload       用户退出页面
+        */
+        var btn = document.querySelector("button")
+        console.log("btn==>", btn)
+
+        window.onbeforeunload = function () {
+            console.log("用户退出页面...")
+        }
+
+        /*
+            2、视图事件
+            （1）resize: 事件名称触发条件resize：窗口或者框架被重新调整大小时触发
+            （2）scroll: scroll档视图或元素已被滚动。
+        */
+
+        // 改变window窗口大小尺寸时触发的事件
+        // window.onresize = function () {
+        //     console.log("页面宽度改变", window.innerWidth)
+        //     console.log("页面高度改变", window.outerHeight)
+        // }
+
+
+        var i = 0
+        // 这个触发条件时：不管是x轴还是y轴，必须要有一个滚动条出现才能触发
+        window.onscroll = function () {
+            // i++;
+            // console.log("i==>", i)
+
+            // document.documentElement  指的是html元素
+            // scrollLeft :scrollLeft属性设置或返回元素内容向左滚动(水平方向)的像素数。
+            // scrollTop
+
+            // 被卷去的高度，也就是滚动距离
+            // console.log("距离顶部滚动距离==>", document.documentElement.scrollTop)    
+            // console.log("距离左边滚动距离==>", document.documentElement.scrollLeft)
+        }
+
+        // 单个标签的滚动
+        document.getElementsByClassName("tag")[0].onscroll = function () {
+            console.log("左边滚动的距离==>", this.scrollLeft)
+            console.log("头部滚动的距离==>", this.scrollTop)
+        }
+
+
+        document.getElementsByClassName("scroll10")[0].onclick = function () {
+            document.documentElement.scrollTop += 10
+        }
+
+        document.getElementsByClassName("scroll100")[0].onclick = function () {
+            document.documentElement.scrollTop += 100
+        }
+
+        document.getElementsByClassName("scroll500")[0].onclick = function () {
+            document.documentElement.scrollTop = 500
+        }
+
+
+        // 获得位置
+        // offsetLeft: 获得元素距离浏览器最左边的距离
+        // offsetTop： 获得元素距离浏览器最顶部的距离 
+
+        var box = document.getElementsByClassName("box")[0]
+        console.log(" 获得元素距离浏览器最左边的距离==>", box.offsetLeft)
+        console.log(" 获得元素距离浏览器最顶部的距离==>", box.offsetTop)
+
+    </script>
+</body>
+
+</html>

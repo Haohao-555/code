@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-08-12 17:43:59
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day14\13-空白节点的排除.html
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +17,7 @@
 <body>
     <div id="boxId">
         <p>段落1</p>
-        <p>段落2</p>
+        <p class="n2">段落2</p>
         <!-- 注释注释1 -->
         <p class="p">段落3</p>
         <!-- 注释注释2 -->
@@ -39,8 +45,8 @@
 
         var p3 = document.querySelector(".p")
         // console.log("类名为p的第3个p标签的下一个节点是==>", p3.nextSibling.nextSibling)
-        console.log("类名为p的第3个p标签的上一个节点是==>", getPrevElement(p3))
-
+        console.log("类名为p的第3个p标签的上一个节点是==>", getPrevElement(p3).className)
+        console.dir(getPrevElement(p3))
 
         function getNextElement(element) {
             console.log(element)

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-表单事件</title>
+</head>
+
+<body>
+    <form action="https://baidu.com">
+        用户名：<input type="text" name="username">
+        <button type="reset">重置数据</button>
+        <button type="submit">提交数据</button>
+    </form>
+
+    <select name="" id="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+    <script>
+        /*
+            reset   点击重置按钮时
+            submit  点击提交按钮
+            focus   元素获得焦点（不会冒泡）。
+            blur    元素失去焦点（不会冒泡）。
+            input   表单元素的输入事件当value发生变化时
+            change  对于表单元素的值被用户提交时。与输入事件不同的是，对元素值的每次更改不一定会触发更该事件。
+        */
+        var form = document.querySelector("form")
+        form.addEventListener("reset", function (e) {
+            console.log("数据被重置了")
+        })
+
+        form.addEventListener("submit", function (e) {
+            console.log("数据提交中...")
+            // 禁止提交数据
+            e.preventDefault()
+        })
+
+        var input = document.querySelector("input")
+        // console.log(input)
+
+        // 获得焦点
+        input.onfocus = function () {
+            console.log("获得input输入框的焦点")
+        }
+
+        // 失去焦点
+        input.onblur = function () {
+            console.log("失去input输入框的焦点")
+        }
+
+
+        // input.oninput = function () {
+        //     console.log("input输入中==>", input.value)
+        // }
+
+        input.onchange = function () {
+            console.log("onchange事件==>", input.value)
+        }
+
+
+        var slt = document.getElementsByTagName("select")[0]
+        slt.onchange = function () {
+            console.log("触发select标签的")
+            console.log(slt.value)
+        }
+
+
+    </script>
+</body>
+
+</html>

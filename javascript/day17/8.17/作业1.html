@@ -1,0 +1,58 @@
+<!--
+ * @Date: 2021-08-17 18:28:51
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day17\8.17\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业1</title>
+    <style>
+        input {
+            height: 40px;
+        }
+       ul li {
+           list-style: none;
+           padding: 6px 0px;
+           margin: 0px;
+           cursor: pointer;
+           border-bottom: 1px solid #333;
+       }
+       ul {
+           display: none;
+           width: 300px;
+           padding: 10px 12px;
+           border: 1px solid #333;
+           margin-top: -1px;
+       }
+    </style>
+  </head>
+  <body>
+    <h1>表单获得焦点时显示搜索列表</h1>
+    <input type="text" id="data" />
+    <ul id="dataList">
+      <li>中国正能量</li>
+      <li>中国某大学生竟一夜精通JavaScript</li>
+      <li>程序员为宇宙空间站送上祝福</li>
+      <li>学习HTML5的优势</li>
+    </ul>
+    <script>
+        var input = document.querySelector("input");
+        var ul = document.querySelector("ul");
+        input.addEventListener("focus", function() {
+            ul.style.display = "block"
+        })
+        ul.querySelectorAll("li").forEach((item, index) => {
+            item.addEventListener("click", function() {
+                var content = item.innerHTML;
+                input.value = content;
+                ul.style.display = "none";
+            })
+        })
+    </script>
+  </body>
+</html>

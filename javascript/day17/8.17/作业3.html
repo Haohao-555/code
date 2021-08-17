@@ -1,0 +1,73 @@
+<!--
+ * @Date: 2021-08-17 18:47:26
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day17\8.17\作业3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作业3</title>
+    <style>
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .rating {
+        overflow: hidden;
+        display: flex;
+      }
+      .rating .star {
+        display: inline-block;
+        width: 45px;
+        height: 41px;
+        background: url(star.png) no-repeat;
+        transform: scale(0.5);
+      }
+      .rating .star.active {
+        /* background-position: 0 -28px; */
+        background: url(no-star.png) no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+      <ul id="rating1"></ul>
+      <div id="rating2"></div>
+      <script>
+          var STAR_COUNT = 5;
+        function Star(wrapper) {
+            this.init(wrapper);
+        }
+        Star.prototype.init = function (wrapper) {
+            for (var i = 0; i < STAR_COUNT; i++) {
+                var star = document.createElement("span")
+                star.classList.add("star")
+                wrapper.classList.add("rating")
+                wrapper.appendChild(star)
+            }
+            document.querySelectorAll("#"+wrapper.id + "> span").forEach(_ => {
+               _.addEventListener("click", function() {
+                   var list = _.classList
+               if (list.contains("active")) {
+                list.remove("active")
+               } else {
+                list.add("active");
+               }  
+               
+                
+               })
+            })
+        }
+        var rating1 = document.getElementById("rating1")
+        var rating2 = document.getElementById("rating2")
+
+        // 初始化俩个评星组件
+        new Star(rating1)
+        new Star(rating2)
+      </script>
+  </body>
+</html>
