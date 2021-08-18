@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-作业2</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        /* div {
+            transition: all 0.4s;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 随机获得一个颜色
+        function randomColor() {
+            // return "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")"
+            return "rgba(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.random() + ")"
+        }
+
+
+        for (var i = 0; i < 16; i++) {
+            // 先创建16个盒子
+            var div = document.createElement("div")
+            // 设置样式
+            div.style.width = "25%";
+            div.style.height = "300px";
+            // 为了让div在一行内显示，设置浮动
+            div.style.float = "left";
+            // 添加div进body中
+            document.body.appendChild(div)
+            // console.log(div)
+
+
+            // 给div设置随机的颜色 —— 绑定点击事件
+            div.onclick = function (e) {
+                // console.log(this)
+                this.style.backgroundColor = randomColor();
+            }
+        }
+    </script>
+</body>
+
+</html>

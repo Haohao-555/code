@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-鼠标键盘事件对象属性</title>
+</head>
+
+<body>
+    <div class="box" style="width: 300px;height: 300px;background: skyblue; margin: 150px"></div>
+
+    文本域：<br><textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <button class="button">div按钮</button>
+    <script>
+        /*
+            鼠标或键盘事件对象属性
+            （1）键盘事件对象属性
+                altKey     返回当前事件触发时,'ALT'是否被按下
+                ctrlKey    返回当前事件触发时,'Ctrl'是否被按下
+                shiftKey   返回当前事件触发时,'Shift'是否被按下
+                which      该属性声明了被敲击的键生成的ascii码 字符码
+                keyCode    该属性声明了被敲击的键生成的ascii码 字符码
+
+            (2) 鼠标事件对象属性
+                button           返回当前事件被触发时,鼠标那个按钮被点击
+                clientX          返回当事件被触发时,鼠标指针相对于浏览器可视区域的水平坐标    
+                clientY          返回当事件被触发时,鼠标指针相对于浏览器可视区域的垂直坐标    
+                screenX          返回当某个事件被触发时,鼠标指针相对于电脑屏幕的水平坐标      
+                screenY          返回当某个事件被触发时,鼠标指针相对于电脑屏幕的垂直坐标      
+                pageX,PageY      鼠标相对于文档的位置(包括滚动条的距离,即clientX+document.body.scrollLeft,IE不支持) 
+                offsetX,offsetY  返回发生事件的地点在事件源元素的坐标系统中的x坐标和y坐标     
+        */
+
+        // 键盘事件对象属性
+        var textArea = document.querySelector("textarea")
+        // console.log(textArea)
+        textArea.onkeydown = function (e) {
+            e = e || window.event
+            console.log(e)
+            // console.log("键盘按下事件which==>", e.which)
+            // console.log("键盘按下事件keyCode==>", e.keyCode)
+
+            // 按下alt+ A
+            if (e.altKey && e.keyCode == 65) {
+                console.log("同事按下alt + A")
+            }
+        }
+
+
+        // 鼠标事件对象属性
+        var btn = document.querySelector(".button")
+        console.log(btn)
+        // btn.onmouseover = function (e) {
+        //     console.log(e)
+        //     console.log("测试button属性==>", e.button)   // 0
+        // }
+        // btn.onclick = function (e) {
+        //     console.log(e)
+        //     console.log("测试button属性==>", e.button)
+        // }
+
+        // btn.ondblclick = function (e) {
+        //     console.log(e)
+        //     console.log("测试button属性==>", e.button)
+        // }
+
+        // btn.oncontextmenu = function (e) {
+        //     console.log(e)
+        //     console.log("测试button属性==>", e.button)
+        // }
+
+
+        var box = document.getElementsByClassName("box")[0];
+        box.onclick = function (e) {
+            var e = e || window.event
+            // console.log("clientX ==>", e.clientX, "clientY ==>", e.clientY)
+            // console.log("screenX ==>", e.screenX, "screenY ==>", e.screenY)
+            // console.log("pageX ==>", e.pageX, "pageY ==>", e.pageY)
+            console.log("offsetX ==>", e.offsetX, "offsetY ==>", e.offsetY)
+        }
+
+    </script>
+</body>
+
+</html>

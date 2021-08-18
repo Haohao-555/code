@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-事件对象</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    input框测试==> <input type="text">
+    <br>
+    <a href="https://baidu.com">亲，里面有你想要的考研资料</a>
+
+    <!-- form表单测试 -->
+    <form action="https://baidu.com">
+        <input type="text" placeholder="输入您的心情" name="mood">
+        <button type="submit">提交信息</button>
+    </form>
+    <script>
+        /*
+            事件对象： Event
+                事件发生时候，事件信息的存储对象
+                事件对象里有个属性 target ==> 指向事件发生的元素对象
+            事件发生时，事件函数的参数有一个event参数，就是事件对象
+            获取事件对象的兼容性写法：var event = e || window.event
+
+            Event事件通用属性
+                Event.currentTarget 其事件事件处理程序当前正在处理事件的那个元素(一般为null)
+                Event.target 返回触发此事件的元素（事件的目标元素）
+                Event.type 事件类型 click bdlclick mouseover mouseout...
+                preventDefault()   通知浏览器不要执行与事件相关联的默认动作.
+                stopPropagation()  取消事件进一步捕获或者冒泡
+
+        */
+
+        var box = document.getElementsByClassName("box")[0]
+        //    console.log(box)
+        box.onclick = function (event) {
+            // 一般形参名字为event e evt
+            // MouseEvent ==> 鼠标事件的实例
+            console.log("event.target==>", event.target)
+            console.log("点击事件里的事件对象==>", event)
+        }
+
+
+
+        // input
+        var input = document.querySelector("input")
+        // KeyboardEvent: 键盘事件的实例
+        input.onkeydown = function (e) {
+            // 兼容写法：事件函数里面如果没有event事件对象，就去window.event里拿
+            var event = e || window.event;
+            // event.target指向input元素对象
+            console.log("event.target==>", event.target)
+            // console.log("input输入框的事件对象==>", event)
+        }
+
+        input.addEventListener("keyup", function (e) {
+            console.log("键盘监听keyup事件==>", e)
+        })
+
+        //  preventDefault()测试
+        document.querySelector("a").onclick = function (e) {
+            console.log("a标签的点击触发")
+            // 阻止a标签跳转
+            e.preventDefault()
+        }
+
+        // 阻止form提交信息
+        document.querySelector("form").onclick = function (e) {
+            console.log("form表单触发");
+            e.preventDefault()
+        }
+    </script>
+</body>
+
+</html>

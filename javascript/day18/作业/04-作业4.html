@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-作业4</title>
+    <!-- 使用字体图标 -->
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <style>
+        .input-g {
+            display: inline-block;
+            position: relative;
+            color: #999;
+        }
+
+        .input-g .iconfont {
+            position: absolute;
+            right: 45px;
+            top: 0;
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        要求:创建--个自定义密码输入组件，该组件有以下功能
+
+        1.输入表单内有个显示密文图标，鼠标按下该图标变为不显示密文样式并且表单输入内容从密文转化为明文，松开图标图标恢复原样，表单明文变回密文。
+        2.监听表单的按键输入将表单输入的内容实时显示在输入框元素下方
+        3.表单包含清除按钮，当按钮被点击时清除输入表单的文本内容
+
+        提示:
+        1.获取键盘监听事件中，用户按下那个键可通过"eventkeyCode"获取用户按键键盘码(ASCII码)
+        2.通过String.fromCharCode(ASCI码);可以将指定ASCII码转换为对应字符
+     -->
+
+
+    <h1>请输入密码</h1>
+    <div class="input-g">
+        <span class="iconfont icon-open" id="btnShow"></span>
+        <input type="password" id="psw">
+        <button>清除</button>
+    </div>
+    <div id="output"></div>
+    <script>
+
+        // (1) 获得页面需要处理元素
+        var psw = document.getElementById("psw")
+        var btnShow = document.getElementById("btnShow")
+        var btnClear = document.getElementsByTagName("button")[0];
+        var output = document.getElementById("output")
+        console.log(psw, btnShow, btnClear, output)
+
+
+        // (2)获得页面里的输入值,给输入框添加onkeypress事件
+        psw.onkeypress = function (e) {
+            e = e || window.event;
+            // console.log(e)
+            // 获得输入的字符，然后显示在div
+            output.innerHTML += String.fromCharCode(e.keyCode)
+
+            // 尝试用input.value —— 可行（有缺陷）
+            // console.log(psw.value)
+        }
+
+
+        // （3）清除输入
+        btnClear.onclick = function () {
+            psw.value = "";
+            output.innerHTML = ""
+        }
+
+
+        // (4) 按下闭眼，显示密码，同时显示为开眼
+        btnShow.onmousedown = function () {
+            psw.type = "text";
+            this.className = "iconfont icon-close"
+        }
+        btnShow.onmouseup = function () {
+            psw.type = "password"
+            this.className = "iconfont icon-open"
+        }
+    </script>
+</body>
+
+</html>

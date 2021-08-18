@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu {
+            width: 160px;
+            list-style: none;
+            border: 1px solid #ccc;
+            display: none;
+            /* 如果想要js的top和left属性产生作用，必须有定位 */
+            position: absolute
+        }
+
+        .menu li {
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+            font-size: 18px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="menu">
+        <li>自定义菜单1</li>
+        <li>自定义菜单2</li>
+        <li>自定义菜单3</li>
+        <li>自定义菜单4</li>
+        <li>自定义菜单5</li>
+    </ul>
+    <script>
+        var menu = document.querySelector(".menu");
+        console.log(menu)
+        document.oncontextmenu = function (event) {
+            var e = event || window.event;
+            menu.style.display = "block";
+            // 挪位置
+            menu.style.left = e.clientX + "px"
+            menu.style.top = e.clientY + "px"
+
+            // 阻止右键的默认行为
+            e.preventDefault()
+        }
+
+        // 左键点击事件
+        document.addEventListener("click", function () {
+            menu.style.display = "none"
+        })
+    </script>
+</body>
+
+</html>

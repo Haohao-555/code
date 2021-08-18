@@ -35,39 +35,37 @@
     </style>
   </head>
   <body>
-      <ul id="rating1"></ul>
-      <div id="rating2"></div>
-      <script>
-          var STAR_COUNT = 5;
-        function Star(wrapper) {
-            this.init(wrapper);
+    <ul id="rating1"></ul>
+    <div id="rating2"></div>
+    <script>
+      var STAR_COUNT = 5;
+      function Star(wrapper) {
+        this.init(wrapper);
+      }
+      Star.prototype.init = function (wrapper) {
+        for (var i = 0; i < STAR_COUNT; i++) {
+          var star = document.createElement("span");
+          star.classList.add("star");
+          wrapper.classList.add("rating");
+          wrapper.appendChild(star);
         }
-        Star.prototype.init = function (wrapper) {
-            for (var i = 0; i < STAR_COUNT; i++) {
-                var star = document.createElement("span")
-                star.classList.add("star")
-                wrapper.classList.add("rating")
-                wrapper.appendChild(star)
+        document.querySelectorAll("#" + wrapper.id + "> span").forEach((_) => {
+          _.addEventListener("click", function () {
+            var list = _.classList;
+            if (list.contains("active")) {
+              list.remove("active");
+            } else {
+              list.add("active");
             }
-            document.querySelectorAll("#"+wrapper.id + "> span").forEach(_ => {
-               _.addEventListener("click", function() {
-                   var list = _.classList
-               if (list.contains("active")) {
-                list.remove("active")
-               } else {
-                list.add("active");
-               }  
-               
-                
-               })
-            })
-        }
-        var rating1 = document.getElementById("rating1")
-        var rating2 = document.getElementById("rating2")
+          });
+        });
+      };
+      var rating1 = document.getElementById("rating1");
+      var rating2 = document.getElementById("rating2");
 
-        // 初始化俩个评星组件
-        new Star(rating1)
-        new Star(rating2)
-      </script>
+      // 初始化俩个评星组件
+      new Star(rating1);
+      new Star(rating2);
+    </script>
   </body>
 </html>

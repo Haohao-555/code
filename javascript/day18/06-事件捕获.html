@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-事件捕获</title>
+    <style>
+        .parent {
+            width: 500px;
+            height: 500px;
+            background-color: orange;
+            margin: 10px auto;
+        }
+
+        .son1,
+        .son2 {
+            width: 150px;
+            height: 120px;
+            margin: 30px;
+            background: greenyellow
+        }
+
+        .sunzi {
+            width: 50px;
+            height: 50px;
+            background: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="son1">
+            <div class="sunzi">孙子元素</div>
+        </div>
+        <div class="son2">第2个子元素</div>
+    </div>
+    <script>
+
+        // 事件捕获： 默认子代元素被点击后，事件从document开始一层层往里传递，这个过程就是事件捕获
+        // 默认是冒泡， 开启事件捕获 addEventListener("事件名称", 函数， {capture: true})
+        var parent = document.querySelector(".parent")
+        var firstKid = parent.children[0]
+        var sunzi = parent.children[0].children[0]
+        // console.log(parent, firstKid)
+
+        parent.addEventListener("click", function (e) {
+            console.log("爸爸被点击了")
+
+        })
+        firstKid.addEventListener("click", function (e) {
+            console.log("儿子被点击了")
+        })
+        sunzi.addEventListener("click", function (e) {
+            console.log("孙子被点击了")
+           
+        }, { capture: false })
+
+        document.body.addEventListener("click", function (e) {
+            console.log("body的点击方法被触发了")
+
+        }, { capture: true })
+
+        document.addEventListener("click", function (e) {
+            console.log("document的点击方法被触发了")
+             // 阻止捕获
+             e.stopPropagation();
+        }, { capture: true })
+
+    </script>
+</body>
+
+</html>

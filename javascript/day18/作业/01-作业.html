@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        input {
+            font-size: 20px;
+        }
+
+        #dataList {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>表单获得焦点时显示搜索列表</h1>
+        <input type="text" id="data">
+        <ul id="dataList">
+            <li>中国正能量</li>
+            <li>中国某大学生竟一夜精通JavaScript</li>
+            <li>程序员为宇宙空间站送上祝福</li>
+            <li>学习HTML5的优势</li>
+        </ul>
+    </div>
+
+
+    <script>
+        var input = document.getElementById("data")
+        var dataList = document.getElementById("dataList")
+        console.log(input, dataList)
+
+        // 获得焦点显示
+        input.addEventListener("focus", function () {
+            dataList.style.display = "block"
+        })
+
+        // 失去焦点隐藏
+        input.addEventListener("blur", function () {
+            // 让时间等一等
+            setTimeout(function () {
+                dataList.style.display = "none"
+            }, 100)
+
+        })
+
+
+        // 获得li标签的值
+        var lis = dataList.children;
+        // console.log(lis)
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].addEventListener("click", function () {
+                // 获得点击li标签里的值
+                input.value = this.textContent;
+            })
+        }
+
+        // 无效果的原因：失去焦点的事件比点击的先触发
+    </script>
+</body>
+
+</html>
