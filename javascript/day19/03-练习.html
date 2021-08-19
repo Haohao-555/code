@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            /* border: 1px solid #ccc; */
+        }
+
+        table input {
+            width: 100%;
+            outline: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-size: 18px;
+            background: orange;
+        }
+
+
+        table tr td {
+            border: 1px solid #ccc;
+            font-size: 18px;
+            /* padding: 5px; */
+            position: relative;
+        }
+
+        table tr td button {
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="">行数：<input type="number" id="row"></label>
+    </div>
+    <div>
+        <label for="">列数：<input type="number" id="col"></label>
+    </div>
+    <div>
+        <button id="generator">生成表格</button>
+    </div>
+
+    <!-- 要插入表格的地方 -->
+    <div class="container">
+        <table>
+
+        </table>
+    </div>
+
+
+    <script>
+        // 获得input输入框里要创建的表格有多少行多少列
+        var generator = document.getElementById("generator")
+        var row = document.getElementById("row")
+        var col = document.getElementById("col")
+        var table = document.querySelector("table")
+        console.log(generator, row, col)
+
+        generator.onclick = function () {
+            // 获得要创建的行数和列数
+            var rowNum = row.value;
+            var colNum = col.value;
+            console.log(rowNum, colNum)
+
+            // 每次生成行和列，先清空以前的创建的表格
+            table.innerHTML = "";
+            // 生成行和列
+            for (var i = 1; i <= rowNum; i++) { // 生成行
+                var tr = document.createElement("tr");
+                for (var j = 1; j <= colNum; j++) { //生成列
+                    var td = document.createElement("td")
+                    // 文本上显示是第几行和第几列
+                    td.textContent = i + "行" + j + "列";
+                    td.style.width = 1 / colNum * 100 + "%"
+                    tr.appendChild(td)
+                }
+                // 每行创建好后，加入table中
+                table.appendChild(tr)
+            }
+            // 创建好，删除输入框的值
+            row.value = "";
+            col.value = ""
+
+            // 事件委托监听td的双击事件
+            table.addEventListener("dblclick", function (event) {
+                var e = event || window.event;
+                console.log(e.target)
+                // 只监听td
+                if (e.target.tagName != "TD") return;
+
+                var td = e.target
+                // 先保留以前的值
+                var tdText = td.textContent;
+
+                // 要重新输入值，先创建input输入框
+                var input = document.createElement("input");
+                input.value = tdText
+
+                // 放入对应的td标签中
+                // 先清除以前的文本，再进行插入
+                td.innerHTML = "";
+                td.appendChild(input)
+
+                // 获得输入框的焦点
+                input.focus()
+
+                // 获得焦点后，输入新的内容，点击确认能修改值
+                var button = document.createElement("button")
+                button.textContent = "确认"
+                td.appendChild(button)
+
+                // input失去焦点，点击确认，修改内容
+                input.onblur = function () {
+                    var textValue = this.value
+                    console.log("失去焦点后，获得的新内容==>", textValue)
+                    // 先把被操作的td去除input和按钮
+                    // console.log(this.parentElement, textValue)
+                    td.innerHTML = textValue;
+                }
+
+            })
+        }
+    </script>
+</body>
+
+</html>

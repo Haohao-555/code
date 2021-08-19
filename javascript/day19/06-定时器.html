@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-定时器</title>
+</head>
+
+<body>
+    <h1 class="h1"></h1>
+    <button class="count">开始计时</button>
+    <h1 id="countTime"></h1>
+    <script>
+        /*
+            setInterval(回调函数， delay, [...args])
+            作用是：每次进过delay时间，就执行一次回调函数，并且把参数传递给回调函数
+        */
+        // var index = 0
+        // var timer1 = setInterval(function () {
+        //     index++
+        //     document.write("男：<h2>多喝热水" + index + "</h2>")
+        // }, 1000);
+
+        // var timer2 = setInterval(function () {
+        //     index++
+        //     document.write("女：<h3>多喝岩浆" + index + "</h3>")
+        // }, 1000);
+
+
+        // // 暂停计时器 clearInterval
+        // setTimeout(function () {
+        //     clearInterval(timer2)
+        // }, 6000);
+
+
+
+        // 计时器 ——运动计时器
+        var isStart = false;
+        var num = 0;
+        // 给计时器定义一个变量
+        var timerId = null
+        var countBtn = document.querySelector(".count")
+        var countTime = document.querySelector("#countTime")
+
+
+        countBtn.onclick = function () {
+            // console.log(111)
+            if (isStart) {
+
+                // 如果是已经开始，再次点击就为暂停
+                isStart = false;
+                countBtn.textContent = "开始计时";
+                // 暂停计时器
+                clearInterval(timerId)
+            } else {
+                countBtn.textContent = "暂停"
+                isStart = true;
+                // 记录时间
+                timerId = setInterval(function () {
+                    // 这种加法设计到精度丢失
+                    num += 0.01
+                    num = Math.ceil(num * 100) / 100;
+                    countTime.textContent = num + "s"
+                }, 10)
+            }
+        }
+
+        var h1 = document.getElementsByClassName("h1")[0]
+        var timer = setInterval(function () {
+            var date = new Date();
+            var str = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + " " + date.getHours() + "时" + date.getMinutes() + "分" + date.getSeconds() + "秒"
+            // 显示在页面中
+            h1.innerHTML = str
+        }, 1000)
+    </script>
+</body>
+
+</html>

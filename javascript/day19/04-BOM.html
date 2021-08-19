@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-BOM</title>
+</head>
+
+<body>
+    <div style="width: 1500px;height: 1200px;background: #ccc;" class="box"></div>
+    <script>
+        /*
+            DOM: 用js操作html  节点 元素对象 事件 事件对象（事件冒泡 事件捕获）==> 事件委托
+            BOM ： BOM是browser object model的缩写，简称浏览器对象模型
+            顶级对象： window 对象
+                        BOM里的函数有
+                            alert()
+                            prompt()
+                            confirm()
+                            setTimeout()
+                            setInterval()
+                        BOM里的对象有
+                            history 
+                            frames   
+                            navigator
+                            location
+                            screen 
+                            document(文档顶级对象)
+        */
+
+        // 定义在全局环境下的变量都会成为window对象的属性
+        // 注意：把变量定义在函数体内,可以有效地减少全局环境下的变量冲突,避免污染全局环境
+        var age = 60;
+        console.log(age)
+        console.log("window对象下的age==>", window.age)
+        console.log("window对象==>", window)
+
+        // 不要用name作为变量名，因为window对象下有个属性就叫name
+        // var name = "name的字符串变量";
+        // console.log("变量名为name==>", name)
+
+
+        // 通过var在全局作用域下声明的变量用delete无法删除
+        var username = "傻强";
+        delete username;  // 
+        console.log("username删除==>", username);
+
+        // 匿名函数立即执行函数
+        (function () {
+            aaa = "aaa变量" // 在函数内部不用var声明的变量会成为全局变量,即window的对象属性
+            delete aaa;  // 能删除成功，
+
+
+            var bbb = "bbb局部变量";
+            delete bbb;
+            console.log("bbb是否被删除==>", bbb)
+        })()
+        // console.log("aaa变量==>", aaa)   // Uncaught ReferenceError: aaa is not defined
+        // console.log(bbb)    // bbb is not defined ,证明bbb是局部变量
+
+
+
+
+        // ： window对象可以在代码中省略,例:`window.alert()`可以直接写成`alert()`
+        // window.alert("window对象的警告")
+        // alert("window对象的警告1")
+        // window.prompt("请输入您的密码")
+        // window.confirm("你是狗吗？")
+
+        // Window.screenX： 是一个只读属性，
+        //  它返回浏览器左边框到操作系统桌面左边屏幕边缘的 CSS 像素数。
+
+        // window.screenY：是一个只读属性，它返回浏览器顶部到操作系统桌面顶部屏幕边缘的 CSS 像素数。
+        console.log("window.screenX==>", window.screenX)
+        console.log("window.screenY==>", window.screenY)
+
+        /*
+            window.outerWidth/window.outerHeight
+
+            获取浏览器窗口外部的宽度。表示整个浏览器窗口的宽度，
+            包括侧边栏（如果存在）、窗口镶边（window chrome）和调正窗口大小的边框
+            （window resizing borders/handles）。
+        */
+
+        // innerWidth和window.innerHeight
+        // outerWidth和window.outerHeight。
+
+        var box = document.getElementsByClassName("box")[0]
+        box.innerHTML = "innerWidth==>" + window.innerWidth + "innerHeight==>" + window.innerHeight
+        box.innerHTML = "innerWidth==>" + window.innerWidth + "innerHeight==>" + window.innerHeight
+
+        // console.log("innerWidth==>", window.innerWidth, "innerHeight==>", window.innerHeight)
+        // console.log("outerWidth==>", window.outerWidth, "outerHeight==>", window.outerHeight)
+    </script>
+</body>
+
+</html>

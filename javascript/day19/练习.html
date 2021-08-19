@@ -6,13 +6,43 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <style>
+        td {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="row" />行 <br>
+    <input type="text" id="col" />列<br>
+    <button>生成表格</button>
+    <div class="container"></div>
+    <script>
+      var row = document.getElementById("row");
+      var col = document.getElementById("col");
+      var btn = document.getElementsByTagName("button")[0];
+      var container = document.getElementsByClassName("container")[0];
+      btn.onclick = function () {
+        var content = "<table border='1'>";
+        var rvalue = row.value;
+        var cvalue = col.value;
+        console.log(row, col)
+        for (var i = 0; i < cvalue; i++) {
+          content += "<tr>";
+          for (var j = 0; j < rvalue; j++) {
+            content += "<td></td>";
+          }
+          content += "</tr>";
+        }
+        content += "</table>";
+        container.innerHTML = content;
+      };
+    </script>
+  </body>
 </html>

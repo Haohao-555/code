@@ -1,0 +1,105 @@
+<!--
+ * @Date: 2021-08-19 19:17:15
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day19\8.19\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 100px;
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+        line-height: 100px;
+        border-radius: 12px;
+      }
+      .end {
+        /* 设置终点线的位置 */
+        left: 900px;
+
+        position: absolute;
+        background-color: black;
+        width: 50px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        font-size: 40px;
+        color: white;
+      }
+      span {
+        padding: 6px;
+      }
+      button {
+        width: 100px;
+        height: 60px;
+        text-align: center;
+        outline: none;
+        padding: 12px 10px;
+        background-color: aqua;
+        border: none;
+        position: absolute;
+        left: 340px;
+        top: 300px;
+        color: white;
+        font-size: 20px;
+        border-radius: 12px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="fn01()">开始</button>
+    <div id="box"></div>
+    <!-- 终点线 -->
+    <div class="end">
+      <span>终</span>
+      <span>点</span>
+      <span>线</span>
+    </div>
+    <script>
+      function fn01() {
+        //   获取盒子
+        var box = document.querySelector("#box");
+
+        // 获取距离终点线的距离
+        var end = document.querySelector(".end").offsetLeft - box.offsetWidth;
+
+        // 盒子的速度（每次移动多少像素点）
+        var speed = 30;
+
+        // 定时器 ID
+        var intervalID = 0;
+
+        intervalID = setInterval(function () {
+          // 每隔 60毫秒查看盒子距离左边的距离
+          var oleft = box.offsetLeft;
+
+          if (oleft >= end - speed) {
+            //已到达
+
+            clearInterval(intervalID); //停止
+            box.style.left = end + "px";
+            
+            // box.innerHTML = "停止"
+          } else {
+            // 未到达
+            box.style.left = oleft + speed + "px";
+          }
+        }, 60);
+      }
+    </script>
+  </body>
+</html>

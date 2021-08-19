@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-bom延时器</title>
+</head>
+
+<body>
+    <script>
+        /*
+          setTimeout
+            setTimeout()`方法设置一个定时器，该定时器在指定时间到期后执行一个函数或指定的一段代码。
+             
+            window.setTimeout(回调函数， 延迟时间, [args,...]) 时间到达后，执行一次回调函数
+                延迟时间： 单位是毫秒 1000 = 1s
+                args 可选参数，参数是传递给回调函数
+
+            // clearTimeout(timerid)  的方法取消先前调用的setTimeout()建立的定时器
+        */
+        function callback(a, b, c) {
+            console.log(a, b, c)
+            console.log("3s后，救老妈 or 女友？");
+        }
+        window.setTimeout(callback, 1000, "参数1", "参数2", "参数3")
+        setTimeout(callback, 2000, "参数1", "参数2", "参数3")
+
+
+        var timer = setTimeout(callback, 3000, "参数1", "参数2", "参数3");
+        // 清除延时器
+        // clearTimeout(timer)
+
+
+    </script>
+</body>
+
+</html>
