@@ -58,18 +58,21 @@
         if (flag) {
           play.style.display = "none";
           box.style.left = "-470px";
+          
           setTimeout(function () {
             box.style.left = "0px";
           }, 1000);
-          flag = false;
+          
         } else {
           box.style.left = "-470px";
+          
           setTimeout(function () {
             box.style.left = "-400px";
             play.style.display = "block";
           }, 1000);
-          flag = true;
+         
         }
+        flag = !flag
       };
     </script>
   </body>
