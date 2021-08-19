@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-作业2</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 25%;
+            height: 200px;
+            float: left;
+        }
+
+        /* div {
+            transition: all 0.4s;
+        } */
+    </style>
+</head>
+
+<body>
+    <li>1</li>
+    <script>
+        // 事件委托：利用事件冒泡的特点，不用给每个子元素绑定点击事件，而是在父元素通过冒泡的原理，来实现事件委托
+        // 随机获得一个颜色
+        function randomColor() {
+            return "rgba(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.random() + ")"
+        }
+
+
+        for (var i = 0; i < 16; i++) {
+            // 先创建16个盒子
+            var div = document.createElement("div")
+            // 添加div进body中
+            document.body.appendChild(div)
+            // console.log(div)
+
+            // // 给div设置随机的颜色 —— 绑定点击事件
+            // div.onclick = function (e) {
+            //     // console.log(this)
+            //     this.style.backgroundColor = randomColor();
+            // }
+        }
+
+        // 事件委托： body托管里面的子元素div的点击事件，因为div点击后click事件会冒泡到body
+        document.body.onclick = function (event) {
+            var e = event || window.event;
+            // e.target事件源 元素对象
+            // console.log(e.target)
+            if (e.target.tagName == "DIV") {
+                e.target.style.background = randomColor()
+            }
+
+        }
+    </script>
+</body>
+
+</html>

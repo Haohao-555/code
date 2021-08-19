@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <style>
+        .wrapper{
+            width:450px;
+            height:450px;
+            margin:0 auto;
+            position: relative;
+        }
+        .wrapper .left{
+            border:2px solid red;
+        }
+        .wrapper .left img{
+            width:100%;
+        }
+        .mask{
+            width:200px;
+            height:200px;
+            position: absolute;
+            left:200px;
+            top:200px;
+            cursor: move;
+            /* pointer-events: none; */
+            display: none;
+            background-color: rgba(255, 255, 0, 0.5);
+        }
+        .wrapper .right{
+            border:2px solid #ccc;
+            position: absolute;
+            width:450px;
+            height:450px;
+            overflow: hidden;
+            top:0px;
+            display: none;
+            left:474px;
+        }
+        .wrapper .right img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="left">
+            <!-- 小盒子 -->
+            <div class="small">
+                <img id="smallImg" src="./images/small.jpg"/>
+                <!-- 遮罩层 -->
+                <div class="mask"></div>
+            </div>
+        </div>
+        <div class="right">
+            <!-- 大盒子 -->
+            <div class="big">
+                <!--  大图片 -->
+                <img class="big-img" src="./images/big.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+            总结:
+            (1).获取元素距离浏览器左边的距离 element.offsetLeft
+            (2).事件对象
+                event.clientX 鼠标距离浏览器可视区左边的距离
+                event.pageX 鼠标距离浏览器左边的距离,包括滚动卷去的部分
+                event.offsetX 鼠标距离 事件源元素左边距离 计算过程: event.clientX-element.offsetLeft
+
+        */
+        var wrapper=document.querySelector(".wrapper");
+        var small=document.querySelector(".small");
+        var mask=document.querySelector(".mask");
+        var bigImg=document.querySelector(".big-img");
+        var right=document.querySelector(".right");
+        console.log(wrapper.offsetLeft)
+            small.onmouseover=function(){//enter
+                mask.style.display="block";
+                right.style.display="block";
+            }
+            small.onmousemove=function(event){
+                var e=event||window.event;//事件对象兼容写法.
+                //这里x 是鼠标相对small盒子的距离x=鼠标距离浏览器左边的距离 减去 small距离浏览器左边的距离
+                //但是small的父元素有定位，所以需要获取wrapper距离左边的距离
+                var x=e.clientX-wrapper.offsetLeft-100;//offsetX鼠标距离 事件源左边距离 x  所以这里不能使用offsetX ,减去mask的一半 鼠标要显示在mask中间.
+                var y=e.clientY-wrapper.offsetTop-100;
+                    x=x<0?0:x; //判断x不能小于0即不能超出small的左边
+                    y=y<0?0:y; //判断y不能小于0即不能超出small的上边
+                    x=x>250?250:x; //判断x不能大于450-200=250即不能超出small的右边
+                    y=y>250?250:y;
+                mask.style.left=x+"px";//设置mask的x位移
+                mask.style.top=y+"px";
+                var bsize=800/450;
+                var rightx=bsize*x; // 800/450=rightX/leftX; rightX=800/450*leftX;
+                var righty=bsize*y;
+                bigImg.style.left=(-rightx)+"px"
+                bigImg.style.top=(-righty)+"px"
+            }
+            small.onmouseout=function(){//leave
+                mask.style.display="none";
+                right.style.display="none";
+            }
+    </script>
+</body>
+</html>

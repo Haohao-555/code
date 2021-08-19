@@ -1,0 +1,68 @@
+<!--
+ * @Date: 2021-08-19 12:12:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day19\02-节点克隆.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-节点克隆</title>
+    <style>
+        .box1,
+        .box2 {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            background: #ccc;
+        }
+
+        .box2 {
+            width: 400px;
+            height: 300px;
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        盒子1
+        <span>span标签</span>
+    </div>
+    <div class="box2">盒子2</div>
+    <script>
+        var box1 = document.getElementsByClassName("box1")[0]
+        var box2 = document.getElementsByClassName("box2")[0]
+
+        // 创建一个对象
+        var h2 = document.createElement("h2")
+        h2.textContent = "h2标题"
+
+        // 拷贝一份h2， 浅拷贝，只拷贝h2元素对象，但是没有拷贝里面文本节点
+        var h21 = h2.cloneNode(false)
+        console.log(h21)
+
+        // 深拷贝， h2元素对象上的所有子节点包括文本节点
+        var h22 = h2.cloneNode(true)
+        console.log(h22)
+        box2.appendChild(h22)
+
+        // 拷贝box1盒子
+        var box11 = box1.cloneNode(false)
+        // var box11 = box1.cloneNode(true)
+        console.log(box11)
+        box2.appendChild(box11)
+
+        var h23 = h2.cloneNode(true)
+        console.log(h23)
+        h23.innerHTML = "测试"
+        box2.appendChild(h23)
+    </script>
+</body>
+
+</html>
