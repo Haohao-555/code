@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-样式获取</title>
+    <style>
+        .box1 {
+            width: calc(220px - 40px);
+            height: 100px;
+            background: teal;
+            position: absolute;
+            left: 100px;
+            top: 300px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">Hello world</div>
+    <div class="box2" style="background:red;">你好，世界</div>
+</body>
+<script>
+    /*
+  `getComputedStyle():
+        getComputedStyle()`方法返回一个对象，
+        该对象为解析css样式可能包含的任何基本计算后返回元素的所有CSS属性的值。
+    */
+    var box1 = document.querySelector(".box1")
+    var box2 = document.querySelector(".box2")
+    console.log(box1, box2)
+
+    //  element.style 该书写只能设置或者获取行内样式
+    console.log("获得box2的样式==>", box2.style.background)
+
+    // 通过window.getComputedStyle(元素对象,null) 获得浏览器计算后的css样式，返回一个对象CSSStyleDeclaration 
+    console.log("window.getComputedStyle()获得box2的样式==>", window.getComputedStyle(box1))
+    console.log("window.getComputedStyle()获得box2的样式==>", window.getComputedStyle(box2).backgroundColor)
+    console.log("window.getComputedStyle()获得box2的样式==>", window.getComputedStyle(box2).getPropertyValue("background-color"))
+
+</script>
+
+</html>

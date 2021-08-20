@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-函数防抖-返回值及立即执行</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background: red;
+            line-height: 400px;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            事件被频繁触发，事件业务逻辑函数不立即执行，其他事件完成之后才执行一次
+            返回值，
+        */
+
+        var box = document.querySelector(".box")
+        var i = 1;
+
+        function getUserAction(event) {
+            // console.log(event)
+            // console.log("真正执行的函数")
+            box.innerHTML = i;
+            i++;
+            // return "getUserAction返回值"
+            // 如果按照03文件的写法，this是指向window，
+            // 期望指向对象元素 
+            // console.log("返回的this==>", this)
+        }
+
+
+        // 防抖函数 :fun执行函数， wait是延迟世间, immediate 是否立即执行（先执行，后延迟）
+        function debounce(fun, wait, immediate) {
+            // 定义一个延时器id
+            var timerId;
+            // 定义一个接受返回值变量，用于查看是否立即执行
+            var result
+            var aaa = function (event) {
+                var e = event || window.event;
+                var context = this
+                // 为了在在wait秒之内，只触发一次，就应该把之前的延时器清除，
+                // 如果上一次timerId存在才进行清除
+                if (timerId) {
+                    clearInterval(timerId)
+                }
+                // clearInterval(timerId)
+                var args = arguments;
+
+                // 先执行，后延迟
+                if (immediate) {
+                    // 第一次进来timerId为undefined, 取反就是true
+                    // 后面开启延时器，记录timerId是数值，如果事件一直发生，timerId 则一直是数值
+                    // 当事件停下后，延迟wait时间后，下一次开始发生的时候，又立即执行事件业务逻辑函数
+                    // 核心： 通过判断是否过了延时器的时间，如果过了，可以进行新的一轮执行事件业务逻辑函数
+                    var isNow = !timerId;
+                    timerId = setTimeout(function () {
+                        timerId = null
+                    }, wait)
+
+                    if (isNow) {
+                        fun.apply(context, args)
+                        // result = fun.apply(context, args)
+                        // console.log(result)
+                    }
+
+                } else { // 先延迟，后执行
+                    // 重新设置新的延时器
+                    timerId = window.setTimeout(function () {
+                        fun.apply(context, args)
+                    }, wait)
+                }
+
+                // return result
+
+            }
+            return aaa
+        }
+
+        // 把反对函数返回值给事件
+        box.onmousemove = debounce(getUserAction, 1000, true)
+
+
+
+    </script>
+</body>
+
+</html>

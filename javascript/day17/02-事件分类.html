@@ -9,8 +9,8 @@
     <script>
 
         // 因为先执行该script标签，button还未渲染，所以获取不到
-        var btn = document.querySelector("button")
-        console.log("btn==>", btn)
+        // var btn = document.querySelector("button")
+        // console.log("btn==>", btn)
 
         // load: 页面元素(包括图像多媒体等)资源及其相关资源已完成加载。
         window.onload = function () {
@@ -60,6 +60,7 @@
     <div class="box" style="width: 100px;height: 100px;background: red;margin: 100px"></div>
 
     <script>
+        console.dir(document)
         /*
             1、资源事件
                 load  加载完成以后触发，一般用在文档 或 图片 或 音频 或 视频
@@ -96,8 +97,8 @@
             // scrollTop
 
             // 被卷去的高度，也就是滚动距离
-            // console.log("距离顶部滚动距离==>", document.documentElement.scrollTop)    
-            // console.log("距离左边滚动距离==>", document.documentElement.scrollLeft)
+            console.log("距离顶部滚动距离==>", document.documentElement.scrollTop)    
+            console.log("距离左边滚动距离==>", document.documentElement.scrollLeft)
         }
 
         // 单个标签的滚动

@@ -1,0 +1,197 @@
+<!--
+ * @Date: 2021-08-20 17:18:52
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day20\8.20\轮播图.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/icon.css" />
+    <title>Document</title>
+    <style>
+      * {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+      .swiper {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        margin: 40px auto;
+        border-radius: 12px;
+        overflow: hidden;
+        z-index: 9;
+      }
+      .swiper > .swiper_container {
+        width: 100%;
+        height: 100%;
+        z-index: -999;
+      }
+      .swiper > .swiper_container > li {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -999;
+        transition: opacity 1s;
+      }
+      .swiper > .swiper_container > li > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .swiper > .swiper_container > li > a > img {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper > i {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        z-index: 10;
+        top: 180px;
+      }
+      .swiper > .swiper-button-left {
+        right: 12px;
+      }
+      .swiper > .swiper-button-right {
+        left: 12px;
+      }
+      .swiper > .nav {
+        font-size: 0px;
+        width: 120px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin: 0px auto;
+        top: -16px;
+        z-index: 10;
+      }
+      .swiper > .nav > span {
+        display: block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="swiper">
+      <ul class="swiper_container">
+        <li style="opacity: 1">
+          <a href="javascript:;">
+            <img src="./images/1.png" alt="" />
+          </a>
+        </li>
+        <li style="opacity: 0">
+          <a href="javascript:;">
+            <img src="./images/2.jpg" alt="" />
+          </a>
+        </li>
+        <li style="opacity: 0">
+          <a href="javascript:;">
+            <img src="./images/3.jpg" alt="" />
+          </a>
+        </li>
+        <li style="opacity: 0">
+          <a href="javascript:;">
+            <img src="./images/4.jpg" alt="" />
+          </a>
+        </li>
+        <li style="opacity: 0">
+          <a href="javascript:;">
+            <img src="./images/5.jpg" alt="" />
+          </a>
+        </li>
+      </ul>
+
+      <i class="iconfont icon-left swiper-button-left"></i>
+      <i class="iconfont icon-right swiper-button-right"></i>
+
+      <div class="nav">
+        <span data-index="0" style="background-color: orange"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
+        <span data-index="4"></span>
+      </div>
+    </div>
+
+    <script>
+      var nav = document.querySelector(".nav");
+      var li = document.querySelectorAll("li");
+      var prev_swiper = document.querySelector(".swiper-button-left");
+      var next_swiper = document.querySelector(".swiper-button-right");
+      //当前被激活的图片下标
+      var nav_index = 0;
+
+      // 还原图片透明度和小圆点
+      function reduction(index) {
+        nav.children[index].style.backgroundColor = "white";
+        li.forEach((_) => (_.style.opacity = "1"));
+      }
+
+      // 根据下标移动到相对于图片
+      function next_prevSwiper(index) {
+        // 判断是否超过小标
+        var flag = index == nav.children.length;
+
+        index = flag ? 0 : index;
+
+        if (index < 0) {
+          index = 0;
+        }
+        //将上一个小圆点还原
+        nav.children[nav_index].style = "white";
+
+        //还原
+        reduction(index);
+
+        nav.children[index].style.backgroundColor = "orange";
+        li.forEach((item, i) => {
+          if (i != index) {
+            item.style.opacity = "0";
+          }
+        });
+
+        // 更新小圆点小标
+        nav_index = index;
+      }
+
+      function swiper(e) {
+        var index = e.target.dataset.index;
+        if (index) {
+          next_prevSwiper(index);
+        }
+      }
+
+      // 小圆点监听器
+      nav.addEventListener("click", function (e) {
+        var index = e.target.dataset.index;
+        if (index) {
+          reduction(index);
+          swiper(e);
+        }
+      });
+
+      setInterval(function () {
+        next_prevSwiper(parseInt(nav_index) + 1);
+      }, 4000);
+
+      prev_swiper.addEventListener("click", function () {
+          
+        next_prevSwiper(parseInt(nav_index) + 1);
+      });
+      next_swiper.addEventListener("click", function () {
+        next_prevSwiper(parseInt(nav_index) - 1);
+      });
+    </script>
+  </body>
+</html>

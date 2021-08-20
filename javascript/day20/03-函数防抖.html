@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-函数防抖</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            函数防抖中的抖动就是执行的意思，而一般的抖动都是持续的、多次的、频繁的执行某一段代码。
+            函数防抖就是某函数持续多次执行，我们希望让它冷静下来再执行。
+            也就是当持续触发事件的时候，函数是完全不执行的，等最后一次触发结束的一段时间之后，再去执行
+
+
+            防抖：事件尽管触发，但是在事件触发 n 秒后才执行，如果你在一个事件触发的 n 秒内又触发相同事件，
+            那我就以新的事件 n 秒后才执行，舍弃掉上一次事件触发执行操作。
+            简单地说就是频繁的触发事件完毕后的 n 秒内不再触发同一事件，函数才会执行。
+        */
+        //    document.querySelector(".box").onmousemove = function(e){
+        //        console.log(e.clientX, e.clientY)
+        //    }
+
+        var box = document.querySelector(".box")
+        var i = 1;
+
+        function getUserAction() {
+            console.log("真正执行的函数")
+            box.innerHTML = i;
+            i++;
+            // console.log("返回的this==>", this)
+        }
+
+
+        // 防抖函数 :fun执行函数， wait是延迟世间
+        function debounce(fun, wait) {
+            // 定义一个延时器id
+            var timerId;
+            return function () {
+                // console.log("返回的this==>", this)
+                // 为了在在wait秒之内，只触发一次，就应该把之前的延时器清除，
+                clearInterval(timerId)
+                // 重新设置新的延时器
+                timerId = setTimeout(fun, wait)
+            }
+        }
+
+        // 把反对函数返回值给事件
+        box.onmousemove = debounce(getUserAction, 1000)
+
+
+
+    </script>
+</body>
+
+</html>

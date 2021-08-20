@@ -1,0 +1,64 @@
+<!--
+ * @Date: 2021-08-20 16:35:27
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day20\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      input {
+        display: block;
+        width: 600px;
+        height: 50px;
+        padding: 0 20px;
+        font-size: 20px;
+        margin: 100px auto;
+      }
+
+      .message {
+        width: 600px;
+        margin: 0px auto;
+        font-size: 30px;
+        background-color: #ccc;
+        padding: 10px 20px;
+        color: red;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="请输入.." class="input" />
+    <div class="container"></div>
+
+    <script>
+      var input = document.getElementsByClassName("input")[0];
+      var container = document.getElementsByClassName("container")[0];
+      function myinput(e) {
+        var content = e.target.value;
+        if (content) {
+          var div = document.createElement("div");
+          div.classList.add("message");
+          div.innerHTML = content;
+          container.appendChild(div);
+        }
+      }
+      function debounce(fun, wait) {
+        var timerId;
+        return function (event) {
+          var e = event || window.event;
+          var context = this;
+          fun = fun.bind(context, e);
+          clearInterval(timerId);
+          timerId = window.setTimeout(fun, wait);
+        };
+      }
+      input.oninput = debounce(myinput, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-定时器实现运动-补充</title>
+    <style>
+        .box {
+            height: 150px;
+            position: relative;
+        }
+
+        #box1,
+        #box2,
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <button onclick="fn1()">开始匀速运动</button>
+        <div id="box1"></div>
+    </div>
+
+    <div class="box">
+        <button onclick="fn2()">开始加速运动</button>
+        <div id="box2"></div>
+    </div>
+
+    <div class="box">
+        <button onclick="fn3()">开始减速运动</button>
+        <div id="box3"></div>
+    </div>
+    <script>
+        // 匀速
+        function fn1() {
+            var box = document.querySelector("#box1")
+            console.log(box)
+            // 移动停止的距离
+            var endDistance = 803;
+            // 每次定义器移动的位置（速度）
+            var speed = 5;
+            // 给一个定时器变量
+            var intervalId = null;
+
+            intervalId = setInterval(function () {
+                // 记录开始的位置
+                // 变量名字（不能用关键字或者保留字进行名称）
+                var leftDis = box.offsetLeft;
+                // console.log(leftDis)
+                // 如果盒子没有到达指定的终点，还是需要接着移动
+
+                // 每次移动，都是前一次的位置 + speed，从而产生新的位置
+                // 798px + 5px = 803px
+                if (leftDis + speed >= endDistance) {
+                    // 停止定时器
+                    clearInterval(intervalId);
+                    box.style.left = endDistance + "px"
+                } else {
+                    // 否则一次次移动
+                    box.style.left = (leftDis + speed) + "px"
+                }
+            }, 30)
+        }
+
+        // 加速 —— 每次定时器执行，速度加+1
+        function fn2() {
+            var box = document.querySelector("#box2")
+            console.log(box)
+            // 移动停止的距离
+            var endDistance = 803;
+            // 每次定义器移动的位置（速度）
+            var speed = 5;
+            // 给一个定时器变量
+            var intervalId = null;
+
+            intervalId = setInterval(function () {
+                var leftDis = box.offsetLeft;
+                if (leftDis + speed >= endDistance) {
+                    clearInterval(intervalId);
+                    box.style.left = endDistance + "px"
+                } else {
+                    // 否则一次次移动
+                    box.style.left = (leftDis + speed) + "px"
+                }
+                // 每次执行速度加1
+                speed = speed + 10;
+            }, 30)
+        }
+
+
+        // 减速
+        function fn3() {
+            var box = document.querySelector("#box3")
+            console.log(box)
+            // 移动停止的距离
+            var endDistance = 803;
+            // 每次定义器移动的位置（速度）
+            var speed = 5;
+            // 给一个定时器变量
+            var intervalId = null;
+
+            intervalId = setInterval(function () {
+                var leftDis = box.offsetLeft;
+                // 因为速度不断减少的过程中，可能变为负数（反方向移动）
+                speed = (endDistance - leftDis) / 6;  // 这样速度就不能 < 0;
+                speed = speed < 1 ? Math.ceil(speed) : Math.floor(speed);
+
+                console.log(1111)
+                if (leftDis + speed >= endDistance) {
+                    clearInterval(intervalId);
+                    box.style.left = endDistance + "px"
+                } else {
+                    // 否则一次次移动
+                    box.style.left = (leftDis + speed) + "px"
+                }
+
+
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

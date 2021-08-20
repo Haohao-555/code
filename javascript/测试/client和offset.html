@@ -1,0 +1,82 @@
+<!--
+ * @Date: 2021-08-20 13:19:19
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\测试\client和offset.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>client和offset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parent {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            background-color: red;
+            border: 10px solid #000;
+            overflow: hidden;
+        }
+
+        .child {
+            width: 300px;
+            height: 300px;
+            border: 10px solid #000;
+            padding: 10px;
+            margin: 50px 90px;
+            background-color: green;
+            box-sizing: border-box;
+            /* box-sizing: content-box; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        clientHeight 和 clientWidth 是指元素的客户区（内容区域）
+            默认情况下： box-sizing: content-box;
+                clientWidth：元素内容区宽度（width） + 元素左右内边距 
+                clientHeight：元素内容区高度（height） + 元素上下内边距
+            box-sizing: border-box;
+                clientWidth：元素内容区宽度（width） - 左右边框宽度
+                clientHeight：元素内容区高度（height）  - 上下边框宽度
+        
+     -->
+    <div class="parent">
+        <div class="child child1"></div>
+    </div>
+
+    <!-- 
+         offsetHeight 和 offsetWidth 是指元素的客户区（内容区域）
+            默认情况下： box-sizing: content-box;
+                offsetWidth = 元素的宽 + 左右内边距宽度 + 左右边框宽度
+                offsetHeight = 元素的高 + 上下内边距宽度 + 上下边框宽度
+            box-sizing: border-box;
+                offsetWidth = 元素的宽 + 左右内边距宽度 - 左右边框宽度
+                offsetHeight = 元素的高 + 上下内边距宽度 - 上下边框宽度
+     -->
+   
+    <script>
+        
+        var child = document.querySelector('.child1');
+        var html = '';
+        html += 'clientHeight=' + child.clientHeight + "<br>";
+        html += 'clientWidth=' + child.clientWidth + "<br>";
+        html += "offsetWidth=" + child.offsetWidth + "<br>";
+        html += "offsetHeight=" + child.offsetHeight + "<br>";
+        child.innerHTML = html;
+
+        
+    </script>
+</body>
+
+
+</html>

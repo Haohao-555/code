@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-函数防抖-延迟执行</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background: red;
+            line-height: 400px;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+
+        var box = document.querySelector(".box")
+        var i = 1;
+
+        function getUserAction(event) {
+            console.log(event)
+            // console.log("真正执行的函数")
+            box.innerHTML = i;
+            i++;
+            // 如果按照03文件的写法，this是指向window，
+            // 期望指向对象元素 
+            console.log("返回的this==>", this)
+        }
+
+
+        // 防抖函数 :fun执行函数， wait是延迟世间
+        function debounce(fun, wait) {
+            // 定义一个延时器id
+            var timerId;
+            var aaa = function (event) {
+                var e = event || window.event;
+                var context = this
+                // 为了在在wait秒之内，只触发一次，就应该把之前的延时器清除，
+                clearInterval(timerId)
+                var args = arguments;
+
+                // 重新设置新的延时器
+                timerId = window.setTimeout(function () {
+                    fun.apply(context, args)
+                }, wait)
+            }
+            return aaa
+        }
+
+        // 把反对函数返回值给事件
+        box.onmousemove = debounce(getUserAction, 1000)
+
+
+
+    </script>
+</body>
+
+</html>

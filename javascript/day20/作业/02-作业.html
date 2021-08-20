@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 700px;
+            height: 70px;
+            background: rgb(44, 228, 197);
+            position: fixed;
+            bottom: 200px;
+            left: -600px;
+
+        }
+
+        #box #play {
+            background: orange;
+            width: 70px;
+            /* height: 70px; */
+            position: absolute;
+            right: 30px;
+            top: 0;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        #box #btn {
+            position: absolute;
+            right: 0px;
+            width: 30px;
+            /* height: 70px; */
+            line-height: 70px;
+            text-align: center;
+            background: rgb(89, 30, 226);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="btn">&lt;</div>
+        <div id="play">播放</div>
+    </div>
+    <script>
+        function getStyle(eleObj, attrName) {
+            if (eleObj.currentStyle) {
+                //如果该对象存在currentStyle属性，则使用它(IE浏览器)、
+                return eleObj.currentStyle[attrName];
+                //对象.currentStyle[属性名]
+            }
+            //其他情况使用高版本浏览器所具有的getComputedStyle()方法
+            return window.getComputedStyle(eleObj).getPropertyValue(attrName)
+        }
+
+        // 编写动画函数
+        /*  
+            (1) el ： 执行动画的元素
+            (2) targetOjb 执行动画的变化属性和属性值 {left：-670px}
+            (3) 回调函数： 当动画结束后，执行的函数
+        */
+        function animateMove(el, targetObj, callback) {
+
+            el.intervalId = setInterval(function () {
+                // console.log("触发移动")
+                // 循环属性对象
+                for (var attrName in targetObj) {
+                    // 获得属性当前的值
+                    // parseInt(600px)   ==> 600
+                    var attrValue = parseInt(getStyle(el, attrName))
+
+                    // 移动最终到达的目标值
+                    var end = targetObj[attrName];
+
+                    var speed = (end - attrValue) / 6;
+                    // console.log("end ==>", end)
+                    // console.log("attrValue ==>", attrValue)
+                    // console.log("speed==>", speed)
+
+                    speed = speed < 1 ? Math.ceil(speed) : Math.floor(speed);
+
+                    if (attrValue + speed >= end) {
+                        clearInterval(el.intervalId);
+                        el.style[attrName] = end + "px"
+
+                        // 动画结束，如果有回调则执行回调
+                        if (callback) callback()
+
+                    } else {
+                        // 否则一次次移动
+                        el.style[attrName] = (attrValue + speed) + "px"
+
+                    }
+
+                }
+            }, 300)
+        }
+
+        (function () {
+            var box = document.querySelector("#box")
+            var play = document.querySelector("#play")
+            var btn = document.querySelector("#btn")
+
+            // console.log(box, play, btn)
+
+            btn.onclick = function () {
+                // 当box距离左边为0, 就先移动距离左右为-670px的位置，然后再运行距离左边为-600的位置
+                if (box.offsetLeft == 0) {
+                    animateMove(box, { left: -670 }, function () {
+                        play.style.display = "block";
+                        animateMove(box, { left: -600 })
+                    })
+                } else {
+                    animateMove(box, { left: -670 }, function () {
+                        play.style.display = "none"
+                        animateMove(box, { left: 0 })
+                    })
+                }
+
+
+            }
+        })()
+    </script>
+</body>
+
+</html>

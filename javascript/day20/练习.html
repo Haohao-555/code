@@ -1,0 +1,115 @@
+<!--
+ * @Date: 2021-08-20 08:59:16
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day20\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 700px;
+        height: 70px;
+        background-color: rgb(44, 228, 197);
+        position: fixed;
+        bottom: 200px;
+        /* 先将播放器向左移动 600px */
+        left: -600px;
+      }
+      #box #play {
+        background-color: orange;
+        width: 70px;
+        position: absolute;
+        line-height: 70px;
+        right: 30px;
+        text-align: center;
+        top: 0;
+      }
+      #box #btn {
+        position: absolute;
+        right: 0px;
+        width: 30px;
+        line-height: 70px;
+        text-align: center;
+        background: rgb(89, 30, 226);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="btn">&lt</div>
+      <div id="play">播放</div>
+    </div>
+    <script>
+      function getStyle(eleObject, attrName) {
+        //elebject元素对象  attrName css属性名称 获取的属性有单位.
+        if (eleObject.currentStyle) {
+          //如果有 currentStyle 属性 证明是 IE 浏览器
+          return eleObject.currentStyle[attrName];
+        }
+        //在谷歌 火狐 safari里面获取当前生效的 css 值.
+        return window.getComputedStyle(eleObject).getPropertyValue(attrName);
+      }
+
+      /*
+        el 执行动画的元素对象
+        targetObj 执行动画的是 变化的属性 和 属性的值
+        callback 回调函数
+      */
+      function animateMove(el, targetObj, callback) {
+        el.inTervalID = setInterval(function () {
+          //   循环属性对象
+          for (var attrName in targetObj) {
+            //   获得属性当前的值
+            var attrValue = parseInt(getStyle(el, attrName));
+
+            //   移动最终到达的目标值
+            var end = targetObj[attrName];
+
+            var speed = (end - attrValue) / 6;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+            if (attrValue + speed >= end) {
+              clearInterval(el.inTervalID);
+              el.style[attrName] = end + "px";
+
+              // 动画结束，如果有回调函数就执行回调
+              if (callback) callback();
+            } else {
+              el.style[attrName] = attrValue + speed + "px";
+            }
+          }
+        }, 200);
+      }
+
+      (function () {
+        var btn = document.querySelector("#btn");
+        var box = document.querySelector("#box");
+        var play = document.querySelector("#play");
+
+        btn.onclick = function () {
+          /*
+           当box距离左边为0的时候 就先移动距离左边-670的位置 
+           然后在运行到距左边-600的位置
+          */
+          if (box.offsetLeft == 0) {
+            animateMove(box, { left: -670 }, function () {
+              play.style.display = "block";
+              animateMove(box, { left: -600 });
+            });
+          } else {
+            animateMove(box, { left: -670 }, function () {
+              play.style.display = "none";
+              animateMove(box, { left: 0 });
+            });
+          }
+        };
+      })();
+    </script>
+  </body>
+</html>
