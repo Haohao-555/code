@@ -41,7 +41,7 @@
         function debounce(fun, wait) {
             // 定义一个延时器id
             var timerId;
-            var aaa = function (event) {
+            var aaa = function () {
                 var e = event || window.event;
                 var context = this
                 // 为了在在wait秒之内，只触发一次，就应该把之前的延时器清除，

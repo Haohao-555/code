@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-bom其他方法和对象</title>
+    <style>
+        div {
+            background: orange;
+            margin-top: 40px;
+            width: 200%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 55px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="box1">打开新窗口</button>
+    <button class="box2">打开cctv</button>
+    <button id="scroll">滚动到指定位置</button>
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <script>
+        // 打开淘宝
+        document.querySelector(".box1").onclick = function () {
+            // console.log(111)
+            // window.open() : 从新窗口中打开一个新的页面（地址， 标题， "选项 改变位置 大小 滚动"）
+            window.open("https://baidu.com");
+            window.open("https://baidu.com", "baiduPage", "resize, scrollbars");
+        }
+
+        // 打开cctv
+        document.querySelector(".box2").onclick = function () {
+            // window.open() : 从新窗口中打开一个新的页面（地址， 标题， "选项 改变位置 大小 滚动"）
+            // window.open(
+            //     "http://www.cctv.com/",
+            //     "CCTV_WindowName",
+            //     "resize=0, scrollbars=no, width=400,height=600"
+            // );
+
+            window.open(
+                "https://www.domainname.ext/path/ImageFile.png",
+                "DescriptiveWindowName",
+                "resizable,scrollbars,status"
+            )
+        }
+
+
+        /*
+            `Window.scroll()`：滚动窗口到文档中的特定位置。
+            Window.scrollBy()：按给定的数量在窗口中滚动文档。
+            Window.scrollTo()：滚动到文档中的特定坐标集。
+
+            // 支持平滑滚动 smooth: 瞬间滚动：instant(默认)
+            // 拓展：区别？针对标签滚动是否也有该特性
+        */
+        document.querySelector("#scroll").onclick = function () {
+            // console.log(222)
+            window.scrollTo({ top: 500, left: 200, behavior: "smooth" })
+            // window.scroll({ top: 1000, left: 200, behavior: "smooth" })
+            // window.scrollBy({ top: 1200, left: 300, behavior: "smooth" })
+        }
+    </script>
+</body>
+
+</html>

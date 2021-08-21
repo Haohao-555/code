@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>06-函数防抖-返回值及立即执行</title>
+    <title>08-函数取消防抖</title>
     <style>
         .box {
             width: 400px;
@@ -16,11 +16,16 @@
             color: white;
             text-align: center;
         }
+
+        button {
+            font-size: 35px;
+        }
     </style>
 </head>
 
 <body>
     <div class="box"></div>
+    <button>取消防抖</button>
     <script>
         /*
             事件被频繁触发，事件业务逻辑函数不立即执行，其他事件完成之后才执行一次
@@ -35,7 +40,7 @@
             // console.log("真正执行的函数")
             box.innerHTML = i;
             i++;
-            return "getUserAction返回值"
+            // return "getUserAction返回值"
             // 如果按照03文件的写法，this是指向window，
             // 期望指向对象元素 
             // console.log("返回的this==>", this)
@@ -83,15 +88,27 @@
                     }, wait)
                 }
 
-                return result
+                // return result
 
+
+            }
+            // 取消防抖，取消的是先执行函数延迟
+            aaa.cancel = function () {
+                clearTimeout(timerId)
+                timerId = null
             }
             return aaa
         }
 
         // 把反对函数返回值给事件
-        box.onmousemove = debounce(getUserAction, 1000, true)
-        // box.onmousemove = debounce(getUserAction, 1000, false)
+        var d = debounce(getUserAction, 1000, true)
+
+        box.onmousemove = d;
+
+        document.getElementsByTagName("button")[0].onclick = function () {
+            console.log("取消防抖")
+            d.cancel()
+        }
 
 
 

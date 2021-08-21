@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/meituan.css" />
+  </head>
+  <body>
+    <ul class="nav">
+      <li data-index="0" style="color: #ffc600">综合</li>
+      <li data-index="1">升序</li>
+      <li data-index="2">降序</li>
+    </ul>
+    <ul class="container"></ul>
+  </body>
+  <script src="./js/data.js"></script>
+  <script>
+    var container = document.querySelector(".container");
+    var nav = document.querySelector(".nav");
+    var cur_index = 0;
+    window.onload = function () {
+      rendData("comScore", true);
+      nav.addEventListener("click", function (e) {
+        var e = e || window.event;
+        var index = e.target.dataset.index;
+        if (index) {
+          switch (index) {
+            case "0":
+              rendData("comScore", true);
+              break;
+            case "1":
+              rendData("score", false);
+              break;
+            case "2":
+              rendData("score", true);
+              break;
+          }
+          // 去除激活样式
+          nav.children[cur_index].style.color = "#000";
+          // 激活样式
+          nav.children[index].style.color = "#ffc600";
+          // 当前 nav
+          cur_index = index;
+        }
+      });
+    };
+
+    // 数据处理
+    function dataSort(targetArr, atrr, order) {
+      if (order) {
+        targetArr.sort((a, b) => {
+          return b[atrr] - a[atrr];
+        });
+      } else {
+        targetArr.sort((a, b) => {
+          return a[atrr] - b[atrr];
+        });
+      }
+    }
+
+    var prefixIntrger = function (n) {
+      n = n + "";
+      n = (0 + n).substr(n.length - 1);
+      return n;
+    };
+
+    //时间格式化
+    function repeatDate(time) {
+      var date = new Date(time);
+
+      // 获得年月日，时分秒
+      var y = date.getFullYear();
+      var M = date.getMonth() + 1;
+      var d = date.getDate();
+
+      var h = date.getHours();
+      var m = date.getMinutes();
+
+      // 年月日 时分 都需要补零处理
+      M = prefixIntrger(M);
+      d = prefixIntrger(d);
+      h = prefixIntrger(h);
+      m = prefixIntrger(m);
+
+      return y + "-" + M + "-" + d + " " + h + ":" + m;
+    }
+
+    // 手机号码替换
+    function repeatPhone(phone) {
+      return phone.split("").fill("*", 3, 7).join("");
+    }
+
+    function rendData(atrr, order) {
+      // 清空内容
+      container.innerHTML = "";
+
+      // 数据处理
+      dataSort(original_data, atrr, order);
+
+      // 数据渲染
+      original_data.forEach((_) => {
+        var flag = _.score < 3;
+        var li = document.createElement("li");
+        var img = document.createElement("img");
+        var username = document.createElement("span");
+        var score_container = document.createElement("div");
+        var score_icon = document.createElement("span");
+        var score = document.createElement("span");
+        var content = document.createElement("div");
+        var date = document.createElement("div");
+
+        li.className = "item";
+
+        img.className = "pic";
+        img.setAttribute("src", _.pic);
+
+        username.className = "username";
+        username.innerHTML = _.username + "+" + repeatPhone(_.tel);
+
+        score_container.className = "score_container";
+        score_icon.className = "score_icon";
+        score_icon.innerHTML = "评分";
+        score.className = flag ? "bad" : "score";
+        score.innerHTML = _.score;
+
+        content.className = "content " + (flag ? "bad" : "score");
+        content.innerHTML = _.comment;
+
+        date.className = "date";
+        date.innerHTML = repeatDate(_.date);
+
+        li.appendChild(img);
+        li.appendChild(username);
+
+        li.appendChild(score_container);
+        score_container.appendChild(score_icon);
+        score_container.appendChild(score);
+
+        li.appendChild(content);
+
+        li.appendChild(date);
+
+        container.appendChild(li);
+      });
+    }
+  </script>
+</html>

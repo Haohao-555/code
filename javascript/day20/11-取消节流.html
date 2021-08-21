@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-节流延迟执行</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background: red;
+            line-height: 400px;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button>取消节流</button>
+    <script>
+        // 防抖:频繁的触发事件完毕后的 n 秒内不再触发同一事件，函数才会执行。
+        // 节流：如果用户持续触发事件，每隔一段时间，只执行一次事件。
+
+        // 节流延迟执行，可以使用延时器
+        var box = document.querySelector(".box")
+        var i = 1;
+
+        // 节流真正触发的函数 
+        function increment(e) {
+
+            // box.innerHTML = i
+            // this.innerHTML = i
+            e.target.innerHTML = i
+
+            i++
+            console.log(this)
+            console.log("鼠标移动过程中事件对象e==>", e)
+        }
+
+        function throttle(fn, wait) {
+            // fn 是真正执行的事件业务函数，wait是执行事件间隔
+            // 记录延时器Id
+            var timerId;
+            // 记录参数
+            var args;
+            // 记录上下文， this
+            var context
+
+            var aaa = function () {
+                context = this
+                args = arguments
+
+                if (!timerId) {
+                    timerId = setTimeout(function () {
+                        // 当这个延时器被执行之后，设置timerId为null,才可以开启下一个延时器
+                        timerId = null
+                        fn.apply(context, args)
+                    }, wait)
+                }
+
+            }
+            // 取消节流写成一个方法
+            aaa.cancel = function () {
+                timerId = null;  // 取消后执行
+                clearTimeout(timerId)
+            }
+            return aaa;
+        }
+
+        var bbb = throttle(increment, 1000);
+        box.onmousemove = bbb;
+
+        // 取消节流
+        document.getElementsByTagName("button")[0].onclick = function() {
+            aaa.cancel()
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background: red;
+            line-height: 400px;
+            font-size: 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // 防抖:频繁的触发事件完毕后的 n 秒内不再触发同一事件，函数才会执行。
+        // 节流：如果用户持续触发事件，每隔一段时间，只执行一次事件。
+        var box = document.querySelector(".box")
+        var i = 1;
+
+        // 节流真正触发的函数 
+        function increment(e) {
+
+            // box.innerHTML = i
+            // this.innerHTML = i
+            e.target.innerHTML = i
+
+            i++
+            console.log(this)
+            console.log("鼠标移动过程中事件对象e==>", e)
+        }
+
+        function throttle(fn, wait) {
+            // fn 是真正执行的事件业务函数，wait是执行事件间隔
+            // 储存上一次执行的时间戳, 第一次赋值为0，意味着第一次肯定能执行
+            var previous = 0;
+
+            // return function (event) {
+            // 兼容处理
+            // var e = event || window.event
+
+            return function () {
+                // 获得当前的时间戳（毫秒）
+                var timeNow = new Date().getTime();
+                // console.log(timeNow)
+                if (timeNow >= previous + wait) {
+                    // 如果上次存储的事件戳 ;
+                    // fn();
+                    // 要改变执行函数的内部this指向问题：
+                    // fn.call(this, e)
+                    var args = arguments
+                    fn.apply(this, args)
+                    // 重新储存这一刻的时间戳
+                    previous = timeNow
+                }
+            }
+        }
+
+        
+        box.onmousemove = throttle(increment, 2000)
+
+    </script>
+</body>
+
+</html>

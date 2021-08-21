@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            display: block;
+            width: 600px;
+            height: 50px;
+            padding: 0 20px;
+            font-size: 20px;
+            margin: 100px auto;
+        }
+
+        .message {
+            width: 600px;
+            margin: 0px auto;
+            font-size: 30px;
+            background-color: #ccc;
+            padding: 10px 20px;
+            color: red;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- -->
+    <input type="text" placeholder="请输入...">
+
+    <script>
+        function debounce(fn, wait) {
+            var timeout;
+            return function (event) {
+                var context = this;
+                var args = arguments;
+                fn = fn.bind(context, args)
+
+                // 因为延时器在oninput的特性，多次触发，通过延时器只是延迟了他触发的时间，终归还是会触发
+                // 所以要重新触发逻辑处理函数时，必须清除以前延时器，不让他触发。
+                clearTimeout(timeout)
+                timeout = setTimeout(fn, wait);
+            }
+        }
+
+        // 1.0 获得相关标签 
+        var input = document.querySelector("input")
+
+        // 2.0 使用防抖进行处理
+        input.oninput = debounce(function (evt) {
+            // console.log(input.value);
+            // 把input获得的数据显示在页面中
+            var value = input.value
+            // 创建元素
+            var div = document.createElement("div")
+            div.className = "message";
+            div.innerText = value;
+            document.body.appendChild(div)
+
+        }, 500)
+    </script>
+</body>
+
+</html>
