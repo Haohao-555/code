@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1-美团</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* 总体布局 */
+        body {
+            background: rgb(240, 240, 240);
+        }
+
+        .rating-list {
+            padding: 0 10px;
+            background: white;
+        }
+
+        .rating-item {
+            display: flex;
+            position: relative;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .rating-item:last-child {
+            border: 0
+        }
+
+        .rating-item img {
+            flex: 0 0 50px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .rating-item .content {
+            flex: 1;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        /* 右边内容部分 */
+        .content {
+            color: #333;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .content .username {
+            font-size: 15px;
+            font-weight: 550;
+        }
+
+        .content .time {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .content p {
+            padding: 6px 0;
+        }
+
+        /* .content .score{} */
+        .comment {
+            /* margin: 10px; */
+            padding: 10px;
+            background: white;
+            display: flex;
+        }
+
+        .all,
+        .good,
+        .bad {
+            width: 80px;
+            height: 45px;
+            background: rgba(77, 85, 93, 0.2);
+            text-align: center;
+            line-height: 45px;
+            margin-right: 10px;
+        }
+
+        .all.active {
+            color: white;
+            background: rgb(0, 160, 220);
+        }
+
+        .comment .good.active,
+        .comment .bad.active {
+            background: rgb(204, 236, 248);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="comment">
+        <!-- 全部 -->
+        <div class="all" data-i="0">综合</div>
+        <!-- 好评  -->
+        <div class="good" data-i="1">好评</div>
+        <!-- 差评  -->
+        <div class="bad" data-i="2">差评</div>
+    </div>
+    <ul class="rating-list">
+        <!-- <li class="rating-item">
+            <img src="" alt="">
+            <div class="content">
+                <div class="time">2021-08-16 10:09:56</div>
+                <div class="username">用户名15******862</div>
+                <p>用户评论内容</p>
+                <span class="score">2.8分</span>
+            </div>
+        </li> -->
+    </ul>
+    <script src="./data.js"></script>
+    <script>
+        // console.log(comments)
+
+        // 把创建一个评论模块标签封装成一个函数
+        function render(data) {
+            // 先创建li标签
+            var li = document.createElement("li")
+            li.className = 'rating-item';
+
+            // 创建图片标签
+            var img = document.createElement("img")
+            img.src = data.pic
+
+            // 让img标签成为li标签的子元素
+            li.appendChild(img)
+
+            // 创建类名为content的标签
+            var content = document.createElement("div")
+            content.className = 'content';
+
+
+            // 手机只显示前面3位和后面3位
+            var long = data.tel.length;
+            var phone = data.tel.substr(0, 3) + "*".repeat(long - 6) + data.tel.substr(long - 3, long - 1)
+            // console.log(phone)
+
+
+            // 时间戳处理
+            // var time = new Date(data.date).toLocaleString()
+
+            // console.log(time)
+
+            // 换个创建形式
+            var str = ""
+            str += "<div class='time'>" + getTime(data.date) + "</div>"
+            str += "<div class='username'>" + data.username + " " + phone + "</div>"
+            str += "<p>" + data.comment + "</p>"
+            str += "<span class='score'>" + data.score + "分</span>"
+            // console.log(str)
+            // 把子元素内容插入回去
+            content.innerHTML = str;
+
+            // 把类名为content的标签添加进li标签
+            li.appendChild(content)
+
+
+            // 把创建好的li标签返回出去
+            return li;
+        }
+
+        // 把时间戳的解析为时间封装成函数
+        function getTime(time) {
+            var date = new Date(time);
+
+            // 获得年月日，时分秒
+            var y = date.getFullYear()
+            var M = date.getMonth() + 1;
+            var d = date.getDate();
+
+            var h = date.getHours();
+            var m = date.getMinutes()
+
+            // 年月日 时分 都需要补零处理
+            M = prefixIntrger(M)
+            d = prefixIntrger(d)
+            h = prefixIntrger(h)
+            m = prefixIntrger(m)
+
+            return y + "-" + M + "-" + d + " " + h + ":" + m
+        }
+
+        // 时间补零因为是多次调用，所以封装成函数
+        var prefixIntrger = function (n) {
+            n = n + ""
+            // 010
+            n = (0 + n).substr(n.length - 1)
+            // console.log(n)
+
+            return n
+        }
+
+
+        function colorChange() {
+            // 评分由高到低
+            comments.sort(function (a, b) {
+                // console.log("a==>", a)
+                // console.log("b==>", b)
+                return b.score - a.score
+            })
+            // console.log(comments)
+
+
+            // 先出创建好标签，然后添加进页面中
+            var score = document.querySelectorAll(".score")
+            // 通过循环，处理这个四个分数标签所有的逻辑
+            score.forEach(function (item, index) {
+                // 获得分数 ==> 类名为score之间的内容
+                var scoreValue = item.innerHTML;
+                // 获得该遍历出来的元素的上一条元素节点
+                var prevTag = item.previousElementSibling;
+                // 根据分数判断颜色显示和“好评”或者“差评”的内容和颜色添加
+                console.log(scoreValue)
+                if (scoreValue.substr(0, 2) < 3) {
+                    item.style.color = "#ccc";
+                    // 添加差评
+                    prevTag.innerHTML = "差评：" + prevTag.innerHTML;
+                    // 给评论添加颜色
+                    prevTag.style.color = "#ccc"
+                    item
+                } else {
+                    item.style.color = "#fc0";
+                    // 添加好评
+                    prevTag.innerHTML = "好评：" + prevTag.innerHTML;
+                    // 给评论添加颜色
+                    prevTag.style.color = "#ff9900"
+                }
+
+            })
+        }
+
+
+        var ul = document.querySelector(".rating-list")
+        console.log(ul)
+        comments.forEach(function (item, index) {
+            // 把li标签添加到ul中
+            ul.appendChild(render(item))
+        })
+
+
+
+
+        // 信息过滤
+        var comment = document.querySelector(".comment")
+        // console.log(comment)
+        comment.onclick = function (event) {
+            var e = event || window.event;
+            // console.log(e)
+            var target = e.target
+
+            // 通过类名判断是否点击为父元素，而非子元素
+            if (target.className != "comment") {
+                // 对数据进行处理，再显示(确定是好评、差评亦或者是综合)
+                var data = [];
+                if (target.innerText == "好评") {
+                    data = comments.filter(function (item, index, arr) {
+                        return item.score >= 3
+                    })
+                } else if (target.innerText == "差评") {
+                    data = comments.filter(function (item, index, arr) {
+                        return item.score < 3
+                    })
+                } else {
+                    data = comments
+                }
+
+
+                // console.log(data)
+                // 通过循环把所有数据，显示在页面中
+                // 清除以前的标签和内容
+                ul.innerHTML = ""
+                data.forEach(function (item, index) {
+                    ul.appendChild(render(item))
+                })
+
+                // 加上高亮(先移除所有的高亮)
+                console.log(comment.children)
+                for (var i = 0; i < comment.children.length; i++) {
+                    comment.children[i].classList.remove("active")
+                }
+                comment.children[target.dataset.i].classList.add("active")
+            }
+
+            // 分数排列和评分高亮
+            colorChange()
+
+        }
+
+        colorChange()
+
+
+        // 此方法有点不太好，建议：如果检测到是好评则隐藏所有差评，反之一样
+
+    </script>
+</body>
+
+</html>
