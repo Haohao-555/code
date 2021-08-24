@@ -115,12 +115,12 @@
         <div class="right">&gt;</div>
 
         <ul class="banner">
-            <li><span>1</span><img src="./images/1.jpg" alt="无图"></li>
-            <li><span>2</span><img src="./images/2.jpg" alt="无图"></li>
-            <li><span>3</span><img src="./images/3.jpg" alt="无图"></li>
-            <li><span>4</span><img src="./images/4.jpg" alt="无图"></li>
-            <li><span>5</span><img src="./images/5.jpg" alt="无图"></li>
-            <li><span>1</span><img src="./images/1.jpg" alt="无图"></li>
+            <li><span>1</span><img src="./images/s1.jpg" alt="无图"></li>
+            <li><span>2</span><img src="./images/s2.jpg" alt="无图"></li>
+            <li><span>3</span><img src="./images/s3.jpg" alt="无图"></li>
+            <li><span>4</span><img src="./images/s4.jpg" alt="无图"></li>
+            <li><span>5</span><img src="./images/s5.jpg" alt="无图"></li>
+            <li><span>1</span><img src="./images/s1.jpg" alt="无图"></li>
         </ul>
 
         <!-- 小圆点 -->
@@ -228,14 +228,6 @@
         if (index >= lis.length) {
             index = 0
         }
-
-        /*
-            第1次: 980px
-            第2次: 2 * 980px
-            第3次: 3 * 980px
-        */
-        // 移动距离计算
-
         light(index)
     }
 
@@ -277,12 +269,6 @@
         // 要使用定时器，先移除以前的定时器
         clearInterval(timerId)
 
-        // index--
-        // // 下一张不能为负数
-        // if (index < 0) {
-        //     index = lis.length - 1
-        // }
-
         // 写成一句话
         index = index <= 0 ? lis.length - 1 : --index
         console.log("index索引值==>", index)
@@ -294,7 +280,6 @@
         // 要使用定时器，先移除以前的定时器
         clearInterval(timerId)
 
-        // 写成一句话
         index = index >= lis.length - 1 ? 0 : ++index
         console.log("index索引值==>", index)
 
