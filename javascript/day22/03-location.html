@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-location</title>
+</head>
+
+<body>
+    <button onclick="location.href='https://baidu.com'">改变地址</button>
+    <button onclick="changeAddress()">改变当前地址</button>
+    <button onclick="jumpReplace()">交换跳转</button>
+    <script>
+        function changeAddress() {
+            // location.href = "https://mi.com"
+            location.assign("https://apple.com")
+        }
+
+        function jumpReplace() {
+            // 替换跳转，把历史记录里的当前页面替换为指定的URL，没有后退
+            location.replace("https://www.cctv.com")
+        }
+
+        console.log("当前网页的网址href==>", location.href)   // 完整的的地址
+        console.log("当前路径的pathname==>", location.pathname)   // 当前路径
+        console.log("服务器地址==>", location.host)   // 服务器地址
+        console.log("端口号==>", location.port)   // 端口号
+        console.log("地址hash值==>", location.hash)   // 锚标记
+
+        // 说明：file:///C:/Users/%E7%B2%A4%E5%B5%8C/Desktop/GZ2144/javascript/day22/03-location.html
+        // 路径地址在浏览器中打印如上，但是不是乱码， 是一种url地址编码 URLCode
+
+        var str = "file:///C:/Users/%E7%B2%A4%E5%B5%8C/Desktop/GZ2144/javascript/day22/03-location.html";
+        var deStr = decodeURI(str)
+        console.log("deStr解码==>", deStr)
+
+
+        var enStr = "adsfasd小钊找/小贱/贱 ==> true";
+        var enURL = encodeURI(enStr);
+        console.log("enStr编码之后==>", enURL)
+
+
+    </script>
+
+</body>
+
+</html>

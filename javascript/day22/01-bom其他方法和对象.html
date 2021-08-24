@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-bom其他方法和对象</title>
+    <style>
+        div {
+            background: red;
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="moveTo">移动到指定位置</button>
+    <button class="moveBy">移动到指定moveBy 参考当前位置，指定像素</button>
+    <button class="resizeTo">改变窗口大小</button>
+    <button class="resizeBy">改变窗口大小</button>
+
+
+
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+
+    <!-- 行内框架： 在网页中嵌入另外一个网页 -->
+    <iframe src="./aaa.html" frameborder="1" width="100%"></iframe>
+    <iframe src="./bbb.html" frameborder="1"></iframe>
+
+    <script>
+        /*
+            moveTo(x,y)//把当前窗口移动到屏幕的x,y坐标
+            moveBy(x,y)//把当前窗口从当前状态偏移多少个像素,支持负数
+            resizeTo(w,h)//改变窗口大小为制定高度
+            resizeBy(w,h)//放大缩小窗口,支持负数
+        */
+
+        document.querySelector(".moveTo").onclick = function () {
+            window.moveTo(100, 200)   // IE有效果
+        }
+        document.querySelector(".moveBy").onclick = function () {
+            window.moveTo(300, 500)   // IE有效果
+        }
+        document.querySelector(".resizeTo").onclick = function () {
+            // 设置窗口大小： 300 * 500
+            window.resizeTo(300, 500)   // IE有效果
+        }
+        document.querySelector(".resizeBy").onclick = function () {
+            // 设置窗口参考当前大小增加宽和高
+            window.resizeBy(100, 200)   // IE有效果
+        }
+
+
+        window.onload = function () {
+            var frames = window.frames;
+            for (var i = 0; i < frames.length; i++) {
+                // 在这对frames的一个frame做点什么
+                frames[i].document.body.style.background = "skyblue";
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

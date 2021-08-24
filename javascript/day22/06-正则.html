@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-正则</title>
+</head>
+
+<body>
+    <script>
+        /*
+            正则对象也是js的内置对象（Math, Date, String, Array）
+        */
+        // 了解正则（包括用途- 在哪些场景使用了）
+        // 怎么使用
+
+
+        // 1.0 构造函数定义
+        // var reg1 = new RegExp()
+        // console.log(typeof reg1)
+        // console.log(reg1)
+
+        // 1.1 使用语法  var reg = RegExp(pattern[, flags])
+        // 创建正则对象， 参数“hi” 匹配规格
+        var reg2 = new RegExp("hi")
+        // console.log("reg2==>", reg2)
+
+        // 创建正则对象, 第一个参数叫字符规格， 
+        // 第二个参数就是修饰符， g-全局匹配， i忽略大小写; m 表示多行匹配
+        var reg3 = new RegExp("\w\s\S", "gim")
+        // console.log("reg2==>", reg2)
+
+
+
+        // 2.0 字面量定义（推荐）—— 创建正则对象
+        var reg4 = /world/ // world 匹配规格
+        var reg5 = /world/igm    // world 匹配规格 ，igm是修饰符 字面量创建正则对象
+
+        console.log("修饰符信息==>s是否开启忽略大小写修饰符", reg4.ignoreCase)
+        console.log("修饰符信息==>s是否开启全局匹配修饰符", reg5.global)
+
+
+        // 实例方法:`RegExp.prototype.test()`：
+        // 正则实例对象的test方法返回一个布尔值，表示当前模式是否能匹配参数字符串。
+
+        // `RegExp.prototype.lastIndex`：返回一个数值，表示下一次开始搜索的位置。
+        //  但是只在表达式带有g修饰符并进行连续搜索时有意义。
+
+
+        // 匹配ab字符串， 不加g代表只匹配一次， /g 修饰符， 表示全局匹配
+        var reg6 = /ab/g;
+        var str6 = "你好,名字为ab的同志，还有叫ab的吗？"
+        console.log("第1次匹配开始位置==>", reg6.lastIndex)   // 0
+        console.log(reg6.test(str6))                  // true
+        console.log("第2次匹配开始位置==>", reg6.lastIndex)   // 8
+        console.log(reg6.test(str6))
+        console.log("第3次匹配开始位置==>", reg6.lastIndex)
+
+
+        // 再次测试
+        var reg7 = /apple/g;
+        var str7 = "l like apple, but nobody can give an apple, the apple l say is a mobile phone!"
+        console.log("第1次匹配appled的索引值位置==>", reg7.lastIndex)
+        console.log("第1次进行匹配后==>", reg7.test(str7))
+        console.log("第2次匹配appled的索引值位置==>", reg7.lastIndex)
+        console.log("第2次进行匹配后==>", reg7.test(str7))
+        console.log("第3次匹配appled的索引值位置==>", reg7.lastIndex)
+
+
+        // 直接匹配
+        console.log(/orange/g.test("orange is a color, not just a fruit, but I like both"))
+
+
+        // `RegExp.prototype.exec()`：正则实例对象的exec方法，用来返回匹配结果。如果发现匹配，就返回一个数组，
+        // 成员是匹配成功的子字符串，否则返回null。
+
+        /*
+            exec方法的返回数组还包含以下两个属性：
+            - input：整个原字符串。
+            - index：整个模式匹配成功的开始位置（从0开始计数）。
+        */ 
+        var reg8 = /banana/g;
+        var str8 = "Many girl like banana, because girls like fruit. and banana is good_eating";
+        console.log("第1次匹配banana==>", reg8.exec(str8))
+        console.log("第2次匹配banana==>", reg8.exec(str8))
+
+    </script>
+</body>
+
+</html>

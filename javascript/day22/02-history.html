@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-history</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <a href="./aaa.html">本地文件aaa- 本页面打开</a>
+    <br>
+    <a href="./bbb.html">本地文件bbb- 本页面打开</a>
+    <br>
+    <a href="./bbb.html" target="_blank">本地文件bbb- 新页面打开</a>
+
+    <br>
+    <button>前进</button>
+    <button>后退</button>
+    <button>跳转至指定位置</button>
+</body>
+<script>
+
+    // window.history  ==> window是顶级对象，可以省略
+    // history可以用来操作历史记录
+    
+    // 查看历史记录
+    console.log("历史记录==>", history.length)
+
+    var btns = document.querySelectorAll("button")
+    // 前进
+    btns[0].onclick = function () {
+        history.forward()
+    }
+    // 后退
+    btns[1].onclick = function () {
+        history.back()
+    }
+
+    // 跳转至指定位置
+    btns[2].onclick = function () {
+        // history.go(数字) =》 如果未负数，代表后退；如果为正数，代表前进，
+        // 如果没有前后页面都没有，则无效果
+        history.go(1)
+    }
+</script>
+
+</html>

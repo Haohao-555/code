@@ -19,6 +19,14 @@
 
       var reg2 = new RegExp("hi");
       console.log("reg2 ==>", reg2); // /hi/
+
+      var reg3 = /ab/igm // 是一个对象 不是字符串
+      console.log(typeof reg3)
+      
+      // var reg3 = /ab/igm 等价于
+      var reg3 = new RegExp("ab", "igm")
+     
+   
     </script>
   </body>
 </html>

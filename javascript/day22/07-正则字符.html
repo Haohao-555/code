@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-正则字符</title>
+</head>
+
+<body>
+    <script>
+        // 创建一个正则对象,；hello 就是匹配规则， 这种写法，字面量字符
+        var reg = /hello/;
+
+        // 正则规则还有元字符，有些特殊有意义的符号就是元字符
+        // 1、元字符：. ^ $ | \ 
+
+        // (1) 点字符`.`：匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符
+        var reg1 = /a.b/g;
+        var str1 = "你好ab，a b到底有多大？ a.b是否可以找到匹配？a*b a/b"
+        console.log("a.b匹配1==>", reg1.exec(str1))   // a b
+        console.log("a.b匹配2==>", reg1.exec(str1))   // a.b
+        console.log("a.b匹配3==>", reg1.exec(str1))   // a*b
+        console.log("a.b匹配4==>", reg1.exec(str1))   // a/b
+        console.log("a.b匹配5==>", reg1.exec("a\nb"))   // null 不能匹配\n换行
+
+
+        console.log("-----------")
+        /*
+            (2) 位置字符：用来提示字符所处的位置，主要有两个字符。
+            - `^` 表示字符串的开始位置
+            - `$` 表示字符串的结束位置
+        */
+        // 以aaa开头的字符串
+        var reg2 = /^aaa/
+        var str2 = "aaa,我很开心，你是个好人，吱吱吱"
+        // var str2 = "taaa,我很开心，你是个好人，吱吱吱"
+        console.log("^aaa ==>", reg2.exec(str2))   // aaa
+
+        // `$` 表示字符串的结束位置
+        var reg3 = /bbbb$/;
+        var str3 = "aaa你真好，可惜你不够坏， 我喜欢的是bbbba"
+        var str3 = "aaa你真好，可惜你不够坏， 我喜欢的是bbbb"
+        console.log("bbbb$ ==>", reg3.exec(str3))   // aaa
+
+        // 前面三者的集合 - QQ邮箱：开头必须是9， 结尾为com 92056@qq.com（一共5个数字）
+        var reg4 = /^9....@qq.com$/
+        // var reg4 = /^9....@qq\.com$/
+        // 能找到
+        console.log(".-^-$三者集合==>", reg4.exec("9abvc@qq.com"))
+        // ....代替的数量不一致， null
+        console.log(".-^-$三者集合==>", reg4.exec("920578@qq.com"))
+        // 不是以@qq.com结尾  null
+        console.log(".-^-$三者集合==>", reg4.exec("920578@qq.com7"))
+        // null
+        console.log(".-^-$三者集合==>", reg4.exec("92078@qq8com"))
+
+        console.log("-----------")
+
+
+
+        // （3）选择符 `|`：在正则表达式中表示“或关系”（OR），即`cat|dog`表示匹配`cat或dog`。
+        var reg5 = /dog|cat|c.t/;
+        var str5 = "The dog is animal, but dog is human's friend!"
+        console.log("| 匹配==>", reg5.exec(str5))           // dog
+        console.log("| 匹配==>", reg5.exec("maio, cat"))    // cat
+        console.log("| 匹配==>", reg5.exec("maio, c t"))   // c t
+        console.log("| 匹配==>", reg5.exec("maio, c  t"))   // null 多个空格（空格也是个字符）
+
+        /*
+            (4) 转义符：`\`正则表达式中那些有特殊含义的元字符，如果要匹配它们本身，
+                就需要在它们前面要加上反斜杠。比如要匹配`+`，就要写成`\+`。
+                (把正则中有意义的符号转成无意义符号)
+        */
+        //    var reg6 = /10元$/
+        var reg6 = /10元\$/
+        var str6 = "还欠10元$";
+        console.log("转义符匹配==>", reg6.exec(str6))   // 10元$
+        console.log("转义符匹配==>", /10\.5元/.exec("付款10.5元"))   // 10元$
+
+        /*
+            **注意**：
+            - 正则表达式中，需要反斜杠转义的，一共有12个字符：
+                `^`、`.`、`[`、`$`、`(`、`)`、`|`、`*`、`+`、`?`、`{`和`\\`。
+            - 需要特别注意的是，如果使用RegExp方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。
+        */
+        //  (5) 注意测试（+ 是有意义）
+        // var reg7 = new RegExp("1+1");  // null
+        // var reg7 = new RegExp("1\+1");    // null
+        var reg7 = new RegExp("1\\+1");    // null
+        console.log("注意事项测试==>", reg7.exec("请计算1+1等于？"))
+
+
+
+        // 补充match
+        // 字符串的math方法， str.match(reg) 返回匹配到的结果(结果形成数组)
+        var reg8 = /hello/g
+        var str8 = "匹配hello的hello字符"
+        console.log("match方法==>", str8.match(reg8))
+    </script>
+</body>
+
+</html>
