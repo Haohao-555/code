@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-正则重复类</title>
+</head>
+
+<body>
+    <!-- 失去焦点显示正确还是错误 -->
+    <div class="msg">
+        输入手机号 <input type="text" placeholder="11位手机"><span></span>
+    </div>
+
+    <script>
+        // (1) 重复类： 模式的精确匹配次数，使用大括号{}表示。{n}表示恰好重复n次，
+        //          {n,}表示至少重复n次，{n,m}表示重复不少于n次，不多于m次。
+
+        /*
+            {m} 表示前面字符重复出现刚好m次
+            {m,} 表示前面字符至少出现m次，最多无限制,可以无限次
+            {m,n} 表示前面字符至少出现m次, 最多n次
+        */
+        var reg1 = /a.{3}b/;
+        console.log("重复类测试==>", reg1.exec("a333b"))    // a333b
+        console.log("重复类测试==>", reg1.exec("ba3c3b8"))  // a3c3b
+        console.log("重复类测试==>", reg1.exec("a3cdb"))    // a3cdb
+        console.log("重复类测试==>", reg1.exec("a3cddb"))    // null
+        console.log("--------")
+
+        var reg2 = /a.{3,}d/
+        console.log("重复类测试==>", reg2.exec("a1d")) // null  
+        console.log("重复类测试==>", reg2.exec("a1asd")) // a1asd
+        console.log("重复类测试==>", reg2.exec("a1asd")) // a1asd
+        console.log("重复类测试==>", reg2.exec("按实际开发大批量a1asasdfd阿斯顿发")) // a1asasdfd
+        console.log("--------")
+
+        var reg3 = /a.{1,4}9/;
+        console.log("重复类测试==>", reg3.exec("a-9")) // a-9
+        console.log("重复类测试==>", reg3.exec("a9")) // null
+        console.log("重复类测试==>", reg3.exec("a  9")) // a  9
+
+
+        // 小测试 11位手机号，首字符必须是1，第二位是3-9,剩下就是数字
+        var input = document.querySelector("input")
+        var span = document.querySelector("span")
+        // 失去焦点后，获得输入值，进行正则判断
+        input.onblur = function () {
+            // 14170880972
+            // console.log(this.value)
+            var value = this.value.trim();
+            // 匹配规则
+            var reg = /^1[3-9][0-9]{9}$/
+            // 进行匹配，返回结果
+            // var res = reg.test(value)
+            // console.log("结果==>", res)
+
+            // if (reg.test(value)) {
+            //     span.innerText = "手机号符合"
+            // }else {
+            //     span.innerText = "请输入正确的手机号"
+            // }
+
+            // 一句话搞定
+            span.innerText = reg.test(value) ? "手机号符合" : "请输入正确的手机号"
+
+        }
+
+
+
+
+        // (2) 量词符
+        // （2.1） ? 问号表示某个模式出现0次或1次，等同于{0, 1}。
+        var reg4 = /a?b/;
+        // 匹配b前面的a,可以不出现（0次）或者出现1次
+        console.log("量词符?==>", reg4.exec("ab"))  // ab
+        console.log("量词符?==>", reg4.exec("a b"))  // b
+        console.log("量词符?==>", reg4.exec("b"))  // b
+        console.log("量词符?==>", reg4.exec("aab"))  // ab
+        console.log("--------")
+
+        // （2.2） * 星号表示某个模式出现0次或多次，等同于{0,}。
+        // 匹配b前面的a, 可以不出现，也可以无限次
+        var reg5 = /a*b/
+        console.log("量词符*==>", reg5.exec("ab"))  // ab
+        console.log("量词符*==>", reg5.exec("b"))  // b
+        console.log("量词符*==>", reg5.exec("a"))  // null
+        console.log("量词符*==>", reg5.exec("aaaaaa   1b"))  // b
+
+        // (2.3) `+` 加号表示某个模式出现1次或多次，等同于{1,}。 略
+
+
+        // (3) 贪婪模式和非贪婪模式
+        var str = "<div>baidu</div>";
+        // 匹配标签
+        // 正则匹配， 开头< , 中间可以是任意的， 结束>
+        // var regStr = /^<.{1,}>/
+        // var regStr = /^<.*>/
+        var regStr = /^<.+>/
+        console.log("贪婪模式==>", regStr.exec(str))  // <div>baidu</div>
+
+        // 非贪婪模式，尽快结束，尽可能少匹配
+        var regStr = /^<.+?>/
+        console.log("非贪婪模式==>", regStr.exec(str))  // <div>
+
+    </script>
+</body>
+
+</html>

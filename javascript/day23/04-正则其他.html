@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-正则其他</title>
+</head>
+
+<body>
+    <script>
+        /*
+            内容部分
+                []      [0123456789] ==> [0-9]
+                ()  
+                {}   
+                a-z A-Z 0-9 
+                中文匹配
+                *
+                +
+                .
+                $
+                ^
+                \s  [ \t\r\n\v\f]
+                \S
+                \d
+                \w
+                \1 \2 \3
+                \  转义
+        */
+
+        // (1) 非捕获组 (?:规则A) 规则A匹配到的内容不单独输出
+        var str1 = "asdlfkjabcabcccccccc"
+        var reg1 = /(abc){1,3}/
+        console.log("输出结果==>", reg1.exec(str1))
+
+        var str2 = "asdlfkjabcabcccccccc"
+        // (?:abc) 不单独输出匹配到的内容，只输出全匹配的结果
+        var reg2 = /(?:abc){1,3}/
+        console.log("输出结果==>", reg2.exec(str2))
+
+        // 小练习
+        var url = "https://baidu.com/";
+        var reg3 = /^(https?):\/\/(.+)(\/)/
+        console.log(reg3.exec(url))
+
+
+        var url4 = "https://baidu.com/";
+        var reg4 = /^(?:https?):\/\/(.+)(\/)/
+        console.log("非捕获组==>", reg4.exec(url4))
+
+
+        // (2) 先行断言: 规则继续用，但是在全匹配结果中不输出
+        //     x(?=y)称为先行断言，x只有在y前面才匹配，y不会被计入返回结果。
+        var str5 = "123%";
+        // 匹配前面数字，后面有一个% ，但是不输出%， 在全局匹配结果中不显示
+        var reg5 = /\d+(?=%)/
+        console.log(" 先行断言==>", reg5.exec(str5))   //123
+
+        // (3) 先行否定断言: 
+        // var str6 = "123%888";   // 12
+        var str6 = "1%888";    // 888
+        // var str6 = "%888";    // 888
+        // 前面的没有否定完成，后面输出
+        var reg6 = /\d+(?!%)/
+        // console.log("先行否定断言==>", reg6.exec(str6))
+
+
+        
+
+
+    </script>
+</body>
+
+</html>

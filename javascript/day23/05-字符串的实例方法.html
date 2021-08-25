@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-字符串的实例方法</title>
+</head>
+
+<body>
+    <script>
+        /*
+            字符串对象支持正则的方法
+            （1）match 匹配
+            （2）search 搜索
+            （3）replace 替换
+            （4）split 把字符串分割成数组
+        */
+
+        var str1 = "字符串12345";
+        var reg1 = /(1)(2)(\w+)/g
+
+        // (1) 给正则对象设置 lastIndex 对字符串match方法是无效的
+        // 正则改变字符串检测位置
+        reg1.lastIndex = 6;
+        // console.log("匹配位置是否改变==>", reg1.lastIndex)
+        // console.log("正则匹配==>", reg1.exec(str1))
+        console.log("match匹配==>", str1.match(reg1))
+
+        // (2) search() 字符串对象的search方法，返回第一个满足条件的匹配结果在整个字符串中的位置。如果没有任何匹配，则返回-1。
+        var str2 = "字符串abcd ab ab";
+        var reg2 = /ab/
+        var reg21 = /cd1/
+        console.log("search用法==>", str2.search(reg2))  // 3 ,找到之后返回查找到的索引值,注意：找到一个就暂停了
+        console.log("search用法==>", str2.search(reg21)) // -1
+
+        // (3) replace 替换
+        var str3 = "Hello, welcome to guangzhou, hello Amy";
+        var reg3 = /[hH]ello/g  // 如果不加g修饰符，那就只能匹配第一个进行替换，否则全部替换
+
+        var res3 = str3.replace(reg3, "Hey");
+        console.log("替换结果==>", res3)
+        console.log("替换后，会不会影响原来的字符串==>", str3)
+
+        // 补充内容
+        console.log("replace方法的第二个参数可以使用美元符号$==>", 'hello_1111 world'.replace(/(\w+)\s(\w+)/, '$2 $1'))
+
+
+        // (4) split 字符串对象的split方法按照正则规则分割字符串，返回一个由分割后的各个部分组成的数组。
+
+        var str4 = "a,b,c,d";
+        var arr = str4.split(",")
+        // console.log(arr)
+
+        var str5 = "a |  b       | c|d|e";
+        // [\s]* 空格匹配0到无限次
+        var reg5 = /[\s]*\|[\s]*/;
+        console.log("split对正则对象进行分割==>", str5.split(reg5))   // ["a", "b", "c"]
+        // 
+        console.log("split对正则对象进行分割==>", str5.split(reg5, 3))   // ["a", "b", "c"] // 第二个参数：指定返回数组的最大成员数
+
+
+
+
+
+    </script>
+</body>
+
+</html>

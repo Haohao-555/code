@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容。
+        */
+        // var reg1 = /a.+d/    // 现在就想知道a和d之间的匹配值到底是什么？
+        var reg1 = /a(.+)d/
+        console.log("匹配全部显示==>", reg1.exec("yyyacccccdiiii"))
+        console.log("匹配完整结果显示==>", reg1.exec("yyyacccccdiiii")[0])
+        console.log("正则里第一个()匹配的结果==>", reg1.exec("yyyacccccdiiii")[1])
+
+
+        // （2）字符串的match方法也会返回组匹配的结果
+
+        /*
+            RegExp.$1 
+            RegExp.$2 
+            RegExp.$3 
+        */
+        var str2 = "<div>这是一个div标签</div>";
+        // var reg2 = /<.+?>/
+        // var reg2 = /<(.+?)>([^<]{1,})/
+        var reg2 = /<(.+?)>([^<]+)/
+        var res2 = str2.match(reg2)
+        console.log("用match的进行组匹配==>", res2)
+        console.log("用match的进行组匹配完整结果==>", res2[0])
+        console.log("正则里第1个()匹配的结果==>", res2[1], RegExp.$1)
+        console.log("正则里第2个()匹配的结果==>", res2[2], RegExp.$2)
+
+        // 组匹配可以设置匹配次数
+        var str3 = "hi-hihi";
+        // 匹配两次出现的hi
+        var reg3 = /(hi){2}/
+        // var reg3 = /(hi)(hi)/
+        console.log("组匹配可以设置匹配次数==>", reg3.exec(str3))
+
+
+        // (3) 注意事项: 组匹配不要使用g修饰符
+        var str4 = "hey!hey!hey!";
+        var reg4 = /(hey)!/g;
+        console.log("匹配结果1==>", reg4.exec(str4)) // 不加g,始终匹配第一个
+        console.log("匹配结果2==>", reg4.exec(str4)) // 不加g,始终匹配第一个
+        console.log("匹配结果3==>", reg4.exec(str4)) // 不加g,始终匹配第一个
+        // 如果加了g, 则match方法结果里不包含匹配结果
+        console.log("匹配结果match==>", str4.match(reg4))
+
+
+        // （4）在正则规则里，可以用\1 \2 \3 这种方式来引用前面的()组匹配规则
+        var reg5 = /(.)b(.)\1m\2/;
+        // \1 表示引用第1个()的匹配结果， \2 引用第2个()的匹配结果
+        console.log("匹配结果==>", reg5.exec("5b65m6"))   // 5b65m6
+        console.log("匹配结果==>", reg5.exec("5b65m7"))   // null
+
+
+
+        // 用途：匹配标签
+        var strHtml = "玛卡玛卡<span>span标签asjdlfasd f</span>addasdfasd"
+        // </span>
+        // var htmlReg = /<([^>]+)>([^<]+)<\/(\1)>/
+        /*
+            (1) <([^>]+)>   匹配标签名
+            (2) ([^<]+)     匹配开始标签之间的内容
+            (3) <\/(\1)>    匹配结束标签     \/ 转义/; \1代表对 标签名的引用
+        */
+        // var htmlReg = /<([^>]+)>([^<]+)<\/\1>/
+        var htmlReg = /<([^>]+)>([^<]+)<\/\1>/
+        console.log("匹配结果==>", htmlReg.exec(strHtml))
+
+        var strHtml2 = '玛卡玛卡<span class="span">span标签asjdlfasdf</span>addasdfasd';
+        var htmlReg2 = /<([^>]+)>([^<]+)<\/[^>]+>/
+        console.log("匹配结果==>", htmlReg2.exec(strHtml2))
+        console.log("匹配结果==>", htmlReg2.exec(strHtml2)[0])
+    </script>
+</body>
+
+</html>
