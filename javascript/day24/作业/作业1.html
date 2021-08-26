@@ -1,0 +1,51 @@
+<!--
+ * @Date: 2021-08-26 13:42:52
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\javascript\day24\作业\作业1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      <form action="" method="post">
+        账号:<input type="text" id="account" /><span></span><br />
+        昵称:<input type="text" id="name" /><span></span><br />
+        邮箱:<input type="text" id="mail" /><span></span><br />
+        身份证:<input type="text" id="id" /><span></span><br />
+        生日:<input type="text" id="birthday" /><span></span><br />
+        密码:<input type="text" id="password" /><span></span><br />
+        手机号:<input type="text" id="phone" /><span></span><br />
+        <input type="submit" id="btn" />
+      </form>
+    </div>
+    <script>
+      function selector(selector) {
+        return document.querySelector(selector);
+      }
+
+      var accountReg = /^[\w-]{6,18}$/;
+      
+      var nickReg = /^[\u4E00-\u9FA5]{1,7}$/
+
+      var emailReg = /^([/w\.]{1,20}@[\w-]{1,20}\.){1,2}[a-zA-Z]{2,5}$/
+
+      var idReg = /^\d{6}(([1|2][0-9])\d{2})([0-1][1-9]([0-3][0-9]))[\d]{3}[/dXx]$/
+
+      var bithdaay = /^(19\d{2})|20([0-2][0-9]|202[0-1])/
+      selector("form").onsubmit = function () {
+          // 去除默认行为（跳转 ）
+          e.preventDefault();
+          if (accountReg.test(selector("#account").value)) {
+              
+          }
+      };
+    </script>
+  </body>
+</html>
