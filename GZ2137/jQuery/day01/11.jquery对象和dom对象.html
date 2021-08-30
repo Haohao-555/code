@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // jquery 对象: 通过jquery方法获取标签返回的数据集合.
+            // 例如: $("div")
+
+            // dom 对象: 通过原生的方法获取的标签,我们叫做dom对象
+            // 例如: document.querySelector("div")
+
+            // jq
+            // 正确:
+            // $("div").css("background","green");
+            // 错误:
+            // $("div").style.background = "green";
+
+            // js（原生）
+            // 正确: 
+            // var div = document.querySelector("div");
+            // div.style.background = "blue";
+
+            // 错误:
+            // div.css("background","blue");
+
+
+            // 1. jquery 对象是可以转换成dom对象
+            var $dom = $("div");
+            // console.log( $dom );
+
+            // 转dom对象
+            var div = $dom[0];
+            // console.log(div);//<div class="box">1</div>
+
+            // 转dom对象
+            var div2 = $dom.get(1);
+            // console.log(div2);//<div class="box">2</div>
+
+            // jquery对象转成dom对象，就可以使用原生的api
+            div.style.background="purple";
+            div2.style.background="pink";
+
+            //2. dom对象转jquery对象
+            var ele = document.querySelector("div:nth-child(1)");
+            console.log(ele);// dom对象
+
+            var $ele =  $(ele);
+            console.log( $ele);//jquery对象
+            
+            $ele.css("borderRadius","20px");//dom对象转成jquery对象，才能使用jquery提供的方法
+
+
+            // 总结：
+                // jquery 是一个js库。
+                // jquery对象和原生dom对象这两者是有区别
+                // jquery 和 js 控制页面的元素时，注意它们是不同的两个对象
+                // jquery对象和原生dom对象的方法不能直接混合调用
+                // 但是，
+                // jquery对象可以转换成dom对象   $("div")[索引值]
+                // dom对象可以转换成jquery对象   $(dom)
+        })
+    </script>
+</body>
+</html>

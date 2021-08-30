@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> jQuery 阶段</title>
+    <style>
+        body {
+            font-size: 27px;
+        }
+        input {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="text-1">
+        <!-- 双标签 -->
+        <span>天空突然下了点雨</span>
+    </div>
+
+    <div class="form-1">
+        <!-- 单标签 -->
+        <input type="text" value="现在天气又好转了">
+    </div>
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // dom.innerHTML
+        // 获取元素的超文本
+        var v1 = $(".text-1").html();
+        console.log(v1);
+
+        // dom.innerText
+        // 获取元素的纯文本
+        var v2 = $(".text-1").text();
+        console.log(v2);
+
+        // 设置元素的超文本
+        // $(".text-1").html("<b>天空突然下了点雨</b>");
+
+        // 设置元素的纯文本
+        $(".text-1").text("<b>天空突然下了点雨</b>");
+
+
+        // input.value
+        // 获取输入框的文本
+        var v3 = $(".form-1 input").val();
+        console.log(v3);
+
+        // 设置输入框的文本
+        $(".form-1 input").val("输入...");
+    </script>
+</body>
+</html>

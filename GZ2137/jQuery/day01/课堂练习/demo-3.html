@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .banner {
+            height: 100px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <span></span>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求:
+                // 文本幻灯片效果
+
+            // 思考:
+            // str.slice(开始索引值,结束索引值)
+            // setInterval(fn,times)
+            // 一句口号
+
+            // 定义变量 记录广告
+            // var bannerText = "注意: 这是一句口号!";
+            var bannerText = "请注意倒车!";
+            // 定义函数 切换文字
+            var autoPlay = function(){
+                // 获取第一个字
+                var first = bannerText.slice(0,1);
+                // console.log(first);
+                // 获取第二个字后面所有文本(包含第二个字)
+                var end = bannerText.slice(1);
+                // console.log(end);
+                // 重新赋值
+                bannerText = end + first;
+                // console.log(bannerText);
+                // 设置文本
+                $(".banner").html("<span>"+bannerText+"</span>");
+            }
+            // 测试
+            autoPlay();
+            // 执行定时器函数
+            // var timer = setInterval(function(){
+            //     autoPlay();
+            // },300);
+            
+            // 简写:
+            var timer = setInterval(autoPlay,800);
+
+
+
+
+        })
+    </script>
+</body>
+</html>

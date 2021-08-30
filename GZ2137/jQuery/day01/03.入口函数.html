@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        body {
+            font-weight: bold;
+            font-size: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">hello jquery !</div>
+
+    <!-- 引入jquery文件 -->
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 打印$函数
+        // console.log($);
+        // $是function
+        // $是jQuery函数的别名
+        // console.log(typeof $);// function
+        // console.log(typeof jQuery);// function
+        // console.log(jQuery === $);//  true
+
+
+        // 页面加载完成时执行的事件（仅仅执行1次）
+        // window.onload = function(){console.log(1);}  
+        // window.onload = function(){console.log(2);}  
+        // 控制台输出：2
+
+        // 入口函数（jquery入口函数可以执行多次）
+        // 类似 window.onload = function(){}  
+        // $(document).ready(function(){
+        //     console.log(1);
+        // })
+        // $(document).ready(function(){
+        //     console.log(2);
+        // })
+        // 控制台输出：
+        //  1 
+        //  2
+
+        // 简写：推荐写法
+        $(function(){
+            console.log(1);
+        })
+        $(function(){
+            console.log(2);
+        })
+        // 控制台输出：
+        //  1 
+        //  2
+    </script>
+</body>
+</html>

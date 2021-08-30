@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        body , ul {
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        .wrapper {
+            height: 100px;
+            background-color: #f0f0f0;
+        }
+        .nav {
+            width: 1200px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        .nav ul {
+            width: 1200px;
+            height: 100px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .nav ul li {
+            height: 40px;
+            line-height: 40px;
+            width: 100px;
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .nav ul li.active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <ul>
+                <li>红色</li>
+                <li>绿色</li>
+                <li>蓝色</li>
+                <li class="active">黄色</li>
+                <li>紫色</li>
+                <li>粉色</li>
+                <li>淡蓝色</li>
+                <li>黄绿色</li>
+                <div></div>
+            </ul>
+            <div></div>
+        </div>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 选择.nav标签
+            $(".nav").css("background","deepskyblue");
+            // 选择.nav标签的父元素
+            $(".nav").parent().css("height","120px");
+            // 选择.nav标签的子元素
+            $(".nav").children("ul").css("background","#ccc")
+            // 选择.nav标签下所有的li元素
+            $(".nav").find("li").css("borderRadius","20px");
+
+            // 选择.active标签的上一个元素
+            $(".active").prev().css("background","blue");
+            // 选择.active标签的下一个元素
+            $(".active").next().css("background","purple");
+            // 选择.active以外的所有li元素(兄弟元素)
+            $(".active").siblings("li").css("background","#fff");
+
+            
+            // 选择ul li列表中第一个li标签
+            // console.log($("ul li").first());
+            $("ul li").first().css("background","red");
+            // 选择ul li列表中最后一个li标签
+            $("ul li").last().css("background","yellowgreen");
+
+            // 通过索引值选择元素
+            // 0,1,2,3,4,....
+            $("ul li").eq(1).css("background","green");
+            $("ul li").eq(2).css("background","blue");
+
+            // 选择倒数第2个li标签
+            // console.log($("ul li"));
+            var len = $("ul li").length;
+            $("ul li").eq(len - 2).css("background","lightblue");
+            $("ul li").eq(len - 3).css("background","pink");
+            $("ul li").eq(len - 4).css("background","purple");
+        })
+    </script>
+</body>
+</html>

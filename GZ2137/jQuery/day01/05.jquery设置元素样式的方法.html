@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 设置div标签样式
+            // .css() 
+            // 调用者: jquery对象
+            // 参数: 1. 属性名称 2.属性值
+            // 返回值: jquery对象
+            // 功能: 设置元素的样式
+
+            // console.log($(".box-1"));
+            // 书写1:
+            // $(".box-1").css("backgroundColor","red");
+            // $(".box-1").css("borderRadius","50px");
+
+            // 书写2:
+            var option = {
+                backgroundColor: "green",
+                borderRadius: "50px"
+            }
+            var o1 = $(".box-1").css(option);
+            console.log(o1);
+
+            // 如果当前方法返回值依然是jquery对象,
+            // 那么就可以继续调用jquery实例对象原型上的方法!!!
+            // $(".box-1").css(option)
+            // .css("borderRadius","40px")
+            // .css("backgroundColor","pink")
+        })
+    </script>
+</body>
+</html>

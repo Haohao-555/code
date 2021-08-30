@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .list-box {
+            width: 1200px;
+            margin: 200px auto;
+            height: 60px;
+            background-color: #ccc;
+            display: flex;
+        }
+        .list-box .item {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-box">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item current" style="background-color: deepskyblue;"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求:
+                // 按下向右箭头按键,实现方块高亮的背景向右切换
+                // 按下向左箭头按键,实现方块高亮的背景向左切换
+            // 思考:
+                // 控制哪些元素?
+                // 如何设置指定元素的样式?
+            // 方式2: 对类名的控制
+
+            // 键盘事件
+            document.onkeydown = function(event) {
+                // 键值码
+                var keyCode = event.keyCode;
+                // 判断 
+                if(keyCode == 39){
+                    // 编写向右切换的代码
+                    // console.log("右");
+                    $(".current").next().css("backgroundColor","deepskyblue")
+                    // 判断是否存在下一个.item标签
+                    // console.log($(".current").next().length);
+                    if($(".current").next().length != 0){
+                        // 给指定的标签添加类名
+                        $(".current").next().addClass("current");
+                        // 选择第一个.current类名的元素
+                        var $dom = $(".current").first();
+                        // 移除当前元素的类名
+                        $dom.removeClass("current");
+                        // 移除当前元素的背景高亮
+                        $dom.css("backgroundColor","transparent");
+                        // console.log( $dom );
+                    }
+                }
+                if(keyCode == 37){
+                    // 编写向左切换的代码
+                    // console.log("左");
+                    $(".current").prev().css("backgroundColor","deepskyblue")
+                    // 判断是否存在下一个.item标签
+                    // console.log($(".current").next().length);
+                    if($(".current").prev().length != 0){
+                        // 给指定的标签添加类名
+                        $(".current").prev().addClass("current");
+                        // 选择最后一个.current类名的元素
+                        var $dom = $(".current").last();
+                        // 移除当前元素的类名
+                        $dom.removeClass("current");
+                        // 移除当前元素的背景高亮
+                        $dom.css("backgroundColor","transparent");
+                    }
+
+                }
+            }
+
+
+        })
+    </script>
+</body>
+</html>

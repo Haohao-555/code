@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin: 0 0 10px 0;
+        }
+        
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: #f50;
+            margin: 0 0 10px 0;
+        }
+        img , a {
+            width: 100px;
+            height: 100px;
+            margin: 0 0 10px 0;
+            display: block;
+            background-color: #ccc;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- 标签属性: class id src alt href ... -->
+    <div class="">1</div>
+    <div id="">2</div>
+    <img src="" alt="3">
+    <a href="">4</a>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // dom.setAttribute()
+            // 设置标签的属性
+            $("div").eq(0).attr("class","box");
+            $("div").eq(1).attr("id","demo");
+            var _src = "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png"
+            $("img").attr("src",_src);
+            $("a").attr("href","https://taobao.com");
+
+            // dom.getAttribute()
+            // 获取标签属性
+            var v1 =  $("div").eq(0).attr("class");
+            var v2 =  $("div").eq(1).attr("id");
+            console.log(v1);
+            console.log(v2);
+
+            // dom.removeAttribute()
+            // 删除标签属性
+            $("img").removeAttr("src");
+
+        })
+    </script>
+</body>
+</html>

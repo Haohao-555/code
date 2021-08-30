@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .list-box {
+            width: 1200px;
+            margin: 200px auto;
+            height: 60px;
+            background-color: #ccc;
+            display: flex;
+        }
+        .list-box .item {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-box">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item" style="background-color: orange;"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求:
+                // 按下向右箭头按键,实现方块高亮的背景向右切换
+                // 按下向左箭头按键,实现方块高亮的背景向左切换
+            // 思考:
+                // 控制哪些元素?
+                // 如何设置指定元素的样式?
+            // 方式1:
+            // 获取相关的标签
+            // var $item = $(".item")
+            // var $item = $(".list-box").children()
+            var $item = $(".list-box").find("div")
+            // console.log( $item );
+            // 定义索引值
+            var index = 6;
+            // 标签数量
+            var len  = $item.length ;
+            // 键盘事件
+            document.onkeydown = function(event) {
+                // 键值码
+                var keyCode = event.keyCode;
+                // 判断 
+                if(keyCode == 39){
+                    // 编写向右切换的代码
+                    // console.log("右");
+                    // 改变索引值
+                    index ++;
+                    // 判断
+                    // index = index > 19 ? 19 : index;
+                    index = index > len-1 ? len-1 : index;
+                    // 设置索引值对应的标签背景高亮 ,非索引值对应的标签移除背景高亮
+                    $item.eq(index)
+                    .css("backgroundColor","orange")
+                    .siblings()
+                    .css("backgroundColor","transparent")
+
+                }
+                if(keyCode == 37){
+                    // 编写向左切换的代码
+                    // console.log("左");
+                    // 改变索引值
+                    index --;
+                    // 判断
+                    index = index < 0 ? 0 : index;
+                    // 设置索引值对应的标签背景高亮 ,非索引值对应的标签移除背景高亮
+                    $item.eq(index)
+                    .css("backgroundColor","orange")
+                    .siblings()
+                    .css("backgroundColor","transparent")
+
+                }
+            }
+
+
+        })
+    </script>
+</body>
+</html>

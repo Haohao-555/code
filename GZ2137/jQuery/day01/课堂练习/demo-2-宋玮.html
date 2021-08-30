@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .list-box {
+            width: 1200px;
+            margin: 200px auto;
+            height: 60px;
+            background-color: #ccc;
+            display: flex;
+        }
+        .list-box .item {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #fff;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-box">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item" style="background-color: orange;"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求:
+                // 按下向右箭头按键,实现方块高亮的背景向右切换
+                // 按下向左箭头按键,实现方块高亮的背景向左切换
+          var s= $(".list-box").find("div");
+         console.log(s);
+          var index = 6;
+          
+
+        // 键盘事件
+            document.onkeydown = function(event){
+                // 键值码
+                var keyCode = event.keyCode;
+                // 判断 
+                if(keyCode == 39){
+                    index ++
+                    if(index >19){
+                        index = 19;
+                    }
+                   
+                    s.eq(index).siblings("div").css("background","transparent")
+                    s.eq(index).css("background","red")
+                    // 编写向右切换的代码
+                    // console.log("右");
+
+                }
+                if(keyCode == 37){
+                    index -- ;
+                    if(index < 0){
+                        index = 0;
+                    }
+                    s.eq(index).siblings("div").css("background","transparent")
+                    s.eq(index).css("background","red")
+                    // 编写向左切换的代码
+                    // console.log("左");
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        body {
+            font-size: 45px;
+        }
+        h3 , p {
+            margin: 0;
+            padding: 0;
+        }
+        button , input {
+            font-size: 20px;
+        }
+        input[type='checkbox'] {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box-1">这是div标签</div>
+    <span class="txt-2">这是span标签</span>
+    <h3 id="demo">这是h3标签</h3>
+    <button>这是button标签</button>
+    <p>这是p标签</p>
+    <input type="text" value="这是input标签">
+    <ul>
+        <li>列表标签1</li>
+        <li>列表标签2</li>
+        <li>列表标签3</li>
+    </ul>
+    <div>
+        <input type="checkbox" checked>
+        <input type="checkbox">
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 1. 页面标签(div ,span , h3....)
+            // DOM: 文档对象模型(DOM是控制页面元素的一套标准)
+            // dom对象: 页面上的标签(元素)
+
+            // 2. 选择器(获取页面标签的一种方式)
+            // 调用$函数或者jQuery函数,传递的是选择器的标记
+            // 调用$函数的返回值是jquery对象,获取的相关标签会包含在jquery对象中
+            // var o1 = $(".box-1");
+            // console.log(o1);// o1是jquery对象 
+            // // jQuery.fn.init [div.box-1, prevObject: jQuery.fn.init(1)]
+            // console.log(typeof o1);// object
+
+            // 3.选择器
+            // console.log($(".box-1"));
+            // console.log($(".txt-2"));
+            // console.log($("#demo"));
+            // console.log($("button"));
+            // console.log($("input[type='text']"));
+            // console.log($("ul > li"));
+            // console.log($("ul > li:nth-child(1)"));
+            // console.log($("input[type='checkbox']:checked"));
+
+        })
+    </script>
+</body>
+</html>

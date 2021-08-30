@@ -1,0 +1,44 @@
+<!--
+ * @Date: 2021-08-30 17:04:50
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2137\jQuery\day01\课堂练习2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery-3.6.0.min.js"></script>
+    <style>
+        div {
+            width: 480px;
+            height: 40px;
+            font-size: 30px;
+            line-height: 40px;
+            margin: 100px auto;
+            background-color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        最后一天啦，商场大甩卖！！！！
+    </div>
+    <script>
+         $(function() {
+             fun1();
+         })
+        function fun1() {
+            var content = $(".container").text().trim().split("")
+            content.push(content.shift())
+            $(".container").text(content.join(""));
+        }
+      
+        setInterval(fun1,1000)
+    </script>
+</body>
+</html>

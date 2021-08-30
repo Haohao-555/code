@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        input[type='button'] {
+            padding: 10px 20px;
+        }
+        input[type='checkbox'] {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="button" value="按钮" disabled>
+        <input type="button" value="按钮">
+    </div>
+    <div>
+        <input type="checkbox" checked>
+        <input type="checkbox" >
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 选择按钮标签 获取点击状态
+            var v1 = $("input[type='button']").eq(0).prop("disabled");
+            var v2 = $("input[type='button']").eq(1).prop("disabled");
+            console.log(v1);// true
+            console.log(v2);// false
+
+            // 选择复选框标签 获取勾选状态
+            var v3 = $("input[type='checkbox']").eq(0).prop("checked");
+            var v4 = $("input[type='checkbox']").eq(1).prop("checked");
+            console.log(v3);// true
+            console.log(v4);// false
+
+            // 选择复选框标签 设置勾选状态
+            // $("input[type='checkbox']").eq(0).prop("checked",false);
+            
+            // 选择按钮标签 设置点击状态
+            // $("input[type='button']").eq(0).prop("disabled",false);
+
+
+        })
+    </script>
+</body>
+</html>

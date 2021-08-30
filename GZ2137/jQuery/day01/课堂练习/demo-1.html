@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            width: 600px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;  
+        }
+        ul li:nth-child(2n) {
+            /* background-color: #ccc; */
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1像无尽绿色的仲夏　似月满那深秋</li>
+        <li>2像投落夜空的流星　似踏雪地留步印</li>
+        <li>3像横越大海的白浪　似坠鸭背水点</li>
+        <li>4像溜达在芳草河边　似是却未全是爱</li>
+        <li>5是那些推敲猜测与盼望吧</li>
+        <li>6还是那鲜花　星光与歌</li>
+        <li>7使人相依　不会忘彼此　是最初次</li>
+        <li>8是最单纯的倾心　是最坦然的关心</li>
+        <li>9无憾亦无悔过去每段光阴</li>
+        <li>10若爱恋能终一生　若爱的人终于可步近</li>
+        <li>11无限地尝试　找这一吻</li>
+        <li>12像无尽绿色的仲夏　似月满那深秋</li>
+        <li>13像投落夜空的流星　似踏雪地留步印</li>
+    </ul>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 需求:
+            // 选择器的练习
+            // 选择奇数行的歌词背景为 #ccc
+            // 选择器第五行歌词 设置字体加粗,字体颜色为红色
+
+            // JS
+            // var aLi = document.querySelectorAll("ul li");
+            // for(var i = 0 ; i < aLi.length ; i ++){
+            //     if(i % 2 == 0){
+            //         aLi[i].style["backgroundColor"] = "#ccc";
+            //     }
+            // }
+
+            // Jq
+            // $(function(){
+            //     // 设置指定行的歌词背景色
+            //     $("ul li:nth-child(2n-1)").css("backgroundColor","#ccc");
+            // })
+
+            // Jq
+            // css 方法内部循环了 (隐式迭代)
+            $("ul li:nth-child(2n-1)").css("backgroundColor","#ccc");
+
+            // 选择第五个li标签
+            $("ul li:nth-of-type(5)").css({fontWeight:"bold",color:"red"});
+
+            
+    </script>
+</body>
+</html>
