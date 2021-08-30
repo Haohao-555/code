@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-08-30 17:54:10
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day01\07.控制元素的类名.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -50,12 +56,12 @@
             // 3.0 切换类名 toggleClass
             // 如果存在该类名,就移除该类名
             // 如果不存在该类名,就添加该类名
-            $("div").eq(0).toggleClass("bg-red");// 1
+           $("div").eq(0).toggleClass("bg-red");// 1
             $("div").eq(0).toggleClass("bg-red");// 0
 
             // 4.0 判断是否包含该类名 hasClass
             var flag = $("div").eq(0).hasClass("bg-red");
-            console.log(flag);// true 表示存在该类名; false表示不存在该类名
+            // console.log(flag);// true 表示存在该类名; false表示不存在该类名
         })
     </script>
 </body>
