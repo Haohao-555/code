@@ -1,0 +1,63 @@
+<!--
+ * @Date: 2021-08-30 10:31:52
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2137\jQuery\day01\练习.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>javaScript 阶段</title>
+    <style>
+      /* 使用 jQuery */
+      /* div {
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        border: 1px solid springgreen;
+        line-height: 50px;
+        text-align: center;
+      } */
+    </style>
+    <script src="../jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <!-- 使用 jQuery -->
+
+    <!-- <div class="box-1">1</div>
+    <div class="box-2">2</div>
+    <div class="box-3">3</div>
+    <div class="box-4" style="display: none">4</div> -->
+
+    <div class="box">hello jquery ！</div>
+    <script>
+      //使用 jQuery
+      // // 获取 div 标签
+      // console.log($("div"));
+      // // 设置样式
+      // $(".box-1").css("backgroundColor", "red");
+      // //   隐藏
+      // $(".box-2").hide();
+      // //   显示
+      // $(".box-4").show();
+      // console.log(typeof $); // function
+      // console.log(jQuery === $); // true
+
+      //入口函数（jquery可以执行多次）
+      // 类似 window.onload = function() {} 只能执行一次
+      $(document).ready(function() {
+        console.log(1)
+      });
+      $(document).ready(function() {
+        console.log(2)
+      })
+      // 简写
+      $(function() {
+        console.log(3)
+      })
+    </script>
+  </body>
+</html>

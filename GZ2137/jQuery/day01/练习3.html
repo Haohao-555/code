@@ -1,0 +1,44 @@
+<!--
+ * @Date: 2021-08-30 11:26:47
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \GZ2137\jQuery\day01\练习3.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #000;
+      }
+    </style>
+    <script src="../jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div class="box-1"></div>
+    <script>
+      $(function () {
+        // 设置 div 样式
+        // 调用者是 jquery 对象
+
+        //方法一
+        $('.box-1').css("backgroundColor", "red");
+        $('.box-1').css("borderRadius", "50px");
+
+        // 方法二
+        var o1 = $('.box-1').css ({
+            backgroundColor: "green",
+            borderRadius: "50px"
+        })
+        console.log(o1);
+        // 如果当前方法返回值依然是jquery对象，那么就可以继续调用实例对象方法
+      });
+    </script>
+  </body>
+</html>
