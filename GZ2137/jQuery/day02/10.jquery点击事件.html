@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 10px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-1">点击按钮1</button>
+    <button class="btn-2">点击按钮2</button>
+    <button class="btn-3">点击按钮3</button>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 调用jquery对象下的点击事件函数
+        // $("button").click(function(){
+        //     $("button").css("backgroundColor","green");
+        // })
+
+        // 调用jquery对象下的点击事件函数
+        // dom.onclick = function(){ console.log(this);// dom }
+        // jquery对象 和 dom对象
+        // $(".btn-1").click() 这是封装的click方法
+        $(".btn-1").click(function(){
+            // $(".btn-1").css("backgroundColor","green");
+            // this 事件的调用者 ，它是dom对象
+            console.log(this);// <button class="btn-1">点击按钮1</button>
+            // 把dom对象转成jquery对象
+            $(this).css("backgroundColor","green");
+
+            // this      dom对象    就是当前点击的标签
+            // $(this)   jquery对象
+        })
+    </script>
+</body>
+</html>

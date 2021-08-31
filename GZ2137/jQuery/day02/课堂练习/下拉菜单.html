@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul , ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        .nav ul {
+            width: 160px;
+        }
+        .nav ul > li {
+            width: 160px;
+            background-color: #ccc;
+        }
+        .nav ul > li div {
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background-color: deepskyblue;
+            border-bottom: 1px solid #fff;
+            cursor: pointer;
+        }
+        .nav ul > li ol {
+            display: none;
+        }
+        .nav ul > li ol li {
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <ul>
+            <li>
+                <div>一级菜单</div>
+                <ol>
+                    <li>二级菜单1</li>
+                    <li>二级菜单2</li>
+                    <li>二级菜单3</li>
+                </ol>
+            </li>
+
+            <li>
+                <div>一级菜单</div>
+                <ol>
+                    <li>二级菜单1</li>
+                    <li>二级菜单2</li>
+                    <li>二级菜单3</li>
+                </ol>
+            </li>
+
+            <li>
+                <div>一级菜单</div>
+                <ol>
+                    <li>二级菜单1</li>
+                    <li>二级菜单2</li>
+                    <li>二级菜单3</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 调用mouseenter事件函数
+            $(".nav").find("div").mouseenter(function(){
+                // 显示当前一级菜单对应的二级菜单
+                $(this).next().css("display","block");
+                // $(this).next().stop().show(1000);// 动画显示ol标签
+            })
+
+            // 调用mouseleave事件函数
+            $(".nav ul > li").mouseleave(function(){
+                // 隐藏当前一级菜单对应的二级菜单
+                $(this).find("ol").css("display","none");
+                // $(this).find("ol").stop().hide(300);// 动画隐藏ol标签
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>A 安庆 </li>
+        <li>B 北京</li>
+        <li>C 常州</li>
+        <li>D 大连</li>
+        <li>E </li>
+        <li>F </li>
+        <li>G </li>
+        <li>H </li>
+    </ul>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // find()
+            // eq()
+            // parent()
+            // children()
+            // siblings()
+            // prev()
+            // next()
+            // fisrt()
+            // last()
+            // ...
+
+            // 选择器：
+            // $("ul li:nth-child(2n)").css("background","pink");
+            // $("ul li:nth-child(2n-1)").css("background","deepskyblue");
+
+            // $("ul li:even").css("background","lightgreen");
+            // $("ul li:odd").css("background","lightblue");
+
+            // 获取文本中包含字母A的标签
+            var $dom = $("ul li:contains(A)");
+            // console.log($dom);
+            $dom.css("background","red");
+
+
+            // 方法:
+            // $("ul li").eq(0).css("background","lightgreen");
+            // $("ul li").eq(2).css("background","lightgreen");
+            // $("ul li").eq(4).css("background","lightgreen");
+            // $("ul li").eq(6).css("background","lightgreen");
+
+
+          
+        })
+    </script>
+</body>
+</html>

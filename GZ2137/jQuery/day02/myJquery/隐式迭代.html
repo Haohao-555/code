@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+
+    <script>
+        // 场景： 设置每个div标签的样式
+        // var divs = document.querySelectorAll("div");
+        // for(var index = 0 ; index < divs.length ; index ++){
+        //     divs[index].style["width"]="100px";
+        //     divs[index].style["height"]="100px";
+        //     divs[index].style["border"]="1px solid #ccc";
+        // }
+    </script>
+
+    <script src="./myJquery.1.0.0.js"></script>
+    <script>
+            // 隐式：内部的，看不见的
+            // 迭代： 下一个，遍历循环
+            // 隐式迭代：指定该方法内部封装时已经对标签数组进行遍历循环了。
+            _("div").css("width","100px");
+            _("div").css("height","100px");
+            _("div").css("border","1px solid #ccc");
+    </script>
+</body>
+</html>

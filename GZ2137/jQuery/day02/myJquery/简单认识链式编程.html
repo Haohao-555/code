@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+
+
+    <script>
+        // var _aaa ;
+        // // 定义对象
+        // var obj = {};
+        // // 添加属性
+        // obj.color = "red";
+        // 添加方法
+        // obj.say = function(){
+        //     // 此处的this是谁? obj
+        //     console.log("say方法-颜色:",this.color);
+        //     _aaa = this;
+        // }
+        // obj.say();
+        // console.log(_aaa === obj);// true
+        // obj.run = function(){
+        //     console.log("run-颜色:",this.color);
+        // }
+
+        // obj.say();
+        // obj.run();
+
+        // var o1 =  obj.say();
+        // console.log(o1);// undefined
+        // obj.say().run();// 报错
+
+
+        // ===========================
+        // 定义对象
+        var obj = {};
+        // 添加属性
+        obj.color = "red";
+        // 添加方法
+        obj.say = function(){
+            // 此处的this是谁? obj
+            console.log("say-颜色:",this.color);
+            return this;
+        }
+        obj.run = function(){
+            console.log("run-颜色:",this.color);
+            return this;
+        }
+
+        // obj.say().run();// 正确的
+        obj
+        .run()
+        .run()
+        .run()
+        .run()
+        .say()
+        .say()
+
+
+
+
+    </script>
+</body>
+</html>

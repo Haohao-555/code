@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .demo {
+            width: 200px;
+            height: 40px;
+            background-color: red;
+        }
+        .box {
+            width: 180px;
+            height: 35px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="demo"></div>
+
+    </div>
+
+    <!-- 需要移动的标签 -->
+    <div class="box"></div>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 把.box标签移动至.demo标签之前(把.box标签插入到.demo标签前)
+            // $(".box").insertBefore(".demo");
+
+            // 把.box标签移动至.demo标签之后(把.box标签插入到.demo标签后)
+            $(".box").insertAfter(".demo");
+        })
+    </script>
+</body>
+</html>

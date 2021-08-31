@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+
+            /* 定位属性（绝对，固定） */
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 思考：
+            // 按键 keydown 
+            // 键盘事件的调用者 document | input:text
+
+            // JS
+            // document.onkeydown = function(){}
+        // 编码：
+        // 方式1：
+        // 定义红色标签的坐标
+        // var x = 0;
+        // var y = 0;
+        // 步长
+        var speed = 100;
+        // jq
+        // 调用键盘事件函数
+        $(document).keydown(function(event){   
+            // 获取红色标签的当前位置
+            var point = $(".box").position();    
+            var curX = point.left;
+            var curY = point.top;   
+            // 检查代码是否执行了
+            // console.log("test");// 意识
+            // 获取事件对象的键值码
+            // console.log(event);
+            var keyCode = event.keyCode;
+            // 判断用户按下了哪个按键
+            if(keyCode == 40){
+                // 向下
+                curY += speed;
+            }
+            if(keyCode == 38){
+                // 向上
+                curY -= speed;
+            }
+            if(keyCode == 39){
+                // 向右
+                curX += speed;
+            }
+            if(keyCode == 37){
+                // 向左
+                curX -= speed;
+            }
+            // 打印坐标是否变化
+            // console.log("x:"+x, "y:"+y);
+            // 设置红色标签的样式
+            $(".box").css({
+                left: curX,
+                top: curY
+            })
+        })
+      
+
+        // 动画原理：
+            // 目标位置 = 当前的位置 + 步长
+        // var obj = $(".box").position();
+        // console.log(obj);
+        // 总结：
+            // 不熟悉全局变量和局部变量
+            // 变量是用于记录数据
+            // 事件（用户与界面交互的一种行为）
+            // 事件对象是事件函数被调用时所产生的一种数据集合 {key:value }
+            // 设置元素的样式
+            // jquery 能被开发者一直使用，很大程度取决于它对dom的控制
+    </script>
+</body>
+</html>

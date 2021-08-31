@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            ul {
+                list-style: none;
+            }
+            .container {
+                width: 1000px;
+                margin: 0 auto;
+            }
+            .nav_tab {
+                width: 1000px;
+                background-color: skyblue;
+            }
+            .nav_tab ul::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .nav_tab ul li {
+                float: left;
+                height: 40px;
+                padding: 0 20px;
+                background-color: #ccc;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+				border-bottom: 5px solid transparent;
+            }
+            .nav_tab ul li.active {
+                height:38px;
+                border-bottom: 5px solid red;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav_tab">
+            <ul>
+                <!-- data-index="0" 自定义属性 -->
+                <li data-index="0" class="active">国际大牌<span>◆</span></li>
+                <li data-index="1" >国妆名牌<span>◆</span></li>
+                <li data-index="2" >清洁用品<span>◆</span></li>
+                <li data-index="3" >男士精品<span>◆</span></li>
+            </ul>
+        </div>
+
+        <!-- 内容栏 -->
+        <div class="tab_content">
+            <!-- 现在用图片代替内容 -->
+            <img src="./imgs/guojidapai.jpg" alt="">
+        </div>
+    </div>
+    
+
+    <script src="../jquery/jquery.js"></script>
+    <script>
+             // 入口函数
+            $(function(){
+                    //需求： 
+                        //点击当前的tab选项，显示相应内容
+                        //设置当前点击的盒子的下边框颜色（高亮）。
+                        //数组(存放图片的路径)
+                    var arr = [
+                        "./imgs/guojidapai.jpg",
+                        "./imgs/guozhuangmingpin.jpg",
+                        "./imgs/nanshijingpin.jpg",
+                        "./imgs/qingjieyongpin.jpg"
+                    ]
+                    //思考：
+                        // 点击导航选项，
+                        // 如何获取当前点击的选项的索引值
+                        // 如何切换选项的下划线
+                        // 如何切换相应的内容（图片）
+                        // 如果还没学会使用jquery封装的事件方法，
+                        // 那么就需要进行jquery对象转dom对象
+					// 编码：
+                    // 1. 获取页面相关的标签
+                    var $elements = $(".nav_tab ul li");
+                    console.log($elements);
+                    // 2. 循环jquery对象 遍历dom标签数组
+                    for(var i = 0 ; i < $elements.length ; i ++){
+                        // 转成dom对象
+                        $elements[i].onclick = function(){
+                            // 3. 书写业务的处理逻辑
+                            // 当前点击的选项的data-index属性值
+                            // var index = this.dataset.index;
+                            // var index = this.getAttribute("data-index");
+                            var index = $(this).attr("data-index");
+                            // console.log("index:",index);
+                            // 设置图片的路径
+                            $(".tab_content img").attr("src",arr[index]);
+                            // 设置当前点击选项的下划线高亮,移除非当前点击的选项的高亮
+                            $(this)
+                            .addClass("active")
+                            .siblings()
+                            .removeClass("active")
+                        }
+                    }
+                    // 总结：
+                        // 通过调用 $或者jQuery函数返回的数据集合(jquery对象)
+                        // jquery对象的标签根据索引值存放的
+                        // 原生的dom ,例如: $elements[0]
+                        // 事件绑定
+                        // jquery常用的方法 attr() addClass() removeClass() siblings()
+            })
+    </script>
+</body>
+</html>

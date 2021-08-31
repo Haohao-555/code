@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+			html,
+            body {
+				height:100%;
+                text-align: center;
+				padding: 100px 0 0 0;
+            }
+            .btn_open , /* 并集选择器*/
+            .btn_close {
+                width:120px;
+                height: 40px;
+                background-color: #ccc;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+                position: fixed;
+                top: 100px;
+                right: 50px;
+            }
+            .btn_close {
+                top: 150px;
+            }
+			[class^="btn"].active {
+			   background-color: #f50;
+			}
+    </style>
+</head>
+<body>
+    <img src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="">
+
+    <div class="btn_open active"> 开灯 </div>
+    <div class="btn_close "> 关灯</div>
+
+    <script src="../jquery/jquery.js"></script>
+    <script>
+            // 入口函数
+            $(function(){
+                   // 要求：
+				   // 点击“开灯”，设置页面背景为白色
+				   // 点击“关灯”，设置页面背景为黑色
+
+
+                    // 思考：
+                        // jquery对象如何绑定事件?
+                        // 如果不知道jquery对象下有哪些已经封装好的方法
+                        // jquery对象转成dom对象，才能使用dom.onclick = function(){}
+
+                    // 编码：
+                    // 步骤：1、获取页面相关的元素 2、事件绑定 3、书写业务处理逻辑
+                    // 1. 获取按钮 并绑定事件
+                    // $(".btn_close").onclick = function(){} //错误写法
+                    // $(".btn_close")[0].onclick = function(){} //正确写法
+                    $(".btn_open")[0].onclick = function(){
+                        // 2. 执行开灯的逻辑
+                        // console.log("1");
+                        // $(".btn_open").addClass("active");
+                        // $(".btn_close").removeClass("active");
+                        // 给当前点击的标签添加类名,移除非当前点击的兄弟元素的类名
+                        // $(".btn_open").addClass("active").siblings().removeClass("active");
+                        // this.addClass("active").siblings().removeClass("active");// 错误的
+                        $(this).addClass("active").siblings().removeClass("active");// 正确的
+                        // 设置页面的背景色
+                        $("body").css("backgroundColor","#fff");
+                    }
+
+                    $(".btn_close")[0].onclick = function(){
+                        // 2. 执行关灯的逻辑
+                        // console.log("0");
+                        // $(".btn_close").addClass("active");
+                        // $(".btn_open").removeClass("active");
+                        // 给当前点击的标签添加类名,移除非当前点击的兄弟元素的类名
+                        // $(".btn_close").addClass("active").siblings().removeClass("active");
+                        $(this).addClass("active").siblings().removeClass("active");// 正确的
+                        // 设置页面的背景色
+                        $("body").css("backgroundColor","#000");
+
+                    }
+
+
+                    // 总结:
+                        // jquery $函数的使用
+                        // 获取页面的元素,jquery对象转dom对象
+                        // 事件绑定
+                        // 事件函数作用域的this,this是指针变量,指向事件的调用者
+                        // dom对象转成jquery对象
+                        // 基本jquery的api
+
+            })
+    </script>
+</body>
+</html>

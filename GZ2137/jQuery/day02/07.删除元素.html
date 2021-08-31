@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            height: 40px;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="list-1">A</li>
+        <li class="list-2">B</li>
+        <li class="list-3">C</li>
+    </ul>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            //删除所有的li标签
+            // $("ul li").remove(); 
+            // 删除指定的元素
+            // $("ul li").eq(0).remove();
+            // $(".list-1").remove();
+            // $(".list-2").remove();
+            // $(".list-3").remove();
+
+            // JS
+            // dom.innerHTML = "";
+            // 清空ul标签的所有标签
+            // $("ul").html("");
+            $("ul").empty();
+        })
+    </script>
+</body>
+</html>

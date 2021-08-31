@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 10px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-1">点击按钮1</button>
+    <button class="btn-2">点击按钮2</button>
+    <button class="btn-3">点击按钮3</button>
+
+    <script>
+        // 未封装之前
+        // var buttons = document.querySelectorAll("button");
+        // for(var i = 0 ; i < buttons.length ; i ++){
+        //     buttons[i].onclick = function(){
+        //         console.log("test");
+        //     }
+        // }
+    </script>
+
+    <script>
+          // 封装事件函数
+        //   // 定义myJquery函数(工厂模式)
+        //   function myJquery(selector){
+        //       return new Init(selector);
+        //   }
+        //   // 定义构造函数（构造函数）
+        //   function Init(selector){
+        //       this.elements = document.querySelectorAll(selector)
+        //   }
+        //   // 原型对象 添加click方法
+        //   Init.prototype.click = function(callback){
+        //      // 循环标签数组
+        //      for(var index = 0 ; index < this.elements.length ; index ++){
+        //         //事件监听
+        //         this.elements[index].addEventListener("click",function(event){
+        //              //判断是否存在callback回调函数
+        //              //if(callback) callback(event);
+        //              callback && callback(event);
+        //         })
+        //      }
+        //   }     
+        //   //设置myJquery的别名
+        //   window._ = window.myJquery = myJquery;
+          
+    
+        //   // 使用事件函数
+        //   _("button").click(function(){
+        //       console.log("test");
+        //   })
+
+    </script>
+
+
+    <script src="./myJquery/myJquery.2.0.0.js"></script>
+    <script>
+        // _("button").click(function(){
+        //     _("button").css("backgroundColor","red");
+        // })
+
+        _(".btn-1").click(function(){
+            _(".btn-1").css("backgroundColor","red")
+        })
+
+    </script>
+</body>
+</html>

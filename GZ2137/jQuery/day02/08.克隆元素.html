@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>列表1</li>
+            <li>列表2</li>
+            <li>列表3</li>
+        </ul>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 克隆一个.container标签
+            var $ele = $(".container").clone();
+            // console.log( $ele );
+
+            // 添加body标签里面
+            $("body").append( $ele );
+        })
+        
+       
+    </script>
+</body>
+</html>

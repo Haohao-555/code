@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        #container {
+            width: 500px;
+            height: 800px;
+            background-color: #ccc;
+        }
+
+        .demo {
+            height: 20px;
+            background-color: red;
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 3px solid green;
+            margin: 10px 0 0 0 0; 
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="demo"></div>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // append()
+                // 调用者： jquery对象
+                // 参数： html字符串
+                // 返回值： jquery对象
+                // 功能： 往容器标签尾端（索引值为length-1）添加元素
+            // 场景： 滚动加载
+            // 添加元素
+            // var o1 = $("#container").append("<div class='box'>1</div>");
+            // console.log(o1);
+            $("#container").append("<div class='box'>1</div>");
+            $("#container").append("<div class='box'>2</div>");
+            $("#container").append("<div class='box'>3</div>");
+
+            // prepend()
+                // 调用者： jquery对象
+                // 参数： html字符串
+                // 返回值： jquery对象
+                // 功能： 往容器标签首位（索引值为0）添加元素
+            // 场景： 下拉刷新
+            $("#container").prepend("<div class='box'>4</div>");
+            $("#container").prepend("<div class='box'>5</div>");
+            $("#container").prepend("<div class='box'>6</div>");
+
+
+
+        })
+    </script>
+</body>
+</html>

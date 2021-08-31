@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+        .active {
+            background-color: yellowgreen;
+        }
+        .current {
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box active">4</div>
+    <div class="box">5</div>
+
+
+    <script src="./myJquery.1.0.0.js"></script>
+    <script>
+        // 链式： 调用一个方法完成后,返回指定的对象，该对象可以继续调用当前方法或其他方法.
+        // 链式编程： $(dom).css().addClass().siblings()
+        // _(".active").siblings().css("backgroundColor","red");
+         _(".active")
+        .css("borderRadius","10px")
+        .siblings()
+        .addClass("current")
+
+        // 总结:
+            // jquery是一个链式编程库
+            // 其链式编程实现的原理是函数每次调用,都返回作用域中的this
+    </script>
+</body>
+</html>

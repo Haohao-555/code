@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box-1 , .box-2 {
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: #ccc;
+            margin-left: 50px;
+        }
+        .box-1 > div , .box-2 > div {
+            width: 100px;
+            height: 100px;
+        }
+        .box-1 > div {
+            background-color: red;
+        }
+        .box-2 > div {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-1">
+        <!-- 目标元素 -->
+        <div></div>
+    </div>
+
+    <div class="box-2">
+       
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // .box-2 jquery对象
+            var $el =  $(".box-2");
+            // 移动元素
+            // appendTo()
+                // 调用者： 目标元素的jquery对象
+                // 参数：容器标签的jquery对象或选择器
+                // 返回值：忽略
+                // 功能： 把目标元素移动至指定的容器标签
+            // $(".box-1 > div").appendTo($el);
+            $(".box-1 > div").appendTo(".box-2");
+        })
+    </script>
+</body>
+</html>
