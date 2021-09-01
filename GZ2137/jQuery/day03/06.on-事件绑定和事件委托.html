@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-01 19:43:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery\day03\06.on-事件绑定和事件委托.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -48,7 +54,7 @@
 
             // 方式2：委托事件
             // 参数：1.事件类型 2.后代元素或子元素(选择器) 3.回调函数
-            $(".container").on("click","button",function(){
+            $(".container").on("click mouseenter","button",function(){
                 console.log("click",this);
             })
 
