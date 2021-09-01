@@ -1,0 +1,108 @@
+<!--
+ * @Date: 2021-08-31 19:46:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \作业0831\作业0901\1\index.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <style>
+        .header {
+            height: 100px;
+        }
+        .header > div {
+            height: 50px;
+            line-height: 50px;
+        }
+        .header > div input {
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+        }
+        .main {
+            padding: 0px;
+        }
+        .main .list .item {
+            width: 600px;
+            height: 80px;
+            border: 1px solid #ccc;
+        }
+        .main .list .item .left {
+            width: 90px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            float: left;
+        }
+        .main .list .item .left input {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+        .main .list .item .right {
+            float: left;
+            width: 510px;
+            height: 80px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+       <div>
+            <label>全选</label> : <input id="all_input" type="checkbox">
+       </div>
+       <div>
+            <label>反选</label> : <input id="fail_input" type="checkbox">
+       </div>
+    </div>
+
+    <div class="main">
+        <div class="list">
+            <div class="item">
+                <div class="left"><input type="checkbox"></div>
+                <div class="right"><span>衣服</span></div>
+            </div>
+            <div class="item">
+                <div class="left"><input type="checkbox"></div>
+                <div class="right"><span>手机</span></div>
+            </div>
+            <div class="item">
+                <div class="left"><input type="checkbox"></div>
+                <div class="right"><span>音响</span></div>
+            </div>
+            <div class="item">
+                <div class="left"><input type="checkbox"></div>
+                <div class="right"><span>电视机</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="../libs/jquery/jquery.js"></script>
+    <script>
+        $(function(){
+            // 需求：
+				// 1. 点击全选，勾选所有商品
+				// 2. 点击反选，取消选择商品（原来选中的不勾选，原来没选中的勾选）
+          var option = $(".item .left input[type='checkbox']")
+          $('#all_input').click(function() {
+             option.attr('checked', true)
+          })
+		  $('#fail_input').click(function() {
+              option.attr('checked', false)
+          })
+          for(var i = 0; i < option.length; i++) {
+              option[i].addEventListener('click', function(e) {
+                  var e = e || window.event;
+                  var flag = $(this).attr("checked");
+                  $(this).attr('checked', !flag) 
+              })
+          }
+        })
+    </script>
+</body>
+</html>

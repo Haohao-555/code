@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>test</title>
+    <style>
+      html,
+      body,
+      ul,
+      h3 {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .wrapper {
+        width: 1200px;
+        margin: 0 auto;
+        background-color: #ddd;
+      }
+      .wrapper .title {
+        height: 80px;
+        background-color: #ccc;
+        line-height: 80px;
+      }
+      .wrapper .main .header > div {
+        min-height: 100px;
+        line-height: 100px;
+        border-bottom: 1px solid #fff;
+      }
+      .wrapper .main .header > div label,
+      .wrapper .main .header > div input,
+      .wrapper .main .header > div textarea,
+      .wrapper .main .header > div button {
+        vertical-align: middle;
+      }
+      .wrapper .main .header > div input {
+        width: 480px;
+        height: 40px;
+        padding: 0 0 0 20px;
+        font-size: 20px;
+      }
+      .wrapper .main .header > div textarea {
+        width: 480px;
+        height: 80px;
+        padding: 0 0 0 20px;
+        font-size: 20px;
+      }
+      .wrapper .main .header > div button {
+        width: 200px;
+        height: 40px;
+        margin-left: 40px;
+        background: #fff;
+      }
+      .wrapper .list ul {
+        padding: 30px 20px;
+      }
+      .wrapper .list ul li {
+        width: 480px;
+        min-height: 80px;
+        background-color: #fff;
+        margin-bottom: 10px;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h3 class="title">发表</h3>
+      <div class="main">
+        <div class="header">
+          <div><label for=""> 标题 </label> <input type="text" id="tit" /></div>
+          <div>
+            <label for=""> 内容 </label> <textarea id="content"></textarea>
+          </div>
+          <div>
+            <button id="send">发表</button>
+          </div>
+        </div>
+        <div class="list">
+          <ul id="box">
+            <!-- 动态生成 -->
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="../libs/jquery/jquery.js"></script>
+    <script>
+      $(function () {
+        // 需求：
+        // 1. 点击‘发表’按钮，获取输入框和输入域的文本
+        // 2. 把获取的文本内容，进行字符串拼接并渲染再页面
+        $("#send").click(function () {
+          var title = $("#tit").val();
+          var content = $("#content").val();
+          console.log(title, content)
+          if (title && content) {
+            var str = `<li>
+                            <h3>${title}<h3>
+                            <h3>${content}</h3>
+                       </li>
+                       `;
+            $('.list #box').prepend(str)
+            $('#tit').val("")
+            $('#content').val("")
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

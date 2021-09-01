@@ -1,0 +1,91 @@
+<!--
+ * @Date: 2021-08-30 19:58:00
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \作业0830\作业0830\2\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .container {
+        width: 1000px;
+        margin: 0 auto;
+      }
+      .nav_tab {
+        width: 1000px;
+        background-color: skyblue;
+      }
+      .nav_tab ul::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .nav_tab ul li {
+        float: left;
+        height: 40px;
+        padding: 0 20px;
+        background-color: #ccc;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border-bottom: 5px solid transparent;
+      }
+      .nav_tab ul li.active {
+        height: 38px;
+        border-bottom: 5px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav_tab">
+        <ul>
+          <li class="active" data-index="0">国际大牌<span>◆</span></li>
+          <li data-index="1">国妆名牌<span>◆</span></li>
+          <li data-index="2">清洁用品<span>◆</span></li>
+          <li data-index="3">男士精品<span>◆</span></li>
+        </ul>
+      </div>
+      <div class="tab_content">
+        <img src="./imgs/guojidapai.jpg" alt="" />
+      </div>
+    </div>
+    <script src="../jquery/jquery.js"></script>
+    <script>
+      // 入口函数
+      $(function () {
+        //  需求：
+        //  1. 点击当前的tab选项，显示相应内容 ， 设置当前点击的盒子的下边框颜色（高亮）。
+        // 数组(存放图片的路径)
+        var arr = [
+          "./imgs/guojidapai.jpg",
+          "./imgs/guozhuangmingpin.jpg",
+          "./imgs/qingjieyongpin.jpg",
+          "./imgs/nanshijingpin.jpg",
+        ];
+        $("ul")[0].onclick = function (e) {
+          var index = e.target.dataset.index;
+          if (index) {
+             rendData(index, arr[index])
+          }
+        };
+      });
+      function rendData(index, data) {
+          $('.active').removeClass("active")
+          $('ul li').eq(index).addClass("active")
+          $('.tab_content img').attr("src", data)
+          
+      }
+    </script>
+  </body>
+</html>

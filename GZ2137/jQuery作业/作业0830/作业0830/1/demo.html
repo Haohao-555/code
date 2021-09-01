@@ -1,0 +1,71 @@
+<!--
+ * @Date: 2021-08-30 19:58:00
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \作业0830\作业0830\1\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+			html,
+            body {
+				height:100%;
+                text-align: center;
+				padding: 100px 0 0 0;
+            }
+            .btn_open , /* 并集选择器*/
+            .btn_close {
+                width:120px;
+                height: 40px;
+                background-color: #ccc;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+                position: fixed;
+                top: 100px;
+                right: 50px;
+            }
+            .btn_close {
+                top: 150px;
+            }
+			[class^="btn"].active {
+			   background-color: #f50;
+			}
+            .close {
+                background-color: #000;
+            }
+            .open {
+                background-color: #fff ;
+            }
+    </style>
+</head>
+<body>
+    <img src="https://www.baidu.com/img/bd_logo1.png?qua=high" alt="">
+
+    <div class="btn_open"> 开灯 </div>
+    <div class="btn_close active"> 关灯</div>
+
+    <script src="../jquery/jquery.js"></script>
+    <script>
+            // 入口函数
+            $(function(){
+                   // 要求：
+				   // 点击“开灯”，设置页面背景为白色
+				   // 点击“关灯”，设置页面背景为黑色
+                   
+             $('.btn_open')[0].onclick = function() {
+                 console.log(1)
+                  $('body').removeClass("close").addClass("open")
+             }
+             $('.btn_close')[0].onclick = function() {
+                $('body').addClass("close").removeClass("open")
+             }
+            })
+    </script>
+</body>
+</html>
