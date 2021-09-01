@@ -1,0 +1,37 @@
+<!--
+ * @Date: 2021-09-01 15:26:52
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery\day03\自己\练习1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script src="../../jquery-3.6.0.js"></script>
+    <script>
+      $(function () {
+        // 获取焦点
+        $("input[type= 'text']").focus(function () {
+          // 设置当前输入框的边框颜色
+          $(this).css("border-color", "deepskyblue");
+          // 重置输入的值
+          $(this).val("")
+        });
+        // 失去焦点
+        $("input[type='text']").blur(function(){
+            $(this).css("border-color","#ccc")
+            // 获取输入值
+            var v1 = $(this).val();
+            console.log(v1);
+        })
+      });
+    </script>
+  </body>
+</html>
