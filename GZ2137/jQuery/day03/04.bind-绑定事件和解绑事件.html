@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<body>
+    <button
+        style="padding: 10px 40px;"
+        class="btn"
+        >按钮</button>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // JS
+            // var btn = document.querySelector(".btn");
+            // // 绑定事件
+            // var count = 0;
+            // btn.onclick = function(){
+            //     count ++;
+            //     console.log("click",count);
+            //     // 解绑事件
+            //     if(count == 5){
+            //         // 解绑事件
+            //         btn.onclick = null;
+            //     }
+            // }
+
+            // jq
+            // 事件函数 可以直接调用者 $dom.click()
+            // 绑定事件 bind  解绑事件 unbind
+            // 方式1：
+            // var count = 0;
+            // $(".btn").bind("click",function(){
+            //     count ++;
+            //     console.log("click",count);
+            // })
+            // 方式2：可以绑定多个事件
+            // 参数1： 事件类型  参数2：回调函数
+            // var count = 0;
+            // $(".btn").bind("click mouseenter mouseleave",function(event){
+            //     // console.log(event);// 事件对象
+            //     // console.log(event.handleObj);// 对象
+            //     // console.log(event.handleObj.origType);// 事件类型(行为)
+            //     var origType = event.handleObj.origType;
+            //     // 判断事件类型
+            //     if(origType == "click"){
+            //         count ++;
+            //         console.log("click",count);
+            //     }else if(origType == "mouseenter"){
+
+            //         console.log("mouseenter");
+            //     }else if(origType == "mouseleave"){
+
+            //         console.log("mouseleave");
+            //     }
+            // })
+
+            // 方式3：
+            var count = 0;
+            $(".btn").bind("click mouseenter mouseleave",function(event){
+                // 事件类型(行为)
+                var origType = event.handleObj.origType;
+                // 判断事件类型
+                if(origType == "click"){
+                    count ++;
+                    console.log("click",count);
+                    if(count == 5){
+                        // $(".btn").unbind("click");//解绑点击事件
+                        $(".btn").unbind();//解绑所有的事件
+                    }
+                }else if(origType == "mouseleave"){
+                    console.log("mouseleave");
+                }
+            })
+
+            // 方式4：不推荐使用
+            // 多此一举
+            // 参数1：事件类型 参数2：可选参数（对象）参数3：回调函数
+            // var option = {x:100,y:200,color:"red"}
+            // $(".btn").bind("click",option,function(event){
+            //     // 传递到事件函数作用域的数据
+            //     console.log(event.data);
+            // })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+        ul li {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+        ul li button {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <button class="btn">点击按钮</button>
+        </li>
+    </ul>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 委托：找其他人完成某一件事情
+            // 事件委托：给祖先元素或父元素绑定事件，从而让其后代元素或者子元素绑定事件（注册事件）
+            // JS
+            // var ul = document.querySelector("ul");
+            // var li = document.querySelector("li");
+            // ul.onclick = function(event){
+            //     // 事件源
+            //     var el = event.target;
+            //     // console.log(el);
+            //     // 获取代表按钮标签的属性
+            //     // console.log(el.tagName);
+            //     if(el.tagName=="BUTTON" || el.className=="btn"){
+            //         console.log("执行点击按钮的逻辑");
+            //     }
+            // }
+            // 好处：
+                // 可以减少DOM操作
+                // 可以减少循环
+                // 可以动态绑定事件
+                // 节省内存，优化web性能                
+                // var buttons = document.querySelectorAll("button");
+                // for(var i = 0 ; i < buttons.length ; i ++){buttons[i].onclick = function(){}}
+                // var cButton = document.createElement("button");
+                // li.appendChild(cButton);
+
+
+            // jq
+            // 调用者： jquery对象
+            // 参数:1. 后代元素或子元素(选择器)
+            // 参数:2. 事件类型
+            // 参数:3. 回调函数
+            var count = 0;
+            // 调用事件委托的方法
+            $("ul").delegate('button','click',function(){
+                count ++;
+                console.log("click:",count);
+                if(count == 5){
+                    // 解绑点击事件的方法
+                    // $("ul").undelegate();
+                    $("ul").undelegate("click");
+                }
+            })
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE >
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+        .box {
+            margin-top: 10px;
+            width: 200px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-animate">执行动画</button>
+    <div class="box"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $(".btn-animate").click(function(){
+                // 控制.box标签的样式
+                // 调用者： jquery对象
+                // 参数:1. 样式对象  2.毫秒值/英文词汇 3.回调函数
+                // $(".box").animate({
+                //     width:"100px",
+                //     borderRadius:"50px"
+                // },1000)
+                $(".box").animate({
+                    width:"100px",
+                    borderRadius:"50px"
+                },1000,function(){ 
+                    $(".box").css("background","blue");
+                })
+            })
+        })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

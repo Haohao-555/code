@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 1.0 $ 是什么? 和jQuery是什么关系
+            // 答案：
+            // $是个函数，和jQuery全等于关系
+            // console.log($===jQuery);//true
+            // 2.0 通过$获取页面的按钮标签
+            // 答案：
+            // $("button")
+            // jQuery("button") 包含button标签的jquery对象
+            // jQuery("button")[0]// <button>按钮1</button>  dom 对象
+
+            // 3.0 通过$函数获取的按钮标签 事件绑定
+            // $(dom).onclick = function(){} // 错误
+            // $(dom).click = function(){} // 错误
+            // $(dom).click(function(){}) // 正确
+            // $(dom)[0].onclick = function(){}// 正确
+
+            // 4.0 调用click事件函数,函数作用域的this
+            // $("button").click(function() {
+                // console.log(this);// this 是事件源，是dom对象
+                // 转jquery对象
+                // console.log($(dom对象));
+                // console.log($(this));// 包含当前点击标签的jquery对象
+            // })
+
+        })
+    </script>
+</body>
+</html>

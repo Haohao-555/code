@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .container {
+            width: 400px;
+            height: 400px;
+            background-color: #ccc;
+        }
+        .container button {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button>按钮1</button>
+        <button>按钮2</button>
+        <button>按钮3</button>
+        <button>按钮4</button>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 情人眼里出西施。
+            // 给页面的元素赋予行为的几种方式：
+           
+            // onclick
+            // addEventListener
+            // click()
+            // bind()  绑定事件
+            // delegate() 委托事件
+            // on()  推荐的写法（jquery）
+
+            // 方式1：绑定事件
+            // 参数： 1.事件类型 2.回调函数
+            // $("button").on("click",function(event){
+            //     console.log("click",this);
+            // })
+
+            // 方式2：委托事件
+            // 参数：1.事件类型 2.后代元素或子元素(选择器) 3.回调函数
+            $(".container").on("click","button",function(){
+                console.log("click",this);
+            })
+
+            // 方式3：
+            // var count = 0;
+            // $(".container").on("click","button",function(){
+            //     count ++;
+            //     // console.log("click",this);
+            //     console.log("click:",count);
+            //     if(count == 5){
+            //         // $(".container").off(); // 解绑所有事件
+            //         $(".container").off("click");// 解绑点击事件
+            //     }
+            // })
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+        .box {
+            margin-top: 10px;
+            width: 200px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-show">显示</button>
+    <button class="btn-hide">隐藏</button>
+
+    <!-- 目标元素 -->
+    <div class="box">hello world</div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 方式1：
+            // 简单的显示和隐藏元素 
+            // $(".box").hide(); // 隐藏元素
+            // $(".box").show(); // 显示元素
+            // $(".box").toggle();// 切换
+            // （如果该元素是显示状态，调用toggle方法，就是隐藏元素）
+            // （如果该元素是隐藏状态，调用toggle方法，就是显示元素）
+
+            // 方式2：
+            // 参数： 毫秒值 1000ms = 1s 
+            // 执行动画,通过改变元素的宽度和高度等显示和隐藏元素
+            // $(".btn-show").click(function(){
+            //      $(".box").show(1000); // 显示元素
+            // })
+            // $(".btn-hide").click(function(){
+            //      $(".box").hide(500); // 隐藏元素
+            // })
+
+            // // 方式3：
+            // // 参数：fast / slow
+            // $(".btn-show").click(function(){
+            //      $(".box").show("fast"); // 显示元素
+            // })
+            // $(".btn-hide").click(function(){
+            //      $(".box").hide("slow"); // 隐藏元素
+            // })
+
+            // 方式4：
+            // 参数：1.时间  2.回调函数
+            // 当前动画结束了，可以执行回调函数
+            $(".btn-show").click(function(){
+                 $(".box").show(1000,function(){ console.log("show") }); // 显示元素
+            })
+            $(".btn-hide").click(function(){
+                 $(".box").hide(500,function(){ console.log("hide")}); // 隐藏元素
+            })
+
+            // 总结：
+                // 调用者： jquery对象
+                // 参数： 无 ，简单设置元素display属性
+                // 参数：毫秒值/英文词汇  , 回调函数（可选）
+        })
+    </script>
+</body>
+</html>

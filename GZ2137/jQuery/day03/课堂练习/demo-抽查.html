@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<style>
+    .clearFix {
+        clear: both;
+        content: '';
+        display: block;
+    }
+
+    .box {
+        width: 1000px;
+        /* height: 500px; */
+        border: 1px solid #ccc;
+    }
+
+    .box .student {
+        width: 80px;
+        height: 40px;
+        border: solid 1px #ccc;
+        margin: 5px 9px;
+        float: left;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div class="box clearFix">
+
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script src="./data/student_info_data.js"></script>
+    <script>
+        $(function () {
+            var str = ''
+            for (var i = 0; i < data.length; i++) {
+                str += '<div class = "student">'
+                str += data[i].name
+                str += '</div>'
+            }
+            $('.box').append(str)
+
+            $('.student').on('click mouseenter mouseleave', function (event) {
+                var origType = event.handleObj.origType;
+                // console.log(origType);
+                var count = false
+                if (origType == "click") {
+                    count = true
+                    $(this).css('background', 'orange')
+                    // console.log(count);
+                    if (count) {
+                        $(this).off('mouseleave')
+                        $(this).off('mouseenter')
+                    }
+                } else if (origType == 'mouseenter') {
+                    $(this).css('background', 'lightblue')
+                } else if (origType == 'mouseleave') {
+                    $(this).css('background', '#fff')
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

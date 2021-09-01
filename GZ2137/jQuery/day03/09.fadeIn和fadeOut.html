@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+        .box {
+            margin-top: 10px;
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-show">淡入显示</button>
+    <button class="btn-hide">淡出隐藏</button>
+
+    <!-- 目标元素 -->
+    <div class="box">hello world</div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 方式1：
+            // $(".box").fadeOut(); // 隐藏元素
+            // $(".box").fadeIn(); // 显示元素
+            // $(".box").fadeToggle();// 切换
+            // （如果该元素是显示状态，调用fadeToggle方法，就是隐藏元素）
+            // （如果该元素是隐藏状态，调用fadeToggle方法，就是显示元素）
+
+            // 方式2：
+            // 主要是通过改变透明度设置元素的显示和隐藏
+            // 参数：毫秒值/英文词汇 fast / slow
+            // $(".btn-show").click(function(){
+            //      $(".box").fadeIn(500); // 显示元素
+            // })
+            // $(".btn-hide").click(function(){
+            //      $(".box").fadeOut(1000); // 隐藏元素
+            // })
+
+            // 方式3：
+            // 主要是通过改变透明度设置元素的显示和隐藏
+            // 参数：毫秒值/英文词汇 fast / slow
+            $(".btn-show").click(function(){
+                 $(".box").fadeIn(500,function(){console.log("淡入");}); // 显示元素
+            })
+            $(".btn-hide").click(function(){
+                 $(".box").fadeOut(1000,function(){console.log("淡出");}); // 隐藏元素
+            })
+        })
+    </script>
+</body>
+</html>

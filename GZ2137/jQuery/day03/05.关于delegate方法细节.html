@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            background-color: #f0f0f0;
+        }
+        ul::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        ul li {
+            float: left;
+            padding: 20px 30px;
+            border: 1px solid #ccc;   
+            margin: 10px ;  
+            cursor: pointer;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li data-type="a">张三</li>
+        <li data-type="b" class="item-2">李四</li>
+        <li data-type="c">赵云</li>
+        <li data-type="e">孙六</li>
+    </ul>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 事件委托
+            // 1. 有很多子元素（后代元素），如何区别所点击的标签?
+            // $("ul").delegate("li[data-type='b']",'click',function(){
+            //     console.log("click lisi");
+            // })
+            // $("ul").delegate(".item-2",'click',function(){
+            //     console.log("click lisi");
+            // })
+            // $("ul").delegate("li",'click',function(event){
+            //     // console.log(event.target);
+            //     if(event.target.dataset.type=="b"){
+            //           console.log("click lisi");
+            //     }
+            // })
+
+            // 2. 事件委托能不能跟bind方法一样绑定多个事件?
+            // 自己动手写个demo.html测试
+            $("ul").delegate("li","click mouseenter mouseleave",function(event){
+                // console.log("test ");
+                // console.log(event.handleObj.origType);
+                if(event.handleObj.origType=="click"){
+                    console.log("click");
+                }else 
+                if(event.handleObj.origType == "mouseenter"){
+                    console.log("mouseenter");
+                }else 
+                if(event.handleObj.origType == "mouseleave"){
+                    console.log("mouseleave");
+                }
+            })
+        })
+    </script>
+</body>
+</html>

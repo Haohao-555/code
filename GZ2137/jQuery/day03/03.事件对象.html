@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position:absolute;
+            left: 100px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 事件对象
+            // event
+            // 标签的样式
+            // var point = $(".box").position();
+            // console.log(point);
+            // console.log($(".box").position());
+            // console.log($(".box").offset());
+            // console.log($(".box").width());
+            // console.log($(".box").height());
+
+
+            // 编码：
+            // 定义全局变量
+            var x = 100;
+            var y = 50;
+            var isMouseDown = false;
+            // 鼠标按下
+            $(".box").mousedown(function(){
+                isMouseDown = true;
+            })
+            // 鼠标移动
+            $(document).mousemove(function(event){
+                if(isMouseDown){
+                    // console.log(event);
+                    // 计算红色标签在可视区的位置
+                    x = event.clientX - $(".box").width()/2;
+                    y = event.clientY - $(".box").height()/2;
+                    // 设置红色标签的位置
+                    $(".box").css({
+                        left: x,
+                        top: y 
+                    })
+                }   
+            })
+            // 鼠标松开
+            $(document).mouseup(function(){
+                isMouseDown = false;
+            })
+        })
+
+        // 总结：
+            // 事件对象：是事件触发时所产生的数据集合（事件信息，鼠标位置信息，滚轮信息，按键状态）
+    </script>
+</body>
+</html>

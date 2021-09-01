@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            background-color: #ccc;
+            padding: 30px 50px;
+        }
+        .container ul {
+            width: 800px;
+            /* 父元素设置弹性布局相关属性 */
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        .container ul li {
+            width: 80px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            margin: 10px 10px 0px 10px;
+            cursor: pointer;
+            background-color: #fff;
+            box-sizing: border-box;
+            flex-basis: 80px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <!-- <li data-count="0">xxx</li> -->
+        </ul>
+    </div>
+
+    <script src="./data/student_info_data.js"></script>
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+
+    <script>
+        $(function(){
+            // 需求：
+                // 1.把 student info data.js的数组，每一项数据的(name)渲染的页面上(页面样式自定义)
+                // 2.鼠标移入”名字”时，当前"名字”背景为，浅蓝色(lightblue) ,鼠标离开”名字”，“名字” 背景为白色(white)
+                // 3.如果鼠标点击"名字"，当前点击的”名字”背景 为橙色(orange) ,当"名字”被点击了,鼠标离开标签依旧是橙色
+
+            // 编写代码(函数式编程)
+            // 1.0 渲染数据的函数
+            var template = function(res){
+                // 定义字符串
+                var str = '';
+                // 循环数组
+                for(var i = 0 ; i < res.length ; i ++){
+                    // 拼接每一项数据
+                    str += '<li data-count="0">'+res[i].name+'</li>'
+                }
+                // 渲染拼接完成的字符串
+                $(".container ul").html(str);
+            }
+            // 渲染数据
+            template(data);
+
+            // 2.0 事件处理逻辑
+            $(".container").on("click mouseenter mouseleave","li",function(event){
+                // 获取事件类型
+                var origType = event.handleObj.origType;
+                // 判断事件类型 执行不同业务逻辑
+                if(origType == "click"){
+                    if($(this).attr("data-count")=="0"){
+                        // 设置当前的事件源的data-count属性值 "1"
+                        $(this).attr("data-count","1");
+                        // 设置当前的事件源背景为橙色
+                        $(this).css("backgroundColor","orange");
+                    }else {
+                        // 设置当前的事件源的data-count属性值 "0"
+                        $(this).attr("data-count","0");
+                        // 设置当前的事件源背景为橙色
+                        $(this).css("backgroundColor","white");
+                    }
+                }else if(origType == "mouseenter"){
+                    // 设置当前的事件源为背景浅蓝色(lightblue)  console.log(this);//事件源 dom对象
+                    if($(this).attr("data-count")=="0"){
+                        $(this).css("backgroundColor","lightblue");
+                    }
+                }else if(origType == "mouseleave"){
+                    // 设置当前的事件源背景为白色(white)
+                    if($(this).attr("data-count")=="0"){
+                        $(this).css("backgroundColor","white");
+                    }
+                }
+            })
+        })
+
+        // 总结：
+            // 针对页面的元素（有很多元素），绑定多个事件
+            // 可以考虑事件委托(delegate,on) ,事件绑定（bind）
+            // 怎么哪些标签是被点击过，可以使用data-* 自定义属性，标注标签的状态
+
+            // 绑定事件和解绑事件 需要一一对应
+            // $(dom).bind() $(dom).unbind()
+            // $(dom).delegate() $(dom).undelegate()
+            // $(dom).on() $(dom).off()
+    </script>
+</body>
+</html>
