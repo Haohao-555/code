@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-02 18:22:47
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery\day04\01.stop方法.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -42,13 +48,13 @@
             })
             // 停止动画
             $("#pause").click(function(){
-                $(".box").stop();//立即停止当前的动画，会执行后续的动画
+                // $(".box").stop();//立即停止当前的动画，会执行后续的动画
                 // $(".box").stop(true);   // 立即停止当前的动画,不执行后续的动画
                 // $(".box").stop(false);  // 立即停止当前的动画,会执行后续的动画
 
                 // $(".box").stop(true,false); // 立即停止当前的动画,不执行后续的动画
                 // $(".box").stop(true,true);  //立即完成当前的动画，停止执行后续的动画
-                // $(".box").stop(false,true);  //立即完成当前的动画，会执行后续的动画
+                $(".box").stop(false,true);  //立即完成当前的动画，会执行后续的动画
                 // $(".box").stop(false,false);  //立即停止当前的动画，会执行后续的动画
             })
 

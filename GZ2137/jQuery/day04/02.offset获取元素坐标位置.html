@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-02 18:22:47
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery\day04\02.offset获取元素坐标位置.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -56,16 +62,16 @@
 
 
         // JS
-        // var box = document.querySelector(".box");
-        // // 在原生的JS中，父元素添加定位属性 ，基于父元素进行偏移
-        // // console.log(box.offsetLeft);// 0
-        // function myOffset(){
-        //     return {
-        //         top: box.offsetTop,
-        //         left: box.offsetLeft
-        //     }
-        // }
-        // console.log(myOffset());
+        var box = document.querySelector(".box");
+        // 在原生的JS中，父元素添加定位属性 ，基于父元素进行偏移
+        // console.log(box.offsetLeft);// 0
+        function myOffset(){
+            return {
+                top: box.offsetTop,
+                left: box.offsetLeft
+            }
+        }
+        console.log(myOffset());
     </script>
 </body>
 </html>
