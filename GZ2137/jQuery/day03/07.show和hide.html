@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-01 19:43:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery\day03\07.show和hide.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -30,7 +36,7 @@
         $(function(){
             // 方式1：
             // 简单的显示和隐藏元素 
-            // $(".box").hide(); // 隐藏元素
+            $(".box").hide(); // 隐藏元素
             // $(".box").show(); // 显示元素
             // $(".box").toggle();// 切换
             // （如果该元素是显示状态，调用toggle方法，就是隐藏元素）
@@ -47,10 +53,10 @@
             // })
 
             // // 方式3：
-            // // 参数：fast / slow
-            // $(".btn-show").click(function(){
-            //      $(".box").show("fast"); // 显示元素
-            // })
+            // 参数：fast / slow
+            $(".btn-show").click(function(){
+                 $(".box").show("fast"); // 显示元素
+            })
             // $(".btn-hide").click(function(){
             //      $(".box").hide("slow"); // 隐藏元素
             // })
