@@ -1,0 +1,103 @@
+<!--
+ * @Date: 2021-09-01 19:45:44
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \作业0901\demo-3.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery</title>
+    <style>
+      .wrapper {
+        width: 150px;
+        height: 150px;
+        background-color: #ccc;
+        position: relative;
+        margin: 150px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .wrapper .top,
+      .wrapper .bottom {
+        width: 150px;
+        height: 10px;
+        position: absolute;
+      }
+      .wrapper .top {
+        background-color: red;
+        top: 0;
+        left: -150px;
+        /* left: 0; */
+      }
+      .wrapper .bottom {
+        background-color: green;
+        bottom: 0;
+        left: 150px;
+        /* left: 0; */
+      }
+      .wrapper .left,
+      .wrapper .right {
+        width: 10px;
+        height: 150px;
+        position: absolute;
+      }
+      .wrapper .left {
+        background-color: blue;
+        left: 0;
+        top: 150px;
+        /* top: 0px; */
+      }
+      .wrapper .right {
+        background-color: orange;
+        right: 0;
+        top: -150px;
+        /* top: 0; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="top item"></div>
+      <div class="bottom item"></div>
+      <div class="left item"></div>
+      <div class="right item"></div>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+      $(".wrapper").bind("mouseenter mouseleave", "div", function (e) {
+        if (e.handleObj.origType == "mouseenter") {
+          $(this).children("div").eq(0).animate({
+            left: "0px",
+          });
+          $(this).children("div").eq(1).animate({
+            left: "0px",
+          });
+          $(this).children("div").eq(2).animate({
+            top: "0px",
+          });
+
+          $(this).children("div").eq(3).animate({
+            top: "0px",
+          });
+        } else if (e.handleObj.origType == "mouseleave") {
+          $(this).children("div").eq(0).animate({
+            left: "-150px",
+          });
+          $(this).children("div").eq(1).animate({
+            left: "150px",
+          });
+          $(this).children("div").eq(2).animate({
+            top: "150px",
+          });
+          $(this).children("div").eq(3).animate({
+            top: "-150px",
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

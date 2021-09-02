@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery</title>
+    <style>
+      html,
+      body,
+      ul,
+      p {
+        padding: 0;
+        margin: 0;
+      }
+
+      .product {
+        width: 1200px;
+      }
+      .product ul {
+        list-style: none;
+      }
+      .product ul li {
+        margin: 10px;
+        width: 230px;
+        min-height: 300px;
+        border: 1px solid #ccc;
+        position: relative;
+        overflow: hidden;
+      }
+      .product ul li img {
+        width: 230px;
+        display: block;
+      }
+      .product ul li .detail {
+        width: 230px;
+        height: 80px;
+        background-color: yellowgreen;
+        /* overflow: hidden; */
+        /* height: 0; */
+        position: absolute;
+        left: 0;
+        bottom: -80px;
+      }
+      .product ul li .detail p {
+        line-height: 1.5;
+      }
+      .product ul li .detail p.new_price {
+        color: red;
+        font-size: 20px;
+      }
+      .product ul li .detail p.old_price {
+        color: #666;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product">
+      <ul>
+        <li>
+          <a href="javascript:;">
+            <img src="./images/001.webp" alt="" />
+          </a>
+          <div class="detail">
+            <p class="new_price">199.00元</p>
+            <p class="old_price">200.00元</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+      $("ul").on("mouseenter mouseleave", "li", function (e) {
+        if (e.handleObj.origType == "mouseenter") {
+          $(this).find(".detail").animate({
+            bottom: "0px",
+          });
+        }else if (e.handleObj.origType == "mouseleave") {
+            $(this).find(".detail").animate({
+                bottom: "-80px"
+            })
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!--
+ * @Date: 2021-09-01 19:45:44
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \jQuery作业\作业0901\demo-4.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .nav {
+        width: 900px;
+        height: 100px;
+        background-color: #333;
+        position: relative;
+        margin: 0 auto;
+      }
+      .nav ul li {
+        float: left;
+        width: 80px;
+        height: 38px;
+        /* background-color: #fff; */
+        margin-top: 31px;
+        line-height: 38px;
+        font-size: 14px;
+        text-align: center;
+        margin-left: 10px;
+        cursor: pointer;
+        color: white;
+      }
+      .nav .clound {
+        width: 80px;
+        height: 38px;
+        background-image: url("./images/sprites.png");
+        position: absolute;
+        top: 40px;
+        left: -80px;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="icon clound"></div>
+      <ul>
+        <li data-index="1">导航1</li>
+        <li data-index="2">导航2</li>
+        <li data-index="3">导航3</li>
+        <li data-index="4">导航4</li>
+        <li data-index="5">导航5</li>
+      </ul>
+    </div>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+      $("ul").on("mouseenter", "li", function (e) {
+        $(".nav .clound").stop().animate({
+          opacity: "1",
+          left: $(this.offsetLeft)[0] + "px",
+        });
+      })
+    </script>
+  </body>
+</html>

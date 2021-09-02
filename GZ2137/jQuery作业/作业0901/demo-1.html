@@ -1,0 +1,90 @@
+<!--
+ * @Date: 2021-09-01 19:45:44
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \jQuery作业\作业0901\demo-1.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery</title>
+    <style>
+      html,
+      body,
+      ul {
+        padding: 0;
+        margin: 0;
+      }
+      ul {
+        list-style: none;
+      }
+      .menu {
+        width: 80px;
+        height: 600px;
+        background-color: #333;
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        margin-top: -300px;
+      }
+      .menu ul li {
+        width: 80px;
+        height: 118px;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        cursor: pointer;
+        position: relative;
+      }
+      .icon {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        border: 1px solid red;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        text-align: center;
+        line-height: 40px;
+        transform: rotate(15deg); /*旋转*/
+        position: absolute;
+        right: -90px;
+        top: 10px;
+
+        display: none;
+      }
+      li.active span {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <ul>
+        <li class="active">AA <span class="icon">提示1</span></li>
+        <li>BB <span class="icon">提示2</span></li>
+        <li>CC <span class="icon">提示3</span></li>
+        <li>DD <span class="icon">提示4</span></li>
+        <li>EE <span class="icon">提示5</span></li>
+      </ul>
+    </div>
+   <script src="../jquery/jquery.min.js"></script>
+    <script>
+      $(function () {
+        // 需求：
+        // 当鼠标移入当前的选项，当前选项高亮
+        // 显示当前选项的提示图标，其他非当前选项的提示图标隐藏
+        $("ul").on("mouseenter", "li", function () {
+          $(this)
+            .addClass("active")
+            .css("background", "rgb(221,221,221)")
+            .siblings("li")
+            .removeClass("active")
+            .css("background", "#333");
+        });
+      });
+    </script>
+  </body>
+</html>
