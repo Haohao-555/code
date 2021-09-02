@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .red , .green {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc; 
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button class="btn-start">开始</button>
+        <button class="btn-next">继续执行(下一个动画)</button>
+        <button class="btn-pause">停止</button>
+    </div>
+
+    <div>
+        <div class="red"></div>
+        <div class="green"></div>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // queue()
+            // dequeue()
+            // clearQueue()
+            // 调用者：jquery对象
+            // 参数：1. 队列名称（fx）  2. 动画数组
+            // 返回值：忽略
+            // 功能： 指定下一个执行的动画
+
+            // 定义动画数组
+            var arr = [
+                function(){$(".red").animate({marginLeft:100},1000)},
+                function(){$(".green").animate({marginLeft:200},1000)},
+                function(){$(".red").animate({marginLeft:300},1000)},
+                function(){$(".green").animate({marginLeft:400},1000)},
+                function(){$(".red").animate({marginLeft:500},1000)}
+            ]
+            // 绑定事件
+            $(".btn-start").click(function(){
+                // 把需要执行的一些列的动画
+                $("body").queue("fx",arr);
+            })
+            $(".btn-next").click(function(){
+                // 执行下一个动画
+                $("body").dequeue("fx");
+            })
+            $(".btn-pause").click(function(){
+                // 清除动画队列
+                $("body").clearQueue("fx");
+            })
+
+
+            // 总结：
+                // 如果有一系列动画需要执行，那么可以把这个系列的动画存放在数组中
+                // 调用queue方法，统一执行系列动画
+                // 调用dequeue方法，执行下一个动画
+                // 调用clearQueue方法，清除动画队列
+
+                // 如果以上方法不符合你的业务逻辑，那就直接根据数组索引值执行动画
+                //  var f1 = arr[0]
+                //  var f2 = arr[1]
+                //  var f3 = arr[2]
+                // f1()
+                // f2()
+                // f3()
+
+
+        })
+    </script>
+</body>
+</html>

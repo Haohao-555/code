@@ -2,7 +2,7 @@
  * @Date: 2021-09-01 19:45:44
  * @Author: 浩
  * @LastEditors: 浩
- * @FilePath: \jQuery作业\作业0901\demo-4.html
+ * @FilePath: \yue_code\GZ2137\jQuery作业\作业0901\demo-4.html
 -->
 <!DOCTYPE html>
 <html lang="zh-cn">
@@ -63,11 +63,11 @@
     </div>
     <script src="../jquery/jquery.min.js"></script>
     <script>
-      $("ul").on("mouseenter", "li", function (e) {
-        $(".nav .clound").stop().animate({
+      $("ul").on("click", "li", function (e) {
+        $(".nav .clound").animate({
           opacity: "1",
           left: $(this.offsetLeft)[0] + "px",
-        });
+        },1000);
       })
     </script>
   </body>

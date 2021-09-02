@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- 并列关系 -->
+    <!-- 
+        <div>
+            <button>按钮</button>
+            <button>按钮</button>
+            <button>按钮</button>
+            <button>按钮</button>
+            <button>按钮</button>
+            <button>按钮</button>
+        </div> 
+    -->
+
+    <!-- 嵌套关系 -->
+    <div><button>按钮</button></div>
+    <div><button>按钮</button></div>
+    <div><button>按钮</button></div>
+    <div><button>按钮</button></div>
+    <div><button>按钮</button></div>
+    <div><button>按钮</button></div>
+
+
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // index()
+            // 写法1：
+            // 按钮是并列关系的才能使用： $(this).index() 
+            // $("div button").click(function(){
+            //     // 获取当前点击的按钮的索引值
+            //     var v1  = $(this).index();
+            //     console.log("index:",v1);
+            // })
+
+
+            // 写法2：
+            // 按钮是嵌套关系的，可以使用：$("div button").index($(this))
+            $("div button").click(function(){
+                // 获取当前点击的按钮的索引值
+                var v1 = $("div button").index($(this));
+                console.log("index:",v1);
+            })
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .parent {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            margin-left: 100px;
+            margin-top: 150px;
+            /* position: relative; */
+        }
+        .parent .child {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* position: absolute; */
+            left: 20px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+
+    <script>
+        // offset()
+        // positon() 
+        // js
+        var child = document.querySelector(".child");
+        function offset(dom){// 偏移的位置
+            return {
+                left: dom.offsetLeft,
+                top: dom.offsetTop
+            }
+        }
+        function position(dom){// 获取left和top的属性值
+            return {
+                left: parseInt(getComputedStyle(dom)["left"]),
+                top: parseInt(getComputedStyle(dom)["top"])
+            }
+        }
+        // 获取红色标签的位置
+        console.log(offset(child));//{left: 100, top: 150}
+        console.log(position(child));//{left: 20, top: 50}
+
+
+    </script>
+</body>
+</html>

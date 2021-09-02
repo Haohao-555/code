@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取红色标签的位置</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .header {
+            height: 100px;
+            border-bottom: 3px solid #000;  
+        }
+        .nav {
+            width: 1000px;
+            margin: 0 auto;
+            height: 100px;
+            background-color: deepskyblue;
+            /* 添加position */
+            /* position: relative; */
+        }
+        .nav .box {
+            width: 100px;
+            height: 80px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- 父元素 -->
+        <div class="nav">
+            <!-- 子元素 -->
+            <div class="box"></div>
+        </div>
+    </div>
+
+
+    <!-- <script src="./jquery/3.6.0/jquery-3.6.0.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+    <script>
+        // 获取红色标签的位置 offset
+        var point = $(".box").offset();
+        console.log(point);
+
+        // 获取红色标签的位置 position
+        var obj = $(".box").position();
+        console.log(obj);
+    </script>
+</body>
+</html>

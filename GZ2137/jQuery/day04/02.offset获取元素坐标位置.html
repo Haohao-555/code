@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取红色标签的位置</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .header {
+            height: 100px;
+            border-bottom: 3px solid #000;  
+        }
+        .nav {
+            width: 1000px;
+            margin: 0 auto;
+            height: 100px;
+            background-color: deepskyblue;
+            /* 添加position */
+            /* position: relative; */
+        }
+        .nav .box {
+            width: 100px;
+            height: 80px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- 父元素 -->
+        <div class="nav">
+            <!-- 子元素 -->
+            <div class="box"></div>
+        </div>
+    </div>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // offset
+        // 屏幕小于等于1000px
+        // 获取红色标签的坐标
+        // var point = $(".box").offset();
+        // console.log(point);// {top: 0, left: 0}
+
+
+        // 屏幕大于1000px
+        // 问题： offset方法会因为父元素添加定位属性而受影响吗?
+        // 答案： 不会
+        var point = $(".box").offset();
+        console.log(point);// {top: 0, left: 460}
+
+
+
+        // JS
+        // var box = document.querySelector(".box");
+        // // 在原生的JS中，父元素添加定位属性 ，基于父元素进行偏移
+        // // console.log(box.offsetLeft);// 0
+        // function myOffset(){
+        //     return {
+        //         top: box.offsetTop,
+        //         left: box.offsetLeft
+        //     }
+        // }
+        // console.log(myOffset());
+    </script>
+</body>
+</html>

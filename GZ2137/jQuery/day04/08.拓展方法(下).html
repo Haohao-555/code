@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 拓展方法
+            // 拓展出来的方法的调用者是 $
+            // 把$当作对象
+            // 写法1:
+            $.sayHello = function(){
+                console.log("hello world");
+            }
+            $.changeColor = function(){
+                $("body").css("background","red")
+            }
+            // 调用者： $函数
+            // $.sayHello();
+            // $.changeColor();
+
+            // 写法2:
+            // extend
+            // $.extend()
+            $.extend({
+                foo: function(){
+                    console.log("foo");
+                },
+                myRandom(num){
+                    return Math.floor(Math.random()*num);
+                }
+            })
+
+            // 调用者：$函数
+            $.foo();
+            var r = $.myRandom(100);
+            console.log(r);
+        })
+    </script>
+</body>
+</html>

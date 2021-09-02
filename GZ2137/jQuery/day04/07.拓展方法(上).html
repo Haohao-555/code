@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 拓展方法
+        // 拓展出来的方法的调用者是jquery对象
+        // $.fn    fn是原型对象
+        // 在$.fn上添加的方法，jquery对象就可以使用
+        // 写法1：
+        $.fn.sayHello = function(){
+            console.log("hello world!");
+        }
+        $.fn.changeWidth = function(){
+            // console.log(this); // 指向的jquery对象
+            // console.log($(this)); // 指向的jquery对象
+            // this.css("width","500px");
+            // $(this).css("width","500px");
+            $(this).animate({width:500},2000);
+        }
+        // 调用者： jquery对象
+        // $(".box").sayHello();
+        // $("body").sayHello();
+        // $(".box").changeWidth();
+
+        // 写法2：
+        // extend()
+        // $.fn.extend()
+        $.fn.extend({
+            foo: function(){
+                console.log("foo");
+            },
+            myRandom(num){
+                return Math.floor(Math.random()*num);
+            }
+        })
+        // 调用者： jquery对象
+        $(".box").foo();
+        var r =  $(".box").myRandom(100);
+        console.log(r);
+    </script>
+</body>
+</html>

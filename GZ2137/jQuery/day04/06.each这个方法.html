@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> jQuery 阶段 </title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul li {
+           text-align: center;
+           width: 80px;
+           height: 80px;
+           line-height: 80px;
+           border-radius: 40px; 
+           border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // each()
+        // 作用： 循环遍历数据集合
+        // console.log( $("ul li") );// jquery对象
+        // 定义颜色数组
+        var arrColor = [
+            "red",
+            "green",
+            "purple",
+            "yellow",
+            "pink"
+        ]
+        // console.log(arrColor);
+        // 写法1：
+        // 调用者： jquery对象
+        // 参数： 回调函数(形参1，参数2)
+                 // 形参1： 代表索引值
+                 // 形参2： 代表jquery对象的每一项dom元素
+        // 返回值：忽略
+        // 功能： 循环jquery对象
+        $("ul li").each(function(index,item){
+            // console.log(index,"->",item);
+            // item 是dom对象
+            // item.css("background","red");// 错误
+            // 转jquery对象
+            $(item).css("background",arrColor[index]);
+        })
+
+
+        // 定义数组 记录标签的右上角
+        var arrBRadius = [
+            "2px",
+            "4px",
+            "8px",
+            "16px",
+            "32px"
+        ]
+
+        // 写法2：
+        // 调用者： $
+        // 参数：参数1，参数2（形参1，形参2）
+        // 返回值：忽略
+        // 功能：循环数据集合（对象，数组）
+        $.each(arrBRadius,function(index,item){
+            // index 代表索引值
+            // item 代表数组的每一项数据
+            // console.log(index,"->",item);
+            $("ul li").eq(index).css("borderTopRightRadius",item);
+        })
+    </script>
+</body>
+</html>
