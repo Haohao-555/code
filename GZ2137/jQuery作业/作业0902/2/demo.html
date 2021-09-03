@@ -1,0 +1,145 @@
+<!--
+ * @Date: 2021-09-02 19:17:29
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery作业\作业0902\2\demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .search {
+        width: 635px;
+        margin: 0 auto;
+      }
+      input {
+        outline: none;
+        border: 0;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .inp {
+        width: 490px;
+        height: 36px;
+        border: 1px solid #ff0036;
+        padding-left: 5px;
+      }
+      .btn {
+        width: 130px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        background: #ff0036;
+      }
+
+      .inp,
+      .btn {
+        float: left;
+      }
+
+      .message-list {
+        width: 493px;
+        border: 1px solid #ccc;
+        display: none;
+      }
+      .message-list li {
+        padding: 5px;
+      }
+
+      .current {
+        background: #ff0036;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../../jquery/jquery.min.js"></script>
+    <script>
+      //公共函数
+      var show = function () {
+        $(".message-list").show();
+      };
+      var hide = function () {
+        $(".message-list").hide();
+      };
+      $(document).ready(function () {
+        // input / keyup
+        $(".inp").on("input property", function () {
+          var v1 = $(this).val().trim();
+          if (v1.length == 0) {
+            hide();
+          } else {
+            show();
+          }
+        });
+
+        // 键盘的上下按键
+        $(".inp").on("keydown", function (e) {
+          // 获取键值码
+          var keyCode = e.keyCode;
+          // 获取页面类名 .current 标签
+          $current = $(".current");
+          if (keyCode == 40) {
+            // 下
+            if ($current.length == 0) {
+              // 判断当前的选项为列表的第一项
+              $(".message-list li").eq(0).addClass("current");
+            } else {
+              if ($current.next().length == 0) {
+                $(".message-list li")
+                  .eq(0)
+                  .addClass("current")
+                  .siblings()
+                  .removeClass("current");
+              } else {
+                $current
+                  .next()
+                  .addClass("current")
+                  .siblings()
+                  .removeClass("current");
+              }
+            }
+          } else if (keyCode == 38) {
+            if ($current.length == 0) {
+              $(".message-list li").last().addClass("current");
+            } else {
+              if ($current.prev().length == 0) {
+				  $current.last().addClass("current").siblings().removeClass("current")
+              } else {
+                $current
+                  .prev()
+                  .addClass("current")
+                  .siblings()
+                  .removeClass("current");
+              }
+            }
+          }
+		  var txt = $(".current").text();
+		  $('.inp').val(txt);
+        });
+      });
+    </script>
+
+    <div class="search">
+      <input class="inp" type="text" placeholder="搜一搜" />
+      <div class="btn">搜索</div>
+      <ul class="message-list">
+        <li>广东美食街</li>
+        <li>广东电脑城</li>
+        <li>广东科技会</li>
+        <li>广东信息港</li>
+        <li>广东新技术</li>
+        <li>广东那最美</li>
+        <li>广东工程队</li>
+        <li>广东天气热</li>
+        <li>广东革命村</li>
+        <li>广东..</li>
+      </ul>
+    </div>
+  </body>
+</html>

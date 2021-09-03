@@ -1,0 +1,99 @@
+<!--
+ * @Date: 2021-09-02 19:17:29
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \yue_code\GZ2137\jQuery作业\作业0902\1\demo.html
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>test</title>
+    <style>
+      select {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        disabled 禁用
+        selected 默认
+     -->
+    <select id="provinceId">
+      <!-- 动态创建 -->
+      <option value="0">----请选择省份----</option>
+    </select>
+
+    <select id="cityId">
+      <!-- 动态创建 -->
+      <option value="0">----请选择城市----</option>
+    </select>
+  </body>
+</html>
+<script src="../../jquery/jquery.min.js"></script>
+<script>
+  $(function () {
+    // 定义数据
+    var data = [
+      {
+        province_name: "广东省",
+        province_id: "1",
+        citys: [{ name: "广州市" }, { name: "深圳市" }, { name: "惠州市" }],
+      },
+      {
+        province_name: "广西省",
+        province_id: "2",
+        citys: [{ name: "南宁市" }, { name: "桂林市" }, { name: "百色市" }],
+      },
+      {
+        province_name: "浙江省",
+        province_id: "3",
+        citys: [{ name: "温州市" }, { name: "杭州市" }, { name: "宁波市" }],
+      },
+    ];
+
+    // 渲染数据
+    var template = function (selector, array) {
+      var v1 = typeof array[0].province_name != "undefined" ? "省份" : "城市";
+      // 定义字符串
+      var str = " <option disabled>----请选择" + v1 + "----</option>";
+      // 字符串拼接
+      for (var i = 0; i < array.length; i++) {
+        // 判断当前循环的数据是否存在指定的属性（省份）
+        if (array[i].province_name) {
+          str +=
+            '<option value="' +
+            array[i].province_id +
+            '">' +
+            array[i].province_name +
+            "</option>";
+        }
+        // 判断当前循环的数据是否存在指定的属性（城市）
+        if (array[i].name) {
+          str += '<option value="">' + array[i].name + "</option>";
+        }
+      }
+      // 循环结束，字符串拼接
+      $(selector).html(str);
+    };
+
+    // 初始化
+    template("#provinceId", data);
+    template("#cityId", data[0].citys)
+
+    // 事件绑定
+    $("#provinceId").on("change", function() {
+        var value = $(this).val();
+        $.each(data, function(index,item) {
+            // console.log(item);
+            if(value == item.province_id) {
+                // console.log(item.citys); 
+                template("#cityId", item.citys)
+            }
+        })
+    })
+  });
+</script>
