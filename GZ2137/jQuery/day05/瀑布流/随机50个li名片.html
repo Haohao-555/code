@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流布局</title>
+    <link rel="stylesheet" href="./css/waterfall.css">
+</head>
+<body>
+
+    <div id="waterfall">
+        <div class="container">
+            <ul>
+                 <!-- 动态创建 -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- 先引入jquery文件 -->
+    <script src="./libs/jquery.js"></script>
+    <!-- 再引入插件 -->
+    <script src="./libs/jquery.waterfall.js"></script>
+    <script>
+        $(function(){
+            // 调用waterFall方法
+            // $("#waterfall").waterFall();
+            // 需求：
+                // 创建50个名片
+            // 编码：
+            // 定义函数 产生250 - 450 之间的随机数
+            var myRandom = function(){
+                return Math.floor(Math.random()*200 + 250);
+            }
+            // 定义函数 在页面渲染50个li标签
+            var template = function(){
+                var str = '';
+                for(var i = 0 ; i < 100 ;i ++){
+                    str += '<li style="height:'+myRandom()+'px;">'+(i+1)+'</li>'
+                }
+                $("#waterfall .container ul").html(str);
+            }
+            // 渲染字符串
+            template();
+
+            // 调用瀑布流插件
+            $("#waterfall").waterFall();
+        })
+    </script>
+</body>
+</html>

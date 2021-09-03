@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box"></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 拓展一个可以被jquery对象被使用的方法
+            $.fn.extend({
+                foo: function(option){
+                    $(this).animate(option,1000)
+                }
+            })
+
+            // 简写：
+            // $.fn.foo = function(){}
+
+            // 调用者： jquery对象
+            $(".box").foo({width:200,height:200});
+        })
+    </script>
+</body>
+</html>

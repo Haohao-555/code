@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+html , body {
+    width: 100%;
+    height: 100%;
+}
+#fullpage {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    height: 100%;
+    overflow: hidden;
+}
+#fullpage .layout {
+    width: 100%;
+    /* height: 100%; */
+}
+#fullpage .layout .section {
+    width: 100%;
+    height: 100%;
+}
+#fullpage .point {
+    width: 40px;
+    height: 200px;
+    /* background-color: #ccc; */
+    position: fixed;
+    top: 50%;
+    margin-top: -100px;
+    left: 20px;
+}
+#fullpage .point span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    cursor: pointer;
+}
+#fullpage .point span.active {
+    background-color: #f00;
+}

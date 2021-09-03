@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>瀑布流布局</title>
+    <link rel="stylesheet" href="./css/waterfall.css">
+    
+</head>
+<body>
+
+    <div id="waterfall">
+        <div class="container">
+            <ul>
+                <li style="height: 360px;">1</li>
+                <li style="height: 250px;">2</li>
+                <li style="height: 400px;">3</li>
+                <li style="height: 320px;">4</li>
+                <li style="height: 420px;">5</li>
+                <li style="height: 280px;">6</li>
+                <li style="height: 220px;">7</li>
+                <li style="height: 290px;">8</li>
+                <li style="height: 340px;">9</li>
+                <li style="height: 410px;">10</li>
+                <li style="height: 230px;">11</li>
+                <li style="height: 360px;">12</li>
+                <li style="height: 310px;">13</li>
+                <li style="height: 350px;">14</li>
+                <li style="height: 450px;">15</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 先引入jquery文件 -->
+    <script src="./libs/jquery.js"></script>
+    <!-- 再引入插件 -->
+    <script src="./libs/jquery.waterfall.js"></script>
+    <script>
+        $(function(){
+            // 调用waterFall方法
+            $("#waterfall").waterFall();
+        })
+    </script>
+</body>
+</html>

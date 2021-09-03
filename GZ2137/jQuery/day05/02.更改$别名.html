@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<body>
+    <button style="padding: 10px 20px;">点击一下</button>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 更改jQuery别名 $
+            // 调用者: jQuery 或 $ 
+            // 作用：改变jq的函数别名
+            var _ = $.noConflict();
+            // 以后使用 _ 代替了 $ 
+            // console.log(typeof _);
+
+            // 获取按钮绑定点击事件
+            _("button").click(function(){
+                _(this).css("background","red");
+            })
+        })
+    </script>
+</body>
+</html>
