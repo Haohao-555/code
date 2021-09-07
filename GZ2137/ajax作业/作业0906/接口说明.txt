@@ -1,0 +1,10 @@
+## 接口 indexList
+ - 接口地址 
+ http://nudianli.com:8082/indexList
+ - 请求方式
+ get
+ - 参数： 
+ 属性          类型       是否必须填写
+ page          number      是   第几页
+ pageSize      number      是   数量    默认5条
+ - 返回值
