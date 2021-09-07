@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        var elements = document.querySelectorAll("div");
+        // 接口地址：http://nudianli.com:8082/list
+        // var host = "http://nudianli.com:8082";
+        // 主机地址
+        var _host = "http://47.93.52.8:8082";
+        // 数据接口
+        var url =  _host+"/list";
+        // 请求方式
+        var type = "get";
+        // 设置异步
+        var async = true;
+
+        // ajax编程(一段实现数据交互的代码)
+        // XMLHttpRequest 是个构造函数（提供请求的数据的API）
+        // xhr.onreadystatechange 是个事件
+        // A: 客户端  男孩子
+        // B: 服务端  女孩子
+        // A --- 请求数据（表白）--->  B 
+        // A <---响应数据（回应）---   B 
+        // 1. 创建实例  
+        var xhr = new XMLHttpRequest();
+    
+        // 2. 监听请求和响应的状态 (异步)
+        xhr.onreadystatechange = function(){
+            // console.log("数据通信中...",xhr.readyState);
+            // 请求完成状态码 4
+            if(xhr.readyState === 4){
+                // 响应的状态码 200
+                if(xhr.status === 200){
+                    // console.log("请求成功!");
+                    // 响应报文
+                    var str = xhr.responseText;
+                    // console.log(typeof str);// string
+                    // console.log(str);
+                    // 把字符串转json对象
+                    var res = JSON.parse(str);
+                    // console.log(res);
+                    // 渲染数据
+                    var arr = res.result;
+                    for(var i = 0 ; i < elements.length ; i ++){
+                        elements[i].style.background = arr[i];
+                    }   
+                    // 请求成功
+                    console.log("success");
+                }else {
+                    // console.log("请求失败");
+                    // 响应报文
+                    var str = xhr.responseText;
+                    // console.log(str);
+
+                    // 请求失败
+                    console.log("error");
+
+                }
+
+                // 请求完成
+                console.log("complete");
+            }
+        
+            // 请求之前
+            if(xhr.readyState <= 1){
+                console.log("beforeSend");
+            }
+        }
+
+         // 3. 发起请求的动作（与服务端建立联系）
+         xhr.open(type,url,async);
+
+         // 4.发送请求
+         xhr.send(null);
+
+
+         //  xhr.readyState
+         //  <= 1   发送请求之前
+         //  == 4   请求完成
+
+         //  xhr.status 
+         //  == 200  响应成功
+         //  == 404  找不到资源(地址)
+         //  == 500  服务器发生异常(找后台程序沟通...)
+       
+
+    </script>
+</body>
+</html>

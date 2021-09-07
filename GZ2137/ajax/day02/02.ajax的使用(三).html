@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        [class^="btn"] {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        table {
+            /* 合并边框线 */
+            border-collapse: collapse;
+            width: 450px;
+        }
+
+        table,
+        caption,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            height: 40px;
+            text-align: left;
+        }
+
+        .loading {
+            width: 320px;
+            height: 40px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 40px;
+            background-color: #f50;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            bottom: 0;
+            margin-left: -160px;
+            margin-top: -20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="btn-up">升序</button>
+        <button class="btn-down">降序</button>
+    </header>
+
+    <table>
+        <caption>
+            <h3>商品信息</h3>
+        </caption>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1</td>
+                <td>xx</td>
+                <td>yy</td>
+            </tr> -->
+        </tbody>
+    </table>
+
+    <div class="loading">
+        <div class="message">正在加载...</div>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            // 需求：
+            // 对商品进行排序
+
+            // 编码：
+            // JS 是函数式编程语言
+            // render: 渲染
+            // 1. 编写函数 请求数据并渲染数据
+            var render = function (_typeNumber) {
+                // 接收传递的参数
+                var _typeNumber = _typeNumber == undefined ? 0 : _typeNumber;
+                // console.log(_type);
+                // 执行ajax函数
+                // url              数据接口地址
+                // type             请求方式 
+                // data             提交的参数
+                // success          请求成功执行的回调函数
+                // error            请求失败执行的回调函数
+                // beforeSend       请求之前执行的回调函数
+                // complete         请求完成执行的回调函数（不管成功或失败）
+                // async (可选)     是否异步 
+                // dataType         响应的数据格式 json / xml / text ; 如果填写的参数是jsonp (jsonp不是数据格式，执行跨域的逻辑)
+
+                $.ajax({
+                    url: "http://nudianli.com:8082/sort",
+                    type: "get",
+                    data: {
+                        type_number: _typeNumber
+                    },
+                    async: true,// 可选参数
+                    dataType: "json",// 可选参数（数据格式）
+                    beforeSend: function () {
+                        console.log("正在加载...1");
+                        $(".loading").show();
+                    },
+                    success: function (res) {
+                        console.log("请求成功...2");
+                        // console.log(res);
+                        var d = setTimeout(function () {
+                            if (res) {
+                                // 定义字符串
+                                var str = '';
+                                // 定义数组 接收后台的data数据
+                                var arr = res.data;
+                                // 循环arr数组
+                                for (var i = 0; i < arr.length; i++) {
+                                    // 拼接字符串
+                                    str += '<tr>'
+                                    str += '    <td>' + (i + 1) + '</td>'
+                                    str += '    <td>' + arr[i].name + '</td>'
+                                    str += '    <td>' + arr[i].price + '</td>'
+                                    str += '</tr>'
+                                }
+                                // 渲染字符串
+                                $("table tbody").html(str);
+                                // 隐藏提示
+                                $(".loading").fadeOut(1000);
+                            }
+                        }, 300)
+                    },
+                    error: function (err) {
+                        console.log("请求失败...2");
+                    },
+                    complete: function () {
+                        console.log("请求完成...3");
+                    }
+                })
+            }
+
+            // 2. 编写函数 处理事件交互
+            var addClickEvent = function () {
+                // 获取元素绑定事件
+                $(".btn-up").on("click", function () {
+                    render(0);//执行升序的逻辑
+                    $(this).css("color", "red")
+                        .siblings()
+                        .css("color", "#000")
+                })
+                // 获取元素绑定事件
+                $(".btn-down").on("click", function () {
+                    render(1);// 执行降序的逻辑
+                    $(this).css("color", "red")
+                        .siblings()
+                        .css("color", "#000")
+                })
+            }
+
+
+            // 初始化页面
+            render();
+            // 调用处理事件交互函数
+            addClickEvent();
+            // 设置第一个按钮的字体高亮
+            $("header button").eq(0).css("color", "red");
+        })
+    </script>
+</body>
+
+</html>

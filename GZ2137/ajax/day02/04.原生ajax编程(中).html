@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h1>POST 请求</h1>
+
+    <script>
+        // 读取远程文档 
+        // post
+
+        // 1. 创建XMLHttpRequest实例
+        var obj =  new XMLHttpRequest();
+        // 2. 监听客户端请求和服务端响应的状态
+        obj.onreadystatechange = function(){
+            // 是否请求完成
+            if(obj.readyState === 4){
+                // 是否响应成功
+                if(obj.status === 200){
+                    // 响应报文
+                    var str = obj.responseText;
+                    // 把json格式的字符串转json对象
+                    var res = JSON.parse(str);
+                    console.log(res);
+                }
+            }
+        }
+        // 3.0 发起请求
+        // obj.open(1请求方式,2数据地址路径,3布尔值)
+        obj.open("post","http://nudianli.com:8082/login",true);
+        // 4.0 设置请求头部信息（文档类型）
+        // 安全提交方式（编码和解码）
+        // application/x-www-form-urlencoded  文档类型（固定格式）
+        obj.setRequestHeader("content-type","application/x-www-form-urlencoded")
+        // 5.0 发送请求主体
+        // uname=admin  &  upass=123456
+        obj.send("uname=admin&upass=123456");
+    </script>
+</body>
+</html>

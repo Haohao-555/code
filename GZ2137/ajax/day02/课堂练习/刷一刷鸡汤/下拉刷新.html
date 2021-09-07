@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        .header {
+            width: 600px;
+            height: 80px;
+            line-height: 80px;
+        }
+        .header button {
+            padding: 10px 20px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .header .icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            /* border: 1px solid #ccc;  */
+            background-image: url(./assets/loading-3.gif);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 40px 40px;
+            display: none;
+        }
+        .header .loading {
+            display: inline-block;
+        }
+        .message p {
+            font-size: 20px;
+        }
+    </style>
+    <style>
+        body {
+            margin: 0;
+        }
+        .ball {
+            width: 90px;
+            height: 90px;
+            border: 1px solid red;
+            background-color: darkred;
+            box-sizing: border-box;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            margin-left: -45px;
+        }
+        .ball .line {
+            width: 2px;
+            height: 200px;
+            background-color: #000;
+            position: absolute;
+            left: 50%;
+            margin-left: -1px;
+            top: -200px;
+        }
+        .header {
+            width: 100%;
+            text-align: center;
+            margin-top: 220px;
+        }
+        .message {
+            width: 100%;
+            text-align: center;
+        }
+
+        body {
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 制作下拉小球 -->
+    <div class="ball">
+        <div class="line"></div>
+    </div>
+
+    <!-- 正在加载... -->
+    <div class="header">
+       <span class="icon"></span>
+    </div>
+    <!-- 渲染文本 -->
+    <div class="message">
+        <p></p>
+    </div>
+
+    <script src="./jquery-3.5.1.min.js"></script>
+    <script>
+        $(function(){
+            // 需求：
+                // 渲染接口的内容
+                // 点击按钮，切换接口的内容
+
+            // 记录延迟函数
+            // var d = null;
+            // 编码：
+            // 1.0 编写函数 请求数据和渲染数据
+            var  render = function() {
+                // 执行ajax请求数据
+                $.ajax({
+                    url: "http://nudianli.com:8082/soul",
+                    type: "get",
+                    beforeSend: function(){
+                        // 加载提示
+                        $(".header .icon").addClass("loading")
+                        // console.log("请求之前");
+                    },
+                    success: function(res){
+                        // console.log(res);
+                        if(res && res.code == 200){
+                            // console.log(res);
+                            d = setTimeout(function(){
+                                // 取值
+                                var content = res.data.content;
+                                // 渲染
+                                $(".message p").text(content)
+                                // 隐藏正在加载的提示
+                                $(".icon").removeClass("loading");
+                                // 释放变量
+                                d = null;
+                            },300)
+                        }
+                    },
+                    error: function(){
+                        alert("检查你的代码!")
+                    },
+                    complete: function(){
+                        // console.log("请求完成");
+                    }
+                })
+            }
+           
+
+            // 2.0 编写函数 处理下拉刷新数据
+            var myscroll = function(){
+                // 定义变量 记录相关的数据
+                var moveY = 0;
+                var isMouseDown = false;
+                // 事件绑定
+                // 鼠标按下
+                $(".ball").on("mousedown",function(){
+                    isMouseDown = true;
+                })
+
+                // 鼠标移动
+                $(document).on("mousemove",function(event){
+                    if(isMouseDown){
+                        // console.log("move..");
+                        // event.pageY 鼠标的页面的坐标位置Y 垂直方向
+                        // $(".ball").height()  盒子的高度
+                        // 计算.ball的top属性值
+                        moveY = event.pageY - $(".ball").height() / 2 ;
+
+                        // 判断moveY是否超出范围
+                        if(moveY < 0){
+                            moveY = 0;
+                        }
+                        if(moveY > 150){
+                            moveY = 150;
+                        }
+                        // 设置.ball的top属性值
+                        $(".ball").css("top",moveY);
+
+                        // 设置小球的背景色
+                        if(moveY >= 80){
+                            $(".ball").css("backgroundColor","yellowgreen");
+                        }else {
+                            $(".ball").css("backgroundColor","darkred");
+                        }
+                    }
+                })
+
+                // 鼠标松开
+                $(document).on("mouseup",function(){
+                    // 鼠标松开
+                    isMouseDown = false;
+                    // 添加一个请求数据的条件（用户友好体验效果）
+                    if(moveY >= 80){
+                        // 请求数据...
+                        // console.log("请求数据...");
+                        render();
+                    }
+                    // 设置.ball动画形式回到顶部
+                    $(".ball").animate({top:0},300);
+                    // 重置以下moveY
+                    moveY = 0;
+                    // 重置小球的背景色
+                    $(".ball").css("backgroundColor","darkred");
+                })
+
+            }
+            
+            // 3.0 初始化
+            render();
+            myscroll();
+        })
+    </script>
+</body>
+</html>

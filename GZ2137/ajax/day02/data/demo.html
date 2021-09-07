@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h1>当前页面</h1>
+
+    <script>
+        // 1.0 创建 XMLHttpRequest 实例
+        // var obj = new XMLHttpRequest();
+        var obj ;
+        // 兼容IE5-6
+        if(window.XMLHttpRequest){
+            obj = new XMLHttpRequest();// 主流
+        }else {
+            obj = new ActiveXObject("Microsoft.XMLHTTP");// 低版本IE5/6
+        }
+        // 2.0 监听客户端请求和服务端响应的状态
+        obj.onreadystatechange = function(){
+            // 是否请求完成 4 
+            if(obj.readyState === 4) {
+                // 是否响应成功 200
+                if(obj.status === 200){
+                    // 响应报文(文档的内容)
+                    var txt = obj.responseText;
+                    console.log(txt);// hello world
+                }
+            }
+        }
+        // 3.0 发起请求(寻找资源)
+        // http://127.0.0.1:5500/Ajax/DAY02/源码/data/1.txt
+        obj.open("get","1.txt",true);
+        // 4.0 发送请求（完成）
+        obj.send();
+
+        // 注意：
+            // 本地文档仅可以使用get请求方式！！
+
+    </script>
+</body>
+</html>
