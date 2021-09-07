@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQ放大镜</title>
+    <style>
+        html,body,ul,ol,p,h1,h2,h3,h4,h5{
+            padding: 0;
+            margin: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        .wrapper {
+            width: 1200px;
+            height: 900px;
+        }
+        .wrapper .small {
+            width: 350px;
+            height: 350px;
+			border:1px solid #ccc;
+			box-sizing:border-box;
+            background-image: url("./images/small.jpg");
+            float: left;
+            position: relative;
+            overflow: hidden;
+        }
+        .wrapper .small .mask {
+            width: 175px;
+            height: 175px;
+            background-color: rgba(255, 21, 5, 0.5);
+            cursor: move;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+        }
+        .wrapper .big {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            margin-left: 100px;
+            float: left;
+            position: relative;
+            background-color: pink;
+            display: none;
+        }
+        .wrapper .big img {
+            display: block;
+            width: 800px;
+            height: 800px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 布局排版 -->
+    <div class="wrapper">
+        <!-- 小盒子/小图片 -->
+        <div class="small">
+            <!-- 遮罩层 -->
+            <div class="mask"></div>
+        </div>
+
+        <!-- 大盒子 -->
+        <div class="big">
+            <!-- 大图片 -->
+            <img src="./images/big.jpg" alt="">
+        </div>
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>
+     $(function(){
+        //  需求：
+            // 1.0 鼠标移入小图片显示遮罩层
+            // 2.0 鼠标移开小图片隐藏遮罩层
+            // 3.0 鼠标在小图片里移动，遮罩层跟随鼠标移动
+            // 4.0 遮罩层移动的时候，大图片跟随联动
+     });
+    </script>
+</body>
+
+</html>

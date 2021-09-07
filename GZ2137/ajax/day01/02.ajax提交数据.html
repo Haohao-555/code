@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+</head>
+<body>
+   
+    <div class="box">
+        <div>
+            <input type="text" placeholder="数字1" class="n1">
+        </div>
+        <div>
+            <input type="text" placeholder="数字2" class="n2">
+        </div>
+        <div>
+            <button class="btn">提交</button>
+        </div>
+        <div>
+            <h3>显示结果：<span class="result">0</span></h3>
+        </div>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 地址：http://nudianli.com:8082/add
+            // 提交的方式：get
+            // 参数：
+                //  num1
+                //  num2
+            // 返回值： 
+            // {"total":30,"message":"响应成功"}
+
+
+            // 获取按钮绑定点击事件
+            $(".btn").click(function(){
+                // 获取输入的值
+                var v1 = $(".n1").val();
+                var v2 = $(".n2").val();
+
+                // 判断是输入框否有值
+                if(v1.length == 0 || v2.length == 0 ){
+                    return ;
+                }
+
+                // 调用ajax方法 
+                // 调用者： $
+                // 参数： 配置选项对象
+                // 返回值：忽略
+                // 功能： 实现数据的前后端交互
+
+                // 配置选项:
+                    // url   请求数据的地址
+                    // type  请求方式
+                    // data  提交的数据参数 num1 num2
+                    // success  请求数据成功的回调函数
+                    // error    请求数据失败的回调函数
+                var option = {
+                    url: "http://nudianli.com:8082/add",
+                    type: "get",
+                    data: {
+                        num1: v1,
+                        num2: v2 
+                    },
+                    success:function(res){
+                        // console.log(res);
+                        var total = res.total;
+                        // 渲染计算的结果
+                        $(".result").text(total);
+                    },  
+                    error:function(err){
+                        console.log(err);
+                    }
+                }
+
+                // 调用ajax方法 
+                $.ajax(option);
+            })
+            
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul li {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            margin: 10px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h3>xxxx</h3>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // ajax是创建动态网页的技术。
+            // 可以使用数据的前后端交互
+
+            // 接口
+                // - 接口地址
+                // http://nudianli.com:8082/list
+                // - 请求方式
+                // get
+                // - 参数：无
+                // - 返回值
+
+            // 编码：
+            $.ajax({
+                url: "http://nudianli.com:8082/list", // 远程文档（nodejs）
+                type: "get",
+                success: function(res){
+                    // console.log("请求成功!");
+                    console.log(res);
+                    // 渲染数据
+                    $(".wrapper h3").text(res.message);
+                    $(".wrapper li").each(function(index,element){
+                        // element 是dom对象
+                        // $(element) 是jquery对象
+                        $(element).css(
+                            "backgroundColor",
+                            res.result[index]
+                        )
+                        // 问题：
+                        // 对象是如何取值?  键值对 obj.键
+                        // 数组是如何取值?  索引值 arr[索引值]
+                    })
+                },
+                error: function(err){
+                    console.log("请求失败!");
+                    // 检查：
+                    // url 是否拼写错误
+                    // type 是否填写错误了
+                    // 是否跨域
+                    // ... 
+                }
+            })
+                
+
+
+        })
+    </script>
+</body>
+</html>

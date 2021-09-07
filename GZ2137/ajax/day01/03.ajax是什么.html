@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax 是什么 </title>
+</head>
+<body>
+    <script>
+        // ajax （阿贾克斯）
+        // ajax 是一项创建动态网页的技术！ ajax是异步编程。
+        // 作用：读取本地或远程文档的内容
+            // data.txt , data.json , ...
+            // /login
+        // 特点：
+            // 异步请求数据，局部刷新页面
+
+        // 问题：
+            // 1. 什么是静态的网页
+            // 静态网页: 不存在数据前后端交互的网页
+            // 例如：http://nudianli.com:9090/color/index.html
+
+            // 2. 什么是动态的网页
+            // 动态网页： 存在数据前后端交互的网页
+            // 例如：https://taobao.com 
+
+            // 3. 什么是同步的
+            // 同步：是一种阻塞的线程（从上往下） 按顺序执行的代码（编程）
+            // 场景： 打电话 A --- > B
+            // console.log(1);
+            // console.log(2);
+            // console.log(3);
+            // 控制台：
+                // 1
+                // 2
+                // 3
+
+            // 4. 什么是异步的
+            // 异步：是一种回调函数，满足条件时执行的函数（非阻塞的） 不是按照顺序执行的代码（编程）
+            // 场景：群发消息 
+            // A ---> (B,C,D)
+            // console.log(1);
+            // setTimeout(function(){console.log(2);},0);
+            // console.log(3);
+            // 控制台：
+                // 1
+                // 3
+                // 2
+
+
+    </script>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        // 校验JSON格式的数据
+        // https://www.bejson.com/json/format/
+
+        // 数据文档：data/demo.json
+        // 本地文档请求方式为get, 默认请求方式：get
+        // 不是http服务环境下，不能直接读取本地文档的内容
+        // 如果不是http协议下打开，ajax读取不了本地文档内容，报跨域的错误有
+        $.ajax({
+            url: "data/demo.json",// 本地文档
+            type: "get",
+            success: function(res){
+                // 请求成功
+                console.log(res);// json 对象
+            },
+            error: function(err){
+                // 请求失败
+                console.log(err);// 打开文件的方式错误，跨域的提示
+            }
+        })
+
+        // $.ajax 是个函数，是jquery封装的函数。
+
+    </script>
+</body>
+</html>

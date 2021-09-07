@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+        p span {
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 利用自定义属性存储参数数据 -->
+        <div class="header">
+            <button data-id="10010">按钮1</button>
+            <button data-id="20010">按钮2</button>
+        </div>
+        <!-- 渲染区域 -->
+        <div class="product">
+            <h3>商品信息</h3>
+            <p>名称: <span>1</span></p>
+            <p>价格: <span>2</span></p>
+            <p>库存: <span>3</span></p>
+        </div>
+    </div>
+
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求：
+                // 接口信息（url,type,data）
+
+            // 编码：
+            // 获取页面的元素并绑定事件
+            $(".header button").on("click",function(){
+                // 获取储存在按钮的数据
+                var v1 = $(this).attr("data-id");
+                // console.log(id);
+                // 执行ajax编程 请求服务端接口
+                $.ajax({
+                    url: "http://nudianli.com:8082/detail",
+                    type: "post",
+                    data: {
+                        id: v1 
+                    },
+                    success: function(res){
+                        // 请求成功
+                        // console.log(res);
+                        // 渲染响应的结果
+                        $(".product p").eq(0).find("span").text(res.product)
+                        $(".product p").eq(1).find("span").text(res.price+"￥")
+                        $(".product p").eq(2).find("span").text(res.count)
+                    },
+                    error: function(err){
+                        // 请求失败
+                        console.log(err);
+                    }
+                })
+                // 点击按钮高亮
+                $(this).css("backgroundColor","red")
+                .siblings()
+                .css("backgroundColor","transparent")
+            })
+        })
+    </script>
+</body>
+</html>

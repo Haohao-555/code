@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 接口： -->
+    <!-- 地址：http://nudianli.com:8082/add -->
+    <!-- 提交的方式：get -->
+    <!-- 参数：num1 num2 -->
+    <!-- 返回值： {"total":30,"message":"响应成功"} -->
+    <form action="http://nudianli.com:8082/add" method="get">
+        <div>
+            <input type="text" name="num1" placeholder="数字1">
+        </div>
+        <div>
+            <input type="text" name="num2" placeholder="数字2">
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+    </form>
+
+    <!-- 表单提交数据： -->
+    <!-- 特点：页面发生跳转刷新 ，用户体验低 -->
+
+</body>
+</html>

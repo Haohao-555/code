@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>防腾讯固定导航栏</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+        	width: 100%;
+        }
+        .top img{
+        	width: 100%;
+            vertical-align: middle;
+        }
+        .nav{
+        	width: 100%;
+            /* css */
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+        .nav img{
+			width: 100%;
+        }
+        .main {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+    
+</head>
+
+<body>
+		<div class="top">
+		    <img src="images/top.png" />
+		</div>
+
+
+		<div class="nav">
+		    <img src="images/nav.png" />
+		</div>
+
+		<div class="main">
+			<img src="images/main.png" />
+		</div>
+		
+		<script type="text/javascript" src="jquery.js"></script>
+		 <script>
+		 $(function(){
+			//  需求：
+				// 滚动固定导航条标签（吸顶效果）
+		 });
+		</script>
+</body>
+
+</html>

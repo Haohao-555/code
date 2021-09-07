@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>防腾讯固定导航栏</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+        	width: 100%;
+        }
+        .top img{
+        	width: 100%;
+            vertical-align: middle;
+        }
+        .nav {
+        	width: 100%;
+            /* 提前设置位置left和top属性值 */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .nav img{
+			width: 100%;
+        }
+        .main {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+    
+</head>
+
+<body>
+		<div class="top">
+		    <img src="images/top.png" />
+		</div>
+
+        <!-- 目标元素 -->
+		<div class="nav">
+		    <img src="images/nav.png" />
+		</div>
+
+		<div class="main">
+			<img src="images/main.png" />
+		</div>
+		
+		<script type="text/javascript" src="jquery.js"></script>
+		 <script>
+		 $(function(){
+			//  需求：
+				// 滚动固定导航条标签（吸顶效果）
+
+            // 思考：
+                // 页面滚动时，找出固定导航条的条件（页面超出浏览器顶部的高度和.top标签的高度）
+
+
+            
+            // 编码：
+            $(document).on("scroll",function(){
+                // JS
+                // 页面超出浏览器顶部的高度
+                // var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var sTop = $(document).scrollTop();
+                // console.log(sTop);
+                // .top标签的高度
+                // var height = document.querySelector(".top").offsetHeight;
+                var height = $(".top").height()
+                // console.log(height);
+
+                // 判断是否固定导航条
+                if(sTop >= height){
+                    // 添加固定定位
+                    $(".nav").css("position","fixed");
+                }else {
+                    // 移除固定定位
+                    $(".nav").css("position","static");
+                }
+            })
+		 });
+		</script>
+</body>
+
+</html>

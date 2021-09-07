@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        input , button {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        p {
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 输入框 -->
+    <div class="form">
+       <input type="text" placeholder="账号" class="username">
+       <input type="text" placeholder="密码" class="userpass">
+       <button class="btn-login">登录</button>
+    </div>
+    <!-- 提示 -->
+    <div class="msg"><p>提示：<span></span></p></div>
+
+    <script src="./jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // 需求：
+                // 根据数据接口，请求数据以及渲染结果
+
+            // 思考：
+                // 1. 接口是怎么来的? [ http://nudianli.com:8082/login]
+                // 答案：
+                // 接口是后台开发者提供的（java,php,nodejs）
+                // 2. 接口应该使用?
+                // 答案：
+                // 阅读接口说明文档 readme.md 
+                // 四个要素：a.请求接口地址  b.请求数据的方式  c.参数 d. 返回值（响应的内容、响应报文）
+                // 3. 如何请求数据
+                // 答案：
+                // $.ajax() 
+                // 这是用于实现数据前后端交互的一个方法
+                // 把ajax的处理逻辑封装在 $.ajax 方法中（XMLHttpRequest）
+                // 把ajax的配置选项理解并掌握
+
+            // 编码：
+                // 步骤：
+                    // 1. 获取事件源
+                    // 2. 绑定事件
+                    // 3. 处理数据交互的逻辑
+
+            // 1. 获取登录按钮 2.并绑定点击事件
+            $(".btn-login").on("click",function(){
+                // 3.处理数据交互的逻辑
+                // 获取输入的值
+                var v1 = $(".username").val();// 账号
+                var v2 = $(".userpass").val();// 密码
+                // 判断输入框是否有值
+                if(v1.length == 0 || v2.length == 0) {
+                    alert("输入框不能为空!")
+                    return ;
+                }
+                // 执行ajax函数
+                $.ajax({
+                    url: "http://nudianli.com:8082/login",
+                    type: "post",
+                    data: {
+                        uname: v1,
+                        upass: v2 
+                    },
+                    success: function(res){// res 是个形参；响应的内容
+                        // 请求成功
+                        // 登录成功或登录失败 依然是请求成功
+                        console.log(res);
+                        // 渲染结果
+                        $(".msg span").text(res.message);
+                    },
+                    error: function(err){// err 是形参；响应的内容
+                        // 请求失败
+                        // 1. 接口地址写错
+                        // 2. 请求方式写错
+                        // 3. 服务端发生异常
+                        // console.log(err);
+                        console.log("请求失败...");
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>
+</html>
