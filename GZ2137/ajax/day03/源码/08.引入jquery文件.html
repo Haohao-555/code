@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <script>
+        // 定义函数
+        // function jsonp295(res){
+        //     console.log(res);
+        // }
+
+        // 在window对象下添加方法
+        window["jsonp295"] = function(res){
+            console.log(res);
+        }
+    </script>
+</head>
+<body>
+
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $("body").css("backgroundColor","pink")
+    </script>
+
+    <!-- "https://suggest.taobao.com/sug?code=utf-8&q=衣服&_ksTS=1631092227707_294&callback=jsonp295&k=1&area=c2c&bucketid=17" -->
+
+    <!-- 引入文档即可调用函数 -->
+    <script src="https://suggest.taobao.com/sug?code=utf-8&q=衣服&_ksTS=1631092227707_294&callback=jsonp295&k=1&area=c2c&bucketid=17"></script>
+
+</body>
+</html>

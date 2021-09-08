@@ -1,0 +1,30 @@
+ // 假数据
+ var arr = [
+    {
+        name:"海阔天空1",
+        artists:[
+            {
+               src:"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+               name:"beyong" 
+            }
+        ]
+    },
+    {
+        name:"海阔天空2",
+        artists:[
+            {
+               src:"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+               name:"beyong" 
+            }
+        ]
+    },
+    {
+        name:"海阔天空3",
+        artists:[
+            {
+               src:"https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg",
+               name:"beyong" 
+            }
+        ]
+    }
+]

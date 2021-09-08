@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul , h3 , p {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            vertical-align: middle;
+        }
+        .wrapper {
+            font-size: 20px;
+            width: 740px;
+            margin: 0 auto;
+        }
+        .header {
+            height: 80px;
+            background-color: #f0f0f0;
+        }
+        .header input {
+            width: 450px;
+            height: 40px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            outline: none; 
+            float: left;
+            margin: 20px 0;
+        }
+        .header button {
+            width: 80px;
+            height: 40px;
+            float: left;
+            margin: 20px 0;
+        }
+
+        .main {
+            background-color: #ccc;
+            width: 100%;
+        }
+        .main ul li {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border-bottom: 2px solid #ccc;  
+        }
+        .main ul li .img-box {
+            border: 1px solid #fff; 
+        }
+        .main ul li .content-box {
+            padding-left: 20px;
+        }
+        .img-box img {
+            width: 120px;
+        }
+        .content-box h3 {
+            font-size: 18px;
+        }
+        .content-box p {
+            font-size: 16px;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <input type="text" placeholder="请输入歌曲名称">
+            <button>搜索</button>
+        </header>
+        <main class="main">
+            <ul>
+                <li>
+                    <div class="img-box">
+                        <img src="https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg" alt="">
+                    </div>
+                    <div class="content-box">
+                        <h3>歌曲</h3>
+                        <p>作者</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="img-box">
+                        <img src="https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg" alt="">
+                    </div>
+                    <div class="content-box">
+                        <h3>歌曲</h3>
+                        <p>作者</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="img-box">
+                        <img src="https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg" alt="">
+                    </div>
+                    <div class="content-box">
+                        <h3>歌曲</h3>
+                        <p>作者</p>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="img-box">
+                        <img src="https://p1.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg" alt="">
+                    </div>
+                    <div class="content-box">
+                        <h3>歌曲</h3>
+                        <p>作者</p>
+                    </div>
+                </li>
+
+
+            </ul>
+        </main>
+    </div>
+
+    <script src="../jquery/3.6.0/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        input , button {
+            font-size: 24px;
+        }
+        img {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 输入框和按钮 -->
+        <div class="search">
+            <input type="text" placeholder="请输入城市,例如: 广州" class="inp-city">
+            <button class="btn-search">查询</button>
+        </div>
+        <!-- 天气信息列表 -->
+        <div class="list">
+            <ul>
+                <li>城市 </li>
+                <li>温度 </li>
+                <li>天气 </li>
+                <li>时间 </li>
+                <li>图片</li>
+                <li>空气质量</li>
+                <li>风向</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./myAjax/ajax-1.0.0.js"></script>
+    <script>
+        // 需求：
+            // 天气查询
+
+        // 编写代码：
+            // 1.0 获取页面相关的元素
+            var inpCity = document.querySelector(".inp-city");
+            var btnSearch = document.querySelector(".btn-search");
+            // var listBox = document.querySelector(".list ul");
+            var items = document.querySelectorAll(".list ul li")
+
+            // 2.0 编写函数请求数据渲染数据
+            var search = function(cityName){
+                // 执行ajax函数
+                ajax({
+                    url: "https://www.tianqiapi.com/free/day",
+                    type: "get",
+                    data: {
+                        city: cityName,
+                        appid:"76991983",
+                        appsecret:"SCpq2JkF",
+                        unescape: 1
+                    },
+                    success: function(res){
+                        // console.log(res);
+                        if(res){
+                            // items[0].innerHTML="城市:"+res.city;
+                            // items[1].innerHTML="温度:"+res.tem+"°C";
+                            // items[2].innerHTML="天气:"+res.wea;
+                            // items[3].innerHTML="时间:"+res.update_time;
+                            // items[4].innerHTML="<img src='assets/"+res.wea_img+".png'/>";
+                            // items[5].innerHTML="空气:"+res.air;
+                            // items[6].innerHTML="风向:"+res.win;
+
+                            items[0].innerHTML=""+res.city;
+                            items[1].innerHTML=""+res.tem+"°C";
+                            items[2].innerHTML=""+res.wea;
+                            items[3].innerHTML=""+res.update_time;
+                            items[4].innerHTML="<img src='assets/"+res.wea_img+".png'/>";
+                            items[5].innerHTML=""+res.air;
+                            items[6].innerHTML=""+res.win;
+                        }
+                    }
+                })
+            }
+
+            // 测试
+            search("广州");
+
+            // 3. 事件处理
+            btnSearch.onclick = function(){
+                    // 城市名称
+                    var v1 = inpCity.value;
+                    // 判断是否有值
+                    if(v1.length == 0) return;
+                    // 查询天气
+                    search(v1);
+            }
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul li {
+            width: 250px;
+            border: 1px solid #ccc; 
+        }
+
+        ul li img {
+            width: 250px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list-box">
+        <!-- <li>
+            <img src="" alt="">
+            <p>文字</p>
+        </li> -->
+    </ul>
+
+    <script src="./myAjax/ajax-1.0.0.js"></script>
+    <script>    
+        // 需求：
+            // 读取xml文档渲染其数据
+
+        // 文档地址： http://nudianli.com:9090/data.xml
+        // 请求方式： get
+
+        // 获取list-box标签
+        var listBox = document.querySelector(".list-box");
+        // 编写代码
+        var render = function(){
+            // 读取xml文档
+            ajax({
+                url: "./data/mydata.xml",
+                type: "get",
+                success: function(dom){
+                    // xml 文档类型
+                    console.log(dom);
+                    // 获取item标签
+                    var items = dom.querySelectorAll("item");
+                    // console.log(items);
+                    // 定义字符串
+                    var str = '';
+                    // 循环items数组
+                    for(var i = 0 ; i < items.length ; i ++){
+                        // 获取标签的路径和标签的文本
+                        var src = items[i].querySelector("image").innerHTML;
+                        var txt = items[i].querySelector("text").innerHTML;
+                        // var v1 = items[i].querySelector("aaa").innerHTML;
+                        // console.log(v1);
+                        str += '<li>'
+                        str += '    <img src="'+src+'" alt="">'
+                        str += '    <p>'+txt+'</p>'
+                        str += '</li>'
+                    }
+                    // 渲染数据
+                    listBox.innerHTML = str;
+                }
+            })
+        }
+        render()
+
+
+    </script>
+</body>
+</html>

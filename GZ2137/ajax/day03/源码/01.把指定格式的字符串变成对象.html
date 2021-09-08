@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h3>把指定格式的字符串转成对象</h3>
+
+    <script>
+        // 1.编程题：
+            //  把 "?page=1&pageSize=5" 转成对象
+            //  {page:1, pageSize:5}
+            // 定义变量记录字符串
+            var str = "?page=1&pageSize=5";
+            // 去掉 "?" 字符
+            str = str.slice(1);
+            console.log(str);
+            // 把字符串切割成数组
+            var arr = str.split("&");
+            // console.log(arr);
+            // 定义对象
+            var obj = {};
+            // 循环数组
+            for(var i = 0 ; i < arr.length; i ++){
+                // 键 
+                var key = arr[i].split("=")[0];
+                // 值
+                var v1 = arr[i].split("=")[1];
+                // 设置对象
+                obj[key] = v1;
+            }
+            // 打印对象
+            console.log(obj);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h3>把对象转成指定格式的字符串</h3>
+
+    <script>
+        // 2. 编程题
+        // 把对象 {uname: "admin",upass: "123356"} 转成字符串
+        // 格式： "?uname=admin&upass=123456"
+
+        // $.ajax({
+        //     data: {
+        //         key: value 
+        //     }
+        // })
+
+
+        // 定义变量 记录对象
+        var data = {uname: "admin",upass: "123356"};
+        // 定义变量 记录字符串
+        var str = "";
+        // 循环对象
+        for(var key in data) {
+            // 键
+            // console.log(key);
+            // 值
+            // console.log(data[key]);
+            // 拼接字符串
+            str += key +"=" + data[key] + "&"
+        }
+        // console.log(str);
+        // 去掉 "&" 字符 (包含开始字符，不包含结束字符)
+        //slice(开始索引值，结束索引值)
+        str = str.slice(0,str.length-1);
+        console.log(str);
+        // 拼接字符串
+        str = "?"+str;
+        console.log(str);
+
+    </script>
+</body>
+</html>

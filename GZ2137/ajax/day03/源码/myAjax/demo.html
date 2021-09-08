@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h3>封装ajax编程</h3>
+
+    <!-- <script src="./myJquery-2.0.0.js"></script> -->
+    <script src="./ajax-1.0.0.js"></script>
+    <script>
+        // 设置h3标签的字体为红色
+        // $("选择器") jquery对象
+        // $("h3").css("color","red");
+        // console.log(typeof $);// function
+        // $.ajax({
+        //     url:"/login"
+        // })
+        
+        // =====================
+        // 调用ajax方法
+        ajax({
+            url: "http://nudianli.com:8082/add",
+            type: "get",
+            data: {
+                num1: 20,
+                num2: 10
+            },
+            // async: true,
+            // dataType:"json",
+            beforeSend:function(){
+                console.log("之前");
+            },
+            success: function(res){
+                console.log(res);// 
+            },
+            error: function(err){
+                // url type data 是否存在拼写错误
+                console.log(err);
+            },
+            complete: function(){
+                console.log("完成");
+            }
+        })
+
+
+    </script>
+</body>
+</html>

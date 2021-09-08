@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript 阶段</title>
+</head>
+<body>
+    <h1>GET 请求和 POST 请求</h1>
+    <div id="demo1"></div>
+    <div id="demo2"></div>
+    <div id="demo3"></div>
+    <script>
+        // $.get()
+        // get
+        function _get(url,success,error){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
+                        if(success) success(xhr.responseText);
+                    }else {
+                        if(error) error("请求失败");
+                    }
+                }
+            }
+            xhr.open("get",url,true);
+            xhr.send();
+        }
+        // 调用get方法(读2.txt文档)
+        _get(
+            "data/2.txt",
+            function(res){
+                // console.log(res);
+                document.getElementById("demo1").innerHTML = res;
+            },
+            function(err){
+                console.log(err);
+            })
+         // 调用get方法(读3.json文档)
+         _get(
+            "data/3.json",
+            function(res){
+                console.log(res);// '{"message":"你好，世界"}'
+                var obj = JSON.parse(res);
+                console.log(obj);// {"message":"你好，世界"}
+                document.getElementById("demo2").innerHTML = obj.message;
+            },
+            function(err){
+                console.log(err);
+            })
+
+        // $.post()
+        // post 
+        function _post(url,data,success,error){
+            var str = "";
+            if(data){
+                for(var key in data){
+                    str += key+"="+data[key]+"&"
+                }
+                str = str.slice(0,str.length-1);
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
+                        if(success) success(xhr.responseText);
+                    }else {
+                        if(error) error("请求失败");
+                    }
+                }
+            }
+            xhr.open("post",url,true);
+            xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+            xhr.send(str);
+        }
+
+        // 调用post方法
+        _post(
+            "http://nudianli.com:8082/login",
+             {
+                 uname: "admin",
+                 upass: "123456"
+             },
+             function(res){
+                 console.log(res);//字符串 '{"message":"登录成功"}'
+                 var obj = JSON.parse(res);
+                 console.log(obj);//{"message":"登录成功"}
+                 document.getElementById("demo3").innerHTML = obj.message;
+             },
+             function(err){
+                 console.log(err);// 1.拼写问题 2.服务端异常
+             }
+        )
+
+    </script>
+</body>
+</html>
