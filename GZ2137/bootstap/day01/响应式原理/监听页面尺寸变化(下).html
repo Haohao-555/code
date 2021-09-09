@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>媒体查询</title>
+    <!-- 
+        自定义的尺寸
+         < 566px            .container      width: 100%       特小
+        >= 567px   <768px   .container      width: 500px      小
+        >= 768px   <992px   .container      width: 700px      中
+        >= 992px   <1200px  .container      width: 900px      大
+        >= 1200px           .container      width: 1200px     特大
+     -->
+
+     <!-- 
+        特小     背景色  red
+        小       背景色  green
+        中       背景色  blue
+        大       背景色  orange
+        特大     背景色  pink
+      -->
+      <style>
+          body {
+              margin: 0;
+          }
+
+          .container {
+              margin: 0 auto;
+          }
+          .box {
+              height: 1000px;
+              background-color: #ccc;
+          }
+          
+          /* 媒体查询 */
+          /* max-width 小于等于 */
+          /* min-width 大于等于 */
+
+          /* 写法： */
+          /*1. @media screen and (max-width: 566px) {} */
+          /*2. @media (max-width: 566px) {} */
+
+         
+          /* 计算网页报价 */
+          /* PC    端      120-200 */
+          /* 移动  端      160-200 */
+          /* 响应式        300-450 + */
+      </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+
+</body>
+</html>
+<script>
+    // 监听窗口变化
+    // window.innerWidth 浏览器可视区的宽度
+    window.onresize= function(){ 
+        // console.log("窗口可视区的宽度: ",window.innerWidth)
+        var winWidth = window.innerWidth;
+        if(winWidth < 567){
+            console.log("特小屏幕");
+
+        }else if((winWidth >=567) && (winWidth <768 )) {
+            console.log("小屏幕");
+
+        }else if((winWidth >=768) && (winWidth <992 )) {
+            console.log("中屏幕");
+
+        }else if((winWidth >=992) && (winWidth <1200 )) {
+            console.log("大屏幕");
+
+        }else if(winWidth >=1200) {
+            console.log("特大屏幕");
+        }
+    }
+
+    
+</script>

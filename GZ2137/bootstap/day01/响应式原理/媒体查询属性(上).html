@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>媒体查询</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .box {
+            height: 1000px;
+            background-color: deepskyblue;
+        }
+
+        /* >=992px   .box 标签的背景色 deepskyblue*/
+        /* min-width  表示大于等于 >=   */
+        @media (min-width: 992px) {
+            .box {
+                background-color: deepskyblue;
+            }
+        }
+
+        /* < 992px    .box 标签的背景色 darkred*/
+        /* <= 991px */
+        /* max-width  表示小于等于 <=  */
+        @media (max-width:991px){
+            .box {
+                background-color: darkred;
+            }
+        }
+
+
+        /* 媒体查询： 它是css3的属性，作用是监听浏览器屏幕尺寸的变化 */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+
+    <script>
+        // 监听窗口变化
+        // window.innerWidth 浏览器可视区的宽度
+        window.onresize= function(){ 
+            console.log("窗口可视区的宽度: ",window.innerWidth)
+        }
+    </script>
+    
+</body>
+</html>

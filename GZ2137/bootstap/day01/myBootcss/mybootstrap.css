@@ -1,0 +1,58 @@
+/* 
+* mybootstrap.css
+* v1.0.0
+* author: zhangsan
+* 类名选择器
+* 颜色网址： http://nudianli.com:9090/color
+* ###全局样式###
+* 背景
+* 字体
+* 浮动
+* 外边距
+* 边框
+* 内边距
+* 尺寸
+*/
+
+/* 背景 */
+.bg_success {
+    background-color: yellowgreen !important;
+}
+.bg_danger {
+    background-color: darkred;
+}
+.bg_default {
+    background-color: gray;
+}
+/* 字体颜色 */
+.text_success {
+    color: yellowgreen !important;
+}
+.text_danger {
+    color: darkred !important;
+}
+.text_default {
+    color: gray !important;
+}
+/* 文本位置 */
+.text_left {
+    text-align: left;
+}
+.text_center {
+    text-align: center;
+}
+.text_right {
+    text-align: right;
+}
+/* 浮动 */
+.f_left {
+    float: left;
+}
+.f_right {
+    float: right;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
