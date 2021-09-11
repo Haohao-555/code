@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>rem 单位</title>
+    <style>
+        html {
+            font-size: 20px;
+        }
+        /* 1rem = 20px */
+        /* 尺寸 ： 100 * 100  */
+        .box-3 {
+            width: 5rem;
+            height: 5rem;
+            padding-top: 1rem;
+            margin-top: .5rem;
+            background-color: red;
+        }
+         /*尺寸：300 * 400 */
+         /* 300/20 = 15 */
+         /* 400/20 = 20 */
+        .box-4 {
+            width: 15rem;
+            height: 20rem;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-3"></div>
+    <div class="box-4"></div>
+
+    <!-- 备注：
+        如果需要做移动端的适配效果
+        1. 媒体查询 设置html字体大小
+        2. 脚本    监听屏幕尺寸变化设置字体大小
+    -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <!-- 设置视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>长度单位</title>
+    <style>
+        /* px 
+           物理像素
+           逻辑像素  web开发  
+        */
+        /* PC端字体 VS  移动端字体 = 1 : 1 */
+        /* 固定值 */
+        .box-1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        /* rem */
+        /* 相对值（会变化） */
+        /* 默认的情况下： */
+        /* 1rem = 16px */
+        /* 100px / 16 = ?rem  */
+        html {
+            font-size: 16px;
+        }
+        /* 相对html标签的字体大小 */
+        .box-2 {
+            width: 6.25rem;
+            height: 6.25rem;
+            background-color: green;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="box-1"></div>
+
+    <div class="box-2"></div>
+</body>
+</html>

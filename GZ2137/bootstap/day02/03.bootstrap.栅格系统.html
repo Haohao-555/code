@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本模板</title>
+    <!-- 核心css文件 -->
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        /* flexbox （弹性盒子） */
+        /* 1. 父元素 */
+        /* 2. 子元素 */
+        .box-1 {
+            /* width: 600px; */
+            height: 50px;
+            background-color: #ccc;
+        }
+        .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .box-1 .row > div {
+            height: 50px;
+        }
+
+
+        .box-2 {
+            height: 50px;
+            margin-top: 20px;
+        }
+        .box-2 .row > div {
+            height: 50px;
+        }
+
+        .box-3 {
+            height: 50px;
+            margin-top: 20px;
+        }
+        .box-3 .row > div {
+            height: 50px;
+        }
+
+        .box-4 {
+            height: 50px;
+            margin-top: 20px;
+        }
+        .box-4 .row > div {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box-1">
+        <!-- 每一列占三分之一 （不带任何标记 表示特小屏幕以上） -->
+        <div class="row">
+            <div class="col bg-success"></div>
+            <div class="col bg-danger"></div>
+            <div class="col bg-info"></div>
+        </div>
+    </div>
+
+    <div class="box-2">
+        <!-- 每一列占三分之一 （带sm,md,lg,xl标记 表示指定的屏幕以上） -->
+        <div class="row">
+            <div class="col-sm bg-success"></div>
+            <div class="col-sm bg-danger"></div>
+            <div class="col-sm bg-info"></div>
+        </div>
+    </div>
+
+    <div class="box-3">
+        <!-- 一行12等份，按比例划分每一列的宽度 -->
+        <!-- 在小屏幕以上， -->
+        <!-- 第一列： 占比例 2 -->
+        <!-- 第二列： 占比例 4 -->
+        <!-- 第三列： 占比例 6 -->
+        <div class="row">
+            <div class="col-sm-2 bg-success"></div>
+            <div class="col-sm-4 bg-danger"></div>
+            <div class="col-sm-6 bg-info"></div>
+        </div>
+    </div>
+
+    <div class="box-4">
+        <!-- 一行12等份，按比例划分每一列的宽度 -->
+        <!-- 小屏幕，划分2列， 比例: 1 : 1           = 12   / 2 = 6 -->
+        <!-- 中屏幕，划分3列， 比例: 1 : 1 ：1       = 12   / 3 = 4 -->
+        <!-- 大屏幕，划分4列， 比例: 1 : 1 ：1 ：1   = 12   / 4 = 3 -->
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-3 bg-success"></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 bg-danger"></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 bg-info"></div>
+            <div class="col-sm-6 col-md-4 col-lg-3 bg-warning"></div>
+        </div>
+    </div>
+
+
+    
+    <!-- 核心JS文件 -->
+    <script src="./libs/jquery/jquery.slim.js"></script>
+    <script src="./libs/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+
+
+<!-- 
+    响应式： 
+    1.  UI (user image)  用户界面    媒体查询    浏览器屏幕 ---- 视图
+    2.  data             数据        流行框架    数据 --- 视图
+ -->
+

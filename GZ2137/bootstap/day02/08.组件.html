@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.css">
+    <style>
+        .box {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 组件：可以实现特定功能的一套html+css（+js）代码 ，例如：下拉菜单 甚至按钮-->
+    <div class="container">
+        <div class="box">
+            <!-- 组件 -->
+            <div class="alert alert-primary" role="alert">
+               这是一个警告框！
+            </div>
+        </div>
+        <div class="box">
+            <!-- 组件 -->
+            <div class="alert alert-danger" role="alert">
+               这是一个警告框！
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-lg btn-primary">按钮1</button>
+            <button type="button" class="btn btn-sm btn-secondary">按钮2</button>
+            <button type="button" class="btn btn-md btn-success">按钮3</button>
+            <button type="button" class="btn btn-danger">按钮4</button>
+            <button type="button" class="btn btn-warning">按钮5</button>
+            <button type="button" class="btn btn-info">按钮6</button>
+            <button type="button" class="btn btn-light">按钮7</button>
+            <button type="button" class="btn btn-dark">按钮8</button>
+        </div>
+        <div>
+            <!-- 下拉菜单 -->
+            <!-- aria-*  提供给屏幕阅读器（忽略） -->
+            <div class="dropdown" style="margin-top: 20px;">
+                <button 
+                    class="btn btn-success dropdown-toggle" 
+                    type="button" 
+                    id="dropdownMenuButton" 
+                    data-toggle="dropdown" 
+                    aria-expanded="false">
+                    企业导航
+                </button>
+
+                <div class="dropdown-menu" 
+                    aria-labelledby="dropdownMenuButton">
+
+                  <a class="dropdown-item" href="#">首页</a>
+                  <a class="dropdown-item" href="#">经典案例</a>
+                  <a class="dropdown-item" href="#">联系方式</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+    <script src="./libs/jquery/jquery.slim.js"></script>
+    <script src="./libs/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+</html>
