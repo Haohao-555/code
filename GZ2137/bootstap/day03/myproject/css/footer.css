@@ -1,0 +1,16 @@
+.tt_footer {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #f0f0f0;
+}
+.tt_footer > div h3 {
+    text-align: center;
+}
+.tt_footer > div .link_box {
+    text-align: center;
+    font-size: 60px;
+}
+.tt_footer > div .link_box a:hover {
+    color: #f00;
+}

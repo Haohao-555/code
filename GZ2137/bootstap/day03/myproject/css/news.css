@@ -1,0 +1,103 @@
+.tt_news {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/* 
+ 辅助样式
+.tt_news .row  > div {
+    height: 500px;
+    border: 1px solid #000;
+} 
+*/
+
+.tt_news .row  > div .title {
+    font-size: 22px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #ccc;
+    color: #666;
+    margin-top: 50px;
+    position: relative;
+}
+.tt_news .row  > div .title::after {
+    content: "";
+    display: block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    right: -11px;
+    bottom: -6px;
+}
+
+.tt_news .row  > div  .nav-link {
+    background-color: #ccc;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 60px;
+    position: relative;
+}
+.tt_news .row  > div  .nav-link::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 60px;
+    border-left: 1px dashed #ccc;
+    position: absolute;
+    left: 50%;
+    bottom: -60px;
+}
+.tt_news .row  > div .nav-item:last-child .nav-link::after {
+    height: 0px;
+    border-left:0;
+}
+.tt_news .row  > div  .nav-link.active {
+    background-color: #f00;
+}
+.tt_news .row  > div  .nav-link.active span {
+    color: #fff;
+}
+
+.tt_news .row  > div  .nav-link .wjs_icon {
+    font-size: 30px;
+}
+.tt_news .row  > div ol {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.tt_news .row  > div ol li {
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px dashed #ccc;  
+}
+
+/* 媒体查询 */
+@media (max-width: 1000px) {
+    .tt_news .row  > div ol span {
+        display: none;
+    }
+}
+@media (max-width: 766px) {
+    .tt_news .row  > div .nav .nav-item {
+        width: 25%;
+    }
+    .tt_news .row  > div .nav .nav-item .nav-link {
+        width: 60px;
+        height: 60px;
+        display: block;
+        margin: 15px auto;
+    }
+    .tt_news .row  > div  .nav-link::after {
+        height: 0;
+        border-left: 0;
+    }
+    .tt_news .row  > div .title {
+        height: 100px;
+        line-height: 100px;
+    }
+}

@@ -1,0 +1,59 @@
+.tt_top {
+   height: 44px;
+   border-bottom: 1px solid #ccc;
+}
+.tt_top > div .row > div {
+    height: 44px;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    line-height: 44px;
+    font-size: 14px;
+}
+.tt_top > div .row > div:last-child {
+    border-right: 1px solid transparent;
+}
+.app_box{
+    position: relative;
+}
+.app_box img {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    margin-left: -60px;
+    border: 1px solid #ccc;
+    border-top: 1px solid transparent;
+    width: 120px;
+    height: 136px; 
+    z-index: 1000;
+    display: none;
+}
+.app_box:hover img {
+    display: block;
+}
+.app_box .text {
+    font-size: 16px;
+    color: #666;
+}
+.form_box {
+    height: 44px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form_box .btn_register {
+    border-radius: 2px;
+}
+.form_box .btn_login {
+    color: #000;
+    margin-left: 10px;
+}
+.form_box .btn_login:hover {
+    color: #f00;
+}
+/* 媒体查询属性 */
+@media (max-width: 1000px) {
+    .tt_top {
+        display: none !important;
+    }
+}

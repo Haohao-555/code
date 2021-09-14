@@ -1,0 +1,36 @@
+.tt_product {
+    width: 100%;
+    padding-top: 60px ;
+    padding-bottom: 60px;
+     background-color: #f0f0f0;
+}
+.tt_product > div {
+    background-color: #f0f0f0;
+}
+.tt_product .media {
+    padding: 30px 15px;
+}
+.tt_product .media .wjs_icon {
+    font-size: 45px;
+}
+.tt_product .media .media-body {
+    padding-left: 10px;
+}
+.tt_product .media .media-body h5 {
+    font-size: 18px;
+}
+.tt_product .media .media-body p {
+    color: #666;
+    font-size: 14px;
+}
+/* 媒体查询 */
+@media (min-width: 1200px) {
+    .tt_product .container {
+        width: 970px;
+    }
+}
+@media (max-width:576px) {
+    .tt_product {
+       display: none;
+    }
+}

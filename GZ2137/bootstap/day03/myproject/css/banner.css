@@ -1,0 +1,31 @@
+.tt_banner {
+    width: 100%;
+}
+
+.tt_banner .pc_image {
+    height: 410px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.tt_banner .mb_image {
+    display: block;
+    width: 100%;
+}
+.tt_banner .mb_image img {
+    width: 100%;
+    display: block;
+}
+.tt_banner .carousel-control-prev ,
+.tt_banner .carousel-control-next {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+.tt_banner .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+.tt_banner .carousel-indicators li.active {
+    background-color: #fff;
+}
