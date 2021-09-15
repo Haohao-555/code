@@ -1,0 +1,433 @@
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.tt-wrapper {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+	font-size: 14px;
+}
+
+.tt-video {
+	width: 1000px;
+	height: 600px;
+	background-color: #ccc;
+	position: relative;
+}
+
+/* 播放器区域 */
+.tt-video-page {
+	width: 1000px;
+	height: 600px;
+	text-align: center;
+	line-height: 600px;
+	overflow: hidden;
+}
+.tt-video-page img {
+	vertical-align: middle;
+}
+
+/* 菜单区域 */
+.tt-video-aside {
+	width: 150px;
+	height: 600px;
+	background-color: rgba(0,0,0,.8);
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+.tt-video-aside ul {
+	padding:0 8px 0 8px;
+}
+.tt-video-aside ul li {
+	width: 100%;
+}
+
+/* 重复利用的代码 */
+.tt-video-aside [class^="item"] {
+	border-bottom: 1px solid #999999;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	box-sizing: border-box;
+}
+.tt-video-aside li:last-child [class^="item"] {
+	border-bottom: 0;
+}
+.tt-video-aside [class^="item"] p {
+	width: 100%;
+	padding-left: 30px;
+	height: 24px;	
+	line-height: 24px;
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	color: #fff;
+	font-size: 11px;
+	font-family: Arial;
+}
+.tt-video-aside [class^="item"] .text {
+	padding-left: 30px;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 11px;
+	font-family: Arial;
+}
+.tt-video-aside [class^="item"] a {
+	text-decoration: none;
+	color: #fff;
+}
+.tt-video-aside [class^="item"] button {
+	color: #fff;
+	font-size: 12px;
+}
+.tt-video-aside .item-rate {
+	height: 76px;
+}
+.tt-video-aside .item-rate p {
+	background-image: url(../images/i-speed.png);
+	
+}
+.tt-video-aside .item-rate ul {
+	width: 128px;
+	height: 2px;
+	background-color: #fff;
+	padding: 0;
+	position: relative;
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.tt-video-aside .item-rate ul li {
+	width: 50px;
+	height: 2px;
+	background-color: #4c9bfe;
+}
+.tt-video-aside .item-rate ul li .bar {
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: #000;
+	box-shadow: 0 0 3px #fff;
+	position: absolute;
+	top: -4px;
+	left: 50px;
+}
+
+.tt-video-aside .item-type {
+	height: 71px;
+}
+.tt-video-aside .item-type p {
+	background-image: url(../images/i-type.png);
+}
+.tt-video-aside .item-type .text span.current {
+	color: #8c8c8c;
+}
+
+.tt-video-aside .item-video {
+	height: 68px;	
+}
+.tt-video-aside .item-video p {
+	background-image: url(../images/i-status.png);
+}
+.tt-video-aside .item-video .text {
+	font-family: 宋体;
+}
+.tt-video-aside .item-play {
+	height: 79px;
+}
+.tt-video-aside .item-play p {
+	background-image: url(../images/i-info.png);
+}
+.tt-video-aside .item-share {
+	height: 80px;
+}
+.tt-video-aside .item-play .group {
+	width: 100%;
+	display: flex;
+	margin-top: 5px;
+}
+.tt-video-aside .item-play .group button {
+	height: 20px;
+	line-height: 20px;
+	font-size: 10px;
+	background-color: #999;
+	padding: 0 2px;
+	margin: 0 2px;
+	font-family: 新宋体;
+}
+.tt-video-aside .item-play .group button.active {
+	color: #fff;
+	background-color: #4c9bfe;
+}
+
+.tt-video-aside .item-share p {
+	background-image: url(../images/i-share.png);
+}
+.tt-video-aside .item-share .link {
+	width: 100%;
+	display: flex;
+	margin-top: 5px;
+}
+.tt-video-aside .item-share .link a  {
+	display: block;
+	width: 22px;
+	height: 22px;
+	background-image: url(../images/share_icon.png);
+	margin: 0 2px;
+}
+.tt-video-aside .item-share .link a:nth-child(1) {
+	background-position: 0 0;
+}
+.tt-video-aside .item-share .link a:nth-child(1):hover {
+	background-position: 0 -44px;
+}
+.tt-video-aside .item-share .link a:nth-child(2) {
+	background-position: -22px 0;
+}
+.tt-video-aside .item-share .link a:nth-child(2):hover {
+	background-position: -22px -44px;
+}
+.tt-video-aside .item-share .link a:nth-child(3) {
+	background-position: -44px 0;
+}
+.tt-video-aside .item-share .link a:nth-child(3):hover {
+	background-position: -44px -44px;
+}
+.tt-video-aside .item-share .link a:nth-child(4) {
+	background-position: -66px 0;
+}
+.tt-video-aside .item-share .link a:nth-child(4):hover {
+	background-position: -66px -44px;
+}
+.tt-video-aside .item-share .link a:nth-child(5) {
+	background-position: -88px 0;
+}
+.tt-video-aside .item-share .link a:nth-child(5):hover {
+	background-position: -88px -44px;
+}
+.tt-video-aside .item-author {
+	height: 63px;
+}
+.tt-video-aside .item-author p {
+	background-image: url(../images/i-author.png);
+}
+
+.tt-video-aside .item-author .text a {
+	text-decoration: underline;
+}	
+
+.tt-video-aside .item-help {
+	height: 69px;
+}
+.tt-video-aside .item-help p {
+	background-image: url(../images/i-help.png);
+}
+.tt-video-aside .item-help .text a {
+	color: #999;
+}
+.tt-video-aside .item-code {
+	height: 56px;
+}
+.tt-video-aside .item-code p {
+	background-image: url(../images/i-down.png);
+}
+
+/* 底部区域 */
+.tt-video-bottom {
+	width: 1000px;
+	height: 42px;
+	background-color: rgba(0,0,0,0);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 1000;
+}
+.tt-video-progress {
+	width: 1000px;
+	height: 2px;
+	background-color: rgba(255,0,0,0);
+}
+.tt-video-progress ul {
+	width: 1000px;
+	height: 2px;
+}
+.tt-video-progress ul li {
+	width: 400px;
+	height: 2px;
+	background-color: #4c9bfe;
+}
+.video-bottom-contain {
+	width: 1000px;
+	height: 40px;
+	background-color: rgba(127,127,127,.5);
+}
+.video-bottom-contain .contain-left {
+	width: 850px;
+	height: 40px;
+	float: left;
+}
+.contain-left .float-left > div {
+	width: 200px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+.contain-left .float-left > div .btn-play {
+	width: 40px;
+	height: 40px;
+	border: 0;
+	cursor: pointer;
+	background-color: transparent;
+}
+.contain-left .float-left .btn-play .icon {
+	width: 12px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	background-image: url(../images/i-play.png);
+}
+.contain-left .float-left .txt-message {
+	width: 140px;
+	height: 22px;
+	line-height: 22px;
+	padding-left: 10px;
+	background-color: #4c4c4c;
+	margin-left: 4px;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 12px;
+	font-family: 宋体;
+}
+.contain-left .float-right .volume {
+	width: 180px;
+	height: 40px;
+	padding: 0 5px;
+}
+.contain-left .float-right .volume {
+	width: 180px;
+	height: 40px;
+	display: flex;
+}
+.contain-left .float-right .volume .volume-progress {
+	flex: 0 0 150px;
+	height: 40px;
+	padding-left: 50px;
+	box-sizing: border-box;
+	position: relative;
+}
+.volume-progress .icon {
+	width: 50px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(../images/i-volume.png);
+	background-size: 22px 19px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.volume-progress ul {
+	width: 100px;
+	height: 2px;
+	margin: 19px 0;
+	background-color: rgba(0,0,0,.5);
+}
+.volume-progress ul li {
+	width: 50px;
+	height: 2px;
+	background-color: #4c9bfe;
+	position: relative;
+}
+.volume-progress ul li .bar {
+	display: block;
+	cursor: pointer;
+	width: 10px;
+	height: 10px;
+	background-color: #000;
+	box-shadow: 0 0 2px #fff;
+	position: absolute;
+	left: 40px;
+	top: -4px;
+	
+}
+.volume-percent {
+	flex: 0 0 30px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	font-size: 12px;
+	font-family: 宋体;
+	color: #ffff;
+}
+
+.video-bottom-contain .contain-right {
+	width: 150px;
+	height: 40px;
+	float: left;
+}
+.contain-right .contain-right-box {
+	width: 150px;
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.contain-right-box > div [class^="btn"] {
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+}
+.contain-right-box > div [class^="btn"] .icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+.contain-right-box > div .btn-setting .icon {
+	width: 18px;
+	height: 17px;
+	background-image: url(../images/i-setting.png);
+	background-size: 18px 17px;
+}
+.contain-right-box > div .btn-info .icon {
+	width: 18px;
+	height: 17px;
+	background-image: url(../images/i-video.png);
+	background-size: 17px 16px;
+}
+.contain-right-box > div .btn-max .icon {
+	width: 18px;
+	height: 17px;
+	background-image: url(../images/i-max.png);
+	background-size: 19px 18px;
+}
+
+/* 中间按钮 */
+.tt-button-toggle {
+	width: 100px;
+	height: 100px;
+	background-color: rgba(0,0,0,.5);
+	cursor: pointer;
+	box-shadow: 0 0 3px #fff;
+	text-align: center;
+	line-height: 100px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -50px;
+	margin-top: -50px;
+	z-index: 10000;
+	border-radius: 5px;
+}
+.tt-button-toggle .icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 26px;
+	height: 42px;
+	background-image: url(../images/i-toggle.png);
+	background-size: 26px 42px;
+}

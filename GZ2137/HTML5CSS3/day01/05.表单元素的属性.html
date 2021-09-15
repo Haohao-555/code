@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        form {
+            width: 600px;
+        }
+
+        form div {
+            margin: 0 0 10px 0;
+        }
+        
+        form input[type="submit"],
+        form input[type="reset"] {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        form input[type="text"] {
+            width: 600px;
+            height: 40px;
+            box-sizing: border-box;
+            padding-left: 10px;
+            outline: none;
+            border: 2px solid #ccc; 
+        }
+        form input[type="text"]:focus {
+            border: 2px solid #f50; 
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        form 是表单标签（表单提交数据）
+        input 标签（type 类型 ）
+        required  属性，当前输入框必须填写的意思
+        pattern 属性， 校验当前输入的文本 格式是否正确 (填写正则表达式)
+        autofocus 属性，刷新页面时自动获取焦点
+        ..
+     -->
+    <form action="http://nudianli.com:8082/login" method="post">
+        <fieldset>
+            <legend>
+                <h2>表单标签属性</h2>
+            </legend>
+            <div>
+                <input 
+                    type="text" 
+                    name="uname"
+                    placeholder="请输入账号"
+                    required 
+                    pattern="^\w{5,}"
+                    autofocus>
+            </div>
+
+            <div>
+                <input 
+                    type="text" 
+                    name="upass"
+                    placeholder="请输入密码"
+                    required>
+            </div>
+
+            <div>
+                <input type="submit">
+            </div>
+        </fieldset>
+    </form>
+
+    <!-- 
+        备注：
+            表单新增的元素和新增的属性
+            所呈现的外观效果，会因为不同浏览器而有所差别。
+            注重页面外观的网站，需自定义警告提示
+            一些后台管理系统，可以使用H5表单元素
+     -->
+
+
+     
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        progress  , meter {
+            width: 600px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>进度条：</h3>
+    <!-- 进度条 -->
+    <!-- 
+        value 当前的值
+        max 最大的值
+        min 最小的值
+     -->
+    <progress 
+        value="20"
+        max="100"
+        min="1"
+        ></progress>
+
+    <!-- 加载网页、滚动网页 -->
+     <script>
+        //  设置value
+        // var v1 = 1;
+        // var timer = setInterval(function(){
+        //     v1 +=1;
+        //     if(v1 > 600) {
+        //         clearInterval(timer);
+        //         return;
+        //     }
+        //     document.querySelector("progress").value = v1;
+        // },30)
+     </script>
+
+
+    <h3>度量尺标签:</h3>
+    <!-- [低，高] -->
+    <meter
+        value="80"
+        max="100"
+        min="1"
+        low="30"
+        high="80"
+        ></meter>
+     <!-- 设置密码的强度：弱，中，强 -->
+    <script>
+        // 设置meter标签的值
+        var setMeter = function(v1){
+            document.querySelector("meter").value = v1;
+        }
+        setMeter(20);
+    </script>
+
+
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .myprogress {
+            width: 600px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+
+        .myprogress li {
+            width: 50px;
+            height: 10px;
+            background-color: red;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+    </style>
+    <h3>自定义(进度条和度量尺)</h3>
+    <ul class="myprogress">
+        <li></li>
+    </ul>
+    <!-- 总结：
+        progress 
+        meter 
+        有默认样式，不方便修改，甚至修改不了
+        如果项目比较注重页面外观的，就不建议使用progress和meter标签
+        推荐使用 ul > li 组合标签
+        -->
+
+
+</body>
+</html>

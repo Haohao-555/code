@@ -1,0 +1,21 @@
+/* 
+公共样式文件
+*/
+.float-left {
+    float: left;
+}
+.float-right {
+    float: right;
+}
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* 
+因为IE6/7不支持:after伪类
+zoom:1 可以让IE6/7的元素可以清除浮动来包裹内部元素
+*/
+.clearfix {
+    zoom: 1;
+}

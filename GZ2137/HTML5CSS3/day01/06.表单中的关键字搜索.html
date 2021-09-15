@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            width: 600px;
+            margin: 0 auto;
+        }
+        form input[type="search"] {
+            width: 600px;
+            height: 40px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 
+        list 属性  ，对应datalist标签的id属性一一对应
+        datalist 和 option 是组合标签 关键字
+        如果使用新增表单元素，就需要注意元素的默认样式
+        项目需要外观一致的效果，就不建议使用datalist>option标签 
+        采用自定义的方式 结构： ul > li 行为：JS
+     -->
+    <form action="">
+        <div>
+            <input 
+                type="search" 
+                placeholder="请输入关键字"
+                list="productId">
+        </div>
+        <div>
+            <!-- 
+                <datalist id="demo" >
+                    <option value="秋冬卫衣">秋冬卫衣</option>
+                    <option value="新款棉衣">新款棉衣</option>
+                    <option value="夏季经典短袖">夏季经典短袖</option>
+                    <option value="青少年衬衫">青少年衬衫</option>
+                </datalist>     
+            -->
+
+            <datalist id="productId">
+                <option value="0">衣服</option>
+            </datalist>
+
+        </div>
+    </form>
+    <script>
+        // json格式数据
+        var data = [
+            {"product": "秋冬卫衣","price":"100元"},
+            {"product": "新款棉衣","price":"90元"},
+            {"product": "夏季经典短袖","price":"80元"},
+            {"product": "青少年衬衫1","price":"70元"},
+            {"product": "青少年衬衫2","price":"70元"},
+            {"product": "青少年衬衫3","price":"70元"},
+            {"product": "青少年衬衫4","price":"70元"}
+        ]
+
+        // 渲染数据
+        var template = function(array){
+            var str = '';
+            for(var i = 0 ; i < array.length ; i ++){
+                str += '<option value="'+array[i].product+'">'+array[i].product+'</option>'
+            }
+            document.querySelector("#productId").innerHTML = str;
+        }
+        // 初始化
+        template(data);
+    </script>
+</body>
+</html>

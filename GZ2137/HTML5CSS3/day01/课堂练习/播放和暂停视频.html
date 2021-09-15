@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        video {
+            width: 600px;
+        }
+        button {
+            border: 1px solid #ccc;
+            padding: 10px 20px;
+        }
+        button.active {
+            background-color: #f50;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        隐藏音频文件的外观
+        不使用display:none 这个属性会让元素页面中消失
+        可以使用透明度opacity , height 属性
+     -->
+    <div class="moive-box"> 
+        <video src="./test.mp4" id="video"></video> 
+    </div>
+
+    <div class="contrl-box">
+        <button class="btn-play">播放</button>
+        <button class="btn-pause active">暂停</button>
+    </div>
+
+    <p class="msg">视频暂停了 ...</p>
+
+    <script>
+        // 需求：
+            // 播放和暂停视频
+
+        // 思考：
+            // 控制多媒体文件的API在哪 ?
+            // video dom 对象
+
+        // 编码：
+        // 1.0 获取视频标签
+        var audio = document.querySelector("#video");
+        var btnPlay = document.querySelector(".btn-play");
+        var btnPause = document.querySelector(".btn-pause");
+        var msg = document.querySelector(".msg");
+
+
+
+        // 2.0 结合事件 处理用户与和界面的交互
+        // console.dir(audio);// dom对象
+        // console.log(typeof audio.play); // function
+        // console.log(typeof audio.pause); // function
+        btnPlay.onclick = function(){
+            // 3.0 处理逻辑
+            // 视频文件的播放
+            audio.play();
+            // 设置背景高亮
+            btnPlay.classList.add("active");
+            btnPause.classList.remove("active");
+            // 设置提示
+            msg.innerHTML = "视频播放了..."
+        }
+        btnPause.onclick = function(){
+            // 3.0 处理逻辑
+            // 音频文件的暂停
+            audio.pause();
+            // 设置背景高亮
+            btnPlay.classList.remove("active");
+            btnPause.classList.add("active");
+            // 设置提示
+            msg.innerHTML = "视频暂停了..."
+        }
+
+        // 多媒体DOM对象提供的API
+
+    </script>
+
+</body>
+</html>
