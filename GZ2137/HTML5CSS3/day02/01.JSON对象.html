@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p class="demo1"> </p>
+    <p class="demo2"> </p>
+    <p class="demo3"> </p>
+    <p class="demo4"> </p>
+
+    <script>     
+        // json格式 
+        // 以下是引用数据类型
+        // 1.数组嵌套对象 
+        var arr = [{"name":"xiaoming"},{"name":"xiaohong"}];
+        // console.log(arr);
+        document.querySelector(".demo1").innerHTML = arr;
+
+        // 2.对象嵌套数组
+        var obj = {"arr":["xiaoming","xiaohong"]}
+        // console.log(obj);
+        document.querySelector(".demo2").innerHTML = obj;
+
+        // 以下转json格式字符串
+        // 基本数据类型
+        var str1 = JSON.stringify(arr);
+        // console.log(str1);
+        document.querySelector(".demo3").innerHTML = str1;
+
+
+        var str2 = JSON.stringify(obj);
+        // console.log(str2);
+        document.querySelector(".demo4").innerHTML = str2;
+
+        //  从页面渲染的角度来看，数据储存时，需把引用数据类型转基本数据类型
+        //  否则，数据将不可再次使用
+
+        // 把json格式的字符串转json对象
+        var res1 = JSON.parse(str1);
+        console.log(res1);
+
+        var res2 = JSON.parse(str2);
+        console.log(res2);
+
+        //  JSON.stringify(obj)  把json对象转字符串
+        //  JSON.parse(str)  把json格式的字符串转json对象
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>localStorage 对象</h3>
+    <button>设置储存数据</button>
+    <button>获取储存数据</button>
+    <button>删除储存数据</button>
+    <button>清空所有数据</button>
+    <p>等待渲染...</p>
+
+    <script>
+        // 目的：
+            // 储存数据
+
+
+        // 获取标签
+        var txt = document.querySelector("p");
+        var buttons = document.querySelectorAll("button");
+
+        // 数据：
+        var _user_id_ = "Example202109151724";
+
+        // 设置储存数据
+        buttons[0].onclick = function(){
+            // 调用setItem方法
+            // 调用者：localStorage
+            // 参数： key value
+            // 返回值： 忽略
+            // 功能：设置储存数据
+            localStorage.setItem("userId",_user_id_);
+            localStorage.setItem("userName","admin");
+            localStorage.setItem("userPassWord","1231231");
+        }
+
+        // 获取储存数据
+        buttons[1].onclick = function(){
+            // 调用getItem方法
+            // 调用者：localStorage
+            // 参数： key 
+            // 返回值：储存的数据（字符串）
+            // 功能：获取储存数据
+            var _id = localStorage.getItem("userId");
+            console.log(_id);
+            // 渲染数据
+            txt.innerHTML = _id == null ? "没有数据": _id;
+        }
+        // 删除储存数据
+        buttons[2].onclick = function(){
+             // 调用removeItem方法
+             // 参数： key 
+             // 功能：删除储存数据
+            localStorage.removeItem("userId");
+        }
+
+        // 清空所有数据
+        buttons[3].onclick = function(){
+             // 调用clear方法
+             // 参数： 无
+             // 功能：清空所有储存的数据
+             localStorage.clear();
+        }
+
+
+        // 总结：
+            // localStorage 对象提供的储存数据的方法
+            // 特点：
+                // 1. 数据永久保存在本地客户端(浏览器)，除非手动删除
+                // 2. 如果需要设置有效时间，可以利用时间戳  (结束时间-开始时间) >= 2小时
+                // 3. 在同一个服务器环境下，同一个浏览器不同的窗口都可以共享储存的数据（共享数据）
+                // 4. 没有大小的限制
+                
+    </script>
+
+</body>
+</html>
