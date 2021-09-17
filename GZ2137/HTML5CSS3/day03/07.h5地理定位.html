@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-16 18:39:05
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day03\07.h5地理定位.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -29,6 +35,7 @@
         // getCurrentPosition  获取用户当前所在位置（经纬度）
         navigator.geolocation.getCurrentPosition(
             function(position){
+                console.log(position)
                 // 用户的坐标信息数据集合（position.coords）
                 // 获取经纬度可以调用相关的API(查询当前位置，天气，交通，住宿)
                 var y = position.coords.latitude; // 纬度
