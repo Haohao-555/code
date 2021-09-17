@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        img {
+            width: 450px;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./imgs/animal.jpg" alt="" class="pic">
+    <div>
+        <button class="btn">进入全屏</button>
+    </div>
+
+    <script>
+        // 需求：
+            // 点击按钮，进入全屏
+            // 点击页面图片，退出全屏
+
+        // 编码：
+            // 获取页面相关的元素
+            var pic = document.querySelector(".pic");
+            var btn = document.querySelector(".btn");
+
+            // 事件绑定
+            btn.onclick = function(){
+                // 图片全屏展示
+                pic.requestFullscreen();
+            }
+            pic.onclick = function(){
+                // 退出全屏
+                document.exitFullscreen();
+            }
+
+    </script>
+</body>
+</html>

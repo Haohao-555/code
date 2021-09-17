@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        h3 , p {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            width: 100%;
+            height: 60px;
+            background-color: #ccc;
+            text-align: center;
+            color: #fff;
+        }
+        .header p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h3>网络监听...</h3>
+        <p>已经连接</p>
+    </header>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+	<script>
+        // 需求：
+            // 监听网络状态
+        // 编码：
+        // 网络连接时触发事件
+        window.addEventListener("online",function(){
+            console.log("网络连接...");
+            $(".header p").html("网络又回来了!");
+            $(".header").css("backgroundColor","green");
+            $(".header").slideUp(500);
+        })
+
+        // 网络断开时触发事件
+        window.addEventListener("offline",function(){
+            console.log("网络断开...");
+            $(".header p").html("网络开小差去了~");
+            $(".header").slideDown(500);
+            $(".header").css("backgroundColor","red");
+        })
+
+
+    </script>
+</body>
+</html>

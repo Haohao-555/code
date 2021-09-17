@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border: 1px solid #ccc; 
+            display: none;
+        }
+        ul li {
+            padding-left: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+        }
+        ul li:last-child {
+            border-bottom: 0px solid transparent;
+        }
+        ul li:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+    </ul>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+	<script>
+        //  需求：
+            // 自定义鼠标右击菜单
+
+
+        // 编码：
+            // 1.0 阻止默认的鼠标右击菜单
+            document.oncontextmenu = function(event){
+                // console.log("test");
+                event.preventDefault();// 阻止默认行为
+                return false;// 阻止默认行为
+            }
+
+            // 2.0 自定义鼠标右击菜单
+            document.addEventListener("mousedown",function(event){
+                // console.log("test",event);
+                // 0  点击鼠标左边按钮
+                // 2  点击鼠标右边按钮
+                var buttonCode  = event.button || event.buttons ; 
+                // console.log(buttonCode);
+                // 判断是否为右击鼠标
+                if(buttonCode >= 2 ){
+                    // 显示右击菜单
+                    $(".menu").show()
+                    $(".menu").css({
+                        left: event.pageX,
+                        top: event.pageY
+                    })
+                }
+            })
+            
+    </script>
+</body>
+</html>

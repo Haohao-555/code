@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+         img ,  div  {
+            width: 150px;
+            height: 150px;
+        }
+        div {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- 默认允许拖拽 -->
+    <img src="./assets/i-douyin.png" alt="">
+
+    <!-- 设置 draggable="true 属性 ; false不能拖拽-->
+    <div draggable="true"></div>
+
+    <script>
+        // 拖放相关的事件
+        var div = document.querySelector("div");
+        var img = document.querySelector("img");
+        var count = 0;
+
+        // 1. 鼠标按下并拖拽触发事件
+        // div.ondragstart = function(){
+        //     console.log("ondragstart");
+        // }
+        
+        // 2. 鼠标拖拽并在目标元素上悬停触发事件
+        // div.ondragover = function(){
+        //     count ++;
+        //     console.log("ondragover",count);
+        // }
+
+        // 3. 鼠标拖拽结束并松开鼠标触发事件
+        // div.ondragend = function(e){
+        //     console.log("ondragend");
+        //     console.log(e)
+        // }
+
+        // 4. 鼠标拖拽并移入目标元素触发事件
+        // img.ondragenter = function(){
+        //     console.log("ondragenter");
+        // }
+
+        // 5. 鼠标拖拽并离开目标元素触发事件
+        // img.ondragleave = function(){
+        //     console.log("ondragleave");
+        // }
+
+        // 6. 鼠标拖拽移入目标元素(开始和结束)并且结合ondragover事件触发
+        img.ondrop = function(){
+            console.log("drop example");
+        }
+        // 鼠标拖拽且在目标元素悬停
+        img.ondragover = function(event){
+            // 调用阻止页面默认行为（行为：选中文本，页面跳转...）
+            event.preventDefault();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 80px;
+        }
+    </style>    
+</head>
+<body>
+    <h3>触摸</h3>
+    <div class="box"></div>
+    <script>
+        // PC 
+        // mousedown mousemove mouseup
+
+        // 移动端
+        // touchstart touchmove touchend 
+
+        // 编码：
+            // 获取页面指定的标签
+            var el = document.querySelector(".box");
+
+            // 定义布尔值
+            var isStart = false;
+
+            // 手指按下  （.box标签）
+            el.ontouchstart = function(){
+                console.log("touchstart");
+                isStart = true;
+            }
+           
+            // 手指滑动  （document对象）
+            document.ontouchmove = function(event){
+                if(isStart){
+                    // 手指滑动的对象（坐标） 
+                    // 手指在页面的坐标位置X
+                    // console.log(event.touches);
+                    var x = event.touches[0].pageX ;
+                    // 手指在页面的坐标位置Y
+                    var y = event.touches[0].pageY;
+
+                    // 减去盒子尺寸的一半
+                    x = x - el.offsetWidth / 2;
+                    y = y - el.offsetHeight / 2;
+
+                    // 设置.box标签的位置
+                    el.style["left"] = x + "px";
+                    el.style["top"] = y + "px";
+                }
+            }
+
+            // 手指松开  （document对象）
+            document.ontouchend = function(){
+                isStart = false;
+                console.log("touchend");
+            }
+
+    </script>
+
+</body>
+</html>

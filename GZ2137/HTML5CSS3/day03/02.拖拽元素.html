@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+         body {
+             margin: 0;
+         }
+         .demo {
+             width: 100px;
+             height: 100px;
+             background-color: red;
+             position: absolute;
+             top: 0;
+             left: 0;
+         }
+    </style>
+</head>
+<body>
+
+    <div class="demo" draggable="true"></div>
+
+    <script>
+        // 鼠标事件
+        // onmousedown onmousemove onmouseup
+
+
+
+        // 拖拽元素
+        var demo = document.querySelector(".demo");
+        demo.ondragend = function(event){
+            // console.log("end",getPoint(event));
+            // 获取鼠标的位置
+            var o1 = getPoint(event);
+            var x = o1.x;
+            var y = o1.y;
+
+            // 设置红色盒子的位置
+            demo.style["left"] = x +"px";
+            demo.style["top"] = y +"px";
+        }
+
+        // 定义函数  获取鼠标的在页面的位置
+        function getPoint(obj){
+            return {
+                x: obj.pageX - demo.offsetWidth / 2,
+                y: obj.pageY - demo.offsetHeight / 2
+            }
+        }
+    </script>
+
+</body>
+</html>

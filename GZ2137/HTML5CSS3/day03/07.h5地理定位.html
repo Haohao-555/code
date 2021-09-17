@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        div.point {
+            height: 100px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="point">
+        <p>经度：<span></span></p>
+        <p>纬度：<span></span></p>
+    </div>
+    <script>
+        // 需求：
+            // 找出用户的位置（经纬度）
+
+        // 获取页面的span标签
+        var spans = document.querySelectorAll(".point span");
+        // BOM 
+        // navigator 客户端信息对象
+        // geolocation  用户位置信息对象
+        // getCurrentPosition  获取用户当前所在位置（经纬度）
+        navigator.geolocation.getCurrentPosition(
+            function(position){
+                // 用户的坐标信息数据集合（position.coords）
+                // 获取经纬度可以调用相关的API(查询当前位置，天气，交通，住宿)
+                var y = position.coords.latitude; // 纬度
+                var x = position.coords.longitude;// 经度
+                // 渲染经纬度
+                spans[0].innerHTML = x;
+                spans[1].innerHTML = y;
+            },
+            function(error){
+                console.log("获取用户位置信息失败");
+            }
+        )
+
+    </script>
+
+</body>
+</html>

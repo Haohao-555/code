@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 10px ;
+        }
+
+        .box-1 {
+            padding: 10px;
+            border: 10px solid #ccc;
+        }
+
+        .box-2 {
+            padding: 10px;
+            border: 10px solid #ccc;
+            /* content-box 不会改变盒子大小计算方式 */
+            /*  border-box 会改变盒子大小计算方式 width (内边距+边框 <= 内容)*/
+            
+            /* 移动端常用属性 */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h3>计算盒子的大小</h3>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+</body>
+</html>

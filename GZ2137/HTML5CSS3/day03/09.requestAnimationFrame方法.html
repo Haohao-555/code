@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+    <button>开始动画</button>
+    <button>停止动画</button>
+
+    <script>
+        // 需求：
+            // 动画改变盒子的宽度
+            // 100px  to   500px
+
+
+        
+        // 定义全局变量
+        var t = null;
+
+        // 获取盒子标签
+        var box = document.querySelector(".box");
+        var btns = document.querySelectorAll("button");
+        
+        // 定义函数 step 
+        var step = function(){
+            // 获取盒子的当前的宽度
+            var curWidth = box.offsetWidth;
+            console.log(curWidth);
+            // 步长
+            var speed = 5;
+            // 判断是否达到目标位置
+            if(curWidth == 1000){
+                return ;
+            }
+            // 设置盒子宽度
+            box.style["width"] = curWidth + speed +"px";
+            // 一直执行step函数
+            t = requestAnimationFrame(step);//执行动画
+            // t = setTimeout(step, 1000/60);
+        }
+
+        // 初始化
+        // step();
+        // 事件绑定
+        btns[0].onclick = function(){
+            //  step();
+            t = requestAnimationFrame(step);//执行动画
+            // t = setTimeout(step, 1000/60);
+        }
+        btns[1].onclick = function(){
+            // console.log("test");
+            cancelAnimationFrame(t);// 取消动画
+            // clearTimeout(t);
+        }
+
+        // console.log(window);
+        // console.log(window.requestAnimationFrame);
+        // console.log(window.cancelAnimationFrame);
+
+    </script>
+</body>
+</html>
