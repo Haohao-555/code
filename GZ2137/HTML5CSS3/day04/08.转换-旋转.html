@@ -13,6 +13,8 @@
             width: 310px;
             height: 438px; 
             border: 1px solid #ccc; 
+            /* 属性值越小，效果越强烈 */
+            perspective: 800px;
         }
         .wrap .box {
             width: 310px;
@@ -26,7 +28,7 @@
         .wrap .box-1 {
             /* 转换属性： */
             /* 角度单位： deg  */
-            transform: rotateX(0deg);
+            /* transform: rotateX(0deg); */
         }
         .wrap:hover .box-1{
             /* 围绕X轴旋转60度 */
@@ -69,22 +71,22 @@
         }
         .wrap .box-4  {
             transform: rotate3d(0,0,0,0deg);
-            position: absolute;
+            /* position: absolute;
             top: 0;
-            left: 0;
+            left: 0; */
         }
         .wrap:hover .box-4 {
             /* 围绕x和y和z所形成对角线旋转60度 */
-            transform: rotate3d(1,1,0,60deg)
+            transform: rotate3d(0.23141,12414,3230,60deg)
         }
     </style>
 </head>
 <body>
 
     
-        <!-- <div class="wrap">
+        <div class="wrap">
             <div class="box box-1">X</div>
-        </div>  -->
+        </div> 
    
 
     <!-- 
@@ -100,10 +102,10 @@
    
 
 
-    <!-- <div class="wrap">
+    <div class="wrap">
        <div class="message">hello world !</div>
         <div class="box box-4"></div>
-    </div> -->
+    </div>
 
 
 
