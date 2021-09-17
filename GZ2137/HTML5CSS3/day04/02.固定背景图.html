@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            height: 300px;
+            background-color: pink;
+        }
+        .footer {
+            height: 900px;
+            background-color: skyblue;
+        }
+
+        .main {
+            width: 900px;
+            height: 400px;
+            background-color: #ccc;
+            margin: 0 auto;
+            background-image: url(./imgs/bg.jpg);
+            background-repeat: no-repeat;
+            /* background-position:x y; */
+            background-size: cover;
+            font-size: 100px;
+            color: red;
+            /* 固定背景图 */
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>页面标题1</h1>
+    </div>
+    <div class="main">
+        hello world !
+    </div>
+    <div class="footer">
+        <h1>页面标题2</h1>
+    </div>
+
+
+
+    <style>
+        [class^="demo"] {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(121, 24, 24);
+            position: fixed;
+            top: 50%;
+            margin-top: -50px;
+        }
+        .demo-1 {
+            left: 0;
+        }
+        .demo-2 {
+            right: 0;
+        }
+    </style>
+    <!-- 参考物： -->
+    <div class="demo-1"></div>
+    <div class="demo-2"></div>
+</body>
+</html>

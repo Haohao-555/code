@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 900px;
+            height: 700px;
+            background-color: #ccc;
+            background-image: url(./imgs/net-demo.jpg);
+            /* background-image: url(./imgs/desktop.jpg); */
+            background-repeat: no-repeat;
+        }   
+        .box-1 {
+            /* 设置背景尺寸（w * h） */
+            background-size: 100% 100%;
+            /* background-size: 100% auto; */
+            /* background-size: auto 100%; */
+        }
+
+        .box-2 {
+            /* 背景自动覆盖容器标签 */
+            background-size: cover;
+        }
+        .box-3 {
+            /* 根据图片尺寸(w,h) */
+            /* w > h 横向填充背景 */
+            /* w < h 纵向填充背景 */
+            background-size: contain;
+        }
+
+        .demo {
+            width: 150px;
+            height: 150px;
+            border: 15px dashed #000; 
+            padding: 20px;
+            background-image: url(./imgs/net-demo.jpg);
+            background-repeat: no-repeat;
+        }
+        /* 设置背景图片的原点位置（起点） 从哪个区域开始显示*/
+        /* 边框 */
+        /* 内边距 */
+        /* 内容 */
+        .demo-1 {
+            background-origin: border-box;
+        }
+        .demo-2 {
+            background-origin: padding-box;
+        }
+        .demo-3 {
+            background-origin: content-box;
+        }
+
+        /* 裁剪背景图片，从哪个区域开始裁剪 */
+        /* 边框 */
+        /* 内边距 */
+        /* 内容 */
+        .example-1 {
+            background-clip: border-box;
+        }
+        .example-2 {
+            background-clip: padding-box;
+        }
+        .example-3 {
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box box-1"></div> -->
+    <!-- <div class="box box-2"></div> -->
+    <!-- <div class="box box-3"></div> -->
+
+
+    <!-- <div class="demo demo-1"></div> -->
+    <!-- <div class="demo demo-2"></div> -->
+    <!-- <div class="demo demo-3"></div> -->
+
+
+    <!-- <div class="demo demo-1 example-1"></div> -->
+    <!-- <div class="demo demo-2 example-2"></div> -->
+    <div class="demo demo-3 example-3"></div>
+
+
+
+    <style>
+        .icon {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+            background-color: #ccc;
+            padding: 24px  27px 24px 27px;
+            box-sizing: border-box;
+            background-image: url(./imgs/desktop.jpg);
+            background-repeat: no-repeat;
+            background-position:  -8px -201px;
+            background-origin: content-box;/*内容区域开始显示*/
+            background-clip: content-box;/*保留内容区域的图片*/
+        }
+    </style>
+    <!-- 示例 -->
+    <div>
+        <!-- 
+            火狐图标 
+            46 * 52  尺寸
+            -201 -8  位置
+        -->
+        <span class="icon"></span>
+    </div>
+</body>
+</html>

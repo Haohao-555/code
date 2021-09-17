@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 100px;
+        }
+        .wrap {
+            width: 310px;
+            height: 438px; 
+            border: 1px solid #ccc; 
+        }
+        .wrap .box {
+            width: 310px;
+            height: 438px;
+            background-image: url(./imgs/pk1.png);
+            border: 1px solid #f00;
+            /* 过渡 */
+            transition: transform 2s;
+        }
+
+        .wrap .box-1 {
+            /* 转换属性： */
+            /* 角度单位： deg  */
+            transform: rotateX(0deg);
+        }
+        .wrap:hover .box-1{
+            /* 围绕X轴旋转60度 */
+            transform: rotateX(60deg);
+        }
+
+
+        .wrap .box-2 {
+            transform: rotateY(0deg);
+        }
+        .wrap:hover .box-2{
+            /* 围绕Y轴旋转60度 */
+            transform: rotateY(60deg);
+        }
+
+
+        .wrap .box-3 {
+            transform: rotateZ(0deg);
+        }
+        .wrap:hover .box-3{
+            /* 围绕Z轴旋转60度 */
+            transform: rotateZ(60deg);
+        }
+
+        .wrap {
+            position: relative;
+        }
+        .wrap .message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 310px;
+            height: 438px;
+            line-height: 438px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #0051ff;
+        }
+        .wrap .box-4  {
+            transform: rotate3d(0,0,0,0deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .wrap:hover .box-4 {
+            /* 围绕x和y和z所形成对角线旋转60度 */
+            transform: rotate3d(1,1,0,60deg)
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        <div class="wrap">
+            <div class="box box-1">X</div>
+        </div> 
+    -->
+
+    <!-- 
+        <div class="wrap">
+            <div class="box box-2">Y</div>
+        </div> 
+    -->
+
+    <!-- 
+        <div class="wrap">
+            <div class="box box-3">Z</div>
+        </div> 
+    -->
+
+
+    <div class="wrap">
+       <div class="message">hello world !</div>
+        <div class="box box-4"></div>
+    </div>
+
+
+
+
+
+</body>
+</html>

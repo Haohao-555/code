@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 300px;
+            background-color: #ccc;
+            margin: 100px;
+            /* 设置边框 */
+            border: 30px solid #f00; 
+        }
+
+        .box-1 {
+            border-image-source: url(./imgs/border.png);/*边框背景图片路径*/
+            border-image-slice: 47 47 47 47;/*裁剪边框背景图（九宫格）*/
+            border-image-width: 20px;/*边框背景图尺寸(设置小一点可以平铺效果)*/
+            border-image-outset: 0px;/*设置边框背景的位置（盒子内外）*/
+            border-image-repeat: repeat;/*边框背景图是否平铺 repeat round*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box box-1">hello world</div>
+
+</body>
+</html>

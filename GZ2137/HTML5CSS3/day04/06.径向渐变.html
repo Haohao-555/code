@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+        /* 渐变 */
+        /* 
+            特点： 从中心往四周扩散逐渐改变颜色
+            中心坐标: left top right botton center / (x,y)
+            radial-gradient(
+                中心坐标,
+                开始颜色,
+                结束颜色
+            )
+        */
+        .box-1 {
+            background-image: radial-gradient(
+                at center center ,
+                red,
+                green
+            );
+        }
+        .box-2 {
+            background-image: radial-gradient(
+                at 100px 100px,
+                red 0%,
+                red 30%,
+                yellow 40%,
+                green 60%,
+                green 80%
+            );
+        }
+
+        .box-3 {
+            background-image: radial-gradient(
+                at center ,
+                red 0%,
+
+                red 20%,
+                green 20%,
+
+                green 40%,
+                red 40%,
+
+                red 60%,
+                green 60%,
+
+                green 80%,
+                red 80%
+            );
+        }
+        .box-4 {
+            background-image: repeating-radial-gradient(
+                at 50px 50px,
+
+                red 0%,
+                red 20%,
+
+                green 20%,
+                green 40%
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="box box-1"></div>
+    <!-- <div class="box box-2"></div> -->
+
+    <!-- 靶心 -->
+    <!-- <div class="box box-3"></div> -->
+    <!-- <div class="box box-4"></div> -->
+
+</body>
+</html>

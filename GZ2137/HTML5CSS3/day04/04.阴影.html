@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 100px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+        }
+        .box-1 {
+            /* box-shadow: 水平偏移量  垂直偏移量  模糊度 延伸量（可选） 颜色  内阴影（可选）; */
+            /* box-shadow: 1 2 3 4 5 6; */
+            box-shadow: 5px 5px 5px  red;
+        }
+        .box-2 {
+            box-shadow: 0px 0px 5px red;
+        }
+
+        .demo {
+            width: 450px;
+            height: 80px;
+            background-color: #ccc;
+            font-size: 50px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .demo-1 {
+            /* text-shadow: 水平偏移量  垂直偏移量  模糊度  颜色 , 水平偏移量  垂直偏移量  模糊度  颜色; */
+            /* text-shadow: 1 2 3 4 , 1 2 3 4  ; */
+            text-shadow: 2px 2px 3px red;
+        }
+        .demo-2 {
+            /* text-shadow: 2px 2px 3px red , -2px -2px 3px green; */
+            text-shadow: -4px -4px 3px green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 盒子阴影 -->
+    <!-- <div class="box box-1"></div> -->
+    <!-- <div class="box box-2"></div> -->
+
+    <!-- 文本阴影 -->
+    <!-- <div class="demo demo-1">hello world ! </div> -->
+    <div class="demo demo-2">hello world ! </div>
+</body>
+</html>
+
+<script>
+    // 需求：
+        // 霓虹灯的制作
+        // JS 控制DOM元素的阴影
+        var el = document.querySelector(".demo-2");
+        var arrColor = [
+            "2px -2px 3px deepskyblue",
+            "2px -2px 3px red",
+            "-4px -4px 3px green",
+            "4px 4px 3px orange",
+            "-4px -4px 3px purple",
+            "-4px -4px 3px blue",
+            "-4px -4px 3px pink"
+        ]
+        var index = 0;
+        var autoPlay = function(){
+            index ++ ;
+            index = index > arrColor.length - 1 ? 0 : index ;
+            el.style["textShadow"] = arrColor[index];
+        }
+        // autoPlay();
+        // autoPlay();
+        // autoPlay();
+        // autoPlay();
+        // autoPlay();
+        var t = setInterval(autoPlay,2000);
+
+        
+</script>

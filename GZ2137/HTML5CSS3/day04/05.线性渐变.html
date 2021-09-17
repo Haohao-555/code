@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 渐变：逐渐改变颜色
+            线性渐变：开始颜色（red）  结束颜色(green)
+            background: linear-gradient(参数)
+            background-image: linear-gradient(参数)
+        */
+
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #ccc; 
+            /* background-size: 100px 100px; */
+            /* background-position: -50px 0; */
+        }
+        .box-1 {
+           
+            /* 1.渐变方向 2.开始颜色  3.结束颜色 */
+            /* 方向： left right bottom top / 角度  */
+             /* 特点：颜色从一侧开始往另一侧逐渐改变（过渡） */
+            background-image: linear-gradient(
+                to right ,
+                red ,
+                green
+            );
+        }
+
+        .box-2 {
+            background-image: linear-gradient(
+                35deg,
+                red,
+                green
+            );
+        }
+
+        .box-3 {
+            background-image: linear-gradient(
+                180deg,
+                red,
+                yellow,
+                purple,
+                green
+            );
+        }
+
+        .box-4 {
+            width: 600px;
+            background-size: 100px 100px;
+            background-position: -50px 0;
+            /* 渐变(方向/角度,开始颜色,结束颜色) */
+            background-image: linear-gradient(
+                146deg,
+                white 0%,
+
+                white 20%,
+                black 20%,
+
+                black 40%,
+                white 40%,
+
+                white 60%,
+                black 60%,
+
+                black 80%,
+                white 80%,
+
+                white 100%
+            );
+        }
+    </style>
+</head>
+<body>
+    <div class="box box-1"></div>
+    <!-- <div class="box box-2"></div> -->
+    <!-- <div class="box box-3"></div> -->
+    <!-- <div class="box box-4"></div> -->
+
+    <script>
+        // 需求：
+            // 实现彩带效果
+        // var el = document.querySelector(".box-4");
+        // var x = 0;
+        // var autoPlay = function(){
+        //     x += 1;
+        //     x = x > 600 ? 0: x ;
+        //     el.style["backgroundPosition"] = x+"px 0"
+        // }
+        // var t = setInterval(autoPlay,30);
+    </script>
+</body>
+</html>

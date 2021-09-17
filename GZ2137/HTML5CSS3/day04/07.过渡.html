@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 
+            过渡：
+            例如：
+            从 100px  到  900px 这个变化的过程
+        
+            时间单位： s秒   ms毫秒
+          */
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            /* 过渡属性 */
+            /* 属性名称 all 代表所有的属性 */
+            transition-property: width;
+            /* 过渡持续的时间 */
+            transition-duration: 10s;
+
+            /* 延迟执行过渡 */
+            /* transition-delay: 5s; */
+
+            /* 过渡运动的状态（快慢） */
+            /* 贝塞尔曲线 cubic-bezier(.09,1.27,.9,-0.56) */
+            /* 如果需要运动曲线。首先需要找出控制点。(x1,y1, x2,y2) */
+            /* 借助在线工具,找出贝塞尔曲线的控制点 */
+            /* https://cubic-bezier.com/#.2,1.14,.84,-0.11 */
+
+            /* transition-timing-function:  cubic-bezier(.09,1.27,.9,-0.56); */
+            /* transition-timing-function:  linear;  匀速*/
+            /* transition-timing-function:  ease-in; 加快*/
+            /* transition-timing-function:  ease-out; 减慢*/
+            /* transition-timing-function:  ease-in-out; 先快后慢*/
+        }
+        .box-1:hover  {
+            width: 900px;
+        }
+
+        .box-2 {
+            /* 过渡属性 */
+            transition: width .5s 0s linear;
+        }
+        .box-2:hover {
+            width: 900px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box box-1"></div> -->
+    <div class="box box-2"></div>
+
+</body>
+</html>
