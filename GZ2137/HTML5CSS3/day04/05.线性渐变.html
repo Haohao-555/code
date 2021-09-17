@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-09-17 18:26:16
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day04\05.线性渐变.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -77,21 +83,21 @@
 </head>
 <body>
     <div class="box box-1"></div>
-    <!-- <div class="box box-2"></div> -->
-    <!-- <div class="box box-3"></div> -->
-    <!-- <div class="box box-4"></div> -->
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+    <div class="box box-4"></div>
 
     <script>
         // 需求：
             // 实现彩带效果
-        // var el = document.querySelector(".box-4");
-        // var x = 0;
-        // var autoPlay = function(){
-        //     x += 1;
-        //     x = x > 600 ? 0: x ;
-        //     el.style["backgroundPosition"] = x+"px 0"
-        // }
-        // var t = setInterval(autoPlay,30);
+        var el = document.querySelector(".box-4");
+        var x = 0;
+        var autoPlay = function(){
+            x += 1;
+            x = x > 600 ? 0: x ;
+            el.style["backgroundPosition"] = x+"px 0"
+        }
+        var t = setInterval(autoPlay,30);
     </script>
 </body>
 </html>
