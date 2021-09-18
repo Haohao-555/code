@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid #fff;
+        }
+        .box-1 {
+            /* B. 使用动画 */
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            /* animation: 动画名称（move） 动画持续的时间  动画的状态（快慢速度） 延迟执行动画  执行动画的次数  动画方向  动画结束的位置（开始/结束）; */
+           
+            /* 1.动画名称 (必选) */
+            animation-name: move;
+            /* 2.动画持续的时间 (必选)*/
+            animation-duration: 10s;
+            /* 3.动画的状态（快慢速度） */
+            animation-timing-function: linear;
+            /* 4.延迟执行动画 */
+            animation-delay: 0s;
+            /* 5.执行1次 */
+            /* infinite: 无限次 */
+            animation-iteration-count: 1;
+            /* 6.执行动画的方向  alternate*/
+            /* animation-direction: alternate-reverse; */
+            /* 7.动画结束时停留的位置 forwards（结束位置）*/
+            animation-fill-mode: forwards;
+        }
+
+        .box-1:hover {
+            /* 8. 停止执行动画 paused / running*/
+            animation-play-state: paused;
+        }
+
+        /* CSS3 动画的使用
+        步骤：
+            1. 定义动画 关键帧 @keyframes
+            2. 使用动画 属性   animation: 1，2，3，4，5，6，7
+        */
+
+        /* A.定义动画 1*/
+        @keyframes move {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: 500px;
+            }
+        }
+
+
+
+        .box-2 {
+            /* animation: loop 2s ; */
+            animation-name: loop;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        /* A. 定义动画 2*/
+        /* -o-  支持欧鹏浏览器  */
+        /* -moz-  支持火狐浏览器  */
+        /* -webkit-  支持谷歌浏览器  */
+        @-o-keyframes loop {}
+        @-moz-keyframes loop {}
+        @-webkit-keyframes loop {}
+        @keyframes loop {
+            0% {
+                width: 100px;
+            }
+            25% {
+                width: 500px;
+            }
+            50% {
+                width: 250px;
+            }
+            75% {
+                width: 500px;
+            }
+            100% {
+                width: 350px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+
+
+</body>
+</html>

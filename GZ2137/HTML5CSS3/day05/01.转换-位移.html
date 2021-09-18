@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            font-size: 40px;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid #fff;
+        }
+        /* 
+        transform：translate()
+        位移：改变标签的位置 transform: translate() 不会让元素脱离正常文档流
+        margin: 外边距
+        position：relative absolute fixed / left top 
+
+        */
+        .box-1 {
+            /* transform: translate(x【水平方向】,y【垂直方向】); */
+            /* transform: translate(100px,0); */
+
+            /* transform: translate3d(x【水平方向】,y【垂直方向】,z【正对眼睛的方向】); */
+            /* transform: translate3d(0,0,100px); */
+
+            /* transform: translateX(100px); 在X轴移动100px */
+
+            /* transform: translateY(60px); 在Y轴移动60px*/
+
+            /* transform: translateZ(100px); 在Z轴移动100px*/
+
+            /* 多个属性值同时设置，需要写在一行 */
+            /* transform: translateX(100px) translateY(200px) rotateZ(60deg); */
+            /* transform:  rotateZ(60deg);  */
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box box-1">1</div> -->
+    <!-- <div class="box">2</div> -->
+</body>
+</html>
+
+<!-- 查看Z轴 -->
+<style>
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        margin: 150px auto;
+        position: relative;
+        /* 设置父元素角度旋转 */
+        transform: rotateX(30deg) rotateY(30deg);
+        /* 设置父元素为3d容器 (三维空间)*/
+        transform-style: preserve-3d;
+    }
+    ul li {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    ul li:nth-child(1) {
+        background-color: green;
+         /* 设置位移 */
+         /* transform: translateZ(100px) ; */
+         transform: rotateX(90deg) translateZ(100px);
+    }
+</style>
+
+<ul>
+    <li>1</li>
+</ul> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

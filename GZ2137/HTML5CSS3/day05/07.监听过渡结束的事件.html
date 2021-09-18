@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 100px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* transition: transform 1s; */
+            transition: all 1s;
+        }
+        .box:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <script>
+        // 要求：
+            // 什么时候结束过渡?
+            // transitionend --- > 过渡结束时触发的事件
+
+        // 编码：
+        // 监听过渡结束
+        document.querySelector(".box").addEventListener("transitionend",function(){
+            console.log("test");
+            // 设置标签的背景色
+            this.style["backgroundColor"] = "blue";
+        })
+    </script>
+</body>
+</html>

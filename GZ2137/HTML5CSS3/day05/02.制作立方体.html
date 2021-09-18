@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            margin: 260px auto;
+            width: 300px;
+            height: 300px;
+            /* background-color: #ccc; */
+            position: relative;
+
+            /* 设置角度倾斜 */
+            transform: rotateX(346deg) rotateY(17deg) rotateZ(0deg);
+            /* transform: rotate3d(1,1,0,30deg); */
+            /* 设置3d容器 */
+            transform-style: preserve-3d;
+        }
+        ul li {
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #000;
+        }
+        ul li:nth-of-type(1) {
+            background-color: rgba(255, 0, 0,.9);
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        ul li:nth-of-type(2) {
+            background-color: rgba(0, 191, 255,.9);
+            transform: rotateX(90deg) translateZ(-150px);
+        }
+        ul li:nth-of-type(3) {
+            background-color: rgba(144, 238, 144, .9);
+            transform: rotateY(90deg) translateZ(150px);
+        }
+        ul li:nth-of-type(4) {
+            background-color: rgba(255, 20, 147,.9);
+            transform: rotateY(90deg) translateZ(-150px);
+        }
+        ul li:nth-of-type(5) {
+            background-color: rgba(233, 150, 122,.9);
+            transform: rotateZ(90deg) translateZ(150px);
+        }
+        ul li:nth-of-type(6) {
+            background-color: rgba(128, 0, 128,.9);
+            transform: rotateZ(90deg) translateZ(-150px);
+        }
+        ul li span {
+            display: block;
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+        }
+        ul li:nth-of-type(5) span ,
+        ul li:nth-of-type(6) span {
+            transform: rotateZ(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        立方体：六张面
+     -->
+     <ul>
+         <li><span>1</span></li>
+         <li><span>2</span></li>
+
+         <li><span>3</span></li>
+         <li><span>4</span></li>
+
+         <li><span>5</span></li>
+         <li><span>6</span></li>
+        
+     </ul>
+
+</body>
+</html>
