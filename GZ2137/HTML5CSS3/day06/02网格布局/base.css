@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+ul , ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.bg-red {
+    background-color: red;
+}
+.bg-green {
+    background-color: green;
+}
+.bg-blue {
+    background-color: blue;
+}
+.bg-orange {
+    background-color: orange;
+}
+.bg-purple {
+    background-color: purple;
+}
+.bg-pink {
+    background-color: pink;
+}
+.bg-yellow {
+    background-color: yellow;
+}

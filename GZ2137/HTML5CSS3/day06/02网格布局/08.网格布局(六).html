@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .container {
+            background-color: #ccc;
+            display: grid;
+            grid-template-rows: 100px 100px 100px 100px;
+            grid-template-columns: 100px 100px 100px 100px;
+        }
+
+        /* 子元素 （单元格）*/
+        /* 决定子元素的位置和大小 */
+        .item-1 {
+            background-color: red;
+            /* 设置行的上边框线 */
+            grid-row-start: 2;
+            /* 设置行的下边框线 */
+            grid-row-end: 3;
+            /* 设置列的左边框线 */
+            grid-column-start: 2;
+            /* 设置列的右边框线 */
+            grid-column-end: 3;
+        }
+    </style>
+</head>
+<body>
+    <!-- 容器盒子 -->
+    <div class="container">
+        <!-- 子选项 -->
+        <div class="item item-1"></div>
+    </div>
+
+</body>
+</html>

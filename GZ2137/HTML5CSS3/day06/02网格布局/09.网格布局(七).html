@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <link rel="stylesheet" href="./base.css">
+    <style>
+        .container {
+            background-color: #ccc;
+            display: grid;
+            /* 指定行的样式 */
+            /* grid-template-rows: 50px 50px 50px 50px; */
+            /* 指定列的样式 */
+            grid-template-columns: repeat(auto-fill,100px);
+        }
+        .container > div {
+            border: 1px solid #000; 
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="display: none;">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+    </div>
+
+    <style>
+        html , body , .wrapper {
+            height: 100%;
+        }
+        .wrapper {
+            background-color: #ccc;
+            display: grid;
+            /* 指定列的样式 */
+            /* grid-template-columns:100px  repeat(auto-fill,200px); */
+            /* grid-template-columns: 1fr  1fr;  */
+            /* grid-template-columns: 100px  repeat(auto-fill,100px);  */
+
+            /* 侧栏自适应效果（三种方式 1浮动、 2弹性、3网格、 4calc） */
+            /* 左侧盒子固定的尺寸，右侧盒子是可以自动伸缩的尺寸*/
+            grid-template-columns: 120px  1fr;
+        }
+        .wrapper > div {
+            border: 1px solid red; 
+            /* height: 600px; */
+            height: 100%;
+        }
+    </style>
+    <div class="wrapper">
+        <div class="bg-green">1</div>
+        <div class="bg-pink">2</div>
+    </div>
+
+
+</body>
+</html>

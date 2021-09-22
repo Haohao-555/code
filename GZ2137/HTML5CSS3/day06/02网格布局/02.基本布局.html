@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        ul li {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #fff;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+        }
+        .bg-red {
+            background-color: red;
+        }
+        .bg-green {
+            background-color: green;
+        }
+        .bg-blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <style>
+        .container-1 {
+            width: 500px;
+            background-color: #000;
+            font-size: 0;
+            border-bottom: 2px solid #fff;
+        }
+        /* 转行内块元素 */
+        .container-1 li {
+            display: inline-block;
+            border: 0 solid #000;
+            font-size: 30px;
+        }
+    </style>
+    <ul class="container-1">
+        <li class="bg-red">1</li>
+        <li class="bg-green">2</li>
+        <li class="bg-blue">3</li>
+    </ul>
+
+
+    <style>
+        .container-2 {
+            width: 500px;
+            background-color: #ccc;
+            border-bottom: 3px solid #fff;
+        }
+        .container-2 li {
+            float: left;
+            border: 0 solid #000;
+        }
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+    <ul class="container-2 clearfix">
+        <li class="bg-red">1</li>
+        <li class="bg-green">2</li>
+        <li class="bg-blue">3</li>
+        <!-- <div style="clear: both;"></div> -->
+    </ul>
+
+
+    <style>
+       .container-3 {
+           width: 500px;
+           background-color: pink;
+           border-bottom: 3px solid #fff;
+           /* 弹性盒子 */
+           display: flex;
+       } 
+       .container-3 li {
+           border: 0 solid #000;
+       }
+    </style>
+    <ul class="container-3">
+        <li class="bg-red">1</li>
+        <li class="bg-green">2</li>
+        <li class="bg-blue">3</li>
+    </ul>
+
+
+    <style>
+        /* 位置，尺寸 */
+        /* 父元素 */
+        .container-4 {
+            width: 500px;
+            background-color: deepskyblue;
+            /* 把当前标签设置未网格容器 */
+            /* grid 或 inline-grid */
+            display: grid;
+            /* 设置行 */
+            grid-template-rows: 100px;
+            /* 设置列 */
+            grid-template-columns: 100px 100px 100px;
+        }
+        .container-4 li {
+            border: 0;
+        }
+        /* 总结：
+        实现页面布局的方式：
+        1. 浮动
+        2. 弹性布局
+        3. 网格布局（扎心）
+        捡了芝麻，丢了西瓜 */
+    </style>
+     <ul class="container-4">
+        <li class="bg-red">1</li>
+        <li class="bg-green">2</li>
+        <li class="bg-blue">3</li>
+    </ul>
+
+</body>
+</html>

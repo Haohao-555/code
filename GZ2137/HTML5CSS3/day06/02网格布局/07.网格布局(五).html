@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <link rel="stylesheet" href="./base.css">
+</head>
+<body>
+    <style>
+        ul {
+            background-color: #ccc;
+            display: grid;
+            grid-template-rows: 100px 100px 100px 100px;
+            /* 第一列80px 第二列100px  第三列120px */
+            /* grid-template-columns: 80px 100px 120px; */
+            /* repeat(参数1,参数2)  参数 */
+            /* 参数1： 一行划分多少组 */
+            /* 参数2： 表示一组有多少列,每个列的尺寸时空格隔开 (50px  100px) */
+            grid-template-columns: repeat(2, 50px 100px);
+        }
+        ul li {
+            border: 1px solid #000;
+        }
+    </style>
+    <ul>
+        <li class="bg-red">1</li>
+        <li class="bg-green">2</li>
+        <li class="bg-blue">3</li>
+        <li class="bg-orange">4</li>
+
+        <li class="bg-pink">5</li>
+        <li class="bg-purple">6</li>
+        <li class="bg-yellow">7</li>
+        <li class="bg-yellow">8</li>
+
+
+        <li>9</li>
+
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+    </ul>
+
+</body>
+</html>

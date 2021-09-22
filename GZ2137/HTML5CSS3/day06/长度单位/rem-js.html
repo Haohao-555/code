@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        .box {
+            width: 10rem;
+            height: 10rem;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box"></div>
+
+    <script>
+        // 定义函数 设置根元素的字体 
+        var setRootElementFontSize = function(){
+            // 二倍图设计稿的宽度 750 640
+            // 一倍图的尺寸  375  320 
+            var width = 375;
+            // 页面的宽度
+            var winWidth = window.innerWidth; 
+            // 判断可视区宽度是否超出指定范围 限制尺寸/字体
+            if(winWidth >= 750){
+                winWidth = 750;
+            }
+            // 定义变量记录 1rem = ?px 
+            // 1rem = 10px
+            var v1 = 20;
+            // 计算根元素的字体大小
+            // 屏幕变化，字体跟随变化
+            var fontSize =  winWidth / width * v1 ;
+            // 设置根元素的字体属性 html标签
+            document.documentElement.style["fontSize"] = fontSize+"px";
+        }
+        // 初始化
+        setRootElementFontSize();
+        // 监听可视区区域的宽度的变化
+        window.addEventListener("resize",setRootElementFontSize);
+
+    </script>
+
+</body>
+</html>

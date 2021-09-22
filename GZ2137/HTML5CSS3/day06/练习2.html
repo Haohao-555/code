@@ -1,0 +1,42 @@
+<!--
+ * @Date: 2021-09-22 15:12:34
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day06\练习2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        ul li {
+           list-style: none;
+           padding: 0;
+           margin: 0; 
+        } 
+        ul {
+            height: 300px;
+            width: 400px;
+            display: grid;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: repeat(1, 100px 100px 100px 100px);
+            background-color: #ccc;
+        }
+        .active {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            background-color: red;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+    </style>
+    <ul>
+        <li class="active">单元格</li>
+    </ul>
+</body>
+</html>

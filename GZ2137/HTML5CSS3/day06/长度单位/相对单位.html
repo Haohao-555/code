@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 1相对单位 = ?px */
+        /* 默认情况下 1rem = 16px */
+        /* 默认情况下 盒子大小为 160px * 160px */
+        .box {
+            width: 10rem;
+            height: 10rem;
+            background-color: red;
+        }
+
+        /* 媒体查询 */
+        /* max-width   <=  小于等于 800px */
+        @media (max-width: 800px) {
+            html {
+                font-size: 10px;
+            }
+        }
+        /* min-width >= 801  大于等于 801px */
+        @media (min-width: 801px) {
+            html {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+        相对单位 （转换px）
+        rem
+        em
+        vw
+        vh
+        rpx  
+        %
+     -->
+     <div class="box"></div>
+
+
+</body>
+</html>

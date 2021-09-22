@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 0;
+            font-size: 20px;
+        }
+        .item-1 {
+            background-color: red;
+        }
+        .item-2 {
+            background-color: green;
+        }
+        .item-3 {
+            background-color: blue;
+        }
+        .item-4 {
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    <style>
+        .parent {
+            background-color: #ccc;
+            /* 把父元素设置为网格容器（行和列） */
+            display: grid;
+            /* 指定行的样式 (数量和高度) */
+            /* 例如：以下表示网格容器划分2行,每行高度100px */
+            /* grid-template-rows: 100px 100px; */
+            grid-template-rows: 100px;
+            /* 指定列的样式 (数量和宽度)*/
+            /* 例如：以下表示网格容器划分4列,*/
+            /*  第一列和第四列宽度50px ， */
+            /*  第二列和第三列宽度100px ， */
+            grid-template-columns: 50px 100px 100px 50px;
+        }
+        .child-1 {
+            background-color: red;
+        }
+        .child-2 {
+            background-color: green;
+        }
+        .child-3 {
+            background-color: blue;
+        }
+        .child-4 {
+            background-color: orange;
+        }
+
+     
+    </style>
+
+    <div class="parent">
+        <div class="child child-1">1</div>
+        <div class="child child-2">2</div>
+        <div class="child child-3">3</div>
+        <div class="child child-4">4</div>
+    </div>
+
+
+    <style>
+        /* 位置，尺寸 */
+        /* row : 行 */
+        /* column : 列 */
+        .big {
+            background-color: #ccc;
+            /* 网格容器 */
+            display: grid;
+            /* 设置为1行 高度60px */
+            grid-template-rows: 60px;
+            /* 设置列4列 宽度?px */
+            /* grid-template-columns: 25% 25% 25% 25%; */
+            /* fr : 片段 （比例）*/
+            /* 2 + 1 + 1 + 1 = 5  */
+            /* 第一列的宽度 ：  2/5 */
+            /* 第二列的宽度 ：  1/5 */
+            /* 第四列的宽度 ：  1/5 */
+            /* 第五列的宽度 ：  2/5 */
+            grid-template-columns: 2fr  1fr  1fr  1fr;
+        }
+    </style>
+    <!-- <div class="big">
+        <div class="small-1 item-1">1</div>
+        <div class="small-2 item-2">2</div>
+        <div class="small-3 item-3">3</div>
+        <div class="small-4 item-4">4</div>
+    </div> -->
+
+</body>
+</html>
