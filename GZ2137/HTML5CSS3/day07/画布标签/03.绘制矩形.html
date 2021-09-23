@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+        // 绘制矩形
+        // 矩形相关的数据
+        var x = 100;// 坐标
+        var y = 100;
+        var w = 200; // 尺寸
+        var h = 100;
+
+        // 设置属性
+        ctx.fillStyle = "green";// 填充颜色
+        ctx.strokeStyle = "red"; // 描边颜色
+        ctx.lineWidth = 10; // 线宽
+
+        // 调用方法(描边一个矩形)
+        ctx.strokeRect(x,y,w,h);
+        // 拆分写法
+        // ctx.rect(x,y,w,h);
+        // ctx.stroke();
+
+        // 调用方法(填充一个矩形)
+        ctx.fillRect(x,y,w,h);
+        // 拆分写法
+        // ctx.rect(x,y,w,h);
+        // ctx.fill();
+        
+
+
+
+    </script>
+</body>
+</html>

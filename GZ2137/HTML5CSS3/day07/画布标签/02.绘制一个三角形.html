@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+
+    <script>
+        // 获取canvas标签
+        var canvas = document.querySelector("#canvas")
+        // 设置canvas的大小（画布）
+        canvas.width = 600;
+        canvas.height = 600;
+        // 获取canvas标签提供的绘制图形图像的对象
+        var ctx = canvas.getContext("2d");
+
+        // 定义数据
+        var x1 = 100;
+        var y1 = 100;
+
+        var x2 = 300;
+        var y2 = 200;
+
+        var x3 = 100;
+        var y3 = 400;
+
+        // 开始绘制路径
+        ctx.beginPath();
+
+        // ctx 相当于画笔 
+        // 设置线的宽
+        ctx.lineWidth = 5;
+
+        // 绘制线(描边的颜色)
+        ctx.strokeStyle= "red";
+
+        // 填充颜色
+        ctx.fillStyle="red";
+
+        // 设置起点
+        ctx.moveTo(x1,y1);
+
+        // 设置下一个坐标点
+        ctx.lineTo(x2,y2);
+
+        // 设置下一个坐标点
+        ctx.lineTo(x3,y3);
+
+        // 设置下一个坐标点
+        // ctx.lineTo(x1,y1);
+
+        // 结束绘制路径(闭合)
+        ctx.closePath();
+
+        // 调用描边方法
+        ctx.stroke();
+        // 调用填充方法
+        ctx.fill();
+
+      
+
+
+
+
+
+
+    </script>
+</body>
+</html>

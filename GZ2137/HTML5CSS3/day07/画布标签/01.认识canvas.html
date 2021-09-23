@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 默认大小  300 * 150 */
+        /* 以后不能直接设置 width height border 样式属性*/
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 绘制图形图像 -->
+    <canvas id="canvas"> 当前浏览器版本太低了，请换个浏览器试下 </canvas>
+
+    <!-- <canvas> hello world </canvas> -->
+    <!-- <div> hello world </div> -->
+    <!-- canvas 标签（结合javascript才能使用） -->
+
+    <script>
+        // 需求：
+            // 绘制一根线 (点1，点2)
+
+        // 获取canvas标签 （dom对象）
+        var canvas = document.querySelector("#canvas");
+        // console.log(typeof canvas); // object
+
+        // 不能直接设置样式(不可用)
+        // canvas.style.width =  "600px";
+        // canvas.style.height = "800px";
+
+        // 设置画布的大小（正确打开方式）
+        canvas.width = 450 ;
+        canvas.height = 500 ;
+
+        // 获取canvas提供的上下文对象
+        var ctx = canvas.getContext("2d");
+        // console.log(ctx);
+
+        // 线（线宽/线颜色/起点/终点）
+        var width = 2;
+        var color = "green";
+        var start = {x: 100,y: 50 }
+        var end = {x:400,y: 50 }
+
+        // 绘制线
+        // 设置线的宽
+        ctx.lineWidth = width;
+        // 设置线的颜色
+        ctx.strokeStyle = color;
+        // 起点坐标
+        ctx.moveTo(
+            start.x ,
+            start.y 
+        )
+        // 终点坐标
+        ctx.lineTo(
+            end.x ,
+            end.y 
+        )
+        // 描边
+        ctx.stroke();
+
+
+        // 总结：
+            // 学习H5的canvas标签，实际就是学习JS
+                // 变量
+                // 数据类型
+                // 函数
+                // ....
+    </script>
+</body>
+</html>

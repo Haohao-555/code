@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    <!-- 
+        弧度 = 角度 * Math.PI / 180 
+     -->
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+
+        // 记录弧形的数据
+        var x = 200;    //坐标
+        var y = 200;
+        var r = 100;    //半径
+        var angle = 300; //角度
+        var rad = angle * Math.PI / 180;// 计算弧度
+
+        // 线颜色
+        ctx.strokeStyle = "red";
+
+        // 填充颜色
+        ctx.fillStyle = "green";
+
+        // 设置中心
+        ctx.moveTo(x,y);
+        
+        // 绘制弧形
+        // 参数
+        // ctx.arc(x坐标,y坐标,r半径, 0开始弧度, rad结束弧度 , 布尔值); // false 顺时针
+        ctx.arc(x,y,r,0,rad, false);
+
+        // 闭合
+        ctx.closePath();
+        // 描边
+        ctx.stroke();
+        // 填充方法
+        ctx.fill();
+
+
+    </script>
+</body>
+</html>
