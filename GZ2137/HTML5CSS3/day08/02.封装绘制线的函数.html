@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 辅助的背景颜色 */
+        canvas {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 画布标签 -->
+    <canvas id="canvas">tips</canvas>
+
+    <script>
+        // 1. 获取canvas标签
+        var canvas = document.querySelector("#canvas");
+
+        // 2. 设置画布大小
+        canvas.width = 600;
+        canvas.height = 800;
+
+        // 3. 绘制图形图像（绘图环境）
+        // 画布的上下文对象（绘图的属性和方法）
+        var ctx = canvas.getContext("2d");
+
+        // 4. 封装绘制线的函数
+        // 函数：可以特定功能的代码块（重复使用）
+        var drawLine = function(x1,y1,x2,y2,color,width) {
+            // 默认变量值
+            // 起点坐标
+            var x1 = x1 || 100;
+            var y1 = y1 || 150;
+            // 终点坐标
+            var x2 = x2 || 500;
+            var y2 = y2 || 150;
+            // 颜色
+            var color = color || "red";
+            // 线大小
+            var width = width ||  5;
+        
+            ctx.beginPath();
+            ctx.lineWidth = width;
+            ctx.strokeStyle = color;
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+            ctx.closePath();
+            ctx.stroke(); // 渲染： 表现出来的意思
+        }
+        // 绘制红色的线
+        // drawLine(100,50,100,600,"red",5);
+        // 绘制绿色的线
+        // drawLine(100,600,450,600,"green",5);
+        drawLine();
+
+        
+
+        // 问题1：
+        // 定义函数
+        // var foo = function(){
+        //     console.log("hello world");
+        // }
+        // // 变量res 接收foo函数的返回
+        // var res = foo();
+        // console.log("res:",res);// 变量 res 是什么?  undefined 因为函数作用域没有return 值。
+        // console.log(foo);//  函数体
+
+
+        // 问题2：
+        // var foo2 = function(x,y){
+        //     console.log(x,y);// undefined undefined
+        // }
+        // foo2();
+
+
+        // 问题3：
+        // var x = undefined
+        // 隐式转换 
+        // 0 == false 
+        // var x = 0 ;
+        // var v1 =  x || "hello world";
+        // console.log(v1);// "hello world"
+
+        // 问题4:
+        // null 和 undefined 的区别?
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    <script src="./canvas-tool.js"></script>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+        // 获取canvas标签在页面的位置
+        var l = canvas.getBoundingClientRect().left;
+        var t = canvas.getBoundingClientRect().top;
+        // console.log(l,t);
+
+        // 鼠标在canvas的坐标位置 = 鼠标在页面的位置 减去 canvas标签在页面的位置
+        var getPosition = function(pageX,pageY){
+            var obj = canvas.getBoundingClientRect();
+            return {
+                x: pageX - obj.left,
+                y: pageY - obj.top
+            }
+        }
+
+        // 鼠标按下事件
+        // document.onmousedown = function(event){
+            // 获取鼠标在canvas的位置
+            // var point = getPosition(event.pageX,event.pageY);
+            // console.log(point);
+            // 绘制圆点
+            // drawCircle(
+            //     ctx,
+            //     point.x,
+            //     point.y,
+            //     20,
+            //     0,
+            //     360,
+            //     "red"
+            // )
+        // }
+
+        // 绘制矩形
+        drawRect(ctx,100,50,200,50,"red");
+        // drawRect(ctx,100,150,200,50,"green");
+        // drawRect(ctx,100,250,200,50,"blue");
+
+        // ctx.isPointInPath(坐标)  检测坐标是否出现在绘制路径中
+        // 如果是，返回布尔值true,否则false
+        // console.log(ctx.isPointInPath(100,50));// true
+        // console.log(ctx.isPointInPath(50,30));// false
+
+        // document.onmousemove = function(event){
+        //     // 获取鼠标在canvas的位置
+        //     var point = getPosition(event.pageX,event.pageY);
+        //     // console.log(point);
+        //     // 判断鼠标是否移入红色矩形
+        //     if(ctx.isPointInPath(point.x,point.y)){
+        //         console.log("移动至矩形");
+        //     }
+        // }
+
+        document.onmousedown = function(event){
+            // 获取鼠标在canvas的位置
+            var point = getPosition(event.pageX,event.pageY);
+            // console.log(point);
+            // 判断鼠标是否移入红色矩形
+            if(ctx.isPointInPath(point.x,point.y)){
+                console.log("点击了矩形");
+                // alert("hello world!")
+            }
+        }
+
+        // 思考：
+            // 如何给canvas多个图形添加事件?
+
+        
+
+        
+
+    </script>
+</body>
+</html>

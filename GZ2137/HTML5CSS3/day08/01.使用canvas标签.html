@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        /* 辅助的背景颜色 */
+        canvas {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        xp 系统
+        win 7 
+        win 10
+     -->
+
+
+     <!-- 
+        canvas 标签 
+        不是用于修饰页面的图文信息 用于绘制图形图像。不要把其当作普通标签使用
+        需要绘制图形图像时，要结合javascript才能使用
+        不需要直接给canvas标签设置css样式（width,height,border）
+        是设置canvas画布的大小 是canvas.width  不是canvas.style.width 
+      -->
+
+    <canvas id="canvas">如果此处的文字被渲染出来，那就意味着当前浏览器不支持canvas标签!</canvas>
+
+    <script>
+        // 1. 获取canvas标签
+        var canvas = document.querySelector("#canvas");
+
+        // 2. 设置画布大小
+        canvas.width = 600;
+        canvas.height = 800;
+
+        // 3. 绘制图形图像（绘图环境）
+        // 画布的上下文对象（绘图的属性和方法）
+        var ctx = canvas.getContext("2d");
+        // console.log(ctx);
+
+        // 4. 绘制不同颜色的线
+        // 步骤：
+        // 第一根线：
+        // 开始绘制路径
+        ctx.beginPath();
+        // 线的大小
+        ctx.lineWidth = 15;
+        // 线的颜色
+        ctx.strokeStyle = "red";
+        // 设置起点(在画布上的坐标)
+        ctx.moveTo(100,50);
+        // 设置终点
+        ctx.lineTo(500,50);
+        // 结束绘制路径
+        ctx.closePath();
+        // 描边
+        ctx.stroke();
+
+
+        // 第二根线:
+        // 开始绘制路径
+        ctx.beginPath();
+        // 线的大小
+        ctx.lineWidth = 15;
+        // 线的颜色
+        ctx.strokeStyle = "green";
+        // 设置起点(在画布上的坐标)
+        ctx.moveTo(100,150);
+        // 设置终点
+        ctx.lineTo(500,150);
+        // 结束绘制路径
+        ctx.closePath();
+        // 描边
+        ctx.stroke();
+
+
+        // 以下两个方法的作用是： 
+        // 用于区别绘制不同的形状和图像
+        // ctx.beginPath();
+        // ctx.closePath();
+        // 备注：
+        // canvas绘制图形时，属性需要在方法之前去设置
+        // 带()  是方法
+        // 带=  是属性
+
+     
+
+        
+
+
+
+
+
+    </script>
+
+</body>
+</html>

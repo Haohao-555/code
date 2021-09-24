@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style></style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        // 对象
+            // 对象是以键值对形式出现的无序数据集合 。{key:value}
+            // 存值/取值
+
+        // 1.0 自定义对象（弄清除如何存值和取值）    
+        // var obj = {};
+        // obj.foo = function(){
+        //     console.log("foo");
+        // }
+        // console.log(obj.x); // undefined
+        // obj.foo();
+        // obj["foo"]();
+
+
+
+
+
+        // 2.0 画布
+        var canvas  = document.querySelector("#canvas")
+        // console.log(canvas); // dom 对象
+        // console.log(typeof canvas); // object 
+        // console.dir(canvas);
+
+        var ctx = canvas.getContext("2d");// 调用getContext函数 返回值是个对象
+        // console.log(ctx);// CanvasRenderingContext2D {key: value}  canvas上下文对象
+        // 该对象提供了一系列的属性和方法，可以绘制图形图像
+        // console.log(typeof ctx);// object
+        // console.log(ctx.stroke);// stroke
+        // console.log(ctx.foo);// undefined
+
+        
+        // 原型对象上的属性和方法
+        // __proto__ 这个属性是每个对象都有的属性 叫做隐式原型
+        // console.log(ctx.__proto__);
+
+    </script>
+
+</body>
+</html>

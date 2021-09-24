@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+
+    <script src="./canvas-tool.js"></script>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+        // 绘制矩形
+        drawRect(
+            ctx,
+            200,
+            100,
+            150,
+            200,
+            "green"
+            );
+
+    </script>
+</body>
+</html>

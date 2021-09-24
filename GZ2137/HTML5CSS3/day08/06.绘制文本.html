@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas">tips</canvas>
+
+    <script src="./canvas-tool.js"></script>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+        // console.log(ctx);
+        // 定义坐标点
+        var point = {
+            x: 200,
+            y: 200
+        }
+        // 横线X
+        drawLine(
+            ctx,
+            point.x - 100,
+            point.y,
+            point.x + 100,
+            point.y,
+            "red"
+        )
+        // 竖线Y
+        drawLine(
+            ctx,
+            point.x,
+            point.y - 100,
+            point.x,
+            point.y + 100,
+            "red"
+        )
+
+        // 定义文本
+        var str = "hello world!";
+        // 开始绘制路径
+        ctx.beginPath()
+        // 描边颜色
+        ctx.strokeStyle = "#000";
+        // 填充颜色
+        ctx.fillStyle="green";
+        // 设置字体(大小，名称)
+        ctx.font = "50px 微软雅黑";//  Microsoft YaHei
+        // 设置文本水平方向对齐(左中右) left center right
+        ctx.textAlign = "center";
+        // 设置文本垂直方向对齐（上中下）bottom middle top 
+        ctx.textBaseline = "middle"
+        // 描边文本
+        ctx.strokeText(
+            str,
+            point.x,
+            point.y)
+        // 填充文本
+        ctx.fillText(
+            str,
+            point.x,
+            point.y)
+        // 结束绘制
+        ctx.closePath();
+
+
+        // 绘制文本
+        drawText(
+            ctx,
+            "窗外下大雨了",
+            300,
+            400,
+            "red",
+            100
+        )
+    </script>
+</body>
+
+</html>

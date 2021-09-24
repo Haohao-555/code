@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+        // 定义计数器变量
+        var col = 0;
+        var row = 0;
+        // 创建图片
+        var img = new Image();
+        // 设置图片路径
+        img.src = "./imgs/run.png";
+        // 加载图片
+        img.onload = function(){
+            // 图片尺寸
+            var imageWidth = img.width;
+            var imageHeight = img.height;
+            // 每一帧图的大小
+            var spaceX = imageWidth * (1/4);
+            var spaceY = imageHeight * (1/4);
+            // 每一帧动画横向和纵向的索引值
+            var i = 0; // 横向
+            var j = 0; // 纵向
+            
+            var x = 0 ; // 在画布的坐标位置 X
+            var y = 0 ; // 在画布的坐标位置 Y
+            ctx.drawImage(
+                img,
+                i * spaceX,
+                j * spaceY,
+                imageWidth * (1/4),
+                imageHeight * (1/4),
+
+                x,
+                y,
+                imageWidth * (1/4),
+                imageHeight * (1/4)
+            )
+        }
+
+        // 编写函数
+        function changeImage(i,j){
+            // 清除画布
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            // 图片尺寸
+            var imageWidth = img.width;
+            var imageHeight = img.height;
+            // 每一帧图的大小
+            var spaceX = imageWidth * (1/4);
+            var spaceY = imageHeight * (1/4);
+            // 每一帧动画横向和纵向的索引值
+            var i = i == undefined ? 0 : i ; // 横向
+            var j = j == undefined ? 0 : j ; // 纵向
+            ctx.drawImage(
+                img,
+                i * spaceX,
+                j * spaceY,
+                imageWidth * (1/4),
+                imageHeight * (1/4),
+
+                0,
+                0,
+                imageWidth * (1/4) * 1,
+                imageHeight * (1/4) * 1
+            )
+        }
+
+        // 定时器函数
+        var timer = setInterval(function(){
+            col ++;
+            col = col > 3 ? 0 : col;
+            // row ++;
+            // row = row > 3 ? 0 : row;
+            changeImage(col,row);
+        },150)
+
+
+
+    </script>
+</body>
+</html>

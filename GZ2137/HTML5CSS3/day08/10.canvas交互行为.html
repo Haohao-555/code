@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+        // 获取canvas标签在页面的位置
+        var l = canvas.getBoundingClientRect().left;
+        var t = canvas.getBoundingClientRect().top;
+        // console.log(l,t);
+
+        // 鼠标在canvas的坐标位置 = 鼠标在页面的位置 减去 canvas标签在页面的位置
+        var getPosition = function(pageX,pageY){
+            var obj = canvas.getBoundingClientRect();
+            return {
+                x: pageX - obj.left,
+                y: pageY - obj.top
+            }
+        }
+
+        // 编写函数 绘制矩形
+        var drawRect2 = function(x,y,w,h,color,point,callback){
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.rect(x,y,w,h);
+            ctx.closePath();
+            ctx.fill();
+            if(point == undefined) return ;
+            var isMouseDown =  ctx.isPointInPath(point.x,point.y);
+            if(isMouseDown) {
+                callback(color);
+            }
+        }
+
+        // 定义数组,记录图形数据
+        // 数组： 根据索引值存取数据（有序数据集合）
+        var arr = [
+            [100,50,200,50,"red"],
+            [100,150,200,50,"green"],
+            [100,250,200,50,"blue"]
+        ]
+        // 绘制图形
+        for(var i = 0 ; i < arr.length ; i ++){
+            drawRect2(
+                arr[i][0],
+                arr[i][1],
+                arr[i][2],
+                arr[i][3],
+                arr[i][4]
+                )
+        }
+      
+        // 给页面绑定mousedown事件
+        document.onmousedown = function(event){
+            // 清除画布
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            // 获取鼠标在canvas的位置
+            var point = getPosition(event.pageX,event.pageY);
+            // console.log(point);
+            // 绘制图形
+            for(var i = 0 ; i < arr.length ; i ++){
+                drawRect2(
+                    arr[i][0],
+                    arr[i][1],
+                    arr[i][2],
+                    arr[i][3],
+                    arr[i][4],
+                    point,
+                    function(color){
+                        // console.log(color);
+                        if(color == "red") {
+                            console.log("点击了红色图形");
+                            drawRect2(
+                                arr[0][0],
+                                arr[0][1],
+                                arr[0][2],
+                                arr[0][3],
+                                "pink"
+                            )
+                        }
+                        if(color == "green") {
+                            console.log("点击了绿色图形");
+                        }
+                        if(color == "blue") {
+                            console.log("点击了蓝色图形");
+                        }
+                    }
+                    )
+            }
+        }
+
+        // 思考：
+            // 如何给canvas多个图形添加事件?
+
+        
+
+        
+
+    </script>
+</body>
+</html>

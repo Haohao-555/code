@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <style>
+        canvas {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">tips</canvas>
+    <script>
+        var canvas = document.querySelector("#canvas");
+        canvas.width = 600;
+        canvas.height = 600;
+        var ctx = canvas.getContext("2d");
+
+        // 定义中心位置
+        var point = {
+            x: 200,
+            y: 300,
+            r: 150
+        }
+
+        // 绘制圆形
+        ctx.beginPath()
+        ctx.lineWidth = 5;
+        ctx.strokeStyle="blue";
+        ctx.moveTo(point.x,point.y);
+        ctx.arc(
+            point.x,
+            point.y,
+            point.r,
+            0,
+            360 * Math.PI / 180,
+            false
+        )
+        ctx.closePath();
+        ctx.stroke();
+
+
+        // 计算坐标位置
+        // 角度30
+        var angle = 30;
+        var r = point.r + 100;
+        // x轴
+        var x0 = Math.cos(angle * Math.PI/180) *  r + point.x;
+        var y0 = Math.sin(angle * Math.PI/180) *  r + point.y;
+
+        // 绘制线（半径）
+        ctx.beginPath();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle="deepskyblue";
+        ctx.moveTo(point.x,point.y);
+        ctx.lineTo(x0,y0);
+        ctx.closePath();
+        ctx.stroke();
+
+        // 绘制文本
+        var str = "数据名称";
+        ctx.beginPath();
+        ctx.font="30px 黑体";
+        ctx.fillText(str,x0,y0);
+        ctx.closePath();
+
+
+
+    </script>
+</body>
+</html>
