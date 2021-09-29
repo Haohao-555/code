@@ -1,0 +1,29 @@
+.header {
+  padding: 0 15px;
+  margin: 0 auto;
+  height: 80px;
+}
+.section {
+  margin: 0 auto;
+  height: 80px;
+}
+.footer {
+  margin: 0 auto;
+  height: 80px;
+}
+.box-1 {
+  width: 100px;
+  height: 50px;
+  float: left;
+}
+.box-2 {
+  width: 100px;
+  height: 50px;
+  float: right;
+}
+.box-3 {
+  display: block;
+}
+.box-3 {
+  display: inline-block;
+}

@@ -1,0 +1,49 @@
+// 混合语法
+// 作用：代码重复使用
+// 高级混合
+.pad() {
+    padding: 0 15px;
+}
+.mar(){
+    margin: 0 auto;
+}
+.aaa() {
+    height: 80px;
+}
+.header {
+    .pad();
+    .mar();
+    .aaa();
+}
+.section {
+    .mar();
+    .aaa();
+}
+.footer {
+    .mar();
+    .aaa();
+}
+
+// 参数
+.f(@value) {
+    width: 100px;
+    height: 50px;
+    float: @value;
+}
+// 参数默认值
+.d(@value: block) {
+    display: @value;
+}
+
+.box-1 {
+    .f(left);
+}
+.box-2 {
+    .f(right);
+}
+.box-3 {
+    .d();
+}
+.box-3 {
+    .d(inline-block);
+}

@@ -1,0 +1,35 @@
+// less 是一种css拓展语言
+// less 依旧可以书写css代码
+// 声明变量，记录数据
+// 淘宝主题颜色： #FF4200
+// 京东主题颜色： #c81623
+
+// 页面：
+// LOGO  搜索边框  按钮背景 价格字体 ...
+@width: 600px;
+@mainColor: deepskyblue;
+
+.container {
+    width: @width;
+    margin: 0 auto;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    background-color: @mainColor;
+}
+.search {
+    width: 600px;
+    height: 40px;
+    border: 3px solid @mainColor; 
+    margin: 16px 0;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: @mainColor;
+    border-radius: 5px;
+}
+.price {
+    color:  @mainColor;
+}

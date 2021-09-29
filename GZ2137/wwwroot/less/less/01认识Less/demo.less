@@ -1,0 +1,27 @@
+// 声明变量
+@w: 1000px;
+.container {
+    width: @w;
+    margin: 0 auto;
+}
+// 嵌套规则
+nav {
+    height: 100px;
+    ul {
+        list-style-type: none;
+        li {
+            width: 600px;
+            height: 40px;
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+        li.active {
+            background-color: red;
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

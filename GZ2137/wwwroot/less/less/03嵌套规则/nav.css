@@ -1,0 +1,42 @@
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body {
+  margin: 0;
+}
+.container {
+  width: 990px;
+  margin: 0 auto;
+}
+.tt-nav {
+  height: 80px;
+  background-color: #000;
+  color: #fff;
+}
+.tt-nav > div {
+  height: 80px;
+  background-color: #333;
+}
+.tt-nav ul {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.tt-nav ul li {
+  background-color: skyblue;
+  margin: 0 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.tt-nav ul li span {
+  color: #666;
+}
+.tt-nav ul li:hover {
+  background-color: lightgreen;
+}
+.tt-nav ul li:hover span {
+  color: #fff;
+}

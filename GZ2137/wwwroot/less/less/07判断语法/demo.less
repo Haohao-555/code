@@ -1,0 +1,63 @@
+// 判断语法
+// 类似JS 动态书写样式
+// 但是没有JS没有灵活(方便)
+// .float(@value) when (@value=left){
+//     float: @value;
+// }
+
+// 代码块
+// 根据条件设置左浮动或右浮动
+.pull(@value) {
+    .l(@value)when(@value = l) {
+        float: left;
+    }
+    .r(@value)when(@value = r) {
+        float: right;
+    }
+    .l(@value);
+    .r(@value);
+}
+
+.test-1 {
+    .pull(l);
+}
+
+.test-2 {
+    .pull(r);
+}
+
+
+
+
+// 代码块
+// 根据条件设置宽度
+.layout(@index) {
+    .aaa(@index) when (@index = 1) {
+        width: 100px;
+        height: 500px;
+        background-color: red;
+    }
+    .bbb(@index) when (@index = 2) {
+        width: 200px;
+        height: 600px;
+        background-color: green;
+    }
+    .ccc(@index) when (@index = 3) {
+        width: 300px;
+        height: 600px;
+        background-color: blue;
+    }
+    .aaa(@index);
+    .bbb(@index);
+    .ccc(@index);
+}
+
+.box-1 {
+    .layout(1);
+}
+.box-2 {
+    .layout(2);
+}
+.box-3 {
+    .layout(3);
+}

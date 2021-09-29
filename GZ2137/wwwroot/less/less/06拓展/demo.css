@@ -1,0 +1,16 @@
+.box-rect,
+.box-circle {
+  width: 200px;
+  height: 100px;
+  background-color: red;
+}
+.demo,
+.box-circle {
+  opacity: 0.8;
+}
+.box-circle {
+  border-radius: 20px;
+}
+.box-circle {
+  border-radius: 20px;
+}

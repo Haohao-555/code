@@ -1,0 +1,17 @@
+// 拓展语法
+// 作用: 代码重复使用(并集选择器)
+// 减少冗余的代码
+.box-rect {
+    width: 200px;
+    height: 100px;
+    background-color: red;
+}
+.demo {
+    opacity: .8;
+}
+.box-circle:extend(.box-rect) {
+    border-radius: 20px;
+}
+.box-circle:extend(.demo) {
+    border-radius: 20px;
+}
