@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>html5css3 阶段</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- 侧栏菜单 -->
+    <aside class="tt-aside">
+        <div class="box">
+            <ul>
+                <li data-index="0">衣服</li>
+                <li data-index="1" class="active">鞋子</li>
+                <li data-index="2">皮包</li>
+                <li data-index="3">香水</li>
+                <li data-index="4">修饰</li>
+                <li data-index="5">服装</li>
+            </ul>
+        </div>
+    </aside>
+    <!-- 内容 -->
+    <section class="tt-content">
+        <div class="layout">
+            <div class="item"><span>衣服</span></div>
+            <div class="item"><span>鞋子</span></div>
+            <div class="item"><span>皮包</span></div>
+            <div class="item"><span>香水</span></div>
+            <div class="item"><span>修饰</span></div>
+            <div class="item"><span>服装</span></div>
+        </div>
+    </section>
+</body>
+</html>
+<script>
+    // 说明：
+        // 利用JS设置item标签的高度
+        // 从而撑开layout标签的高度
+
+    // 获取可视区域的高度
+    var h = window.innerHeight;
+    // 获取所有的item标签
+    var items = document.querySelectorAll(".layout .item");
+    // 循环items标签数组
+    for(var i = 0 ; i < items.length ; i ++){
+        // 设置高度
+        items[i].style["height"] = h +"px";
+    }
+
+</script>

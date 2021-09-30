@@ -1,0 +1,20 @@
+// 插值
+// 作用：字符串的拼接
+$str: tb;
+
+// 选择器
+.#{$str}-header {
+    height: 100px;
+}
+.#{$str}-nav {
+    height: 80px;
+}
+.#{$str}-main {
+    height: 500px;
+}
+.#{$str}-aside {
+    height: 200px;
+}
+.#{$str}-footer {
+    height: 150px;
+}

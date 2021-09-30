@@ -1,0 +1,15 @@
+// 循环
+// @each 变量  in  列表(字符串) {  }
+@each $key in alibaba  tenxun  baidu zjtd meituan didi {
+    .box-#{$key} {
+        width: 100px;
+    }
+}
+// 互联网巨头(工作一段时间)
+// 一线大厂
+// alibaba
+// tenxun
+// baidu
+// zjtd
+// meituan
+// didi

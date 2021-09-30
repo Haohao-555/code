@@ -1,0 +1,22 @@
+// 1000px
+// 1000px / 3 = ?px
+// 运算SASS
+// 加减乘除
+// less 的除法运算需要小括号(1000px/3)
+$w: 1000px;
+.header {
+    width: $w;
+    height: 100px;
+    overflow: hidden;
+    .item {
+        width: ($w / 3);
+        height: 44px;
+        margin-top: (100px - 44) / 2;
+        margin-bottom: (100px - 44) / 2;
+    }
+}
+.nav {
+    width: 100px + 20;
+    height: 80px - 30;
+    margin-left: 10px * 20;
+}

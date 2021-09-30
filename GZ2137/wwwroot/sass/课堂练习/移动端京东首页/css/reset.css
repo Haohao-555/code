@@ -1,0 +1,34 @@
+html , body , ul , ol , h1 , h2, h3 , h4, h5 , p , div {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+a ,
+a:hover ,
+a:focus {
+    color: #333;
+    text-decoration: none;
+    /* 针对移动端 点击链接标签点击高亮 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul , 
+ol {
+    list-style: none;
+}
+
+input , button , textarea {
+    border: 0;
+    outline: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 60 / 20 = 3rem */
+body {
+    padding-bottom: 3rem;
+}

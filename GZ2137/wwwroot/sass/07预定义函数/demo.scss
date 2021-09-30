@@ -1,0 +1,29 @@
+// 定义函数
+// sass的函数并非JS的函数
+// 针对css属性值
+// @function add(){
+//     @return 200px;
+// // }
+// .box {
+//     width: add();
+//     height: add();
+// }
+
+
+// 参数
+// @function add($x,$y){
+//     @return $x+$y;
+// }
+// .box {
+//     width: add(100px,50px);
+//     height: add(5px,15px);
+// }
+
+// 参数的默认值
+@function add($x:100px,$y:50px){
+    @return $x+$y;
+}
+.box {
+    width: add();
+    height: add();
+}

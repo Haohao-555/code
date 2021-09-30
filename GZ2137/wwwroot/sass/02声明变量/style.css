@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 300px;
+  margin: 0 auto;
+  height: 100px;
+  background-color: red;
+}

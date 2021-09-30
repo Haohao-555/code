@@ -1,0 +1,36 @@
+// 制作心
+// 定义代码块
+// & 找上一级标签的意思（不要有空格）
+// &::
+@mixin heart($color,$percent:1) {
+    width: 100px;
+    height: 100px;
+    background-color: $color;
+    position: relative;
+    transform: rotate(45deg) scale($percent);
+    &::before ,
+    &::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: absolute;
+    }
+    &::before {
+        background-color: $color;
+        transform: translate(-50px,0);
+    }
+    &::after {
+        background-color: $color;
+        transform: translate(0,-50px);
+    }
+}   
+
+// 设置图标的特性
+.icon-heart {
+    display: inline-block;
+    vertical-align: middle;
+    // 引入代码块
+    @include heart(red,.5);
+}

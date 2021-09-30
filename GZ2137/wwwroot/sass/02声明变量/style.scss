@@ -1,0 +1,17 @@
+// 声明变量  修饰符  $
+$maxWidth: 1000px;
+$minWidth: 300px;
+$mainColor: red;
+
+body {
+    margin: 0;
+}
+// 选择器
+.header {
+    width: 100%;
+    max-width: $maxWidth;
+    min-width: $minWidth;
+    margin: 0 auto;
+    height: 100px;
+    background-color: $mainColor;
+}

@@ -1,0 +1,31 @@
+// 混合语法
+// 关键字
+// @mixin  定义代码块
+// @include 引用代码块
+// 编译（翻译）
+// 作用：代码块的重复使用
+// 定义代码块
+@mixin pad {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+.nav {
+    // 使用代码块
+    @include pad();
+}
+// 参数
+@mixin mar($value) {
+    margin: $value auto;
+}
+.aside {
+    @include mar(100px);
+}
+// 参数默认值
+@mixin color($value: blue) {
+    background-color: $value;
+}
+.footer  {
+    height: 100px;
+    @include color();
+}

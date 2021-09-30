@@ -1,0 +1,10 @@
+// css预处理的函数并非JS中的函数
+// 作用: 处理css的属性值
+.box {
+    width: ceil((1000px / 3));
+    width: floor((1000px / 3));
+    width: round((1000px / 3));
+    height: 100px - 2;
+    background-color: rgb(255,0,0);
+    // css3 的calc函数计算  height: calc(100px - 2); 
+}
