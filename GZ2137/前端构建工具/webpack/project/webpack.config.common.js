@@ -43,5 +43,6 @@ module.exports = {
             // 与入口的 key 一一对应 
             chunks: ["index"],
         })
+        
     ] 
 }
