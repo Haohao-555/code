@@ -17,5 +17,5 @@ xhr.onreadystatechange = function() {
 /*
   前提：本地服务已经启动
 */
-xhr.open("get", "/api/list", true);
-xhr.send();
+// xhr.open("get", "/api/list", true);
+// xhr.send();

@@ -1,6 +1,7 @@
 // 导入 path
 var path = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');//处理dist目录多余的文件(冗余)
 // 模块系统对象
 module.exports = {
 
@@ -33,6 +34,7 @@ module.exports = {
 
     // 配置插件
     plugins: [
+     
         new HtmlWebpackPlugin({
             // 网页标题
             title: "首页",
@@ -42,7 +44,7 @@ module.exports = {
             filename: "index.html",
             // 与入口的 key 一一对应 
             chunks: ["index"],
-        })
-        
+        }),
+        new CleanWebpackPlugin(),
     ] 
 }
