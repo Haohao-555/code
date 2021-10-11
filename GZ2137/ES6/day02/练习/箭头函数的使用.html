@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 500px;
+        height: 500px;
+        background-color: #ccc;
+        display: flex;
+        /* 交叉轴 */
+        align-items: flex-end;
+      }
+      .wrap .item {
+        width: 40px;
+        height: 100px;
+        border: 1px solid #fff;
+        margin-left: 40px;
+        cursor: pointer;
+        background-color: pink;
+        transition: height 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="item"><span>1</span></div>
+      <div class="item"><span>2</span></div>
+      <div class="item"><span>3</span></div>
+      <div class="item"><span>4</span></div>
+      <div class="item"><span>5</span></div>
+      <div class="item"><span>6</span></div>
+    </div>
+    <script>
+      let items = document.querySelectorAll(".item");
+      let arr = [400, 200, 300, 350, 450, 280];
+
+      //   items.forEach((item, i) => {
+      //     item.onclick = () => (item.style["height"] = arr[i] + "px");
+      //   });
+
+      items.forEach((item, i) => {
+        item.onclick = (e) => {
+          e.target.style["height"] = arr[i] + "px";
+        };
+      });
+
+    
+    </script>
+  </body>
+</html>
