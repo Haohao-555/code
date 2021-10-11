@@ -19,13 +19,13 @@ console.log(url, port, type, aaa); // aaa = 123
 
 // 注意：
 let data = [
-    {color: "red"},
-    {color: "green"},
-    {color: "blue"},
+    { color: "red" },
+    { color: "green" },
+    { color: "blue" },
 ]
 // 取值（缺少省略值）
-let[red, ,blue] = data;
-console.log(red); 
+let [red, , blue] = data;
+console.log(red);
 console.log(blue)
 
 /**
@@ -34,3 +34,14 @@ console.log(blue)
  * 可以缺省值
  */
 
+
+// 对象解构
+let { code, message } = { code: 0, message: "登录成功" };
+console.log(code, message);
+
+
+let {code: a, message: b} = {code: 0, message: "登录成功"};
+console.log(code); // 0
+console.log(message); // 登录成功
+console.log(a); // 0
+console.log(b); // 登录成功

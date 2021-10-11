@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul > li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      li, .item{
+        border: 1px solid #333;
+        width: 80px;
+        text-align: center;
+        cursor: pointer;
+      
+        line-height: 40px;
+      }
+      li:hover {
+          color: #fff;
+          background-color: red;
+      }
+      .child {
+          position: relative;
+          top: -100px;
+          left: 123px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul></ul>
+    <div class="child"></div>
+    <script>
+      // 数据
+      let data = {
+        name: "china",
+        message: "中国",
+        province: [
+          {
+            name: "广东",
+            city: [
+              { name: "广州", firstLetter: "G", pinyin: "guangzhou" },
+              { name: "深圳", firstLetter: "S", pinyin: "shenzhou" },
+              { name: "佛山", firstLetter: "F", pinyin: "foshan" },
+              { name: "东莞", firstLetter: "D", pinyin: "donggaun" },
+            ],
+          },
+          {
+            name: "浙江",
+            city: [
+              { name: "杭州", firstLetter: "H", pinyin: "hangzhou" },
+              { name: "温州", firstLetter: "W", pinyin: "wenzhou" },
+            ],
+          },
+          {
+            name: "湖南",
+            city: [
+              { name: "长沙", firstLetter: "C", pinyin: "changsha" },
+              { name: "常德", firstLetter: "C", pinyin: "changde" },
+            ],
+          },
+        ],
+      };
+
+      let ul = document.querySelector("ul");
+
+      window.onload = function () {
+        let { province } = data;
+        province.forEach((e, i) => {
+          let li = document.createElement("li");
+          li.innerHTML = e.name;
+          li.dataset.index = i;
+          ul.appendChild(li);
+
+
+          ul.onmouseleave = function() {
+            document.querySelector(".child").innerHTML = ""
+          }
+
+
+          li.onmouseenter = function (e) {
+            let str = "";
+            let { city } = province[e.target.dataset.index];
+
+            city.forEach((e) => {
+              str += `<div class='item'>${e.name}</div>`;
+            });
+            
+            document.querySelector(".child").innerHTML = str;
+          };
+      
+        });
+      };
+    </script>
+  </body>
+</html>
