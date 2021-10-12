@@ -1,6 +1,7 @@
-function myObject(target, prop, value) {
+function myObject(target) {
     return new Proxy(target, {
         get(target, prop){
+            console.log(1)
            if(Reflect.has(target, prop)) {
                return Reflect.get(target, prop)
            }else {
@@ -8,7 +9,8 @@ function myObject(target, prop, value) {
            }
         },
         set(target, prop, value){
-             Reflect.set(target, prop, value);
+            console.log(2)
+            Reflect.set(target, prop, value);
         }
     })
 }
@@ -21,10 +23,10 @@ let user = {
     message: "这是一个好消息"
 }
 
-let o1 = myObject(user, "name");
+ user = myObject(user);
 
-console.log(o1.name); // admin
-console.log(o1.x); // 当前对象没有这个属性
+console.log(user.name); // admin
+console.log(user.x); // 当前对象没有这个属性
 
-o1.message = "xxx";
-console.log(o1.message); // xxx
+user.message = "xxx";
+console.log(user.message); // xxx
