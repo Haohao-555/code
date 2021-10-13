@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table tr td:first-child {
+        width: 100px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+      }
+      table tr td:last-child {
+        width: 400px;
+        height: 40px;
+      }
+      select {
+        width: 100px;
+        height: 40px;
+      }
+      button {
+        padding: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td>字符串</td>
+        <td class="str">
+          <input type="checkbox" data-index="0" /> A-Z
+          <input type="checkbox" data-index="1" /> a-z
+          <input type="checkbox" data-index="2" /> 0-9
+          <input type="checkbox" data-index="3" /> _$
+        </td>
+      </tr>
+      <tr>
+        <td>字符长度</td>
+        <td>
+          <select>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>生成结果</td>
+        <td class="res"></td>
+      </tr>
+      <tr>
+        <td>提示</td>
+        <td class="info"></td>
+      </tr>
+    </table>
+    <button>生成结果</button>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+      const a0 = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ];
+      const a1 = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+      ];
+      const a2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const a3 = ["_", "$"];
+      
+      let obj = {};
+      let len = 6;
+
+      let num = 0;
+
+      $(".str").on("click", "input[type=checkbox]", function (e) {
+        let index = e.target.dataset.index;
+        // 判断是否选中
+        let flag = $(".str").children().eq(index).prop("checked");
+
+        if (flag) {
+          num++;
+          if (index == 0) {
+            obj["a0"] = a0;
+          } else if (index == 1) {
+            obj["a1"] = a1;
+          } else if (index == 2) {
+            obj["a2"] = a2;
+          } else if (index == 3) {
+            obj["a3"] = a3;
+          }
+        } else {
+          num--;
+          if (index == 0) {
+            Reflect.deleteProperty(obj, "a0");
+          } else if (index == 1) {
+            Reflect.deleteProperty(obj, "a1");
+          } else if (index == 2) {
+            Reflect.deleteProperty(obj, "a2");
+          } else if (index == 3) {
+            Reflect.deleteProperty(obj, "a3");
+          }
+        }
+      });
+     
+      $("button").on("click", function () {
+        let a = [];
+        let text = "";
+        if (num == 1) {
+          text = "密码过于简单";
+        } else if (num == 2) {
+          text = "密码中等难度";
+        } else if (num == 3) {
+          text = "密码比较有难度";
+        } else if (num == 4) {
+          text = "密码复杂度高";
+        }
+        $(".info").text(text);
+
+        // 合并数组
+        for (var key in obj) {
+          a = a.concat(obj[key]);
+        }
+        // 数组打乱
+        a.sort(function () {
+          return 0.5 - Math.random();
+        });
+        $(".res").text(a.slice(0, len).join(""));
+      });
+
+      $("select").on("change", function (e) {
+        len = e.target.value;
+      });
+    </script>
+  </body>
+</html>
