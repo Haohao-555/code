@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6练习</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            background-color: #ccc;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <canvas id="canvasId">
+        当前浏览器不支持canvas标签，请换个浏览器！！
+    </canvas>
+
+    <script>
+		// 需求：
+		//结合Canvas 绘制图形
+			// 1、定义 Draw 类
+			// 2、添加属性,记录canvas标签，canvas上下文对象,画布大小
+			// 3、添加绘制矩形的方法 drawRect （尺寸、位置、填充颜色）
+			// 4、调用方法，可以随机绘制50个不同位置（可视区），不同大小(范围50-100)的矩形
+     
+
+        // 1. 声明类
+        class Draw {
+             //构造函数作用域
+             constructor(){
+                 this.canvas = document.querySelector("#canvasId");
+                 this.ctx = this.canvas.getContext("2d");
+                 // 初始化
+                 this.init();
+             }
+             // 初始化
+             init(){
+                //  设置画布大小
+                this.canvas.width = window.innerWidth;  
+                this.canvas.height = window.innerHeight;
+             }
+             //绘制矩形
+             drawRect(x,y,w,h,color="rgba(0,0,255,0.5)"){
+                 x = x || this.random(0,window.innerWidth);
+                 y = y || this.random(0,window.innerHeight);
+                 w = w || this.random(50,200);
+                 //  h = h || this.random(50,200);
+                 h = 50;
+                 this.ctx.beginPath();
+                 this.ctx.fillStyle = color;
+                 this.ctx.rect(x,y,w,h);
+                 this.ctx.closePath();
+                 this.ctx.fill();
+             }
+             //随机数
+             random(min,max){
+                return Math.floor(Math.random()*(max-min)+min);
+             }
+        }
+
+        // 2. 创建实例
+        let d =  new Draw();
+        // d.drawRect(100,50,200,200);
+        // 3. 随机产生50个随机位置 大小的矩形
+        for(let i = 0 ; i < 50 ; i ++){
+            //  let x = d.random(0,window.innerWidth);
+            //  let y = d.random(0,window.innerHeight);
+            //  let w = d.random(50,200);
+            //  let h = d.random(50,200);
+            //  let h = 50;
+             d.drawRect();
+        }
+    </script>
+</body>
+
+</html>

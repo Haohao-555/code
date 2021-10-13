@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 阶段</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <style>
+        .table tr td:first-child {
+            width: 150px;
+        }
+        .table tr td input {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+            margin-left: 30px;
+        }
+        .table tr td span {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h3>示例-随机生成密码</h3>
+        <table class="table table-bordered mt-3">
+                <tbody>
+                    <tr>
+                        <td>
+                            字符类型
+                        </td>
+                        <td>
+                            <div class="input-box">
+                                <input data-index="0" type="checkbox" id="bigLetterId"> A-Z
+                                <input data-index="1" type="checkbox" id="smallLetterId"> a-z
+                                <input data-index="2" type="checkbox" id="numberId"> 0-9
+                                <input data-index="3" type="checkbox" id="codeId"> _$
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>字符长度</td>
+                        <td>
+                            <span>密码长度</span>
+                            <select id="selectId">
+                                <option value="6" selected>6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>生成结果</td>
+                        <td>
+                            <span id="resultId">000000</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>提示</td>
+                        <td>
+                            <span id="tipId">密码复杂度</span>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+        <div class="button text-center">
+            <button class="btn btn-success" id="btnCreateRandom">生成随机密码</button>
+        </div>
+    </div>
+
+    <script>
+            // 思考分析：
+                // 1、勾选字符类型
+                // 2、选择字符长度 （6-20）
+                // 3、显示生成密码
+                // 4、提示，如果密码的组件
+                //     只有一种类型  ，提示“密码过于简单”
+                //             两种类型  ，提示“密码中等难度”
+                //             三种类型  ，提示“密码比较有难度”
+                //             四种类型  ，提示 “密码复杂度高”
+                // "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                // "0123456789"
+                // _$
+
+            // 编码：
+                // 1. 声明类
+                class App {
+                    // 静态属性
+                    static letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    static smallLetter = App.letter.toLowerCase();
+                    static numberstr = "0123456789";
+                    static codestr = "_$_____$$$$";
+                    // 静态方法
+                    static myRadom(min,max){
+                        return Math.floor(Math.random()*(max-min)+min);
+                    }
+                    // 构造函数
+                    constructor(){
+                        // 添加属性
+                        this.inputItems = document.querySelectorAll(".input-box input");
+                        this.selectElement = document.querySelector("#selectId");
+                        this.resultElement = document.querySelector("#resultId");
+                        this.tipElement = document.querySelector("#tipId");
+                        this.btnCreateRandom = document.querySelector("#btnCreateRandom");
+                        // 记录所有字符类型
+                        this.myData = [
+                            App.letter,
+                            App.smallLetter,
+                            App.numberstr,
+                            App.codestr                            
+                        ]
+                        // 记录选择的字符类型
+                        this.arr = [];
+                        // 记录字符的长度
+                        this.len = 6;
+                    }
+                    // 添加方法
+                    // 初始化
+                    myInit(){
+                        // 执行渲染字符长度的方法
+                        this.render();
+                        // 执行勾选字符类型的方法
+                        this.addEvent();
+                        // 执行生成随机密码的方法
+                        this.mySubmit();
+                    }
+                    // 设置字符串长度
+                    render(){
+                        let str = '';
+                        for(let i = 6 ; i <= 20 ; i ++){
+                            str += `<option value="${i}">${i}</option>`;
+                        }
+                        this.selectElement.innerHTML = str;
+                    }
+                    // 设置字符类型 字符长度
+                    addEvent(){
+                        // console.log(this.inputItems);
+                        // 
+                        // 转数组 再循环数组 处理勾选字符类型
+                        [...this.inputItems].forEach((item,index)=>{
+                            // 事件绑定
+                            item.onclick = event => {
+                                // 获取当前点击的类型的索引
+                                let myIndex = item.getAttribute("data-index");
+                                // 获取勾选类型的状态
+                                let status = item.checked;
+                                // console.log(status);
+                                if(status){
+                                    // 添加字符类型
+                                    this.arr[myIndex] = this.myData[myIndex]
+                                }else {
+                                    // 重置当前字符类型
+                                    // this.arr[myIndex] = "";
+                                    this.arr.splice(index,1);
+                                }
+                                // 打印勾选的字符类型
+                                // console.log(this.arr);
+                            }
+                        })
+                       
+                        // 处理字符长度
+                        this.selectElement.onchange = ()=> {
+                            // 获取下拉标签的值
+                            this.len =  this.selectElement.value;
+                        }
+                    }
+                    // 设置点击生成随机密码
+                    mySubmit(){
+                        // 绑定事件
+                        this.btnCreateRandom.onclick = ()=> {
+                            // 分别记录字符类型
+                            if(this.arr.length !=0){
+                                let letterStr = this.arr[0];
+                                let smallletterStr = this.arr[1];
+                                let numStr = this.arr[2];
+                                let codeStr = this.arr[3];
+
+                                let letterArray = [];
+                                let sletterArray = [];
+                                let numArray = [];
+                                let codeArray = [];
+
+                                let  count = 0;
+                                if(letterStr){
+                                    letterArray= letterStr.split("");
+                                    letterArray.sort(()=>{
+                                        return Math.random() -0.5
+                                    })
+                                    count +=1;
+                                }
+                                if(smallletterStr){
+                                    sletterArray= smallletterStr.split("");
+                                    sletterArray.sort(()=>{
+                                        return Math.random() -0.5
+                                    })
+                                    count +=1;
+                                }
+                                if(numStr){
+                                    numArray = numStr.split("");
+                                    numArray.sort(()=>{
+                                        return Math.random() -0.5
+                                    })
+                                    count +=1;
+                                }
+                                if(codeStr){
+                                    codeArray = codeStr.split("");
+                                    codeArray.sort(()=>{
+                                        return Math.random() -0.5
+                                    })
+                                    count +=1;
+                                }
+                                // console.log(
+                                //     [
+                                //         letterArray,
+                                //         sletterArray,
+                                //         numArray,
+                                //         codeArray
+                                //     ]
+                                // );
+                                // console.log(count);
+
+                                // 合并之后数组
+                                let array = letterArray.concat(sletterArray,numArray,codeArray);
+                                // 把合并之后的数组继续打乱
+                                array.sort(()=>{
+                                    return Math.random() -0.5;
+                                })
+                                // 已经整合多种类型字符
+                                // console.log(array);
+                                // 参数1：整合数据之后的数组
+                                // 参数2：字符长度
+                                // 参数3：多少种类型
+                                this.arr1 = array;
+                                this.count = count;
+                                this.myPassWord(this.arr1,this.len,this.count);
+                            }
+                        }
+                    }
+                    // 根据数组中的数据 生成密码
+                    myPassWord(array,len,count){
+                        // 定义空数组
+                        let newArr = [];
+                        // 复制一份（备份）
+                        array.forEach( item => {
+                            newArr.push(item)
+                        })
+                        // console.log(newArr);
+                        // 取出指定长度的字符
+                        let arr = newArr.splice(0,len);
+                        // console.log(arr);
+                        // console.log(arr.join(""));
+                        // 记录随机文本
+                        let txt = arr.join("");
+                        // 渲染密码文本
+                        this.resultElement.innerText = txt;
+
+                        // 定义计数器变量
+                        let num = 0;
+                        // 判断是否包含大写字母
+                        // /[A-Z]{1,}?/ 表示至少出现一次大写字母
+                        if(/[A-Z]{1,}?/.test(txt)){
+                            num +=1 ;
+                        }
+                        // 判断是否包含小写字母
+                        if(/[a-z]{1,}?/.test(txt)){
+                            num +=1 ;
+                        }
+                        // 判断是否包含数字
+                        if(/[0-9]{1,}?/.test(txt)){
+                            num +=1 ;
+                        }
+                        // 判断是否包含字符 _$ （主要是当前的字符个数太少了）
+                        if(/[_$]{1,}?/.test(txt)){
+                            num +=1 ;
+                        }
+                        // 一种类型  ，提示“密码过于简单”
+                        // 两种类型  ，提示“密码中等难度”
+                        // 三种类型  ，提示“密码比较有难度”
+                        // 四种类型  ，提示 “密码复杂度高”
+                        // == 1
+                        if(num == 1){
+                            this.tipElement.innerHTML = "密码过于简单"
+                        }
+                        if(num == 2){
+                            this.tipElement.innerHTML = "密码中等难度"
+                        }
+                        if(num == 3){
+                            this.tipElement.innerHTML = "密码比较有难度"
+                        }
+                        if(num == 4){
+                            this.tipElement.innerHTML = "密码复杂度高"
+                        }
+
+                        // 判断是否符合勾选的类型
+                        // if(num != count){
+                        //     // 重新生成一遍
+                        //     this.myPassWord(this.arr1,this.len,this.count);
+                        // }
+
+
+                    }
+                }
+
+                // 2. 创建实例
+                let app = new App();
+
+                // 3. 初始化页面
+                app.myInit();
+    </script>
+</body>
+
+</html>

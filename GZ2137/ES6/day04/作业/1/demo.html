@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6练习</title>
+    <style>
+        .header {
+            width: 506px;
+            height: 200px;
+            overflow: hidden;
+            margin: 25px auto;
+            background-color: #fff;
+        }
+        .content {
+            width: 500px;
+            height: 150px;
+            border: 3px solid #ccc;
+        }
+        .content > div {
+            font-size: 30px;
+            line-height: 150px;
+            text-align: right;
+            padding: 0 50px;
+        }
+        .section {
+            width: 500px;
+            margin: 0 auto;
+        }
+        .section ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+        .section ul li button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            outline: none;
+            border: 1px dashed transparent;
+            display: block;
+            margin: 15px auto 0;
+            cursor: pointer;
+            font-size: 20px;
+            border: 2px solid #ccc;
+        }
+        
+        .section ul li:first-child button {
+            background-color: red;
+        }
+        .section ul li button.active {
+            background-color: green;
+            color: #fff;
+        }
+
+        #wendu {
+            opacity: 0;
+            transition: opacity 2s ;
+        }
+		.btnToggle {
+			color:white;
+		}
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <header class="header">
+             <div class="content">
+                 <!-- 温度 -->
+                 <div id="wendu"> <span class="info">26</span>°C </div>
+             </div>
+        </header>
+
+        <section class="section">
+            <ul>
+                <!-- 控件 -->
+                <li><button id="btnToggle" class="btnToggle">开关</button></li>
+                <li><button id="btnAdd">+</button></li>
+                <li><button id="btnSub">-</button></li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // 需求：
+            // 1. 实现点击开关按钮，切换 "温度"显示和隐藏
+            // 2. 点击 "+" 按钮 温度增加 ，否则减少温度
+        // 思考：
+            // 采用何种编码方式?
+            // 如果采用面向对象，程序所需的数据有哪些?
+            // 给类添加哪些方式? 实现切换显示和隐藏自增或自减
+            // 类-面向对象（封装性、继承性、多态性） 
+            // 如何添加数据 , 在构造函数的作用域添加
+            // 如何添加方法 , 在构造函数的原型上添加
+
+        // 编码：
+            // 1. 获取相应标签
+            // 2. 事件的绑定
+            // 3. 程序处理逻辑
+
+
+        // 1.0 声明类
+        class SmallApp {
+            // 添加属性
+            constructor(){
+                // 记录相关的标签
+                this.wenduElement = document.querySelector("#wendu");
+                this.btnToggle = document.querySelector("#btnToggle");
+                this.btnAdd = document.querySelector("#btnAdd");
+                this.btnSub = document.querySelector("#btnSub");
+                // 记录温度
+                this.tem = 26;
+                // 记录开关
+                this.isOpen = false;
+            }
+            // 添加方法
+            init(){
+                // 统一调用方法
+                this.toggle();
+                this.add();
+                this.sub();
+            }
+            // 切换隐藏/显示
+            toggle(){
+                // let _this = this;
+                // this.btnToggle.onclick = function(){
+                //     console.log(_this);// 这是普通函数作用域
+                // }
+                // 事件绑定
+                this.btnToggle.onclick = ()=> {
+                    // 因为箭头函数作用域没有this这个概念
+                    // 此处的this是上一级作用域
+                    // 此处的this就是实例 
+                    // console.log(this);
+                    if(this.isOpen){
+                        // this.isOpen = false;
+                        this.wenduElement.style["opacity"] = 0;
+                        this.btnToggle.classList.remove("active");
+                    }else {
+                        // this.isOpen = true;
+                        this.wenduElement.style["opacity"] = 1;
+                        this.btnToggle.classList.add("active");
+                    }
+                    // 取反运算符
+                    this.isOpen = !this.isOpen;
+                }
+            }
+            // 增加温度
+            add(){
+                // 事件绑定
+                this.btnAdd.onclick = ()=> {
+                   // 判断设备是否打开了
+                   if(this.isOpen){
+                        // 增加温度
+                        this.tem += 1;
+                        // 判断温度值的范围
+                        if(this.tem > 30){
+                            this.tem = 30;
+                            return false;
+                        }
+                        // 显示数字
+                        this.wenduElement.children[0].innerText = this.tem;
+                        
+                   
+                    }else {
+                        alert("亲，打开空调呀!");
+                   }
+                }
+            }
+            // 降低温度
+            sub(){
+                // 事件绑定
+                this.btnSub.onclick = ()=> {
+                    // 判断开关
+                    if(this.isOpen){
+                        this.tem -= 1;
+                        // 限制温度的范围
+                        if(this.tem < 0){
+                            this.tem = 0;
+                            return false;
+                        }
+                        // 显示数字
+                        this.wenduElement.children[0].innerText = this.tem;
+                    }else {
+                        alert("亲，打开空调呀!");
+                    }
+                }
+            }
+        }
+        // 2.0 创建SamllApp的实例
+        new SmallApp().init();
+
+       
+
+        
+
+        
+    </script>
+</body>
+
+</html>
