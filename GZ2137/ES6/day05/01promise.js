@@ -27,46 +27,44 @@
  * resolve 表达式执行满足条件的逻辑，符合条件调用 resolve
  * reject 表达式执行不满足条件的逻辑，不符合条件调用 reject
  */
-let p1 = new Promise(function (a, b) { })
-let p2 = new Promise(function (resolve, reject) {
-    // document.querySelector(".btn").onclick = () => {
-    //     resolve("数据xxxx")
-    // }
 
+let p2 = new Promise(function (resolve, reject) {
     // resolve("数据xxx");
-    reject("不符合条件的逻辑");
+    reject("不符合逻辑"); 
 })
-//  console.dir(p2)
+
 
 /**
  *  then 是 Promise 构造函数原型上的方法
  *  then 函数1接收两个参数（1、对应 resolve 的逻辑 2、对应 reject 的逻辑）
  *  这里的 p2 是 Promise 的实例的对象
  */
-p2.then(
-    (data) => { console.log(data) }, 
-    () => { console.log("不符合逻辑")}
-);
+// p2.then(
+//     (data) => { console.log(data) }, 
+//     (err) => { console.log(err)}
+// );
 
 /**
- *  通过原型调用 catch 的方法
- *  这里主要作用是避免在 Promise 中直接使用 reject() 报错
- *  error 接收 reject() 传递过来的参数
+ *  通过实例对象调用 catch 的方法
+ *  这里主要作用是避免在 Promise 中使用 reject() 没有接收函数进行处理时会报错
+ *  使用 then 的方法也可以解决
  */
-p2.catch(
-    error => console.log(error)
-)
+// p2.catch(
+//     error => console.log(error)
+// )
 
 
 
+/**
+ * 而对于下面这种类型的  reject("不满足条件");
+ * 则必须添加 catch
+ */
 // let p3 = new Promise((resolve, reject) => {
-//    reject("不满足条件");
-//     //   resolve("数据")
+//     reject("不满足条件");
+//     //   resolve("数据");
 // }).then(data => {
-//    console.log("任务完成",data);
+//     console.log(data);
 // }).catch(error => {
-//     console.log("有错误",error);
+//     console.log(error);
 // })
 
-// 对比 p2 和 p3
-// console.dir(p3)

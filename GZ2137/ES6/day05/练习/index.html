@@ -75,12 +75,14 @@
     <script>
       // 渲染数据
       let render = (res, $target) => {
-        let str = "";
+        let str = `<h2>${res.title}</h2>`;
+
         $target.addClass("active").siblings().removeClass("active");
-        str = `<h2>${res.title}</h2>`;
+
         res.data.forEach((e) => {
-          str += `<div class='item'>${e}</div>`;
+          str += `<div class=item>${e}</div>`;
         });
+
         $(".list").html(str);
       };
 
