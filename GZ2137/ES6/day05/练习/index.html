@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      .container {
+        width: 600px;
+        margin: 0 auto;
+        border: 1px solid #333;
+      }
+      .container .nav {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .container .nav .tab {
+        flex-grow: 1;
+        line-height: 40px;
+        height: 100%;
+        text-align: center;
+        border-bottom: 1px solid #333;
+        cursor: pointer;
+      }
+      .container .nav .tab:hover {
+        color: red;
+      }
+      .container .nav .tab.active {
+        color: #fff;
+        background-color: red;
+      }
+      .container .nav .tab:nth-child(2) {
+        border-left: 1px solid #333;
+        border-right: 1px solid #333;
+      }
+      .container .list {
+        box-sizing: border-box;
+        padding: 0 10px;
+        height: 500px;
+      }
+      .container .list .item {
+        padding-top: 12px;
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid #333;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+      .container .list .item:hover {
+        color: #333;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="tab" data-index="0">热点新闻</div>
+        <div class="tab" data-index="1">体育新闻</div>
+        <div class="tab" data-index="2">财经新闻</div>
+      </div>
+      <div class="list"></div>
+    </div>
+    <script src="./jquery-3.6.0.min.js"></script>
+    <script>
+      // 渲染数据
+      let render = (res, $target) => {
+        let str = "";
+        $target.addClass("active").siblings().removeClass("active");
+        str = `<h2>${res.title}</h2>`;
+        res.data.forEach((e) => {
+          str += `<div class='item'>${e}</div>`;
+        });
+        $(".list").html(str);
+      };
+
+      // 请求数据
+      let getData = url => {
+        return new Promise((resolve, reject) => {
+          // 发送请求
+          $.ajax({
+            url,
+            type: "get",
+            success: (res) => {
+              if (res[0].code == 200) resolve(res[0].result);
+            },
+            error: (error) => reject(error),
+          });
+        });
+      };
+
+      $(".nav").on("click", ".tab", (e) => {
+        let index = e.target.dataset.index;
+        getData("./data.json")
+          .then((data) => render(data[index], $(".tab").eq(index)))
+          .catch((error) => console.log("请求出现错误", error.status));
+      });
+    </script>
+  </body>
+</html>
