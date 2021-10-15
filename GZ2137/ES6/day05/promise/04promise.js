@@ -23,7 +23,8 @@ let p2 = new Promise(
 let p3 = new Promise(
     (resolve, reject) => {
         let d = setTimeout(() => {
-            resolve("第三个任务")
+            // resolve("第三个任务")
+            reject("任务失败")
         }, 2000)
     }
 )
@@ -32,8 +33,8 @@ let p3 = new Promise(
 // pro.then(
 //     (data) => {
 //         console.log(data); // 第二个任务
-//     }
-// )
+//     },
+// ).catch(error => console.log(error))
 
 /**
  * 全部执行 Promise.all()
