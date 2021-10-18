@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段 Todolist </title>
+    <link rel="stylesheet" href="./plan.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <!--  v-on:keydown.enter = "addTask" 按回车按键执行指定逻辑 -->
+    <div id="container">
+        <div class="tt-header">
+            <div class="tt-header-box">
+                <input 
+                    v-on:keydown.enter = "addTask"
+                    v-model="v1"
+                    type="text" 
+                    placeholder="请输入您的计划">
+                <button
+                    v-on:click="addTask">确认</button>
+            </div>
+        </div>
+
+        <div class="tt-plan">
+            <h3 class="tt-plan-title">
+                计划列表 <span>( {{totalTaskCount}} )</span>
+            </h3>
+             <div class="tt-plan-list">
+                <h3>未完成 <span>( {{notTaskCount}} )</span></h3>
+                <ul>
+                    <!-- 模板：未完成状态 -->
+                    <li v-for="item,index in taskArray" v-if="!item.status">
+                        <div class="plan-box">
+                            <!-- v-model 在复选框上，记录勾选的状态 -->
+                            <input type="checkbox" v-model="item.status">
+                            <span>{{item.name}}</span>
+                        </div>
+                        <div class="plan-btn">
+                             <button v-on:click="deleteTask(index)">删除</button>
+                        </div>
+                    </li>
+                </ul>
+                <h3>已完成 <span>( {{doneTaskCount}} )</span></h3>
+                <ol>
+                    <!-- 模板：已完成状态 -->
+                    <li v-for="item,index in taskArray" v-if="item.status">
+                        <div class="plan-box">
+                            <input type="checkbox" v-model="item.status">
+                            <span>{{item.name}}</span>
+                        </div>
+                        <div class="plan-btn">
+                             <button v-on:click="deleteTask(index)">删除</button>
+                        </div>
+                    </li>
+                </ol>
+             </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 创建Vue实例
+        new Vue({
+            el: "#container",
+            data: {
+                // 数组记录所有的任务
+                taskArray: [
+                    {name:"计划名称1", status:false},
+                    {name:"计划名称2", status:false},
+                    {name:"计划名称3", status:true},
+                    {name:"计划名称4", status:false}
+                ],
+                // 记录输入的值
+                v1: ""
+            },
+            // 计算属性值
+            computed: {
+                // 统计总计划数量
+                totalTaskCount(){
+                    let count = this.taskArray.length;
+                    return count;
+                },
+                // 统计未完成计划数量
+                notTaskCount(){
+                    let count = 0;
+                    this.taskArray.forEach(item =>{
+                        if(!item.status){
+                            count ++;
+                        }
+                    })
+                    return count;
+                },
+                // 统计已完成计划数量
+                doneTaskCount(){
+                    let count = 0;
+                    this.taskArray.forEach(item =>{
+                        if(item.status){
+                            count ++;
+                        }
+                    })
+                    return count;
+                }
+            },
+            // 添加方法
+            methods: {
+                // 添加计划
+                addTask(){
+                    let v1 = this.v1;
+                    // 处理数据（整合）
+                    let obj = {}
+                    obj.name = v1;
+                    obj.status = false;
+                    this.taskArray.push(obj);
+                    // 重置输入框
+                    this.v1 = "";
+                },
+                // 删除计划
+                deleteTask(index){
+                    console.log(index);
+                    // 删除指定的计划
+                    let arr = this.taskArray.splice(index,1);
+                    // 打印被删除的计划
+                    console.log("被删除的数据:",arr[0].name);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

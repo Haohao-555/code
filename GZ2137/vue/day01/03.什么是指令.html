@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue指令</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- {{数据}} -->
+        <!-- {{ JS表达式 }} -->
+        <h3>{{message}}</h3>
+        <!-- v-model 主要用于操作表单元素的值-->
+        <input type="text" v-model="message">
+    </div>
+
+    <script>
+        // 指令：是指页面和数据封装起来的工具，用于输出的数据（表现数据）
+        // 指令是输出数据的一种方式
+        // vue  v-xxx  以 v- 这种命名的标记 就是vue指令
+        // <div v-xxx > </div>
+        // <div v-xxx ="数据" > </div>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "这是消息"
+            }
+        })
+    </script>
+</body>
+</html>

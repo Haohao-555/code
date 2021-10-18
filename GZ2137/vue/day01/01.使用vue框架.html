@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 框架</title>
+    <!-- 1. 导包（引入vue文件） -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 2. 设置挂载点 -->
+    <div id="container">
+        <!-- 承载项目所有的内容 -->
+        <!-- 插值表达式 {{}} -->
+        <h3>{{message}}</h3>
+
+        <!-- 指令: v-xxxx -->
+        <!-- 指令: v-model 用于表单元素-->
+        <input 
+            style="width: 480px; height: 40px;"
+            type="text" v-model="message">
+    </div>
+
+    <!-- 编写项目的业务处理逻辑 -->
+    <script>
+        // 3. 创建vue的实例
+        let vm = new Vue({
+            el: "#container", // 选择器
+            data: {
+                message: "这就是传说的中vue框架"
+            }
+        })
+        
+    
+        // 总结：
+            // vue 框架让开发者注重业务功能的实现
+            // 减少对dom的操作
+    </script>
+
+</body>
+</html>

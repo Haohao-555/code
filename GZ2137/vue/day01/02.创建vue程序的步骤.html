@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+    <!-- 1.0 导包 -->
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 2.0 设置挂载点 (容器)-->
+    <div id="container">
+        <div class="box">
+            <!-- 双大括号 是渲染数据的一种语法（模板语法） -->
+            <!-- {{}}  这是一种模板渲染中插值方式，渲染数据-->
+            <span> {{a}} </span> + <span>{{b}}</span> = <span>{{a+b}}</span>
+        </div>
+    </div>
+
+    <script>
+        // 3.0 创建vue实例
+        new Vue({
+            el: "#container" , // 渲染数据的地方（置挂载点） 选择器
+            data: { // 数据对象  凡是在此处出现的数据都可以表现在挂载点上
+                a: 100,
+                b: 200
+            }
+        })
+    </script>
+</body>
+</html>

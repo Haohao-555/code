@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 50px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .active {
+            background-color: red;
+        }
+        .nav {
+            width: 1000px;
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+         <!-- 凡是标签属性 src id href , 都可以使用v-bind指令进行操作 -->
+         <div class="nav">
+            <div v-on:click="myTab(0)" v-bind:class="['box', index==0?'active':'']">1</div>
+            <div v-on:click="myTab(1)" v-bind:class="['box', index==1?'active':'']" >2</div>
+            <div v-on:click="myTab(2)" v-bind:class="['box', index==2?'active':'']" >3</div>
+            <div v-on:click="myTab(3)" v-bind:class="['box', index==3?'active':'']" >4</div>
+            <div v-on:click="myTab(4)" v-bind:class="['box', index==4?'active':'']" >5</div>
+         </div>
+    </div>
+
+    <script>
+        // 创建vue实例
+        new Vue({
+            el: "#container",
+            data: {
+                index: 1
+            },
+            methods: {
+                myTab(v1) {
+                    // 打印vue实例
+                    // console.log(this);
+                    // 数据直接挂载在实例上
+                    // 修改了实例上的index数据
+                    this.index = v1;
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 学习 </title>
+    <script src='../js/vue.js'></script>
+    <style>
+        .box {
+            width: 500px;
+            height: 350px;
+            border: 2px solid #000;
+            margin: 0 auto;
+        }
+        .active {
+            background-color: #000;
+        }
+        .button {
+            width: 200px;
+            padding: 10px 20px;
+            background-color: #ccc;
+            margin: 50px auto; 
+        }
+        .button button {
+            width: 200px;
+            height:50px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- v-bind:属性="JS表达式" -->
+    <div id ="app">
+            <!-- 一种写法 -->
+            <!-- <div 
+                v-bind:class="['box',isOpen==true?'active':'']"> -->
+
+            <!-- 另一种写法 -->
+            <div 
+                v-bind:class="['box',{active:isOpen}]">
+
+            </div>
+            <div class="button">
+                <!--  事件绑定 -->
+                <button
+                    v-on:click="toggle"
+                    >按钮</button>
+            </div>
+    </div>
+
+    <script>
+        // 需求：
+            // Vue  实现一个开关灯效果
+
+        // 编码：
+        // 创建vue实例
+        new Vue({
+            el: "#app",
+            data: { // 添加数据
+                isOpen: false
+            },
+            methods: { // 添加方法
+                toggle(){
+                    this.isOpen = !this.isOpen
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

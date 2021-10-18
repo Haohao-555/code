@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue指令 v-bind </title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .item {
+            width: 600px;
+            height: 50px;
+            border: 1px solid #ccc; 
+            margin-top: 10px;
+        }
+        .item.active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 普通class属性 -->
+        <div class="item"> 1 </div>
+
+        <!-- v-bind="JS表达式" -->
+        <!-- JS表达式：一行代码，甚至一个变量。 -->
+        <div v-bind:class="'item'">2</div>
+        <!-- 绑定属性 -->
+        <div v-bind:class="cName">3</div>
+        <!-- 简写 -->
+        <div :class="cName">4</div>
+        <!-- 在标签属性中记录多个变量 -->
+        <div v-bind:class="[cName,aaa]">5</div>
+        <div v-bind:class="[cName,num==1?aaa:'']">6</div>
+        <!-- <div class="item active">7</div> -->
+    </div>
+
+    <script>
+        // 指令：是指页面和数据封装起来的工具，用于输出的数据（表现数据）
+        // 指令是输出数据的一种方式
+        // vue  v-xxx  以" v- "这种命名的标记就是vue指令
+        // <div v-xxx > </div>
+        // <div v-xxx ="数据" > </div>
+        new Vue({
+            el: "#app",
+            data: {
+                cName: "item",
+                aaa: "active",
+                num: 1
+            }
+        })
+    </script>
+</body>
+</html>

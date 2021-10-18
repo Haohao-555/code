@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        li {
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        table {
+            width: 500px;
+        }
+        table ,
+        th,
+        td {
+            border: 1px solid #ccc; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <!-- v-for="JS代码" -->
+        <!-- item 代表数组的每一项数据 -->
+        <!-- index 代表数组的索引值 -->
+        <ul>
+            <li v-for="item,index in arr" v-bind:key="item">{{index}}-{{item}}</li>
+        </ul>
+
+        <table class="table">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>兴趣</th>
+            </tr>
+
+            <tr v-for="item,index in result" v-bind:key="item.id">
+                <td>{{index}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.sex}}</td>
+                <td>{{item.age}}</td>
+                <td>
+                    <span>1 ,</span>
+                    <span>2 ,</span>
+                    <span>3 ,</span>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#container",
+            data: {
+                arr: ["red","green","blue"],
+                result: [
+                    {name:"小明",sex:"男",age:23,id:"4409xxxxx01",hoby:["读书","写字","打篮球"]},
+                    {name:"小红",sex:"女",age:23,id:"4409xxxxx02",hoby:["写代码","调bug"]},
+                    {name:"小蓝",sex:"男",age:23,id:"4409xxxxx03",hoby:["看电影","睡觉"]}
+                ]
+            }
+        })
+
+    </script>
+</body>
+</html>

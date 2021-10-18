@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+}
+ol , ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.tt-header {
+    height: 80px;
+}
+.tt-header-box {
+    width: 560px;
+    margin: 0 auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.tt-header-box input ,
+.tt-header-box button {
+    height: 50px;
+    box-sizing: border-box;
+}
+.tt-header-box input {
+    flex-grow: 1;
+    padding-left: 20px;
+    font-size: 20px;
+}
+.tt-header-box button {
+    flex-basis: 80px;
+}
+
+.tt-plan-title , 
+.tt-plan-list {
+    width: 560px;
+    margin: 0 auto;
+}
+
+.tt-plan-list ul li ,
+.tt-plan-list ol li {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.tt-plan-list ul li input[type='checkbox'],
+.tt-plan-list ol li input[type='checkbox']{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.tt-plan-list ul li button ,
+.tt-plan-list ol li button {
+    border: 0;
+    font-size: 20px;
+    height: 30px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.tt-plan-list ul li button:hover,
+.tt-plan-list ol li button:hover {
+    background-color: #f00;
+    color: #fff;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- v-if  实际上就是移除元素 -->
+        <!-- true  就是显示 -->
+        <!-- false 就是隐藏（移除元素） -->
+        <!-- <div class="box" v-if="num==0? true : false">1</div> -->
+        <!-- <div class="box" v-if="num==1? true : false">2</div> -->
+
+        <!-- <div class="box" v-if="false"></div> -->
+        <!-- <div class="box" v-if="true"></div> -->
+
+    </div>
+
+    <script>
+        // 编码：
+        new Vue({
+            el: "#container",
+            data: {
+                num: 1
+            }
+        })
+
+    </script>
+</body>
+
+</html>

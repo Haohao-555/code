@@ -1,0 +1,95 @@
+<!--
+ * @Date: 2021-10-18 14:45:28
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \vue\day02\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #app {
+        width: 300px;
+        height: 600px;
+        margin: 0 auto;
+      }
+      input {
+        padding: 10px 12px;
+        outline: none;
+      }
+      button {
+        padding: 10px 12px;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      ul,
+      li {
+        padding: 10px 12px;
+        margin-bottom: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="v1" />
+      <button @click="add">增加</button>
+      <h3>任务列表{{nofinsh + finsh}}</h3>
+      <h3>未完成 {{nofinsh}}</h3>
+      <ul>
+        <li v-for="(item, index) in list" :key="index">
+          <span>{{item}}</span>
+          <span @click="del(index)">删除</span>
+        </li>
+      </ul>
+      <h3>已完成{{finsh}}</h3>
+      <ul>
+        <li v-for="(item, index) in delList" :key="index">
+          <span>{{item}}</span>
+          <span @click="delfinsh(index)">删除</span>
+        </li>
+      </ul>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          v1: "",
+          list: [],
+          delList: [],
+          finsh: 0,
+          nofinsh: 0,
+        },
+        methods: {
+          add() {
+            if (this.v1) {
+              this.nofinsh = this.nofinsh + 1;
+              this.list.push(this.v1);
+              this.v1 = "";
+            }
+          },
+          del(index) {
+            this.finsh = this.finsh + 1;
+            this.nofinsh = this.nofinsh - 1;
+            this.delList.push(this.list[index]);
+            this.list.splice(index, 1);
+          },
+          delfinsh(index) {
+            this.finsh = this.finsh - 1;
+            this.delList.splice(index, 1);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

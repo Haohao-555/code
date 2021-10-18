@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .search input {
+            width: 420px;
+            height: 40px;
+            box-sizing: border-box;
+            vertical-align: middle;
+            padding-left: 20px;
+        }
+        .search button {
+            height: 40px;
+            width: 100px;
+            vertical-align: middle;
+        }
+
+        .list ul {
+            list-style: none;
+        }
+        .list ul li {
+            width: 400px;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+             <div class="search">
+                 <input v-model="v1" type="text" placeholder="输入任务">
+                 <button 
+
+                    v-on:click="mySearch">发布</button>
+             </div>
+
+             <div class="list">
+                 <ul>
+
+                     <li v-for="item,index in taskArray">
+                         <span>{{index+1}}.{{item}}</span> 
+                    </li>
+                 </ul>
+             </div>
+        </header>
+
+    </div>
+    <script>
+
+        
+        // 编码：
+        new Vue({
+            el: "#container",
+            data: {
+                v1: "",//记录输入框的值
+                taskArray: [
+                    // "阅读需求文档",
+                    // "编写前端页面",
+                    // "调试数据接口",
+                ]
+            },
+            methods: {
+                mySearch(){
+                    // 记录输入的值
+                    let v2 = this.v1;
+                    console.log(v2);
+                    // 判断输入的值是否存在
+                    if(v2.length == 0){
+                        alert("输入框不能为空!")
+                        return false;
+                    }
+                    // 把输入的值添加到数组
+                    this.taskArray.push(v2);
+                    // 重置输入框
+                    this.v1 = "";
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

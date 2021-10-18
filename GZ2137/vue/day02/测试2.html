@@ -1,0 +1,35 @@
+<!--
+ * @Date: 2021-10-18 17:39:40
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \vue\day02\测试2.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        姓名:<input type="text" v-model="userinfo.name">
+        年龄：<input type="text" v-model="userinfo.age">
+    </div>
+    <script src="./js//vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                userinfo: { name: "小明",  age: "18"}
+            },
+            watch: {
+                userinfo: function() {
+                    console.log("test"); // 监听不到
+                }
+            }
+        })
+    </script>
+</body>
+</html>

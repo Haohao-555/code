@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        input {
+            vertical-align: middle;
+            width: 100px;
+            height: 40px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h3> computed 计算值</h3>
+    <div id="container">
+        <h1>{{message}}</h1>
+        <h1>{{mytitle}}</h1>
+        <p>{{mycontent}}</p>
+        <div>
+            <input type="text" v-model="a">
+            <span>+</span>
+            <input type="text" v-model="b">
+            <span>=</span>
+            <input type="text" v-model="c">
+        </div>
+    </div>
+
+
+    <script>
+        // 创建Vue实例
+        new Vue({
+            el: "#container",
+            data: {
+                a: 100,
+                b: 200
+            },
+            // prop 属性计算
+            // 在计算值
+            // 计算某个属性的结果时，会有函数作用域
+            // 在函数作用域中，计算，处理逻辑....
+            // 编写时，作用域需要有返回值，返回值就是需要渲染的结果
+            computed: {
+                message(){
+                    return 123;
+                },
+                mytitle(){
+                    return "我的标题";
+                },
+                mycontent(){
+                    return "我的内容";
+                },
+                c() {
+                    // 此处是个函数（意味着可以编写很多实现功能的代码）
+                    this.a = this.a - 0 ;
+                    this.b = this.b - 0 ;
+                    return this.a + this.b;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

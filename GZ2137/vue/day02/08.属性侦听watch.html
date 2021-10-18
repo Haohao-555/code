@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>{{message}}</h1>
+        <button 
+            v-on:click="sub">点击按钮减掉一个字符</button>
+        <h2>长度: <span> {{len}}</span>个</h2>
+        <h1 style="color:red;">{{v1}}</h1>
+        <p>{{res}}</p>
+    </div>
+    <script>
+        // 创建Vue实例
+        new Vue({
+            el: "#container",
+            data: {
+                message:"这是一个坏消息",
+                len: 7,
+                v1:"",
+                res:""
+            },
+            // 侦听器
+            // 观察数据的变化
+            // 此处的函数需要数据发生变化才会执行
+            watch: {
+                message(){
+                    console.log("test");
+                    this.len = this.message.length;
+                },
+                // 属性侦听时 执行的这个函数，可以接收传递的参数
+                v1(newV,oldV){
+                    // newV  这是新的值（赋值时）
+                    // oldV  这是旧的值 (原来的)
+                    console.log({newV,oldV});
+                    // 额外添加的属性 记录当前V1的变化
+                    // this.res = oldV + newV;
+                }
+            },
+            // 添加方法
+            methods: {
+                sub(){
+                    if(this.message.length == 0){
+                        return false;
+                    }   
+                    // 记录被减掉的字符
+                    this.v1 += this.message.slice(0,1);
+                    // 每次点击按钮 就会减掉一个字符
+                    this.message = this.message.slice(1);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
