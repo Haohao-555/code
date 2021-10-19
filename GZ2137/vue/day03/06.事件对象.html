@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+        }
+        html , body {
+            height: 100%;
+        }
+        #app ,
+        .layout {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 舞台标签 -->
+        <div 
+            v-on:mousemove="myMove($event)"
+            v-on:mouseup="myUp"
+            class="layout">
+
+            <!-- 目标标签 -->
+            <div
+                v-on:mousedown="myDown"
+                v-bind:style="`left:${x}px;top:${y}px;`"
+                class="box"></div>
+
+
+
+        </div>
+       
+
+    </div>
+    <script>
+        // 问题：如何获取鼠标的位置信息?
+        // 答案：事件对象 (event)
+        // 事件对象是事件触发时产生的数据集合(事件类型、鼠标状态、位置、按键信息..)
+
+        // 创建Vue程序
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                isMouseDown: false
+            },
+            methods: {
+                myMove(event){
+                    if(this.isMouseDown){
+                        this.x = event.pageX - 50;
+                        this.y = event.pageY - 50;
+                    }
+                },
+                myDown(){
+                    this.isMouseDown = true;
+                },
+                myUp(){
+                    this.isMouseDown = false;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

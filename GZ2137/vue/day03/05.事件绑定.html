@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        button {
+            display: block;
+            padding: 10px 20px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button 
+    v-on:click="alert('test')">点击按钮</button> 报错-->
+
+    <!-- <button 
+    v-on:click="flag=false">点击按钮</button>  正确-->
+
+
+    <div id="app">
+        <button 
+            v-on:click="flag=!flag">点击按钮1</button>
+
+        <button
+            v-on:click="myToggle">点击按钮2</button>
+
+        <button
+            v-on:click="myCss(true)">点击按钮3</button>
+
+        <div 
+            v-if="flag"
+            v-bind:style="cssStr"
+            class="box"></div>
+
+        <input 
+            v-on:keydown="myKeyDown"
+            v-on:keyup="myKeUp"
+            style="height: 40px;"
+            placeholder="输入框"
+            type="text">
+
+        <div 
+            v-on:mouseenter="myEnter"
+            v-on:mouseleave="myLeave"
+            v-bind:style="`background-color:${bgcolor};`"
+            class="box">
+            
+        </div>
+
+    </div>
+
+
+    <script>
+        // 事件：事件本身是个函数，这个函数需要满足条件才被调用 (行为)
+        // 事件类型： 
+            // 点击
+            // 鼠标
+            // 键盘
+            // 表单
+            // ....
+
+        // v-on: 事件类型 = "JS代码"
+        // @事件类型="JS代码"
+
+        new Vue({
+            el: "#app",
+            data: {
+                flag: true,
+                cssStr: "",
+                bgcolor: "#ccc"
+            },
+            methods: {
+                myToggle(){
+                    this.flag = !this.flag;
+                },
+                myCss(flag){
+                    if(flag){
+                        this.cssStr = "border-radius:50%"
+                    }
+                    console.log(flag);
+                },
+                myKeyDown(){
+                    console.log("按下键盘");
+                },
+                myKeUp(){
+                    console.log("松开键盘");
+                },
+                myEnter(){
+                    console.log("鼠标移入");
+                    this.bgcolor = "#f00";
+                },
+                myLeave(){
+                    console.log("鼠标离开");
+                    this.bgcolor = "#ccc";
+                }
+            }
+        })
+
+
+
+
+    </script>
+</body>
+</html>

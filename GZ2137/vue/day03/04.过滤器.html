@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <!-- {{变量 | 过滤器 | 过滤器 }} -->
+    <!-- |  管道符号 -->
+    <div id="app">
+        <h1> {{ cloths | getSex}}</h1>
+        <h1> {{ num | getAge }}</h1>
+        <h1> {{todayPrice | getPrice }}</h1>
+    </div>
+    <script>
+        // 应用场景：
+            // 假设
+            // 着装是否包含 "红色"  大概率是个女生 
+            // 着装是否包含 "黑色"  大概率是个男生 
+
+        // 全局过滤器 (filter)
+        // 参数1: 过滤名称 参数2：回调函数 （需要有个返回值）
+        Vue.filter("getPrice",function(val){
+            return val > 20 ? "涨价了": "降价了";
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                cloths: "穿黑色的衣服",
+                num: 18,
+                price: 20,
+                todayPrice: 10
+            },
+            // 过滤器 （filters）
+            // 局部的过滤器（可以编写多个）
+            // 注意写法：{{变量 | 过滤器}}
+            filters: {
+                getSex(str){
+                    // 打印将要处理的数据
+                    // console.log(str);
+                    // 定义变量 记录结果
+                    let res = "";
+                    // 判断
+                    if(str.includes("红色")){
+                        res = "她可能是女生";
+                    }else if(str.includes("黑色")){
+                        res = "他可能是男生";
+                    }
+                    return res;
+                },
+                getAge(val){
+                    let res = "";
+                    if(val >= 12 && val <= 18){
+                        res = "少年"
+                    }
+                    if(val > 18 && val <= 28){
+                        res = "青年"
+                    }
+                    if(val > 28 && val <= 58){
+                        res = "中年"
+                    }
+                    return res;
+                }
+            }
+        })
+    
+
+        // 预习：
+        // vue 事件（行为）
+        // vue 过渡 动画
+        // vue 生命周期（组件）
+    </script>
+</body>
+</html>

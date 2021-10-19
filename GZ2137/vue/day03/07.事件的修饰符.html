@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        input {
+            width: 500px;
+            height: 40px;
+            padding-left: 20px;
+        }
+    </style>
+
+    <style>
+        .div {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .div .ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        .div .ul li {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- v-on:keydown.enter -->
+    <!-- @keydown.enter = "myKeyDown"  按回车按键-->
+    <!-- @keydown.a = "myKeyDown" -->
+    <!-- @keydown.alt = "myKeyDown" -->
+    <!-- @keydown.space = "myKeyDown"  空格按键-->
+    <div id="app">
+        <input 
+            @keydown.space = "myKeyDown"
+            placeholder="输入值按回车"
+            type="text">
+
+        <!-- 嵌套关系的标签-->
+        <!-- 
+            event.stopPropagation() JS原生
+            @click.stop="myClick"  阻止事件冒泡  VUE
+         -->
+        <!-- <div 
+            @click="myClick('div')"
+            class="div">
+                <ul 
+                    @click.stop="myClick('ul')"
+                    class="ul"> 
+                        <li 
+                            @click.stop="myClick('li')"
+                            class="li">
+                        </li>
+                </ul>
+        </div> -->
+
+        <!-- 
+            @click.prevent="myClick('a')" 阻止浏览器默认行为（页面刷新，页面跳转，选中文本...）
+         -->
+         <a 
+            @click.prevent="myClick('a')"
+            style="font-size: 20px;"
+            href="https://www.baidu.com">跳转百度</a>
+
+
+        <!-- 
+              @click.self="myClick('ul')"  点击触发事件源自身的事件（不影响其他元素的事件）
+
+         -->
+        <!-- <div 
+                @click.self="myClick('div')"
+                class="div">
+                    <ul 
+                        @click.self="myClick('ul')"
+                        class="ul"> 
+                            <li 
+                                @click.self="myClick('li')"
+                                class="li">
+                            </li>
+                    </ul>
+         </div> -->
+
+
+         <!-- 
+            监听事件捕获
+            从外 div --- ul --- li 到内
+            @click.capture="myClick('div')"
+            监听事件捕获 仅仅在div标签上触发事件
+            @click.capture.self="myClick('div')"
+          -->
+        <div 
+            @click.capture="myClick('div')"
+            class="div">
+                <ul 
+                    @click.capture="myClick('ul')"
+                    class="ul"> 
+                        <li 
+                            @click.capture="myClick('li')"
+                            class="li">
+                        </li>
+                </ul>
+    </div>
+
+
+    </div>
+
+    <script>
+        // 创建Vue程序
+        new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                myKeyDown(){
+                    console.log("按下回车按键了...");
+                },
+                myClick(tagName){
+                    console.log("点击了"+tagName+"标签");
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

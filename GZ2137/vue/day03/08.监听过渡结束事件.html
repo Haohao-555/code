@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            /* 过渡属性 */
+            transition: width .5s;
+        }
+    </style>
+</head>
+<body>
+    <!--  v-bind:style="`width:${w}px`" -->
+    <!--  简化代码 -->
+    <!--  :style="`width:${w}px`" -->
+    <div id="app">
+        <button
+            @click="myWidth">改变盒子的宽度</button>
+        <div 
+            @transitionend="myEnd"
+            :style="`width:${w}px`"
+            class="box"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                w: 100
+            },
+            methods: {
+                myWidth(){
+                    this.w = 500;
+                },
+                myEnd(){
+                    console.log("过渡结束了...");
+                    this.w = 150;
+                    // let d = setTimeout(()=>{
+                    //     this.w = 150;
+                    //     d = null;
+                    // },1000)
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

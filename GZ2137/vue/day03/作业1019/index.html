@@ -1,0 +1,129 @@
+<!--
+ * @Date: 2021-10-19 18:52:19
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \vue\day03\作业1019\index.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- jquery (仅仅使用ajax这个方法) -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <style>
+      #app {
+        width: 1000px;
+
+        margin: 0 auto;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .item {
+        width: 80px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+        border-radius: 12px;
+        margin-right: 3px;
+        margin-bottom: 13px;
+        cursor: pointer;
+      }
+      button {
+        padding: 10px 12px;
+        display: block;
+        margin: 12px auto;
+        background: none;
+        border: none;
+        outline: none;
+        background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+      }
+      .active {
+        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        color: #fff;
+      }
+      .call-container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .call-container .item {
+        background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <div
+          :class="['item', index==currentIndex?'active': '']"
+          v-for="(item, index) in list"
+          ::key="index"
+        >
+          {{item.name}}
+        </div>
+      </div>
+      <button @click="call">随机点名</button>
+      <div class="call-container">
+        <div
+          class="item"
+          v-for="(item, index) in callList"
+          :key="index"
+        >
+          {{item.name}}
+        </div>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          list: [],
+          currentIndex: -1,
+          callList: [],
+        },
+        created() {
+          this.getdata();
+        },
+        methods: {
+          getdata() {
+            $.ajax({
+              url: "./data/worker.json",
+              type: "get",
+              success: (res) => {
+                this.list = res;
+              },
+            });
+          },
+          random(max, min) {
+            return Math.floor(Math.random() * (max - min) + min);
+          },
+          call() {
+            let index = 0;
+            let id;
+            
+        
+            id = setInterval(() => {
+              let value = this.random(0, 100);
+              this.currentIndex = value;
+              index++;
+
+              if (index == 15) {
+                clearInterval(id);
+                id = null;
+                this.callList.push(this.list[value]);
+              }
+            }, 350);
+          },
+          
+        },
+      });
+    </script>
+  </body>
+</html>

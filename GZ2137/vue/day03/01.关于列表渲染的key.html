@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .box {
+            width: 600px;
+            height: 50px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .box button {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- item , index in arr  -->
+    <!-- 每一项数据 , 索引值   in  数组  -->
+    <!-- 没有涉及数据的删除 -->
+    <!-- 
+        <div id="container">
+            <div class="box" v-for="item , index  in arr">
+                <span>{{item}}</span>
+            </div>
+        </div> 
+    -->
+
+
+    <!-- 涉及数据的删除 -->
+    <!-- contenteditable="true" 设置标签为可编辑状态 -->
+    <!-- v-bind：key  没有给标签添加key标记的时候，出现数据的更改时
+    vue系统 (diff算法), 认为你需要变化动是数据，不是dom的变动。
+    最小变化 ,或者说被删除的标签的就不是与数据一一对应的
+    -->
+    <!-- <div id="container">
+        <div class="box" v-for="item , index  in arr">
+            <span contenteditable="true">{{item.color}}</span>
+            <button v-on:click="del(index)">删除</button>
+        </div>
+    </div> -->
+
+
+    <!-- 如果让数据和标签是一一对应的? -->
+    <!-- 给遍历的数据所对应的标签添加 key -->
+    <div id="container">
+        <div class="box" v-for="item , index  in arr" v-bind:key="item.id">
+            <span contenteditable="true">{{item.color}}</span>
+            <button v-on:click="del(index)">删除</button>
+        </div>
+    </div>
+    <!-- 
+        总结： 
+            涉及到跟标签删除或者添加有关的操作，那么就设置key属性。
+     -->
+
+    <script>
+        // 存放颜色的数组
+        // let arr = ["red","green","blue","orange"];
+
+        let arr = [
+            {color:"red",id:1},
+            {color:"green",id:2},
+            {color:"blue",id:3},
+            {color:"orange",id:4}
+        ];
+
+        // 创建Vue实例
+        new Vue({
+            el:"#container",
+            data: {
+                arr
+            },
+            methods: {
+                del(index){
+                    this.arr.splice(index,1);
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

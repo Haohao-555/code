@@ -21,6 +21,8 @@
         <h2>长度: <span> {{len}}</span>个</h2>
         <h1 style="color:red;">{{v1}}</h1>
         <p>{{res}}</p>
+
+        <input type="text" v-model="obj.name">
     </div>
     <script>
         // 创建Vue实例
@@ -30,7 +32,14 @@
                 message:"这是一个坏消息",
                 len: 7,
                 v1:"",
-                res:""
+                res:"",
+                obj: {
+                    name: "xxx"
+                },
+                arr: [  
+                    "red",
+                    "green"
+                ]
             },
             // 侦听器
             // 观察数据的变化
@@ -47,6 +56,9 @@
                     console.log({newV,oldV});
                     // 额外添加的属性 记录当前V1的变化
                     // this.res = oldV + newV;
+                },
+                obj(){
+                    console.log("数据需要变化才执行...");
                 }
             },
             // 添加方法
