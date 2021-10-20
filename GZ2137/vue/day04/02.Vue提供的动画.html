@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2021-10-20 18:30:48
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day04\02.Vue提供的动画.html
+-->
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -21,19 +27,23 @@
 
         .my-animate {
             animation-name: myAnimate1;
-            animation-duration: 2s;
+            animation-duration: 20s;
+            animation-fill-mode: forwards;
         }
         @keyframes myAnimate1 {
             0% {
                 transform: scale(.5);
+                background-color: red;
                 opacity: .5;
             }
             50% {
                 transform: scale(1.2);
+                background-color: green;
                 opacity: 1;
             }
             10% {
-                transform: scale(1);
+                transform: scale(2);
+                background-color: yellow;
                 opacity: .5;
             }
         }

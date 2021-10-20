@@ -1,0 +1,130 @@
+<!--
+ * @Date: 2021-10-20 18:34:22
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day04\作业1020\1\自定义动画弹窗.html
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      #app {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .mask {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        right: 0;
+      }
+      .show {
+        display: block;
+      }
+      .alert {
+        display: none;
+        width: 1000px;
+        height: 100px;
+        margin: 0 auto;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        background-color: #fff;
+        animation-fill-mode: forwards;
+        transition: translateY 2s;
+      }
+      .content {
+        padding: 10px;
+        height: 30px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(90, 86, 86, 0.8);
+      }
+      .btn-group {
+        width: 106px;
+        height: 34px;
+        margin-top: 12px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      button {
+        border-radius: 12px;
+        text-align: center;
+        background: none;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        padding: 6px 10px;
+        border: 1px solid #333;
+      }
+      .show-alert {
+        text-align: center;
+        position: absolute;
+        bottom: 100px;
+        left: 700px;
+        border-radius: 0px;
+        padding: 6px 20px;
+        background-color: red;
+        height: 30px;
+        color: #fff;
+        display: block;
+        margin: auto;
+      }
+      .active {
+          display: block;
+          transform: translateY(260px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div :class="['mask', flag? 'show': '']"></div>
+        <div :class="['alert', flag? 'active': '']" >
+          <div class="content">检测当前城市是广州，是否切换到当前的城市</div>
+          <div class="btn-group">
+            <button @click="ensure">确定</button>
+            <button @click="cancel">取消</button>
+          </div>
+        </div>
+      <button class="show-alert" @click="show_alert">显示遮罩层</button>
+    </div>
+
+    <script>
+      // 需求：
+      // 自定义弹窗
+      // 点击“显示遮罩层”，显示弹窗
+      // 点击“确定”，隐藏弹窗 ，控制台输出 "确定"
+      // 点击“取消”，隐藏弹窗 ，控制台输出 "取消"
+      new Vue({
+        el: "#app",
+        data: {
+          flag: false,
+        },
+        methods: {
+          show_alert() {
+            this.flag = true;
+          },
+          cancel() {
+              this.flag = false;
+              console.log("取消");
+          },
+          ensure() {
+              this.flag = false;
+              console.log("确定")
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
