@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="title">
+            {{message}}
+        </div>
+
+    </div>
+    <script>
+        // 需求：
+            // 文本幻灯片效果
+
+        // 编码：
+        new Vue({
+            el: "#app",
+            data: {
+                // message: "It's a good news!",
+                message: "好消息，猪肉10块/斤。",
+            },
+            methods: {
+                autoPlay(){
+                    let firstLetter = this.message.slice(0,1);
+                    let lastStr = this.message.slice(1);
+                    this.message = lastStr + firstLetter;
+                }
+            },
+            // 载入数据后的钩子函数
+            mounted(){
+                let d = setInterval(()=>{
+                    this.autoPlay();
+                },100)
+            }
+        })
+
+
+    </script>
+</body>
+</html>

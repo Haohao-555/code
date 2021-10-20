@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{message}}</h1>
+        <input type="text" v-model="message">
+        <!-- ref 是标注这个元素 【名称】 -->
+        <div ref="demo">123456</div>
+    </div>
+    <script>
+        // 程序： Vue实例 / vue组件
+        //创建vue程序
+        // new Vue({
+        //     el: "#app",
+        //     data: {
+        //         message: "It's a good news!"
+        //     }
+        // })
+
+        // 一个程序会经历以下的过程
+        // 程序创建前
+        // 程序创建了
+
+        // 数据载入前
+        // 数据载入了
+
+        // 数据更新前
+        // 数据更新了
+
+        // 卸载一个程序 (切换组件)
+        // 程序销毁前
+        // 程序销毁了
+
+        // 这个过程我们叫做生命周期 (程序从创建到销毁的这个过程)
+
+        // 这个程序经历的过程，存在可执行的回调函数
+        // 这8个阶段存在可执行回调函数，我们称之为 钩子函数
+        // 1.程序创建前 beforeCreate
+        // 2.程序创建了 created
+
+        // 3.数据载入前 beforeMount
+        // 4.数据载入了 mounted      类似(window.onload=function(){})
+
+        // 5.数据更新前  beforeUpdate
+        // 6.数据更新了  updated
+
+        // 卸载一个程序 (切换页面/组件)
+        // 7.程序销毁前   beforeDestroy 
+        // 8.程序销毁了   destroy
+
+
+
+
+    </script>
+
+    <script>
+        // this.$refs.名称  检索到指定的元素
+        // this.$el  <div id="app"> </div>
+        // 创建Vue程序
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                message: "It's a good news!"
+            },
+            methods:{},// 编写在此处的函数 需要程序员手动调用
+            beforeCreate(){
+                // console.log("beforeCreate----------------");
+                // console.log("程序创建前");
+                // console.log(this.message);// undefined
+                // console.log(this.$refs.demo);// undefined
+            },
+            created(){
+                // console.log("created----------------");
+                // console.log("程序创建了");
+                // console.log(this.message);// It's a good news!
+                // console.log(this.$refs.demo);// undefined
+            },
+            beforeMount(){
+                // console.log("beforeMount----------------");
+                // console.log("数据载入前");
+                // console.log(this.message);// It's a good news!
+                // console.log(this.$refs.demo);// undefined
+            },
+            mounted(){
+                console.log("mounted----------------");
+                console.log("数据载入了");
+                console.log(this.message);// It's a good news!
+                console.log(this.$refs.demo);// <div ref="demo">123456</div>
+
+                // 走dom操作的路子...
+                // this.$refs.demo.style.color = "red";
+                // 数据赋值了
+                // 元素渲染了
+            },
+            beforeUpdate(){
+                console.log("beforeUpdate----------------");
+                console.log("数据更新前");
+                // console.log(this.message, "1.0");
+                // this.message = 1;
+                // console.log(this.message, "2.0");
+            },
+            updated(){
+                console.log("updated----------------");
+                // console.log(this.message,"3.0");
+                console.log("数据更新了");
+            },
+            beforeDestroy(){
+                console.log("beforeDestroy----------------");
+                console.log("程序销毁前");
+            },
+            destroyed(){
+                console.log("destroyed----------------");
+                console.log("程序销毁了");
+            }
+        })
+    
+    
+        // 调用销毁程序的方法
+        vm.$destroy();
+
+    </script>
+</body>
+</html>

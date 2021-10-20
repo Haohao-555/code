@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 第三方的动画库 -->
+    <link rel="stylesheet" href="./animate.min.css">
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .box {
+            width: 300px;
+            height: 500px;
+            background-color: #00f;
+        }
+
+        .my-animate {
+            animation-name: myAnimate1;
+            animation-duration: 2s;
+        }
+        @keyframes myAnimate1 {
+            0% {
+                transform: scale(.5);
+                opacity: .5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            10% {
+                transform: scale(1);
+                opacity: .5;
+            }
+        }
+    </style>
+    <style>
+        /* 步骤：
+            1. 提前下载第三方动画（css/js）
+            2. 使用transition组件 （嵌套指定的内容/标签/组件）
+            3. 找出库（版本） 基础类名  比如：4.版本  animate__animated 
+
+            enter-class  入场动画之前
+            enter-active-class 入场动画过程
+            enter-to-class (2.1.8+)  入场动画后
+            leave-class   离场动画之前 
+            leave-active-class 离场动画过程
+            leave-to-class (2.1.8+) 离场动画后
+
+        */
+
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <!-- 给isShow变量赋值 -->
+        <button v-on:click="isShow = true">入场</button>
+        <button v-on:click="isShow = false">离场</button>
+
+        <!-- 组件 -->
+        <!-- <transition
+            enter-class="animate__animated animate__backInLeft"
+            enter-to-class="animate__animated animate__backInLeft"
+
+            leave-class="animate__animated animate__rotateOutDownLeft"
+            leave-to-class="animate__animated animate__rotateOutDownLeft"
+            >
+            <div class="box" v-if="isShow"></div>
+        </transition> -->
+
+        <transition
+            enter-class="my-animate"
+            enter-to-class="my-animate">
+
+            <div class="box" v-if="isShow"></div>
+        </transition>
+
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            }
+        })
+
+    </script>
+</body>
+</html>

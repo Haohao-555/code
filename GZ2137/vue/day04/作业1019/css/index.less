@@ -1,0 +1,110 @@
+@width: 1500px;
+body {
+    margin: 0;
+    user-select: none;
+}
+ul , ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+button {
+    background-color: transparent;
+    border:0;
+    cursor: pointer;
+}
+.w {
+    width: @width;
+    margin: 0 auto;
+}
+.tt-wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+.tt-header {
+    height: 50px;
+    background-color: #f0f0f0;
+    > div {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        button {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}
+
+.tt-allList {
+    margin-top: 10px;
+    > div {
+        ul {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            li {
+                // 100 / 5 = 20
+                // 60 * 20 = 1200
+                flex-basis: 180px;
+                margin: 0 10px 5px;
+                height: 45px;
+                line-height: 45px;
+                border-radius: 5px;
+                border: 1px solid #ccc; 
+                box-sizing: border-box;
+                text-align: center;
+                span {
+                    font-weight: bold;
+                    font-size: 20px;
+                    color: #666;
+                }
+            }
+            .active {
+                background-color: deepskyblue;
+                span {
+                    color: #fff;
+                }
+            }
+        }
+        .btn {
+           display: block;
+           margin: 20px auto; 
+           padding: 15px 30px;
+           border: 1px solid #ccc;
+        }
+        .btn:active {
+            background-color: deepskyblue;
+            color: #f00;
+            border: 1px solid #f0f0f0;
+        }
+    }
+
+}
+
+.tt-selectList {
+    > div{
+        padding: 15px 20px;
+        background-color: #ccc;
+        box-sizing: border-box;
+        ol {
+            display: flex;
+            justify-content: flex-start;
+            align-content: flex-start;
+            flex-wrap: wrap;
+            li {
+                flex-basis: 120px;
+                height: 45px;
+                line-height: 45px;
+                margin: 0 10px 5px;
+                border: 1px solid #ccc; 
+                background-color: #f0f0f0;
+                text-align: center;
+                span {
+                    color: #333;
+                }
+            }
+        }
+    }
+}

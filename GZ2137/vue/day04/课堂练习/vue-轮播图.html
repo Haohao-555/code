@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .banner {
+            width: 450px;
+            height: 300px;
+            border: 10px solid #000;
+            position: relative; 
+            overflow: hidden;
+        }
+        .image-box {
+            width: 450px;
+            height: 300px;
+        }
+        .image-box ul {
+            width: 2700px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            transform: translateX(0px);
+            /* transition: none; */
+        }
+        .image-box ul li {
+            flex-basis: 450px;
+            flex-shrink: 0;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+        }
+        .image-box ul li:nth-of-type(1) {
+            background-color: deepskyblue;
+        }
+        .image-box ul li:nth-of-type(2) {
+            background-color: darkblue;
+        }
+        .image-box ul li:nth-of-type(3) {
+            background-color: darkred;
+        }
+        .image-box ul li:nth-of-type(4) {
+            background-color: lightgreen;
+        }
+        .image-box ul li:nth-of-type(5) {
+            background-color: yellowgreen;
+        }
+        .image-box ul li:nth-of-type(6) {
+            background-color: deepskyblue;
+        }
+        .point-box {
+            width: 450px;
+            height: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .point-box ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 450px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .point-box ol li {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            /* border-radius: 50%; */
+        }
+        .point-box ol li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div 
+            v-on:mouseenter = "addMouseEnter"
+            v-on:mouseleave = "addMouseLeave"
+            class="banner">
+            <div class="image-box">
+                <ul 
+                    v-on:transitionend="myTransitionEnd"
+                    v-bind:style="`transform:translateX(${distanceX}px);transition:${flag == true ? v1: v2};`"
+                    >
+                    <li><span>1</span></li>
+                    <li><span>2</span></li>
+                    <li><span>3</span></li>
+                    <li><span>4</span></li>
+                    <li><span>5</span></li>
+                    <!-- 追加一张图片 -->
+                    <li><span>1</span></li>
+                </ul>
+            </div>
+            <div class="point-box">
+                <ol>
+                    <li v-on:click="addClick(0)" v-bind:class="square==0?'active':''"></li>
+                    <li v-on:click="addClick(1)" v-bind:class="square==1?'active':''"></li>
+                    <li v-on:click="addClick(2)" v-bind:class="square==2?'active':''"></li>
+                    <li v-on:click="addClick(3)" v-bind:class="square==3?'active':''"></li>
+                    <li v-on:click="addClick(4)" v-bind:class="square==4?'active':''"></li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // Vue
+        // dom 是页面的元素(标签)
+        // JS  
+        // <div></div>   真实DOM
+
+        // Vue框架   虚拟DOM
+        // 虚拟DOM就是一个JS对象
+        // let dom = {'div':createElement('div')}
+
+
+
+    </script>
+
+    <script>
+        // 创建Vue程序
+        // 需求：
+            // 1. 自动轮播图
+            // 2. 导航点跟随轮播
+            // 3. 点击导航点切换图片
+            // 4. 无缝衔接(难点)
+
+        // 编码：
+        // 数据变化，更新视图
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                index: 0,// 图索引值
+                square: 0,// 点索引值
+                width: 450,//每个图的大小
+                v1: "transform .5s",// 添加过渡
+                v2: "none",// 移除过渡
+                flag: true,// 用户切换过渡的标记
+                distanceX:0,//ul的位置
+                timer: null//记录定时器
+            },
+            methods: {
+                myInit(){
+                    // 执行定时器函数
+                    this.timer = setInterval(()=>{
+                        this.autoPlay();
+                    },1500)
+                },
+                autoPlay(){
+                    // 计算ul的位置
+                    this.index ++;
+                    this.distanceX = -this.index * this.width;
+                    this.flag = true;
+
+                    // 设置导航点高亮
+                    this.square ++;
+                    if(this.square > 4){
+                        this.square = 0;
+                    }
+                },
+                addMouseEnter(){
+                    clearInterval(this.timer);
+                },
+                addMouseLeave(){
+                    clearInterval(this.timer);
+                    this.timer = setInterval(()=>{
+                        this.autoPlay();
+                    },1500)
+                },
+                addClick(i){
+                    // console.log(i);// 当前点击的导航点的索引值
+                    this.flag = true;
+                    this.index = i;//赋值给图片索引值
+                    this.square = i;//赋值给导航点索引值
+                    this.distanceX = -this.index * this.width;//计算动画的位置
+                },
+                // 这个监听过渡结束的事件
+                myTransitionEnd(){
+                    // console.log("图片索引值:",this.index);
+                    if(this.index >= 5){//判断是否动画切换至最后一个li标签
+                        this.index = 0;// 设置索引值
+                        this.flag = false;//移除过渡
+                        this.distanceX = 0;// ul标签瞬间回到0的位置
+                    }
+                }
+            }
+        })
+
+        // 通过Vue实例调用methods中的方法
+        vm.myInit();
+        
+    </script>
+</body>
+</html>

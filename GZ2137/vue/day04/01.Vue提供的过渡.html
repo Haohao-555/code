@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        button {
+            padding: 10px 20px;
+        }
+        .box {
+            height: 500px;
+            width: 300px;
+            background-color: #f00;
+        }
+
+        .demo-enter {/*入场之前*/
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+
+        .demo-leave {/*离场之前*/
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .demo-enter-to {/*入场后*/
+            opacity: 1;
+            transform: translateX(0px);
+        }
+
+        .demo-leave-to {/*离场后*/
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+
+        .demo-enter-active , /*过程*/
+        .demo-leave-active {
+            transition: all .5s;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="isShow=true">入场</button>
+        <button v-on:click="isShow=false">离场</button>
+
+        <!-- 组件：由html+css+js组成的一套代码。（某个功能） -->
+        <!-- v-enter  v-enter-to  v-enter-active-->
+        <!-- v-leave  v-leave-to  v-leave-active-->
+        <!-- 设置了name属性之后 --> 
+        <!-- demo-enter  demo-enter-to  demo-enter-active-->
+        <!-- demo-leave  demo-leave-to  demo-leave-active-->
+        <transition
+             v-on:enter="myEnter"
+             v-on:leave="myLeave"
+             v-on:after-enter="afterEnter"
+             name="demo">
+              <div class="box" v-if="isShow"></div>
+        </transition>
+    </div>
+    <script>
+        // 创建Vue实例
+        new Vue({
+            el: "#app",
+            data: {
+                isShow: false
+            },
+            // 添加方法
+            methods: {
+                myEnter(){
+                    console.log("myEnter");
+                },
+                myLeave(){
+                    console.log("myLeave");
+                },
+                afterEnter(){
+                    console.log("afterEnter");
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

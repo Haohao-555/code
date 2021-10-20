@@ -1,0 +1,62 @@
+<!--
+ * @Date: 2021-10-20 17:05:53
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day04\测试.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+    <div id="app">
+      <div class="">静态html</div>
+      <div class="">动态{{mydata}}</div>
+    </div>
+
+
+    <!-- <div id="app" v-if="flag">
+        <div class="">静态html</div>
+        <div class="">动态{{mydata}}</div>
+    </div> -->
+
+    <script src="./js/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          mydata: "",
+          flag: false,
+        },
+
+        // watch: {
+        //     mydata: function() {
+        //         this.flag = true;
+        //     }
+        // },
+
+        // 程序创建后
+        created() {
+            // 获取数据（模拟发送 ajax）
+            this.getmydata();
+        },
+
+        methods: {
+            
+          getmydata() {
+            // 模拟后台数据处理返回
+            setTimeout( () =>{
+              this.mydata = "后台数据";
+            }, 1000);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
