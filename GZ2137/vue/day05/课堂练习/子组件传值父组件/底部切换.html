@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段（移动端案例）</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+    </style>
+
+    <style>
+        html , body , #app , .wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .layout {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+        .layout > div {
+            width: 1000%;
+            height: 100%;
+            transform: translateX(-10%);
+            transition: transform .5s;
+        }
+        .layout > div .page {
+            width: 10%;
+            height: 100%;
+            float: left;
+            text-align: center;
+            padding-top: 100px;
+            box-sizing: border-box;
+        }
+    </style>
+
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: rgba(0,0,0,.5);
+        }
+        .footer  ul {
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+        .footer  ul li {
+            flex-grow: 1;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+        }
+        .footer ul li.active {
+            background-color: #f50;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 父组件 -->
+        <my-wrapper></my-wrapper>
+    </div>
+
+    <!-- 模板1 -->
+    <template id="wrapperId">
+        <div class="wrapper">
+            <div class="layout">
+                <div class="w" 
+                    :style="`transform:translateX(-${square*10}%)`">
+                    <section class="page">首页的内容</section>
+                    <section class="page">发现的内容</section>
+                    <section class="page">收藏的内容</section>
+                    <section class="page">我的内容</section>
+                </div>
+            </div>
+            <!-- 子组件 -->
+            <my-footer @cur-touch="myRev"></my-footer>
+        </div>
+
+    </template>
+
+    <!-- 模板2 -->
+    <template id="footerId">
+        <div class="footer">
+            <ul>
+                <li @touchstart="myTocuh(0)" :class="index == 0 ? 'active':''">首页</li>
+                <li @touchstart="myTocuh(1)" :class="index == 1 ? 'active':''">发现</li>
+                <li @touchstart="myTocuh(2)" :class="index == 2 ? 'active':''">收藏</li>
+                <li @touchstart="myTocuh(3)" :class="index == 3 ? 'active':''">我的</li>
+            </ul>
+        </div>
+    </template>
+
+    <script>
+        // 子组件
+        const myFooter = {
+            name: "Child",
+            template: "#footerId",
+            data(){
+                return {
+                    index: 0
+                }
+            },
+            methods: {
+                myTocuh(i){
+                    this.index = i;
+                    // 自定义事件（发送）
+                    this.$emit("cur-touch",i);
+                }
+            }
+        }
+
+        // 父组件
+        const myWrapper = {
+            name:"Parent",
+            template:"#wrapperId",
+            // 注册子组件
+            components: {
+                myFooter
+            },
+            // 数据
+            data(){
+                return {
+                    square: 0 ,// 父属性 当索引值
+                    width: 375,
+                }
+            },
+            // 父组件添加的方法
+            methods: {
+                myRev(curIndex){
+                    console.log("--->",curIndex);
+                    // 记录子组件传递的数据
+                    this.square = curIndex;
+                }
+            }
+        }
+
+        //  创建Vue实例
+        new Vue({
+            el: "#app",
+            // 注册父组件
+            components: {
+                myWrapper
+            }
+        })
+
+    </script>
+</body>
+</html>

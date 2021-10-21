@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 父组件 -->
+        <my-parent></my-parent>
+    </div>
+    <script>
+
+
+
+        // 创建Vue实例
+        new Vue({
+            el: "#app",
+            data: {},
+            components: {
+                "my-parent": {
+                    name:"Parent",
+                    template:`
+                        <div>
+                            <h3>父组件 </h3>
+                            <p>xxxx {{parentMessage}}</p>
+                            <!-- 子组件 -->
+                            <my-child v-on:demo-click="myRev"></my-child>
+                        </div>
+                    `,
+                    data(){
+                        return {
+                            parentMessage:""
+                        }
+                    },
+                    methods: {
+                        myRev(msg){
+                            this.parentMessage = msg;
+                        }
+                    },
+                    components: {
+                        "my-child": {
+                            name: "Child",
+                            template: `
+                                <div>
+                                    <h3>子组件</h3>
+                                    <p>yyyy</p>
+                                    <button
+                                        @click="mySend"
+                                        style="padding:10px 20px">
+                                        发送数据
+                                    </button>
+                                </div>
+                            `,
+                            data(){
+                                return {
+                                    message: "hello world，这是儿子给父亲的数据"
+                                }
+                            },
+                            methods: {
+                                mySend(){
+                                    // 自定义事件
+                                    this.$emit("demo-click",this.message);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .wrap {
+            display: flex;
+        }
+
+        .wrap .list {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrap .list li {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+
+        .wrap .list li:hover {
+            background-color: yellow;
+        }
+        .wrap .list li.active{
+            background-color: yellow;
+        }
+
+        .wrap .box {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <my-wreas></my-wreas>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            components: {
+                "my-wreas": {
+                    name: "myWreas",
+                    template: `
+                        <div class="wrap">
+                            <ul class="list">
+                               <li v-for="item,index in type" 
+                                   @click="myClick(item,index)"
+                                   :class="[num==index?'active':'']"
+                                   >{{item}}</li>
+                            </ul>
+                            <my-child :str2="str"></my-child>
+                        </div>
+                    `,
+                    data() {
+                        return {
+                            type: ["衣服", "鞋子", "包包", "袜子", "帽"],
+                            str: "",
+                            flag: false,
+                            num: null
+                        }
+                    },
+                    methods: {
+                        myClick(v1,i) {
+                            this.str = v1;
+                            this.num = i;
+                        }
+                    },
+                    components: {
+                        "my-child": {
+                            name: "myChild",
+                            props: [
+                                "str2"
+                            ],
+                            template: `
+                                <div class="box">
+                                    <p>{{str2}}</p>
+                                </div>
+                            `
+                        }
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

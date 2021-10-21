@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <country></country>
+    </div>
+
+    <!-- template 标签 模板标签 作用是编写html代码 ，必须有个根元素 -->
+    <!-- 通过id可以找到当前的模板 -->
+    <!-- <template id="xxxId">
+            <div>
+                根元素
+            </div>
+        </template> 
+    -->
+    
+    <script>
+        // 创建Vue程序
+        // 组件的使用，需要查看其在哪个实例上注册
+        // 如果是在Vue实例上注册的，就直接在#app标签（挂载容器）使用
+        // 如果组件是在guojia组件上注册，就是在guojia对应的模板中使用
+        // 如果组件是在shengfen组件上注册，就是在shengfen对应的模板中使用
+        // 如果组件是在chengshi组件上注册，就是在chengshi对应的模板中使用
+        // 如果组件是在xiaozhen组件上注册，就是在xiaozhen对应的模板中使用
+        new Vue({
+            el: "#app",
+            data: {},
+            // 注册组件
+            components: {
+                "country": {
+                    name: "guojia",
+                    template: `
+                        <div>
+                            <h1>这是国家</h1>
+                            <province></province>
+                        </div>
+                    `,
+                    components: {
+                        "province": {
+                            name: "shengfen",
+                            template: `
+                                <div>
+                                    <h2>这是省份</h2>
+                                    <city></city>
+                                </div>  
+                            `,
+                            components: {
+                                "city": {
+                                    name:"chengshi",
+                                    template: `
+                                        <div>
+                                            <h3>这是城市</h3>
+                                            <town></town>
+                                        </div>  
+                                    `,
+                                    components: {
+                                        "town": {
+                                            name:"xiaozhen",
+                                            template: `
+                                                <div>
+                                                    <h4>这是小镇</h4>
+                                                </div>  
+                                            `
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

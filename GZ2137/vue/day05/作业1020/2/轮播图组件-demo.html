@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .banner {
+            width: 450px;
+            height: 300px;
+            border: 10px solid #000;
+            position: relative; 
+            overflow: hidden;
+        }
+        .image-box {
+            width: 450px;
+            height: 300px;
+        }
+        .image-box ul {
+            width: 2700px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: nowrap;
+            transform: translateX(0px);
+            /* transition: none; */
+        }
+        .image-box ul li {
+            flex-basis: 450px;
+            flex-shrink: 0;
+            min-height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+        }
+        .image-box ul li:nth-of-type(1) {
+            background-color: deepskyblue;
+        }
+        .image-box ul li:nth-of-type(2) {
+            background-color: darkblue;
+        }
+        .image-box ul li:nth-of-type(3) {
+            background-color: darkred;
+        }
+        .image-box ul li:nth-of-type(4) {
+            background-color: lightgreen;
+        }
+        .image-box ul li:nth-of-type(5) {
+            background-color: yellowgreen;
+        }
+        .image-box ul li:nth-of-type(6) {
+            background-color: deepskyblue;
+        }
+        .image-box ul li img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        .point-box {
+            width: 450px;
+            height: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .point-box ol {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 450px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .point-box ol li {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            /* border-radius: 50%; */
+        }
+        .point-box ol li.active {
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 4. 使用组件 -->
+        <!-- <my-banner></my-banner> -->
+        <my-banner></my-banner>
+    </div>
+
+    <!-- 组件： 让代码更加通用，提高复用效率! -->
+    <!-- 3. 编写组件模板 -->
+    <template id="bannerHtml">
+        <div>
+            <div 
+                v-on:mouseenter = "addMouseEnter"
+                v-on:mouseleave = "addMouseLeave"
+                class="banner">
+                <div class="image-box">
+                    <ul 
+                        v-on:transitionend="myTransitionEnd"
+                        v-bind:style="`transform:translateX(${distanceX}px);transition:${flag == true ? v1: v2};`"
+                        >
+                        
+                        <li v-for="item , index in bannerData" :key="item.id">
+                             <a href="#"><img :src="item.src" alt=""></a>
+                        </li>
+
+                        <!-- 追加一张图片 -->
+                        <li>
+                            <a href="#"><img :src="bannerData[0].src" alt=""></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="point-box">
+                    <ol>
+                        <li
+                            v-for="item , index in bannerData"
+                            v-on:click="addClick(index)" 
+                            v-bind:class="square==index?'active':''"
+                            v-bind:key="item.id"></li>
+                    </ol>
+                </div>
+        </div>
+        </div>
+    </template>
+
+    <script>
+        // Vue 实例（超级组件）
+        // 1. 创建Vue程序
+        new Vue({
+            el: "#app",
+            data:{},
+            // 2. 注册组件
+            components: {
+               // 轮播图组件
+               // key: value,
+               // key 就是组件，使用时类似标签用法 <my-banner></my-banner>
+               "my-banner": {
+                    name: "myBanner",
+                    template: "#bannerHtml",
+                    data(){ // 组件添加
+                        return {
+                            index: 0,// 图索引值
+                            square: 0,// 点索引值
+                            width: 450,//每个图的大小
+                            v1: "transform .5s",// 添加过渡
+                            v2: "none",// 移除过渡
+                            flag: true,// 用户切换过渡的标记
+                            distanceX:0,//ul的位置
+                            timer: null,//记录定时器
+                            bannerData: [
+                                {"src":"https://img.alicdn.com/imgextra/i4/6000000000370/O1CN01PdLdrI1EbVG0AJ10q_!!6000000000370-0-octopus.jpg","id":"xxx1"},
+                                {"src":"https://gtms03.alicdn.com/tps/i3/TB1gXd1JXXXXXapXpXXvKyzTVXX-520-280.jpg","id":"xxx2"},
+                                {"src":"https://gtms01.alicdn.com/tps/i1/TB1r4h8JXXXXXXoXXXXvKyzTVXX-520-280.jpg","id":"xxx3"},
+                                {"src":"https://gtms02.alicdn.com/tps/i2/TB10vPXKpXXXXacXXXXvKyzTVXX-520-280.jpg","id":"xxx4"},
+                                {"src":"https://img.alicdn.com/imgextra/i3/6000000008074/O1CN01jpyp2J29VwY6Kr1nG_!!6000000008074-0-octopus.jpg","id":"xxx5"}
+                            ],
+                            len: 5
+                        }
+                    },
+                    methods: {
+                        myInit(){
+                            // 执行定时器函数
+                            this.timer = setInterval(()=>{
+                                this.autoPlay();
+                            },1500)
+                        },
+                        autoPlay(){
+                            // 计算ul的位置
+                            this.index ++;
+                            this.distanceX = -this.index * this.width;
+                            this.flag = true;
+
+                            // 设置导航点高亮
+                            this.square ++;
+                            if(this.square > this.len-1){
+                                this.square = 0;
+                            }
+                        },
+                        addMouseEnter(){
+                            clearInterval(this.timer);
+                        },
+                        addMouseLeave(){
+                            clearInterval(this.timer);
+                            this.timer = setInterval(()=>{
+                                this.autoPlay();
+                            },1500)
+                        },
+                        addClick(i){
+                            // console.log(i);// 当前点击的导航点的索引值
+                            this.flag = true;
+                            this.index = i;//赋值给图片索引值
+                            this.square = i;//赋值给导航点索引值
+                            this.distanceX = -this.index * this.width;//计算动画的位置
+                        },
+                        // 这个监听过渡结束的事件
+                        myTransitionEnd(){
+                            // console.log("图片索引值:",this.index);
+                            if(this.index >= this.len){//判断是否动画切换至最后一个li标签
+                                this.index = 0;// 设置索引值
+                                this.flag = false;//移除过渡
+                                this.distanceX = 0;// ul标签瞬间回到0的位置
+                            }
+                        }
+                    },
+                    mounted(){
+                        this.myInit();
+                    } 
+               }  
+            }
+        })
+
+        // 每个组件就是一个实例（类似Vue实例）
+        // 每个组件有各自的数据和方法，还有生命周期。
+    </script>
+</body>
+</html>

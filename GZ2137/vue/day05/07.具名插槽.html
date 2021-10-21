@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .layout {
+            width: 300px;
+            height: 200px;
+            background-color: #ccc;
+            margin-top: 10px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件1 -->
+        <my-comp>
+            <h3>登录</h3>
+             <!-- template标签 -->
+             <template v-slot:useraccount>
+                 <input type="text" placeholder="用户账号">
+             </template>
+
+             <template v-slot:userpassword>
+                <input type="text" placeholder="用户密码">
+            </template>
+        </my-comp>
+
+
+        <!--组件2 -->
+        <my-comp>
+            <h3>注册</h3>
+            <!-- template标签 -->
+            <template v-slot:useraccount>
+                <input type="text" placeholder="用户账号">
+            </template>
+        </my-comp>
+    </div>
+
+
+    <!-- 模板 -->
+    <template id="templateId">
+        <div class="layout">
+            <h3>这是组件</h3>
+            <!-- slot 插槽标签 （作用：可以填写其他代码）-->
+            <!-- <slot></slot> -->
+            <!-- name 具名插槽 -->
+            <slot name="useraccount"></slot>
+
+            <slot name="userpassword"></slot>
+        </div>
+    </template>
+
+    <script>
+        // 插槽: 提供一个出口，可以填写其他的代码（模板的）一种语法。
+        // 插入html代码的位置
+        // 具名插槽（有名字）
+        // 可以让组件更加丰富、更加通用。
+
+        // 创建Vue实例
+        new Vue({
+            el: "#app",
+            components: {
+                "my-comp": {
+                    name: "zujian",
+                    template: "#templateId"
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

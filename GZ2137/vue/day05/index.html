@@ -1,0 +1,113 @@
+<!--
+ * @Date: 2021-10-21 09:21:59
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day05\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        height: 300px;
+        border: 1px solid #333;
+        margin: 0 auto;
+        width: 600px;
+      }
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+      ul {
+        width: 120px;
+        height: 160px;
+      }
+      li {
+        width: 100%;
+        border: 1px solid #333;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
+      }
+      .content {
+        width: 300px;
+        height: 200px;
+        margin-left: 120px;
+        text-align: center;
+        border: 1px solid #333;
+        line-height: 200px;
+        cursor: pointer;
+        font-size: 20px;
+      }
+      .active {
+        background-color: orange;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <hh-list :arr="arr" v-on:test-item="aaa"></hh-list>
+        <hh-content :content="content"></hh-content>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          arr: ["衣服", "鞋子", "包包", "袜子", "帽"],
+          content: "衣服",
+          type: 0,
+        },
+        methods: {
+          aaa(index) {
+            console.log("--->", index);
+            this.type = index;
+            this.content = this.arr[index];
+          },
+        },
+        components: {
+          "hh-content": {
+            props: {
+              content: String,
+            },
+            name: "hh-content",
+            template: ` <div class="content">{{content}}</div>`,
+          },
+          "hh-list": {
+            props: {
+              arr: Array,
+            },
+            name: "hh-list",
+            methods: {
+              handle(index) {
+                console.log("子", index);
+                this.$emit("test-item", index);
+              },
+            },
+            template: `
+                <ul class="left">
+                    <li v-for="item, index in arr" @click="handle(index)" :class="['type'==index? 'active': '']" :key="index">{{item}}</li>
+                </ul>    
+                `,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

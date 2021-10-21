@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .tt_aside {
+            width: 140px;
+            position: fixed;
+            left: 50px;
+            top: 220px;
+        }
+        .tt_aside ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ccc; 
+        }
+        .tt_aside ul li {
+            height: 40px;
+            line-height: 40px;
+            padding: 0 0 0 20px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            color: #666;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+        .tt_aside ul li:last-child {
+            border-bottom: 0;
+        }
+        .tt_aside ul li.active {
+            width: 140px;
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+
+    <style>
+        .tt_section {
+            position: absolute;
+            left: 200px;
+            top: 180px;
+            width: 600px;
+            height: 500px;
+            background-color: #f0f0f0;
+            padding: 40px;
+        }
+        .tt_section h3 {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-aside></my-aside>
+    </div>
+
+    <template id="asideId">
+        <div>
+            <aside class="tt_aside">
+                <ul>
+                    <li 
+                        v-for="item,i in navList" 
+                        @click="showProduct(item.name,i)"
+                        :key="item.id"
+                        :class="index == i ? 'active':''">{{item.name}}</li>
+                </ul>
+            </aside>
+    
+            <section class="tt_section">
+                <!-- 组件 -->
+                <my-product v-bind:product2="product"></my-product>
+            </section>
+        </div>
+    </template>
+
+    <template id="productId">
+        <div>
+            <h3>---->{{product2}}</h3>
+        </div>
+    </template>
+    <script>
+
+
+        // 定义展示商品的组件(子)
+        let myProduct =  {
+            name: 'myProduct',// 组件的名称
+            template: "#productId",// 模板 html
+            props: {
+                product2: {
+                    type: String
+                }
+            }
+        }
+
+
+        // 定义侧栏菜单组件(父)
+        let myAside = {
+            name: "myAside",
+            template: "#asideId",
+            data(){
+                return {
+                    index: 0,
+                    product:"衣服",// 记录点击的商品
+                    navList: [
+                        {name:"衣服",id:"xxx01"},
+                        {name:"鞋子",id:"xxx02"},
+                        {name:"袜子",id:"xxx03"},
+                        {name:"包包",id:"xxx04"},
+                        {name:"帽子",id:"xxx05"},
+                    ]
+                }
+            },
+            methods: {
+                showProduct(name,i){
+                    // console.log("--->",name);
+                    this.product = name;
+                    this.index = i;
+                }
+            },
+            // 注册展示商品的组件
+            components: {
+                "my-product": myProduct
+            }
+        }
+
+        // 创建Vue实例
+        new Vue({
+            el: "#app",
+            data: {},
+            methods: {},
+            // 注册侧栏菜单的组件
+            components: {
+               "my-aside": myAside
+            }
+        })
+
+
+    </script>
+</body>
+</html>
