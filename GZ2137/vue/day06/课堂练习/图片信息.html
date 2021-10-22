@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="libs/vue/vue.js"></script>
+    <script src="libs/axios/dist/axios.min.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid #ccc; 
+            border-collapse: collapse;
+        }
+        table td {
+            border: 1px solid #ccc; 
+        }
+        table td img {
+            width: 42px;
+        }
+        /* 版心 */
+        .container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <style>
+        .mask {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .mask .mask-box {
+            padding: 100px 80px;
+            margin: 0 auto;
+        }
+
+         .mask .mask-box ul {
+             padding: 0;
+             margin: 0;
+             list-style: none;
+             background-color: #fff;
+             color: #000;
+         }
+         .mask .mask-box ul li {
+             background-color: #fff;
+             color: #000;
+             border-bottom: 2px dashed #ccc; 
+         }
+
+         .mask .mask-box ul li h3 ,
+         .mask .mask-box ul li p ,
+         .mask .mask-box ul li div  {
+             padding: 10px 20px;
+             margin: 0;
+             font-size: 20px;
+         }
+
+         .mask .mask-box ul li img {
+             width: 200px;
+         }
+
+         .mask .mask-box ul li button {
+             padding: 10px 20px;
+             margin: 10px 20px;
+             border: 1px solid #fff;
+             cursor: pointer;
+         }
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <table cellpadding="20">
+            <tr>
+                <td>序号</td>
+                <td>ID</td>
+                <td>图片</td>
+                <td>标题</td>
+                <td>详情</td>
+            </tr>
+
+            <!-- 把每一项数据展示在页面上 -->
+            <tr 
+                v-for="item , index in imgInfoArray"
+                :key="item.id">
+                <td>{{index+1}}</td>
+                <td>{{item.id}}</td>
+                <td><img :src="item.src" alt=""></td>
+                <td>{{item.title}}</td>
+                <td>
+                    <a 
+                        @click="myDetail(item.id)"
+                        href="javascript:;" >查看详情</a>
+                </td>
+            </tr>
+        </table>
+
+        <div class="mask" v-if="isOpen">
+            <div class="mask-box">
+                <ul>
+                    <li>
+                        <h3>{{info.title}}</h3>
+                    </li>
+                    <li>
+                        <p>{{info.content}}</p>
+                    </li>
+                    <li>
+                        <div>{{info.id}}</div>
+                    </li>
+                    <li>
+                        <img :src="info.src" alt="">
+                    </li>
+                    <li>
+                        <button @click="myCloseDetail">关闭详情</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 后台的地址
+        let url = "http://192.168.96.2:8001/today/test";
+        // 通过get方法 请求后台数据
+        let proList = axios.get(url);
+        
+        // 创建Vue程序
+        new Vue({
+            el: "#app",
+            data: {
+                imgInfoArray: [],
+                isOpen: false,
+                info: null
+            },
+            methods: {
+                myInit(){
+                    // 记录当前函数作用域的this
+                    let _this = this;
+                    // promise实例调用then
+                    // 请求数据成功
+                    proList.then(
+                        response => {
+                            // 我们需要处理 然后才能使用
+                            _this.imgInfoArray = response.data.result;
+                        }
+                    )
+                    // 请求数据失败
+                    proList.catch(
+                        error=> {
+                            console.log("请求失败..");
+                        }
+                    )
+                },
+                myDetail(id){
+                    // console.log(id);
+                    // 请求服务端
+                    // 根据id 获取图片详情信息
+                    let proDetail  = axios.get(
+                        "http://192.168.96.2:8001/today/showinfo",
+                         {
+                             params: {
+                                 id: id
+                             }
+                         }
+                    )
+
+                    // 请求成功
+                    proDetail.then(
+                        response => {
+                            // 获取数据
+                            let data = response.data;
+                            // console.log(data);
+                            // 判断是否获取符合条件数据
+                            if(data.code == 2000){
+                                // 进行赋值
+                                // 显示详情
+                                this.isOpen = true;
+                                this.info = data.info;
+                                // console.log(this.info);
+                            }
+                        }
+                    );
+
+                    // 请求失败
+                    proDetail.catch(
+                        error=> {
+                            console.log("请求失败...");
+                        }
+                    );
+                },
+                myCloseDetail(){
+                    // 关闭详情
+                    this.isOpen = false;
+                }
+            },
+            mounted(){
+                this.myInit();
+            }
+        })
+
+    </script>
+</body>
+</html>

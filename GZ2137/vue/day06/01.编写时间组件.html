@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        .time-box {
+            width: 240px;
+            height: 300px;
+            border: 1px solid #ccc; 
+        }
+        .time-box-top button {
+            height: 40px;
+            width: 110px;
+            border: 0 ;
+        }
+        .time-box-content {
+            text-align: center;
+        }
+        .time-box-content h3 {
+            font-size: 26px;
+            margin-top: 80px;
+        }
+        .time-box-content p {
+            font-size: 20px;
+        }
+    </style>
+
+    <style>
+        header {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 组件 -->
+        <!-- <time-box></time-box> -->
+
+        <header>
+            <time-box></time-box>
+        </header>
+
+
+        <footer>
+            <time-box></time-box>
+        </footer>
+
+    </div>
+
+
+    <!-- 模板 -->
+    <template id="timeboxId">
+        <div class="time-box">
+            <div class="time-box-top">
+                <button @click="stopTime">停止</button>
+            </div>
+            <div class="time-box-content">
+                 <h3>{{yy}}-{{mm}}-{{dd}}</h3>
+                 <p>{{h}}:{{m}}:{{s}}</p>
+            </div>
+        </div>
+    </template>
+
+    <script>
+
+        // 组件：就是实现某个功能的一套代码（html+css+js）
+        // 定义组件
+        // 组件跟vue实例相似
+        let timeBox = {
+            name:"TimeBox",
+            template:"#timeboxId",
+            data(){
+                return {
+                    yy:"",
+                    mm:"",
+                    dd:"",
+                    h:"",
+                    m:"",
+                    s:"",
+                    timer: null
+                }
+            },
+            methods: {
+                getCurrentTime(){
+                    let dt = new Date();
+                    this.yy = dt.getFullYear();
+                    this.mm = dt.getMonth()+1;
+                    this.dd = dt.getDate();
+                    this.h  = dt.getHours();
+                    this.m  = dt.getMinutes();
+                    this.s  = dt.getSeconds();
+                    // 补个0
+                    this.mm = this.mm < 10 ? "0"+this.mm: this.mm;
+                    this.dd = this.dd < 10 ? "0"+this.dd: this.dd;
+                    this.h  = this.h  < 10 ? "0"+this.h : this.h ;
+                    this.m  = this.m  < 10 ? "0"+this.m : this.m ;
+                    this.s  = this.s  < 10 ? "0"+this.s : this.s ;
+                },
+                autoPlay(){
+                    // 直接获取当前时间
+                    this.getCurrentTime();
+                    // 每隔一秒获取一次当前时间
+                    this.timer = setInterval(()=>{
+                        this.getCurrentTime();
+                    },1000)
+                },
+                stopTime(){
+                    clearInterval(this.timer);
+                }
+            },
+            // 载入数据之后
+            mounted(){
+                // 此处的 this 是组件的实例
+                this.autoPlay();
+            },
+            
+        }
+
+
+        // 创建Vue实例（程序）
+        // vue实例 (全局的对象)> 组件 > 子组件 > 孙子组件
+        // 在vue实例上注册的组件 就在vue的挂载点容器中使用
+        // 组件的数据不能直接使用对象
+        // 组件的数据是独立的 所以 data(){ return {} }
+        let aaa ;
+        let vm = new Vue({
+            el: "#app",
+            data:{},
+            components: {
+                timeBox
+            },
+            mounted(){
+                // 此处的 this 就是vue实例
+                aaa = this;
+            }
+        })
+    
+        console.log(vm === aaa);// true
+    </script>
+</body>
+</html>

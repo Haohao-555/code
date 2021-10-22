@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <!-- vue 框架 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- http 库 可以实现跟ajax相似的业务-->
+    <!-- 网络请求 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+
+    </div>
+    <script>
+
+        // 读取本地的文档 返回一个promise对象
+        let login = axios.get('./data/login.json');
+
+        // 直接调用then方法（success/error）
+        login.then(function (res) {
+            // console.log(res);
+            // 数据需要经过处理才能使用
+            let data = res.data;
+            console.log(data);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+
+
+        // 回顾ajax
+        // 过去的写法
+        // let getData = (url) => {
+        //     return new Promise((resolve,reject) => {
+        //         $.ajax({
+        //             url: url,
+        //             type: "get",
+        //             success(res) {
+        //                 resolve(res)
+        //             },
+        //             error(err){
+        //                 reject(err)
+        //             }
+        //         })
+        //     })
+        // }
+        // let loginPro = getData("./data/login.json");
+            
+    </script>
+</body>
+
+</html>

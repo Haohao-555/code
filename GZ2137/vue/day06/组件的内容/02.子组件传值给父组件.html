@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <style>
+        .color-box {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+        }
+        .color-box-top {
+            height: 300px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .color-box-bottom button{
+            display: block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 10px auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+
+       <!-- 组件-1 -->
+       <my-parent></my-parent>
+    </div>
+
+
+    <script>
+        // 定义子组件
+        let myChild = {
+            name:"Child",
+            template: `
+                <div class="color-box-bottom">
+                    <button
+                        @click="mySend"
+                        >按钮</button>
+                </div>   
+            `,
+            methods: {
+                // 随机数
+                myRandom(len){
+                    return Math.floor(Math.random()*len);
+                },
+                // 产生16进制的颜色
+                myColor(){
+                    let str = "0123456789abcdef"; // str.split("")
+                    let arr = [...str];
+                    let mybgcolor = "#";
+                    for(let i = 0 ; i < 6 ; i++){
+                        let index = this.myRandom(arr.length);
+                        mybgcolor += arr[index];
+                    }
+                    return mybgcolor;
+                },
+                // 发送数据方法
+                mySend(){
+                    // 获取颜色的这个数据
+                    let str = this.myColor();
+                    // console.log(str);
+                    // 定义对象 记录需要发送给父组件的数据
+                    let option = {
+                        color: str,
+                        num: 0
+                    }
+                    // 调用$emit() 这个方法
+                    this.$emit("my-click",option);
+                }
+            }
+        }
+
+
+        // 定义父组件
+        let myParent = {
+            name:"Parent",
+            template:`
+                <div class="color-box">
+                    <div 
+                        :style="v1"
+                        class="color-box-top">
+                        <span>{{bgcolor}}</span>
+                    </div>
+
+                    <my-child v-on:my-click="myRev"></my-child>
+                </div>
+            `,
+            data(){
+                return {
+                    bgcolor:"#ffffff",
+                    v1:"background:#ffffff;"
+                }
+            },
+            // 添加方法 (接收)
+            methods: {
+                myRev(obj){
+                    // console.log(obj);
+                    // 赋值
+                    this.bgcolor = obj.color;
+                    this.v1 = `background:${obj.color};`
+                }
+            },
+            // 注册组件 myChild
+            components: {
+                myChild
+            }
+        }
+
+        // 创建Vue实例
+        new Vue({
+            el: "#app",
+            // 注册组件 myParent
+            components: {
+                myParent
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>

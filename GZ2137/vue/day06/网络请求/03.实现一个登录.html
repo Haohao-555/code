@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <!-- vue 框架 -->
+    <script src="libs/vue/vue.js"></script>
+    <!-- http 请求库 -->
+    <script src="libs/axios/axios.min.js"></script>
+
+    <style>
+        body , h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        .form {
+            width: 500px;
+            padding: 20px 20px;
+        }
+
+        .form input[type="text"],
+        .form input[type="password"] {
+            height: 40px;
+            width: 500px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .form input[type="button"] {
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div class="form" v-if="isShow">
+            <div class="form-group">
+                <h3>用户登录界面</h3>
+            </div>
+            <div class="form-group">
+                <input 
+                    v-model="v1"
+                    type="text" placeholder="请输入账号">
+                <!-- 
+                <input 
+                    :value="v1"
+                    @input="foo"
+                    type="text" placeholder="请输入账号"> -->
+            </div>
+            <div class="form-group">
+                <input 
+                    v-model="v2"
+                    type="password" placeholder="请输入密码">
+            </div>
+            <div class="form-group">
+                <input 
+                    @click="myLogin"
+                    type="button" value="登录">
+            </div>
+        </div>
+
+        <div class="layout" v-if="!isShow">
+            <h3> 欢迎访问首页 </h3>
+        </div>
+    </div>
+    <script>
+        // 创建Vue实例
+        // 13588888888
+        // 123456
+        new Vue({
+            el: "#app",
+            data: {
+                v1: "",
+                v2: "",
+                isShow: true
+            },
+            methods: {
+                myLogin(){
+                    // console.log(this.v1,this.v2);
+                    // 判断输入框是否有值
+                    if(this.v1.length == 0 || this.v2.length == 0){
+                        console.log("输入框不能为空!");
+                        return ;
+                    }   
+                    // 网络请求（数据前后端交互）
+                    // 设置相关的参数
+                    let url = "http://192.168.96.2:8001/users/signIn";
+                    let data = {
+                        account: this.v1,
+                        password: this.v2
+                    }
+                    // 调用axios下的post方法 返回一个登录的promise
+                    let pro =  axios.post(url,data);
+
+                    // 执行下一步
+                    // 请求成功
+                    pro.then(
+                        response => {
+                            // console.log(response);
+                            // 处理数据
+                            let data = response.data;
+                            // console.log(data);
+                            if(data.code == "2000"){
+                                console.log("登录成功");
+                                // 处理页面交互(隐藏登录界面、显示首页内容)
+                                this.isShow = false;
+                            }else {
+                                console.log("登录失败");
+                            }
+                        }
+                    )
+                    // 请求失败
+                    pro.catch(
+                        error=> {
+                            console.log("或跨域了");
+                            console.log("或服务端异常");
+                            console.log("或接口参数等出现拼写错误");
+                        }
+                    )
+
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

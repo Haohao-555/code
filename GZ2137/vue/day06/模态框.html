@@ -1,0 +1,113 @@
+<!--
+ * @Date: 2021-10-22 14:34:10
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day06\模态框.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+      .modal {
+        width: 300px;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        margin: auto;
+        overflow: hidden;
+      }
+      .modal-header {
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        color: #fff;
+        background-color: #31c27c;
+        padding: 0px 10px;
+        box-sizing: border-box;
+      }
+      .modal-body {
+        height: 200px;
+        border-bottom: 1px solid #333;
+        border-top: 1px solid #333;
+        padding: 25px 10px 0px 24px;
+        box-sizing: border-box;
+      }
+      .row {
+        width: 100%;
+        height: 40px;
+        margin-bottom: 12px;
+      }
+      label {
+        font-size: 16px;
+      }
+      input {
+        height: 25px;
+        width: 200px;
+        background: none;
+        border: 1px solid #31c27c;
+        outline: none;
+        border-radius: 12px;
+        padding-left: 5px;
+        margin-right: 10px;
+        font-size: 14px;
+      }
+      button {
+        padding: 3px 12px;
+        box-sizing: border-box;
+        text-align: center;
+        width: 120px;
+        height: 40px;
+        background: none;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid #31c27c;
+        color: #31c27c;
+        border-radius: 12px;
+      }
+      button:hover {
+          color: #fff;
+          background-color: #31c27c;
+      }
+    </style>
+    <link rel="stylesheet" href="./animate.min.css" />
+  </head>
+  <body>
+    <div id="app">
+      <transition
+        enter-class="animate__animated animate__backInDown"
+        enter-to-class="animate__animated animate__backInDown"
+        leave-class="animate__animated animate__rotateOutDownLeft"
+        leave-to-class="animate__animated animate__rotateOutDownLeft"
+      >
+        <div class="modal" v-if="show">
+          <div class="modal-header">用户登录</div>
+          <div class="modal-body">
+            <div class="row">
+              <label for="name">用户:</label>
+              <input type="text" id="name" placeholder="请输入用户名" />
+            </div>
+            <div class="row">
+              <label for="">密码:</label>
+              <input type="password" placeholder="请输入密码" />
+            </div>
+            <button>登录</button>
+          </div>
+        </div>
+       
+      </transition>
+      <!-- <button @click="show == true">触发</button> -->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+               show: true
+            }
+        })
+    </script>
+  </body>
+</html>

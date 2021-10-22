@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+
+    </div>
+    <script>
+        // 登录
+            // 接口地址：
+            // http://192.168.96.2:8001/users/signIn
+            // 参数：
+            // account
+            // password
+            // vcode
+            // 方式：
+            // post
+
+        // 账号：
+        // 18366666666
+        // 密码：
+        // 123456
+
+        let loginUrl = "http://192.168.96.2:8001/users/signIn";
+        axios.post(loginUrl, {
+            account: '18366666666',
+            password: '123456'
+        })
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+
+
+    </script>
+</body>
+</html>
