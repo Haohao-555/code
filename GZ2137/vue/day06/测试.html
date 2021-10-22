@@ -1,0 +1,53 @@
+<!--
+ * @Date: 2021-10-22 18:44:11
+ * @Author: 浩
+ * @LastEditors: 浩
+ * @FilePath: \day06\测试.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="get">获取歌单</button>
+        <button @click="test">测试</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+              
+            },
+            methods: {
+                get() {
+                    axios.get("http://39.104.61.32:3000/top/playlist", {
+                        params: {
+                             limit: 20,
+                        }
+                    }).then(res => {
+                        console.log(res);
+                    })
+                },
+                test() {
+                    axios.get("https://api.jisuapi.com/xiaohua/text",{
+                        params: {
+                            pagenum: 1,
+                            pagesize: 1,
+                            appkey: "682d8527149c8ad1"
+                        }
+                    }).then(res => {
+                        console.log(res);
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+</html>

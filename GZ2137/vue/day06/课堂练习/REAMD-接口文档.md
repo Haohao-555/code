@@ -32,15 +32,14 @@ password
 ```
 2. 登录
 + 地址
+http://192.168.96.2:8001/users/signIn
 /users/signIn
 + 方式 
 post
 + 参数
 ```
-name
 account
 password
-vcode
 ```
 
 3. 验证码

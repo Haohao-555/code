@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="libs/vue/vue.js"></script>
+    <script src="libs/axios/dist/axios.min.js"></script>
+
+    <style>
+        #loading {
+            text-align: center;
+            padding: 100px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="loading">
+            <img src="./icon/loading-2.gif" alt="">
+            <!-- <img src="./icon/loading-2.gif" alt="" v-if="flag"> -->
+        </div>
+    </div>
+    <script>
+
+        // axios.get(url,{params: {}})
+        // axios.post(url,{})
+
+        // Get 请求
+        // let pro = axios({
+        //     url:"http://192.168.96.2:8001/today/showinfo",// 接口地址
+        //     method:"get", // 请求方式
+        //     params: { // 这是get的方式传递
+        //         id: "xxxx02"
+        //     }
+        // })
+
+
+        // Post 请求
+        // let pro = axios({
+        //     url:"http://192.168.96.2:8001/users/createAccount",// 接口地址
+        //     method:"post", // 请求方式
+        //     data: { // 这是post的方式传递
+        //         name: "one",
+        //         account:"10000",
+        //         password: "123456"
+        //     }
+        // })
+
+        // let pro = axios({
+        //     url:"http://192.168.96.2:8001/users/signIn",// 接口地址
+        //     method:"post", // 请求方式
+        //     data: { // 这是post的方式传递
+        //         account:"10000",
+        //         password: "123456"
+        //     }
+        // })
+
+
+        // 配置服务器地址
+        axios.defaults.baseURL = "http://192.168.96.2:8001";
+        
+        // 拦截器 （根据条件执行相关回调函数）
+        // interceptors ： 拦截
+        // 做了一层判断
+        // 跟ajax的beforeSend这个回调函数很相似
+        // 添加请求拦截器
+        axios.interceptors.request.use(function (config) {
+            // 在发送请求之前做些什么
+            // console.log("请求之前...123",config);
+            // 判断接口地址
+            if(config.url == "/users/signIn"){
+                console.log("这是登录接口");
+            }
+
+            if(config.url == "/users/createAccount"){
+                console.log("这是注册接口");
+            }
+
+            // 使用dom操作
+            document.querySelector("#loading").style["display"]="block";
+
+            return config;
+        }, function (error) {
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+        // 添加响应拦截器
+        axios.interceptors.response.use(function (response) {
+            console.log("响应前...456",response);
+            // 判断当前响应的是否为登录的数据 
+            if(response.config.url == "/users/signIn"){
+                // 添加aaa
+                response.headers.aaa = "xxxx";
+            }
+            // 对响应数据做点什么
+            return response;
+        }, function (error) {
+            // 对响应错误做点什么
+            return Promise.reject(error);
+        });
+
+
+        // 获取一个登录的promise
+        let pro = axios({
+            url:"/users/signIn",// 接口地址
+            method:"post", // 请求方式
+            data: { // 这是post的方式传递
+                account:"10000",
+                password: "123456"
+            }
+        })
+
+        // pro.then(
+        //     response => {
+        //         // 后台的数据
+        //         let res = response.data;
+        //         console.log(res);
+        //     }
+        // )
+
+        pro.then(
+            response => {
+                // 后台的数据
+                let res = response.data;
+                // 获取头部信息
+                console.log(response.headers);
+                console.log(res);
+                // 延迟500ms
+                setTimeout(()=>{
+                    // 使用dom操作
+                    document.querySelector("#loading").style["display"]="none";
+                },1000)
+            }
+        )
+
+
+
+
+        pro.catch(
+            error => {
+                console.log("请求失败...");
+            }
+        )
+
+
+
+    </script>
+</body>
+</html>
