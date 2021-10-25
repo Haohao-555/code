@@ -6,17 +6,17 @@
 -->
 <template>
   <div id="app">
-     123413413515253
+      <prograss :songId="445124784"></prograss>
   </div>
 </template>
 
 <script>
-
+import prograss from "./components/prograss";
 
 export default {
   name: 'App',
   components: {
-   
+   prograss,
   }
 }
 </script>
