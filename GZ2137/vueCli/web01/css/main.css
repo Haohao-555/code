@@ -1,0 +1,8 @@
+.main {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+.main > div {
+    display: flex;
+}

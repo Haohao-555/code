@@ -1,0 +1,27 @@
+.nav {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 3px solid #ccc;  
+}
+.nav .w {
+    padding: 50px 100px;
+}
+.nav .w .nav-box {
+    height: 60px;
+}
+.nav .w .nav-box ul {
+    height: 60px;
+    display: flex;
+}
+.nav .w .nav-box ul li {
+    flex-grow: 1;
+    text-align: center;
+    line-height: 60px;
+}
+.nav .w .nav-box ul li:hover {
+    background-color: #f0f0f0;
+}
+.nav .w .nav-box ul li a {
+    text-decoration: none;
+    color: #000;
+}

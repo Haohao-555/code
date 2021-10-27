@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="libs/vue/vue.js"></script>
+    <link rel="stylesheet" href="./css/tt-dev-header.css">
+    <link rel="stylesheet" href="./css/tt-dev-nav.css">
+    <link rel="stylesheet" href="./css/tt-aside.css">
+    <link rel="stylesheet" href="./css/tt-content.css">
+    <link rel="stylesheet" href="./css/tt-dev-footer.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <!-- 第三步：使用组件 -->
+    <!-- 挂载点（容器） -->
+    <div id="app">
+        <!-- 头部组件 -->
+        <tt-header></tt-header>
+        <!-- 导航组件 -->   
+        <tt-nav></tt-nav>
+
+        <!-- 主体 菜单和内容组件 -->
+        <main class="main">
+            <div class="w">
+                <!-- 菜单组件 -->
+                <tt-aside></tt-aside>
+                <!-- 内容组件 -->
+                <tt-content></tt-content>
+            </div>
+        </main>
+
+        <tt-nav></tt-nav>
+
+
+        <!-- 尾部组件 -->
+        <tt-footer></tt-footer>
+    </div>
+
+    <!-- 模板标签 -->
+    <template id="myHeader">
+        <header class="header">
+            <div class="w">
+                <h3>页面头部</h3>
+            </div>
+        </header>
+    </template>
+    <template id="myNav">
+        <nav class="nav">
+            <div class="w">
+                <div class="nav-box">
+                    <ul>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                    </ul>
+                </div>
+                <div class="nav-box">
+                    <ul>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                        <li><a href="#">链接</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </template>
+    <template id="myAside">
+        <aside class="aside">
+            <h3>侧栏菜单</h3>
+        </aside>
+    </template>
+    <template id="myContent">
+        <article class="article">
+            <h3>内容部分</h3>
+        </article>
+    </template>
+    <template id="myFooter">
+        <footer class="footer">
+            <div class="w">
+                <h3>尾部组件</h3>
+            </div>
+        </footer>
+    </template>
+
+
+    <script>
+        // Vue实例就是大组件
+        // Vue 组件（有各自独立的数据和处理逻辑）
+
+        // 第一步： 定义组件
+        // 定义组件（头部）
+        let ttHeader = { 
+            name: "ttHeader",
+            template: "#myHeader",
+            data(){
+                return {
+
+                }
+            },
+            computed:{},
+            watch: {},
+            filters: {},
+            components: {
+
+            },
+            beforeCreate(){},
+            created(){},
+
+            beforeMount(){},
+            mounted(){},// 载入数据后
+
+            beforeUpdate(){},
+            updated(){},
+
+            beforeDestroy(){},
+            destroy(){}
+        }
+        // 定义组件 (导航)
+        let ttNav = {
+            name: "ttNav",
+            template: "#myNav"
+        }
+        // 定义组件 (菜单)
+        let ttAside = {
+            name: "ttAside",
+            template: "#myAside"
+        }
+        // 定义组件 (内容)
+        let ttContent = {
+            name: "ttContent",
+            template: "#myContent"
+        }
+        // 定义组件 (尾部)
+        let ttFooter = {
+            name: "ttFooter",
+            template: "#myFooter"
+        }
+
+        // 创建Vue程序
+        new Vue({
+            el: "#app",
+            data: {},
+            // 第二步： 注册组件
+            components: {
+                ttHeader,
+                ttNav,
+                ttAside,
+                ttContent,
+                ttFooter
+            }
+        })
+
+
+    </script>
+    <script>
+        // new Vue({
+        //     el: "#app",
+        //     data: {},
+        //     computed:{},
+        //     watch: {},
+        //     filters: {},
+        //     // 第二部：注册组件
+        //     components: {},
+        //     beforeCreate(){},
+        //     created(){},
+        //     beforeMount(){},
+        //     mounted(){},// 载入数据后
+        //     beforeUpdate(){},
+        //     updated(){},
+        //     beforeDestroy(){},
+        //     destroy(){}
+        // })
+    </script>
+</body>
+</html>
