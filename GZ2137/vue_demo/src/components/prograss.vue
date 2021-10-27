@@ -40,16 +40,18 @@ export default {
       dt: 221000, // 01:40
       // 是否按下
       down: false,
+      // 是否播放
+      play: false,
       // 音频 url
       audioUrl:
         "http://m8.music.126.net/20211025224333/9586c31030d2b425c715dcfbeba80c26/ymusic/045d/030c/0559/37bcfed3ec4ff3fd493223d9c99c3aa8.mp3",
-      // 进度条长度
+      
+      // 初始进度条长度
       prograssDistance: 0,
       // 当前进度条滑动的距离
       currentDistance: 0,
-      // 是否播放
-      play: false,
-     
+      
+      // 当前歌曲时间
       timeStamp: 0,
       
     };
@@ -64,7 +66,6 @@ export default {
     },
     timeStamp: function() {
         let x = this.timeStamp * (this.prograssDistance / this.dt);
-        console.log(x);
         document.querySelector(".bar").style.left = x + "px";
         document.querySelector(".current-time").style.width = x + "px";
     }, 
@@ -98,28 +99,33 @@ export default {
             distance > prograss_width - bar_width
               ? prograss_width - bar_width
               : distance;
+
+          // 设置样式
           bar.style.left = distance + "px";
           current.style.width = distance + "px";
+
           // 保存当前滑动的距离
           this.currentDistance = distance;
         }
       };
       document.onmouseup = () => {
         this.down = false;
-        this.currentTime();
+
+        // 更新当前时间
+        // this.currentTime();
       };
     },
-
+    
+    // 根据距离换算当前歌曲时间
     currentTime() {
-      let x = Math.floor(
-        this.currentDistance * (this.dt / this.prograssDistance)
-      );
-      console.log(x);
+      let x = this.currentDistance * (this.dt / this.prograssDistance);
+      console.log("当前歌曲播放到时间为",x);
     },
 
+    // 监听音频
     timeupdate(e) {
-      console.log(e);
       this.timeStamp = e.timeStamp;
+      console.log(e);
     }
   },
 };
