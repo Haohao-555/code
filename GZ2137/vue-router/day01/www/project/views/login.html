@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="../libs/vue/vue.js"></script>
+    <script src="../libs/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- App.vue -->
+    <!-- 挂载点 -->
+    <div id="app">
+        <!-- 3.0 使用组件 -->
+        <div>
+            <h1>登录</h1>
+            <my-form></my-form>
+        </div>
+    </div>
+
+    <!-- 引入组件 -->
+    <script src="../js/components/form.js"></script>
+    <script>
+        // 创建Vue实例（超级组件）
+        new Vue({
+            el: "#app",
+            data:{},
+            // 2.0 注册组件
+            components: {
+                myForm
+            }
+        })
+
+    </script>
+</body>
+</html>

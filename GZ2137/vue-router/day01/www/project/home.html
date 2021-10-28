@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 阶段</title>
+    <script src="libs/vue/vue.js"></script>
+    <script src="libs/axios/dist/axios.min.js"></script>
+    <style>
+        .header a {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #ccc; 
+            text-decoration: none;      
+        }
+      
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <a href="./views/index.html"    target="container">首页</a>
+            <a href="./views/detail.html"   target="container">详情</a>
+            <a href="./views/product.html"  target="container">服务</a>
+            <a href="./views/login.html"    target="container">登录</a>
+            <a href="./views/register.html" target="container">注册</a>
+        </header>
+        <section>
+            <!-- 框架标签  -->
+            <!-- name 属性 名称 -->
+            <iframe name="container" src="./views/index.html" frameborder="0">
+            </iframe>
+        </section>
+    </div>
+    <script>
+
+
+    </script>
+</body>
+</html>
